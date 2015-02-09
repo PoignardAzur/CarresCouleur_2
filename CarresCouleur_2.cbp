@@ -54,7 +54,6 @@
 		<Unit filename="ClassesProjet/GameEndCredits.h" />
 		<Unit filename="ClassesProjet/LevelBase.cpp" />
 		<Unit filename="ClassesProjet/LevelBase.h" />
-		<Unit filename="ClassesProjet/LevelSelector.h" />
 		<Unit filename="ClassesProjet/Level_1.cpp" />
 		<Unit filename="ClassesProjet/Level_1.h" />
 		<Unit filename="ClassesProjet/Level_2.cpp" />
