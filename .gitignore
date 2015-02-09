@@ -1,0 +1,7 @@
+*.dll
+bin/*
+obj/*
+*.depend
+*.layout
+*.cscope_file_list
+diffs.txt

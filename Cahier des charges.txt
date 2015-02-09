@@ -1,0 +1,37 @@
+CARRES
+
+Principe : il y a des carrés de couleurs à l'écran
+- Il y a un écran-titre,
+- Puis un menu, proposant de choisir parmis plusieurs niveaux
+-> Le joueur circule entre les niveaux en appuyant sur Entrée
+-> Le score et les carrés sont transmis entre les niveaux
+-> Le joueur finit le jeu en obtenant un score suffisament élevé et en appuyant sur Entrée
+- Quand le jeu est fini, on arrive à une liste de crédits
+-> Les crédits sont des phrases composées de mots tirés aléatoirement
+-> Une icone propose d'appuyer sur Entrée pour passer
+-> A la fin, le jeu revient à l'écran-titre
+- Durant le jeu :
+-> Une interface affiche le score en permanence
+-> L'augmentation du score est affichée dynamiquement (+10 jaune qui monte, etc)
+-> En appuyant sur Echap, on gèle le jeu et affiche un menu pause
+-> Quitter le jeu : Oui / Non
+
+Liste de niveaux
+- Niveau 1
+-> Le joueur fait apparaitre des carres de couleurs en cliquant
+-> Un score augmente à chaque clic
+-> Le joueur peut téléporter un carré au hasard avec le clic droit
+- Niveau 2
+-> Des carrés sont générés automatiquement sur les bords
+-> Le joueur attire les carres en cliquant
+-> Le joueur peut repousser les carres avec le clic droit
+-> Le curseur a une animation qui change en fonction des clics
+- Niveau 3
+-> Un carré gris de taille importante reste attaché à la souris
+-> Clic gauche pour supprimer des carrés (augmente le score), clic droit pour changer leur vitesse au hasard
+- Niveau 4
+-> Tant qu'un clic est appuyé, des carrés sont créés en continu
+-> Le score ne change pas
+
+
+
