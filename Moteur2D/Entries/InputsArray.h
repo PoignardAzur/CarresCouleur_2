@@ -23,8 +23,8 @@ class Inputs : public AbstractInputs
 
     protected :
 
-    std::map<sf::Mouse::Button, bool>& _mouseButtons();           // map of mouse buttons
-    std::map<sf::Keyboard::Key , bool>& _keyboardButtons();       // map of keyboard keys
+    std::map<sf::Mouse::Button, bool>& _getMouseButtons();           // map of mouse buttons
+    std::map<sf::Keyboard::Key , bool>& _getKeyboardButtons();       // map of keyboard keys
 
 
     private :

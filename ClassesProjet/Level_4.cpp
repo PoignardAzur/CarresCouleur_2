@@ -12,7 +12,7 @@ void Level_4::update(const float& dt)
     if (m_timeBeforeNextCarre > 0)
     m_timeBeforeNextCarre -= dt;
 
-    if (getInputs()->mouseButtons()[sf::Mouse::Left] && m_timeBeforeNextCarre <= 0)
+    if (getInputs()->getMouseButtons()[sf::Mouse::Left] && m_timeBeforeNextCarre <= 0)
     {
         float carreSize = float_dice(DEFAULT_CARRE_SIZE / 2, DEFAULT_CARRE_SIZE * 2)(rng());
         CarreCouleur* carre = new CarreCouleur(rng(), carreSize);

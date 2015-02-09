@@ -39,18 +39,18 @@ void LevelBase::updateThis(const float& dt)
     endThisLater();
 
 
-    if (getInputs()->keyboardButtons()[sf::Keyboard::Escape])
+    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Escape])
     {
         PauseMenu* menu = new PauseMenu();
         menu->set(m_font, getInputs());
         pauseLevel(std::unique_ptr<AbstractMenuInterface>(menu));
     }
 
-    if (getInputs()->keyboardButtons()[sf::Keyboard::Space])
+    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Space])
     m_carres.clear();
 
 
-    if (getInputs()->keyboardButtons()[sf::Keyboard::Return])
+    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Return])
     {
         if (!m_enterPressed)
         setNext();
@@ -62,7 +62,7 @@ void LevelBase::updateThis(const float& dt)
     m_enterPressed = false;
 
 
-    if (getInputs()->mouseButtons()[sf::Mouse::Left])
+    if (getInputs()->getMouseButtons()[sf::Mouse::Left])
     {
         if (!m_leftClick)
         leftClick(getInputs()->cursor());
@@ -74,7 +74,7 @@ void LevelBase::updateThis(const float& dt)
     m_leftClick = false;
 
 
-    if (getInputs()->mouseButtons()[sf::Mouse::Right])
+    if (getInputs()->getMouseButtons()[sf::Mouse::Right])
     {
         if (!m_rightClick)
         rightClick(getInputs()->cursor());
@@ -132,9 +132,9 @@ void LevelBase::generateCarreStream(float dt, float minDelay, float maxDelay, in
 
     if (m_timeBeforeRespawn <= 0)
     {
-        m_timeBeforeRespawn = float_dice(MAX_RESPAWN_DELAY / 2, MAX_RESPAWN_DELAY)(rng());
+        m_timeBeforeRespawn = float_dice(minDelay, maxDelay)(rng());
 
-        int i = int_dice(1, 10)(rng());
+        int i = int_dice(minCarresNumber, maxCarresNumber)(rng());
 
         while(i--)
         {

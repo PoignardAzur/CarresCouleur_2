@@ -29,7 +29,7 @@ class PressAnyKeyMenu : public AbstractGameInterface<In>
 template <typename In>
 void PressAnyKeyMenu<In>::update(const In& inputData)
 {
-    if (AbstractGameInterface<In>::getInputs()->anyKeyPressed())
+    if (AbstractGameInterface<In>::getInputs()->isAnyKeyPressed())
     AbstractGameInterface<In>::endThisLater();
 }
 

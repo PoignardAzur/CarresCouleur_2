@@ -22,23 +22,23 @@ class AbstractInputs
 
     virtual void update(float dt = 0) = 0;       // the number of ticks is not really important
 
-    std::map<sf::Mouse::Button, bool>& mouseButtons();                          // these four methods all return the
-    std::map<sf::Keyboard::Key , bool>& keyboardButtons();                      // same value as _[m|k]Buttons()
+    std::map<sf::Mouse::Button, bool>& getMouseButtons();                          // these four methods all return the
+    std::map<sf::Keyboard::Key , bool>& getKeyboardButtons();                      // same value as _get[m|k]Buttons()
 
-    const std::map<sf::Mouse::Button, bool>& mouseButtons() const;              // their name is different to avoid
-    const std::map<sf::Keyboard::Key , bool>& keyboardButtons() const;          // inheritance problems with name overloading
+    const std::map<sf::Mouse::Button, bool>& getMouseButtons() const;              // their name is different to avoid
+    const std::map<sf::Keyboard::Key , bool>& getKeyboardButtons() const;          // inheritance problems with name overloading
 
-    std::list<sf::Mouse::Button> pressedMouseButtons() const;          // array of pressed mouse buttons
-    std::list<sf::Keyboard::Key> pressedKeyboardButtons() const;       // array of pressed keyboard keys
+    std::list<sf::Mouse::Button> getPressedMouseButtons() const;          // array of pressed mouse buttons
+    std::list<sf::Keyboard::Key> getPressedKeyboardButtons() const;       // array of pressed keyboard keys
 
-    bool anyMouseButtonPressed() const;
-    bool anyKeyPressed() const;
+    bool isAnyMouseButtonPressed() const;
+    bool isAnyKeyPressed() const;
 
 
     protected :
 
-    virtual std::map<sf::Mouse::Button, bool>& _mouseButtons() = 0;             // map of all mouse buttons
-    virtual std::map<sf::Keyboard::Key , bool>& _keyboardButtons() = 0;         // map of all keyboard keys
+    virtual std::map<sf::Mouse::Button, bool>& _getMouseButtons() = 0;             // map of all mouse buttons
+    virtual std::map<sf::Keyboard::Key , bool>& _getKeyboardButtons() = 0;         // map of all keyboard keys
 };
 
 

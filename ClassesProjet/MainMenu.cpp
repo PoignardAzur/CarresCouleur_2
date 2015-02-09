@@ -103,7 +103,7 @@ void MainMenu::drawThisIn(AbstractDrawer& window, float dt)
 
 void MainMenu::updateThis(const float& dt)
 {
-    if (getInputs()->keyboardButtons()[sf::Keyboard::Up])
+    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Up])
     {
         if (!m_upPressed)
         up();
@@ -115,7 +115,7 @@ void MainMenu::updateThis(const float& dt)
     m_upPressed = false;
 
 
-    if (getInputs()->keyboardButtons()[sf::Keyboard::Down])
+    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Down])
     {
         if (!m_downPressed)
         down();
@@ -126,7 +126,7 @@ void MainMenu::updateThis(const float& dt)
     else
     m_downPressed = false;
 
-    if (getInputs()->keyboardButtons()[sf::Keyboard::Space])
+    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Space])
     {
         if (!m_spacePressed)
         press();
@@ -137,7 +137,7 @@ void MainMenu::updateThis(const float& dt)
     else
     m_spacePressed = false;
 
-    if (getInputs()->keyboardButtons()[sf::Keyboard::Return])
+    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Return])
     {
         if (!m_enterPressed)
         press();

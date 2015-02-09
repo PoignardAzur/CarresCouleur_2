@@ -27,6 +27,8 @@ namespace Menu
         public :
 
         AbstractTextObject();
+        virtual ~AbstractTextObject() {}
+
         void setFont(const FontStyle& f);
         void setFont(const sf::Font* f, unsigned int charSize = DEFAULT_FONT_SIZE);
         void setFont(const sf::Font* f, unsigned int charSize, const sf::Color& c);

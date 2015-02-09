@@ -67,13 +67,13 @@ void PauseMenu::drawThisIn(AbstractDrawer& window, float dt)
 
 void PauseMenu::updateThis(const float& dt)
 {
-    if (getInputs()->keyboardButtons()[sf::Keyboard::Left])
+    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Left])
     left();
 
-    else if (getInputs()->keyboardButtons()[sf::Keyboard::Right])
+    else if (getInputs()->getKeyboardButtons()[sf::Keyboard::Right])
     right();
 
-    if (getInputs()->keyboardButtons()[sf::Keyboard::Space] || getInputs()->keyboardButtons()[sf::Keyboard::Return])
+    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Space] || getInputs()->getKeyboardButtons()[sf::Keyboard::Return])
     press();
 }
 

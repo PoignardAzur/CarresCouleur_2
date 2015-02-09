@@ -11,7 +11,7 @@ class AbstractHUD : public AbstractGameInterface<In>
 {
     public :
 
-    explicit AbstractHUD(LevelType* level = 0);
+    explicit AbstractHUD(LevelType* level = nullptr);
     virtual void setLevel(LevelType* level);
     virtual ~AbstractHUD();
 

@@ -78,12 +78,12 @@ void Inputs::update(float dt)
     }
 }
 
-std::map<sf::Mouse::Button, bool>& Inputs::_mouseButtons()
+std::map<sf::Mouse::Button, bool>& Inputs::_getMouseButtons()
 {
     return t_boutonsSouris;
 }
 
-std::map<sf::Keyboard::Key, bool>& Inputs::_keyboardButtons()
+std::map<sf::Keyboard::Key, bool>& Inputs::_getKeyboardButtons()
 {
     return t_boutonsClavier;
 }

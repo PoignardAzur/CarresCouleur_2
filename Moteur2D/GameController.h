@@ -14,6 +14,8 @@ class GameController
     public :
 
     GameController(AbstractInputs* userInputs, sf::RenderWindow* target);
+    virtual ~GameController() {}
+
     virtual void update(float dt);                               // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
     virtual bool isDone() const = 0;                             // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
 
