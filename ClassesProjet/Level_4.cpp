@@ -31,11 +31,11 @@ LevelBase* Level_4::getNextLevel()
 
 void Level_4::leftClick(sf::Vector2f pos)
 {
-
+    (void) pos;
 }
 
 void Level_4::rightClick(sf::Vector2f pos)
 {
-
+    (void) pos;
 }
 

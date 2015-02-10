@@ -5,7 +5,7 @@
 
 
 
-Menu::Counter::Counter(FontStyle f, bool rightAligned, int n, int min, int max, int base)
+Menu::Counter::Counter(FontStyle f, bool rightAligned, int n, int min, int max, int /*base*/)
 {
     setFont(f);
     setRightAligned(rightAligned);
@@ -15,7 +15,7 @@ Menu::Counter::Counter(FontStyle f, bool rightAligned, int n, int min, int max, 
 //    setBase(base);
 }
 
-Menu::Counter::Counter(int n, int min, int max, int base)
+Menu::Counter::Counter(int n, int min, int max, int /*base*/)
 {
     setValue(n);
     setBounds(min, max);

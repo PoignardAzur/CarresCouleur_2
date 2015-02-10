@@ -11,7 +11,7 @@ inline int catchError(const char* e)
     return EXIT_FAILURE;
 }
 
-int main(int argc, char** argv)
+int main(int /*argc*/, char** /*argv*/)
 {
     try
     {
@@ -50,7 +50,7 @@ int main(int argc, char** argv)
 
     catch (...)
     {
-        return catchError("Non specified error occured");
+        return catchError("Non specified error occurred");
     }
 
 }

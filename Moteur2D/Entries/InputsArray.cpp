@@ -31,6 +31,7 @@ void Inputs::update(float dt)
     if (!m_fenetre)
     return;
 
+    (void) dt;
     m_molette = 0;
 
     while (m_fenetre->pollEvent(m_event))

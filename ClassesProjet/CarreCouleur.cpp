@@ -39,6 +39,8 @@ void CarreCouleur::update(float dt)
 
 void CarreCouleur::drawIn(sf::Vector2f pos, AbstractDrawer& target, sf::FloatRect limits, float dt) const
 {
+    (void) limits;
+
     sf::RectangleShape rect(sf::Vector2f(m_size, m_size));
     rect.setPosition(pos + getSpeed() * dt - sf::Vector2f(m_size/2, m_size/2));
 

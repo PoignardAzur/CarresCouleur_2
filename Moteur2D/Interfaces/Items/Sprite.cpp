@@ -22,6 +22,8 @@ void Menu::Sprite::set(const sf::Sprite& spr)
 
 void Menu::Sprite::drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const
 {
+    (void) isHitboxDrawn;
+
     const_cast<Sprite*>(this)->m_sprite.setPosition(position);
     target.draw(m_sprite);
 }

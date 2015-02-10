@@ -28,7 +28,7 @@ SimpleVart::~SimpleVart()
 
 void SimpleVart::update(float dt)
 {
-
+    (void) dt;
 }
 
 bool SimpleVart::doDelete() const

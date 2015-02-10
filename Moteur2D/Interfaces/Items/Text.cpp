@@ -33,6 +33,7 @@ void Menu::Text::setFontStyle(const FontStyle& f)
 
 void Menu::Text::drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const
 {
+    (void) isHitboxDrawn;
     const_cast<Text*>(this)->m_text.setPosition(position.x - m_text.getLocalBounds().left, position.y - m_text.getLocalBounds().top);
     target.draw(m_text);
 }

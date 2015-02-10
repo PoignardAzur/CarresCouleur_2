@@ -29,6 +29,9 @@ sf::Sprite& SimpleSprite::getSprite() const
 
 void SimpleSprite::drawIn(sf::Vector2f pos, AbstractDrawer& target, sf::FloatRect limits, float dt) const
 {
+    (void) limits;
+    (void) dt;
+
     m_sprite.setPosition(pos - m_center);
     target.draw(m_sprite);
 }
