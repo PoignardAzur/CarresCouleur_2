@@ -8,7 +8,7 @@
 
 void LevelBase::drawThisIn(AbstractDrawer& window, float dt)
 {
-    m_carres.drawAllIn(window, sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT), dt);
+    drawAllIn(m_carres, window, sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT), dt);
 }
 
 void LevelBase::setFont(const sf::Font* font)
@@ -24,7 +24,7 @@ void LevelBase::setHUD(Level_HUD* hud)
 void LevelBase::updateThis(const float& dt)
 {
     updatePositions(m_carres, dt);
-    m_carres.updateAll(dt);
+    updateAll(m_carres, dt);
 
     for (auto& carre_ptr : m_carres)
     {
@@ -123,7 +123,7 @@ void LevelBase::generateCarre()
         carre->setSpeed(sf::Vector2f(speed(rng()) * -s, speed(rng()) - DEFAULT_CARRE_SPEED / 2));
     }
 
-    getCarres().add(carre);
+    getCarres().push_back(up(carre));
 }
 
 void LevelBase::generateCarreStream(float dt, float minDelay, float maxDelay, int minCarresNumber, int maxCarresNumber)
@@ -191,12 +191,12 @@ int LevelBase::score() const
     return m_score;
 }
 
-const VartArray<CarreCouleur>& LevelBase::getCarres() const
+const VartList<CarreCouleur>& LevelBase::getCarres() const
 {
     return m_carres;
 }
 
-VartArray<CarreCouleur>& LevelBase::getCarres()
+VartList<CarreCouleur>& LevelBase::getCarres()
 {
     return m_carres;
 }

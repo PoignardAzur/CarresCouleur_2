@@ -5,65 +5,31 @@
 
 #include "AbsVart.hpp"
 #include <list>
-#include <memory>
+#include "up.hpp"
 
 
 template <typename T = AbsVart>
-class VartPusher
-{
-    public :
-
-    virtual void add(T* vart) = 0;
-    virtual ~VartPusher() {}
-};
-
-
-template <typename T = AbsVart>
-class VartArray : public std::list<std::shared_ptr<T>>, public VartPusher<T> /// TODO -> move to unique_ptr and debug
-{
-    public :
-
-    virtual ~VartArray();
-
-    virtual void updateAll(float dt, bool delDeadVarts = true);                           // Updates every Vart of the list
-    virtual void drawAllIn(AbstractDrawer& target, sf::FloatRect limits, float dt);       // Draws every Vart of the list
-    virtual void add(T* vart);
-
-    virtual void deleteDeadVarts();
-
-
-    private :
-
-    typedef std::list<std::shared_ptr<T>> lpT;
-};
-
+using VartList = std::list<up_t<T>>;
 
 template <typename T>
-VartArray<T>::~VartArray()
+void updateAll(VartList<T>& list, float dt, bool delDeadVarts = true)
 {
-
-}
-
-
-template <typename T>
-void VartArray<T>::updateAll(float dt, bool delDeadVarts)
-{
-    for (auto& vart_ptr : *this)
+    for (auto& vart_ptr : list)
     {
         vart_ptr->update(dt);
     }
 
     if (delDeadVarts)
-    deleteDeadVarts();
+    deleteDeadVarts(list);
     /* we could just call erase(p) in the loop, but it could lead to
     problems should a live Vart need variables from a deleted one */
 }
 
 
 template <typename T>
-void VartArray<T>::drawAllIn(AbstractDrawer& target, sf::FloatRect limits, float dt)
+void drawAllIn(VartList<T>& list, AbstractDrawer& target, sf::FloatRect limits, float dt)
 {
-    for (auto& vart_ptr : *this)
+    for (auto& vart_ptr : list)
     {
         vart_ptr->drawIn(vart_ptr->getPos(), target, limits, dt);
     }
@@ -71,19 +37,11 @@ void VartArray<T>::drawAllIn(AbstractDrawer& target, sf::FloatRect limits, float
 
 
 template <typename T>
-void VartArray<T>::add(T* vart)
+void deleteDeadVarts(VartList<T>& list)
 {
-    lpT::push_back(std::shared_ptr<T>(vart));
-}
-
-
-
-template <typename T>
-void VartArray<T>::deleteDeadVarts()
-{
-    lpT::remove_if
+    list.remove_if
     (
-        [](const std::shared_ptr<T>& p)
+        [](const up_t<T>& p)
         {
             return p->toDelete();
         }
@@ -92,14 +50,47 @@ void VartArray<T>::deleteDeadVarts()
 
 
 template <typename T>
-void updatePositions(VartArray<T>& vl, float dt)
+void updatePositions(VartList<T>& list, float dt)
 {
-    for (auto& vart_ptr : vl)
+    for (auto& vart_ptr : list)
     {
         vart_ptr->setPos(vart_ptr->getPos() + vart_ptr->getSpeed() * dt);
     }
 }
 
+
+template <typename T = AbsVart>
+class VartPusher
+{
+    public :
+
+    VartPusher(VartList<T>* list);
+    virtual ~VartPusher();
+    void add(up_t<T>* vart);
+
+
+    private :
+
+    VartList<T>* m_list;    // use-a
+};
+
+template <typename T>
+VartPusher<T>::VartPusher(VartList<T>* list)
+{
+    m_list = list;
+}
+
+template <typename T>
+VartPusher<T>::~VartPusher()
+{
+
+}
+
+template <typename T>
+void VartPusher<T>::add(up_t<T>* vart)
+{
+    m_list->push_back(mv(vart));
+}
 
 
 #endif

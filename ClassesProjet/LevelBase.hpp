@@ -11,7 +11,7 @@
 #define MAX_CARRES_NUMBER 6
 
 #include "../Moteur2D/Interfaces/AbstractLevel.hpp"
-#include "../Moteur2D/Game/VartArray.hpp"
+#include "../Moteur2D/Game/VartList.hpp"
 #include "CarreCouleur.hpp"
 
 
@@ -42,15 +42,15 @@ class LevelBase : public AbstractLevel<float>
     void increaseScore(int points);
     int score() const;
 
-    const VartArray<CarreCouleur>& getCarres() const;
-    VartArray<CarreCouleur>& getCarres();
+    const VartList<CarreCouleur>& getCarres() const;
+    VartList<CarreCouleur>& getCarres();
 
     void giveCarres(LevelBase* nextLevel);
 
 
     private :
 
-    VartArray<CarreCouleur> m_carres;
+    VartList<CarreCouleur> m_carres;
     float m_timeBeforeRespawn = 0;
 
     bool m_leftClick = false;

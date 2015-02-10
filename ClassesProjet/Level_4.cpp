@@ -19,7 +19,7 @@ void Level_4::update(const float& dt)
         carre->setPos(getInputs()->cursor());
         carre->randomizeSpeed(rng());
 
-        getCarres().add(carre);
+        getCarres().push_back(up(carre));
         m_timeBeforeNextCarre = TIME_BETWEEN_CARRES;
     }
 }

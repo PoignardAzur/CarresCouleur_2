@@ -19,7 +19,7 @@ void Level_1::leftClick(sf::Vector2f pos)
     carre->setPos(pos);
     carre->randomizeSpeed(rng());
 
-    getCarres().add(carre);
+    getCarres().push_back(up(carre));
 }
 
 void Level_1::rightClick(sf::Vector2f pos)

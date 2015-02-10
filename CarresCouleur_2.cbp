@@ -82,7 +82,7 @@
 		<Unit filename="Moteur2D/Game/SimpleHitbox.hpp" />
 		<Unit filename="Moteur2D/Game/SimpleVart.cpp" />
 		<Unit filename="Moteur2D/Game/SimpleVart.hpp" />
-		<Unit filename="Moteur2D/Game/VartArray.hpp" />
+		<Unit filename="Moteur2D/Game/VartList.hpp" />
 		<Unit filename="Moteur2D/Graphic/AbstractDrawable.hpp" />
 		<Unit filename="Moteur2D/Graphic/AbstractDrawer.hpp" />
 		<Unit filename="Moteur2D/Graphic/AnimatedSprite.cpp" />
