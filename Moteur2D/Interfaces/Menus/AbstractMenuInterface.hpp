@@ -3,7 +3,7 @@
 #ifndef ABSTRACT_MENU_INTERFACE
 #define ABSTRACT_MENU_INTERFACE
 
-#include "../AbstractGameInterface.h"
+#include "../AbstractGameInterface.hpp"
 #include <memory>
 
 

@@ -6,9 +6,9 @@
 #define DEFAULT_CARRE_SIZE 30
 #define DEFAULT_CARRE_SPEED 160
 
-#include "../Moteur2D/Interfaces/AbstractLevel.h"
-#include "../Moteur2D/Game/SimpleHitbox.h"
-#include "../Moteur2D/Game/AbsVart.h"
+#include "../Moteur2D/Interfaces/AbstractLevel.hpp"
+#include "../Moteur2D/Game/SimpleHitbox.hpp"
+#include "../Moteur2D/Game/AbsVart.hpp"
 
 
 class CarreCouleur : public AbsVart, public SimpleHitbox
@@ -26,8 +26,6 @@ class CarreCouleur : public AbsVart, public SimpleHitbox
 
     sf::Vector2f getPos() const;
     bool recycle(sf::FloatRect limits, bool deleteIfOOB = true);
-//    void setSpeed(sf::Vector2f speed, bool relative = false);
-//    sf::Vector2f getSpeed() const;
 
     private :
 

@@ -10,9 +10,9 @@
 #define MIN_CARRES_NUMBER 1
 #define MAX_CARRES_NUMBER 6
 
-#include "../Moteur2D/Interfaces/AbstractLevel.h"
-#include "../Moteur2D/Game/VartArray.h"
-#include "CarreCouleur.h"
+#include "../Moteur2D/Interfaces/AbstractLevel.hpp"
+#include "../Moteur2D/Game/VartArray.hpp"
+#include "CarreCouleur.hpp"
 
 
 class Level_HUD;

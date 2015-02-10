@@ -4,7 +4,7 @@
 #define MENU_ITEM_BOX_HEADER
 
 #include <memory>
-#include "AbstractItem.h"
+#include "AbstractItem.hpp"
 
 
 namespace Menu

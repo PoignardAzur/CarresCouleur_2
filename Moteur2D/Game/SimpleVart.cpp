@@ -1,6 +1,6 @@
 
 
-#include "SimpleVart.h"
+#include "SimpleVart.hpp"
 #include <utility>
 
 
@@ -12,12 +12,12 @@ SimpleVart::SimpleVart()
 SimpleVart::SimpleVart(const SimpleHitbox& hitbox, up_t<AbstractDrawable> sprite)
 {
     set(hitbox);
-    setSprite(sprite);
+    setSprite(mv(sprite));
 }
 
 SimpleVart::SimpleVart(up_t<AbstractDrawable> sprite)
 {
-    setSprite(sprite);
+    setSprite(mv(sprite));
 }
 
 SimpleVart::~SimpleVart()
@@ -38,9 +38,8 @@ bool SimpleVart::doDelete() const
 
 up_t<AbstractDrawable> SimpleVart::setSprite(up_t<AbstractDrawable> sprite)
 {
-    up_t<AbstractDrawable> sprite_(sprite);
-    std::swap(sprite_, m_sprite);
-    return sprite_;
+    std::swap(sprite, m_sprite);
+    return sprite;
 }
 
 void SimpleVart::removeThis()

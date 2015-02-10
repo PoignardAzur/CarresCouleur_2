@@ -3,7 +3,7 @@
 #ifndef HEADER_TABLEAU_VARTS
 #define HEADER_TABLEAU_VARTS
 
-#include "AbsVart.h"
+#include "AbsVart.hpp"
 #include <list>
 #include <memory>
 

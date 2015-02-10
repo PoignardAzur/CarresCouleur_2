@@ -3,8 +3,8 @@
 #ifndef TEXT_BOX_HEADER
 #define TEXT_BOX_HEADER
 
-#include "../Items/AbstractTextObject.h"
-#include "../Items/ItemBox.h"
+#include "../Items/AbstractTextObject.hpp"
+#include "../Items/ItemBox.hpp"
 #include <string>
 
 

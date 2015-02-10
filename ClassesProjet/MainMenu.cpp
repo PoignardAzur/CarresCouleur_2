@@ -1,13 +1,13 @@
 
 
-#include "MainMenu.h"
-#include "../Moteur2D/Interfaces/Menus/TextBox.h"
+#include "MainMenu.hpp"
+#include "../Moteur2D/Interfaces/Menus/TextBox.hpp"
 
-#include "Level_1.h"
-#include "Level_2.h"
-#include "Level_3.h"
-#include "Level_4.h"
-#include "Level_HUD.h"
+#include "Level_1.hpp"
+#include "Level_2.hpp"
+#include "Level_3.hpp"
+#include "Level_4.hpp"
+#include "Level_HUD.hpp"
 
 #define BUTTON_SIZE sf::Vector2f(140, 50)
 

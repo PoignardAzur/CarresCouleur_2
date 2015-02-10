@@ -4,8 +4,8 @@
 #define BASIC_ARCADE_LEVEL_HEADER
 
 
-#include "AbstractLevel.h"
-#include "../Timer.h"
+#include "AbstractLevel.hpp"
+#include "../Timer.hpp"
 
 
 template<typename In>

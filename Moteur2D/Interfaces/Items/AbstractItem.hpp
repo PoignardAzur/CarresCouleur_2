@@ -3,7 +3,7 @@
 #ifndef ABSTRACT_MENU_ITEM_HEADER
 #define ABSTRACT_MENU_ITEM_HEADER
 
-#include "../../Graphic/AbstractDrawer.h"
+#include "../../Graphic/AbstractDrawer.hpp"
 
 
 extern bool DRAW_ITEM_HITBOX; // doesn't need to be const

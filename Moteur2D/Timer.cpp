@@ -1,6 +1,6 @@
 
 
-#include "Timer.h"
+#include "Timer.hpp"
 
 
 Timer::Timer(float startTime, float maxTime) : m_time(startTime)

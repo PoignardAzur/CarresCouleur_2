@@ -1,7 +1,7 @@
 
 
-#include "Level_2.h"
-#include "Level_3.h"
+#include "Level_2.hpp"
+#include "Level_3.hpp"
 #include <cmath>
 
 LevelBase* Level_2::getNextLevel()

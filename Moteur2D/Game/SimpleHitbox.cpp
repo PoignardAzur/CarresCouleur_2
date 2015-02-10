@@ -1,6 +1,6 @@
 
 
-#include "SimpleHitbox.h"
+#include "SimpleHitbox.hpp"
 
 
 SimpleHitbox::SimpleHitbox(sf::FloatRect box, sf::Vector2f pos, sf::Vector2f speed) : m_box(box), m_pos(pos), m_speed(speed)

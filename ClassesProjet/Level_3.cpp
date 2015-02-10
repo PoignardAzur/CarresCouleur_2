@@ -1,7 +1,7 @@
 
 
-#include "Level_3.h"
-#include "Level_4.h"
+#include "Level_3.hpp"
+#include "Level_4.hpp"
 
 
 Level_3::Level_3() : m_carreGris(sf::Color(128, 128, 128), DEFAULT_CARRE_SIZE * 3)

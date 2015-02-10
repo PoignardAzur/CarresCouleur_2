@@ -1,9 +1,9 @@
 
 
-#include "PauseMenu.h"
-#include "Level_HUD.h"
-#include "Level_1.h"
-#include "MainMenu.h"
+#include "PauseMenu.hpp"
+#include "Level_HUD.hpp"
+#include "Level_1.hpp"
+#include "MainMenu.hpp"
 
 #define BUTTON_SIZE sf::Vector2f(100, 50)
 

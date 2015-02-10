@@ -1,6 +1,6 @@
 
 
-#include "Text.h"
+#include "Text.hpp"
 
 
 Menu::Text::Text(const std::string& str, FontStyle f)

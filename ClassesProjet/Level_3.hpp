@@ -3,7 +3,7 @@
 #ifndef HEADER_LEVEL_3
 #define HEADER_LEVEL_3
 
-#include "LevelBase.h"
+#include "LevelBase.hpp"
 
 
 class Level_3 : public LevelBase

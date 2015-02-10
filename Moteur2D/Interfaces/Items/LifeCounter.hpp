@@ -3,9 +3,9 @@
 #ifndef MENU_LIFE_COUNTER_HEADER
 #define MENU_LIFE_COUNTER_HEADER
 
-#include "ItemGrid.h"
-#include "Sprite.h"
-#include "Counter.h"
+#include "ItemGrid.hpp"
+#include "Sprite.hpp"
+#include "Counter.hpp"
 
 
 namespace Menu

@@ -1,6 +1,6 @@
 
 
-#include "AbstractMenu.h"
+#include "AbstractMenu.hpp"
 
 Menu::AbstractMenu::AbstractMenu(bool isVertical, bool doesLoop)
 {

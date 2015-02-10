@@ -3,16 +3,16 @@
 #ifndef BOSS_CLASS_HEADER
 #define BOSS_CLASS_HEADER
 
-#include "../Moteur2D/GameController.h"
-#include "../Moteur2D/Interfaces/MetaInterface.h"
-#include "LevelBase.h"
+#include "../Moteur2D/GameController.hpp"
+#include "../Moteur2D/Interfaces/MetaInterface.hpp"
+#include "LevelBase.hpp"
 
 
 class BossClass : public GameController
 {
     public :
 
-    BossClass(AbstractInputs* userInputs, sf::RenderWindow* target);
+    BossClass(up_t<AbstractInputs> userInputs, sf::RenderWindow* target);
 
     AbstractGameInterface<float>* interface();
     void update(float dt);

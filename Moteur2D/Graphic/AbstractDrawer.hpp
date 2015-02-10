@@ -4,7 +4,7 @@
 #define HEADER_AFFICHEUR_OBJETS_ABSTRAIT
 
 #include <SFML/Graphics.hpp>
-#include "AbstractDrawable.h"
+#include "AbstractDrawable.hpp"
 
 
 class AbstractDrawer

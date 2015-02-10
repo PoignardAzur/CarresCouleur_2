@@ -1,6 +1,6 @@
 
 
-#include "GameController.h"
+#include "GameController.hpp"
 
 
 GameController::GameController(up_t<AbstractInputs> userInputs, sf::RenderWindow* target)

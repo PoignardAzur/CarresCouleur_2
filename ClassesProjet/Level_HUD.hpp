@@ -3,10 +3,10 @@
 #ifndef LEVEL_HUD_HEADER
 #define LEVEL_HUD_HEADER
 
-#include "LevelBase.h"
-#include "../Moteur2D/Interfaces/AbstractHUD.h"
-#include "../Moteur2D/Interfaces/Items/Counter.h"
-#include "../Moteur2D/Interfaces/Items/ItemBox.h"
+#include "LevelBase.hpp"
+#include "../Moteur2D/Interfaces/AbstractHUD.hpp"
+#include "../Moteur2D/Interfaces/Items/Counter.hpp"
+#include "../Moteur2D/Interfaces/Items/ItemBox.hpp"
 #include <list>
 
 

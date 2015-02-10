@@ -3,7 +3,7 @@
 #ifndef PAK_MENU_HEADER
 #define PAK_MENU_HEADER
 
-#include "AbstractGameInterface.h"
+#include "AbstractGameInterface.hpp"
 #include <functional>
 
 

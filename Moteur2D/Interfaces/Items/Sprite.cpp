@@ -1,6 +1,6 @@
 
 
-#include "Sprite.h"
+#include "Sprite.hpp"
 
 
 Menu::Sprite::Sprite()

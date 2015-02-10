@@ -3,7 +3,7 @@
 #ifndef MENU_SPRITE_HEADER
 #define MENU_SPRITE_HEADER
 
-#include "AbstractItem.h"
+#include "AbstractItem.hpp"
 
 
 namespace Menu

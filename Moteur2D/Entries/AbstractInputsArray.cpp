@@ -1,6 +1,6 @@
 
 
-#include "AbstractInputsArray.h"
+#include "AbstractInputsArray.hpp"
 
 
 std::list<sf::Mouse::Button> AbstractInputs::getPressedMouseButtons() const          // array of pressed mouse buttons

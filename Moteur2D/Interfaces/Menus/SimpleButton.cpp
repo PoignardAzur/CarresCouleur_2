@@ -1,8 +1,8 @@
 
 
-#include "SimpleButton.h"
-#include "../Items/ItemBox.h"
-#include "../Items/Text.h"
+#include "SimpleButton.hpp"
+#include "../Items/ItemBox.hpp"
+#include "../Items/Text.hpp"
 
 
 Menu::SimpleButton::SimpleButton(AbstractItem* unselected, AbstractItem* selected)

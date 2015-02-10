@@ -1,5 +1,5 @@
 
-#include "Label.h"
+#include "Label.hpp"
 
 
 Menu::Label::Label(AbstractItem* item, const std::string& str, FontStyle f, bool horizontalAlignement, float gap)

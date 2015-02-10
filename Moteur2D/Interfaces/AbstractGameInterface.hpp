@@ -3,8 +3,8 @@
 #ifndef ABSTRACT_GAME_INTERFACE_HEADER
 #define ABSTRACT_GAME_INTERFACE_HEADER
 
-#include "../Entries/InputsArray.h"
-#include "../Graphic/AbstractDrawer.h"
+#include "../Entries/InputsArray.hpp"
+#include "../Graphic/AbstractDrawer.hpp"
 
 
 template <typename In>

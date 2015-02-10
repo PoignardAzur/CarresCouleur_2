@@ -1,9 +1,9 @@
 
 
-#include "LevelBase.h"
-#include "Level_HUD.h"
-#include "GameEndCredits.h"
-#include "PauseMenu.h"
+#include "LevelBase.hpp"
+#include "Level_HUD.hpp"
+#include "GameEndCredits.hpp"
+#include "PauseMenu.hpp"
 
 
 void LevelBase::drawThisIn(AbstractDrawer& window, float dt)

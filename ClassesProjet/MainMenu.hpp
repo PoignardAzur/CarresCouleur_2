@@ -3,11 +3,11 @@
 #ifndef MAIN_MENU_HEADER
 #define MAIN_MENU_HEADER
 
-#include "LevelBase.h"
-#include "../Moteur2D/Interfaces/Menus/AbstractMenuInterface.h"
-#include "../Moteur2D/Interfaces/Menus/AbstractMenu.h"
-#include "../Moteur2D/Interfaces/Menus/SimpleButton.h"
-#include "../Moteur2D/Interfaces/Items/Text.h"
+#include "LevelBase.hpp"
+#include "../Moteur2D/Interfaces/Menus/AbstractMenuInterface.hpp"
+#include "../Moteur2D/Interfaces/Menus/AbstractMenu.hpp"
+#include "../Moteur2D/Interfaces/Menus/SimpleButton.hpp"
+#include "../Moteur2D/Interfaces/Items/Text.hpp"
 
 
 class MainMenu : public Menu::AbstractMenu, public AbstractMenuInterface

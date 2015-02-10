@@ -3,7 +3,7 @@
 #ifndef MENU_LABEL_HEADER
 #define MENU_LABEL_HEADER
 
-#include "Text.h"
+#include "Text.hpp"
 #include <memory>
 
 

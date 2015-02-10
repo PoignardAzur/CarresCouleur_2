@@ -3,8 +3,8 @@
 #ifndef HEADER_VARTS
 #define HEADER_VARTS
 
-#include "AbsVart.h"
-#include "SimpleHitbox.h"
+#include "AbsVart.hpp"
+#include "SimpleHitbox.hpp"
 #include <memory>
 #include <up.hpp>
 

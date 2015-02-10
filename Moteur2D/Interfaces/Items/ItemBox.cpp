@@ -1,6 +1,6 @@
 
 
-#include "ItemBox.h"
+#include "ItemBox.hpp"
 
 
 Menu::ItemBox::ItemBox(AbstractItem* item, Alignement a, float x_offset, float y_offset)

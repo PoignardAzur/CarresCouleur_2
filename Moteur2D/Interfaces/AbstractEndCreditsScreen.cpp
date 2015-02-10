@@ -1,6 +1,6 @@
 
 
-#include "AbstractEndCreditsScreen.h"
+#include "AbstractEndCreditsScreen.hpp"
 
 
 void AbstractEndCreditsScreen::setMargin(float margin)

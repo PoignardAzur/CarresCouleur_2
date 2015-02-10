@@ -1,7 +1,7 @@
 
 
-#include "TitleScreen.h"
-#include "LevelBase.h"
+#include "TitleScreen.hpp"
+#include "LevelBase.hpp"
 
 #define TITLE_TEXT "CARRES COULEUR 2"
 #define SUBTITLE_TEXT "Le retour de la vengeance"

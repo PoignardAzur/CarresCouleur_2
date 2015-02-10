@@ -3,7 +3,7 @@
 #ifndef GAME_END_CREDITS_HEADER
 #define GAME_END_CREDITS_HEADER
 
-#include "../Moteur2D/Interfaces/SimpleEndCreditsScreen.h"
+#include "../Moteur2D/Interfaces/SimpleEndCreditsScreen.hpp"
 
 
 class GameEndCredits : public SimpleEndCreditsScreen

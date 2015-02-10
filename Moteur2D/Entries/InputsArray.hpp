@@ -4,7 +4,7 @@
 #define TABLEAU_ENTREES
 
 #include <SFML/Graphics.hpp>
-#include "AbstractInputsArray.h"
+#include "AbstractInputsArray.hpp"
 
 
 // Class used to check the state of inputs without dealing with event handling

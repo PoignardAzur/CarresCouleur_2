@@ -1,6 +1,6 @@
 
 
-#include "GameEndCredits.h"
+#include "GameEndCredits.hpp"
 
 
 GameEndCredits::GameEndCredits()

@@ -2,7 +2,7 @@
 
 
 
-#include "AbsTileArray.h"
+#include "AbsTileArray.hpp"
 
 
 void AbsTileArrayDrawable::setArray(const TileArray<char>& ntableauTiles)

@@ -4,7 +4,7 @@
 #ifndef META_INTERFACE_HEADER
 #define META_INTERFACE_HEADER
 
-#include "AbstractGameInterface.h"
+#include "AbstractGameInterface.hpp"
 #include <memory>
 
 

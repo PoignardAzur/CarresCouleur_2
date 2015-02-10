@@ -3,8 +3,8 @@
 #ifndef MENU_TEXT_HEADER
 #define MENU_TEXT_HEADER
 
-#include "AbstractItem.h"
-#include "AbstractTextObject.h"
+#include "AbstractItem.hpp"
+#include "AbstractTextObject.hpp"
 
 
 namespace Menu

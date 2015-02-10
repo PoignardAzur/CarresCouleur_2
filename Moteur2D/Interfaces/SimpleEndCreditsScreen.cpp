@@ -1,10 +1,10 @@
 
 
-#include "SimpleEndCreditsScreen.h"
-#include "Items/ItemBox.h"
-#include "Items/ItemStack.h"
-#include "Items/Text.h"
-#include "Items/Sprite.h"
+#include "SimpleEndCreditsScreen.hpp"
+#include "Items/ItemBox.hpp"
+#include "Items/ItemStack.hpp"
+#include "Items/Text.hpp"
+#include "Items/Sprite.hpp"
 
 
 void SimpleEndCreditsScreen::setAllFonts(const sf::Font* f, unsigned int charSizeMin, const sf::Color& titleColor, const sf::Color& subtitleColor, const sf::Color& creditNameColor, const sf::Color& creditRoleColor)

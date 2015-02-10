@@ -3,8 +3,8 @@
 #ifndef TITLE_SCREEN_HEADER
 #define TITLE_SCREEN_HEADER
 
-#include "../Moteur2D/Interfaces/PressAnyKeyMenu.h"
-#include "../Moteur2D/Interfaces/Items/Text.h"
+#include "../Moteur2D/Interfaces/PressAnyKeyMenu.hpp"
+#include "../Moteur2D/Interfaces/Items/Text.hpp"
 
 
 class TitleScreen : public PressAnyKeyMenu<float>

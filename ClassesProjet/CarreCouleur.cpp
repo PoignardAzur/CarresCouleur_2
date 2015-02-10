@@ -1,6 +1,6 @@
 
 
-#include "CarreCouleur.h"
+#include "CarreCouleur.hpp"
 
 
 CarreCouleur::CarreCouleur(sf::Color color, float sizeCarre)

@@ -3,7 +3,7 @@
 #ifndef SIMPLE_SPRITE_HEADER
 #define SIMPLE_SPRITE_HEADER
 
-#include "AbstractDrawable.h"
+#include "AbstractDrawable.hpp"
 #include <memory>
 
 #define NULL_PT sf::Vector2f(0,0)

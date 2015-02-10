@@ -1,7 +1,7 @@
 
 
-#include "SimpleSprite.h"
-#include "AbstractDrawer.h"
+#include "SimpleSprite.hpp"
+#include "AbstractDrawer.hpp"
 
 
 SimpleSprite::SimpleSprite()

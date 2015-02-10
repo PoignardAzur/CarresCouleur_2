@@ -3,8 +3,8 @@
 #ifndef SIMPLE_MENU_BUTTON_HEADER
 #define SIMPLE_MENU_BUTTON_HEADER
 
-#include "AbstractButton.h"
-#include "../Items/AbstractItem.h"
+#include "AbstractButton.hpp"
+#include "../Items/AbstractItem.hpp"
 #include <memory>
 #include <functional>
 

@@ -1,15 +1,15 @@
 
 
-#include "BossClass.h"
+#include "BossClass.hpp"
 
-#include "MainMenu.h"
-#include "Level_HUD.h"
-#include "TitleScreen.h"
+#include "MainMenu.hpp"
+#include "Level_HUD.hpp"
+#include "TitleScreen.hpp"
 
 #define FONT_FILE_NAME "Resources/arial.ttf"
 
 
-BossClass::BossClass(AbstractInputs* userInputs, sf::RenderWindow* target) : GameController(userInputs, target)
+BossClass::BossClass(up_t<AbstractInputs> userInputs, sf::RenderWindow* target) : GameController(mv(userInputs), target)
 {
     if (!m_font.loadFromFile(FONT_FILE_NAME))
     throw "Couldn't load font" FONT_FILE_NAME;

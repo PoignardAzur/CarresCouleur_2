@@ -1,6 +1,6 @@
 
 
-#include "AbstractItem.h"
+#include "AbstractItem.hpp"
 
 
 bool DRAW_ITEM_HITBOX = false; // doesn't need to be const

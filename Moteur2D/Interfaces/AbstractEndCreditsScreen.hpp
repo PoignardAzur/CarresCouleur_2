@@ -3,8 +3,8 @@
 #ifndef ABSTRACT_CREDITS_SCREEN_HEADER
 #define ABSTRACT_CREDITS_SCREEN_HEADER
 
-#include "AbstractGameInterface.h"
-#include "Items/AbstractItem.h"
+#include "AbstractGameInterface.hpp"
+#include "Items/AbstractItem.hpp"
 #include <list>
 #include <memory>
 

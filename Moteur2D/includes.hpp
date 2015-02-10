@@ -7,31 +7,31 @@
 //namespace CtB
 //{
 
-    #include "Game/SimpleVart.h"
-    #include "Game/VartArray.h"
+    #include "Game/SimpleVart.hpp"
+    #include "Game/VartArray.hpp"
 
-    #include "Graphic/ObjectDrawer.h"
-    #include "Graphic/SimpleSprite.h"
+    #include "Graphic/ObjectDrawer.hpp"
+    #include "Graphic/SimpleSprite.hpp"
 
-    #include "Interfaces/Items/VariableItem.h"
-    #include "Interfaces/Items/ItemBox.h"
-    #include "Interfaces/Items/ItemStack.h"
-    #include "Interfaces/Items/Label.h"
-    #include "Interfaces/Items/LifeCounter.h"
+    #include "Interfaces/Items/VariableItem.hpp"
+    #include "Interfaces/Items/ItemBox.hpp"
+    #include "Interfaces/Items/ItemStack.hpp"
+    #include "Interfaces/Items/Label.hpp"
+    #include "Interfaces/Items/LifeCounter.hpp"
 
-    #include "Interfaces/Menus/AbstractMenu.h"
-    #include "Interfaces/Menus/SimpleButton.h"
+    #include "Interfaces/Menus/AbstractMenu.hpp"
+    #include "Interfaces/Menus/SimpleButton.hpp"
 
     #include "Interfaces/AbstractHUD.h"
     #include "Interfaces/BasicArcadeLevel.h"
     #include "Interfaces/MetaInterface.h"
     #include "Interfaces/PressAnyKeyMenu.h"
 
-    #include "GameController.h"
-    #include "ResourceList.h"
+    #include "GameController.hpp"
+    #include "ResourceList.hpp"
 
-    #include "StartEndBool.h"
-    #include "Timer.h"
+    #include "StartEndBool.hpp"
+    #include "Timer.hpp"
 //}
 
 

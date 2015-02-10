@@ -1,5 +1,5 @@
 
-#include "ClassesProjet/BossClass.h"
+#include "ClassesProjet/BossClass.hpp"
 #include <iostream>
 
 #define WINDOW_TITLE "Carres couleur 2 : le retour de la vengeance"

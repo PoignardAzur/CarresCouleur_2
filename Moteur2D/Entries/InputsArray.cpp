@@ -1,7 +1,7 @@
 
 
 
-#include "InputsArray.h"
+#include "InputsArray.hpp"
 
 
 

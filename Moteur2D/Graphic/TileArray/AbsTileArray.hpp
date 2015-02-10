@@ -6,8 +6,8 @@
 
 
 #include <memory>
-#include "../Drawable.h"
-#include "../../TileArrayFormat.h"
+#include "../Drawable.hpp"
+#include "../../TileArrayFormat.hpp"
 
 
 

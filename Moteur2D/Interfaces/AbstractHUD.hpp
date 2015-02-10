@@ -3,7 +3,7 @@
 #ifndef HUD_HEADER
 #define HUD_HEADER
 
-#include "AbstractLevel.h"
+#include "AbstractLevel.hpp"
 
 
 template <typename In, typename LevelType = AbstractLevel<In> >

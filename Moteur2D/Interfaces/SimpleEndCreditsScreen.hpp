@@ -3,8 +3,8 @@
 #ifndef SIMPLE_CREDITS_SCREEN_HEADER
 #define SIMPLE_CREDITS_SCREEN_HEADER
 
-#include "AbstractEndCreditsScreen.h"
-#include "Items/AbstractTextObject.h"
+#include "AbstractEndCreditsScreen.hpp"
+#include "Items/AbstractTextObject.hpp"
 
 
 class SimpleEndCreditsScreen : public AbstractEndCreditsScreen

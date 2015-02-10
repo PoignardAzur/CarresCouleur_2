@@ -3,7 +3,7 @@
 #ifndef MENU_COUNTER_HEADER
 #define MENU_COUNTER_HEADER
 
-#include "Text.h"
+#include "Text.hpp"
 
 
 

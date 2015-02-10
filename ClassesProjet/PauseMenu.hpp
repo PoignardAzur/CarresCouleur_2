@@ -3,11 +3,11 @@
 #ifndef PAUSE_MENU_HEADER
 #define PAUSE_MENU_HEADER
 
-#include "../Moteur2D/Interfaces/Menus/AbstractMenuInterface.h"
-#include "../Moteur2D/Interfaces/Menus/AbstractMenu.h"
-#include "../Moteur2D/Interfaces/Menus/SimpleButton.h"
-#include "../Moteur2D/Interfaces/Menus/TextBox.h"
-#include "../Moteur2D/Interfaces/Items/Text.h"
+#include "../Moteur2D/Interfaces/Menus/AbstractMenuInterface.hpp"
+#include "../Moteur2D/Interfaces/Menus/AbstractMenu.hpp"
+#include "../Moteur2D/Interfaces/Menus/SimpleButton.hpp"
+#include "../Moteur2D/Interfaces/Menus/TextBox.hpp"
+#include "../Moteur2D/Interfaces/Items/Text.hpp"
 
 
 class PauseMenu : public Menu::AbstractMenu, public AbstractMenuInterface

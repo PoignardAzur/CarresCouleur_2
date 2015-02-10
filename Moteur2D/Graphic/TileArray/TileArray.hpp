@@ -5,7 +5,7 @@
 #define HEADER_TABLEAU_TILES
 
 
-#include "Abstractions/AbsTileArray.h"
+#include "Abstractions/AbsTileArray.hpp"
 
 
 typedef std::vector< std::shared_ptr<sf::Sprite> > Correspondances;
