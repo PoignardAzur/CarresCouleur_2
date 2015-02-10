@@ -48,7 +48,7 @@ namespace Menu
 
         private :
 
-        std::vector<std::vector< std::shared_ptr<AbstractItem> >> m_itemLines;     // it's an array of lines, each one being an array of item
+        std::vector<std::vector< std::shared_ptr<AbstractItem> >> m_itemLines;     // it's an array of lines, each one being an array of items
         sf::Vector2f m_gaps;
         Alignement m_align;
 

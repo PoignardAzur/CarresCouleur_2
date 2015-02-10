@@ -3,7 +3,7 @@
 #ifndef MENU_LIFE_COUNTER_HEADER
 #define MENU_LIFE_COUNTER_HEADER
 
-#include "ItemGrid.hpp"
+#include "ItemLine.hpp"
 #include "Sprite.hpp"
 #include "Counter.hpp"
 
@@ -11,7 +11,7 @@
 namespace Menu
 {
 
-    class LifeCounter : public AbstractItem
+    class LifeCounter : public AbstractItem, public AbstractTextObject
     {
         public :
 
@@ -36,7 +36,7 @@ namespace Menu
 
         private :
 
-        ItemGrid m_grid;
+        ItemRow m_row;
 
         int m_count;
         int m_maxDrawable;

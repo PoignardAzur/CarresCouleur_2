@@ -107,6 +107,8 @@
 		<Unit filename="Moteur2D/Interfaces/Items/ItemBox.hpp" />
 		<Unit filename="Moteur2D/Interfaces/Items/ItemGrid.cpp" />
 		<Unit filename="Moteur2D/Interfaces/Items/ItemGrid.hpp" />
+		<Unit filename="Moteur2D/Interfaces/Items/ItemLine.cpp" />
+		<Unit filename="Moteur2D/Interfaces/Items/ItemLine.hpp" />
 		<Unit filename="Moteur2D/Interfaces/Items/ItemStack.cpp" />
 		<Unit filename="Moteur2D/Interfaces/Items/ItemStack.hpp" />
 		<Unit filename="Moteur2D/Interfaces/Items/Label.cpp" />

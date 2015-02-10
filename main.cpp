@@ -18,7 +18,7 @@ int main(int /*argc*/, char** /*argv*/)
         sf::RenderWindow* fenetre = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
 
         fenetre->setFramerateLimit(30);
-        BossClass bigBrother(new Inputs(fenetre, false), fenetre);
+        BossClass bigBrother(up(new Inputs(fenetre, false)), fenetre);
         sf::Clock chronos;
         chronos.restart();
 

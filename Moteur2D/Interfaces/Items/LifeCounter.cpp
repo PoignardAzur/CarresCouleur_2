@@ -7,7 +7,7 @@
 
 Menu::LifeCounter::LifeCounter()
 {
-    m_grid.setInternPosition(MiddleBottomSide, sf::Vector2f(0,0));
+    setGaps(0);
     m_counter = std::shared_ptr<Counter>(new Counter());
     m_lifeSprite = std::shared_ptr<Sprite>(new Sprite());
     m_cross = std::shared_ptr<Text>(new Text());
@@ -50,7 +50,7 @@ void Menu::LifeCounter::setSprite(const sf::Sprite& spr)
 void Menu::LifeCounter::setGaps(float gap)
 {
     m_gap = gap;
-    m_grid.setInternPosition(MiddleBottomSide, sf::Vector2f(m_gap, 0));
+    m_row.setInternPosition(MiddleBottomSide, gap);
 }
 
 
@@ -59,7 +59,7 @@ void Menu::LifeCounter::drawImageIn(AbstractDrawer& target, sf::Vector2f positio
 {
     sf::FloatRect box(position.x, position.y, getSize().x, getSize().y);
 
-    m_grid.drawInBox(target, box, m_rightAligned ? BottomRightCorner : BottomLeftCorner, isHitboxDrawn);
+    m_row.drawInBox(target, box, m_rightAligned ? BottomRightCorner : BottomLeftCorner, isHitboxDrawn);
 }
 
 
@@ -84,20 +84,20 @@ void Menu::LifeCounter::updateGrid()
 {
     if (m_count > m_maxDrawable)
     {
-        m_grid.setGridSize(3, 1);
+        m_row.setItemsCount(3);
 
         if (m_rightAligned)
         {
-            m_grid.setItem(0, 0, m_counter);
-            m_grid.setItem(1, 0, m_cross);
-            m_grid.setItem(2, 0, m_lifeSprite);
+            m_row.setItem(0, m_counter);
+            m_row.setItem(1, m_cross);
+            m_row.setItem(2, m_lifeSprite);
         }
 
         else
         {
-            m_grid.setItem(2, 0, m_counter);
-            m_grid.setItem(1, 0, m_cross);
-            m_grid.setItem(0, 0, m_lifeSprite);
+            m_row.setItem(2, m_counter);
+            m_row.setItem(1, m_cross);
+            m_row.setItem(0, m_lifeSprite);
         }
 
         m_counter->setValue(m_count);
@@ -105,8 +105,8 @@ void Menu::LifeCounter::updateGrid()
 
     else
     {
-        m_grid.setGridSize(0, 0);
-        m_grid.setGridSize(m_count, 1, m_lifeSprite);
+        m_row.setItemsCount(0);
+        m_row.setItemsCount(m_count, m_lifeSprite);
     }
 
     updateParentSize();
