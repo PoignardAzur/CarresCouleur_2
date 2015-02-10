@@ -12,7 +12,7 @@ class ObjectDrawer : public AbstractDrawer
 {
     public :
 
-    ObjectDrawer(sf::RenderTarget* cible);
+    ObjectDrawer(sf::RenderTarget* t);
     virtual ~ObjectDrawer() {}
 
     virtual void clear();                               // reset the screen
@@ -21,7 +21,7 @@ class ObjectDrawer : public AbstractDrawer
 
 
     protected :
-    sf::RenderTarget& target();
+    sf::RenderTarget& target(); /// TODO - Change this to getTarget()
 
 
     private :

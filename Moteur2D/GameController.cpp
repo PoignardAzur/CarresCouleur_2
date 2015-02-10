@@ -3,9 +3,9 @@
 #include "GameController.h"
 
 
-GameController::GameController(AbstractInputs* userInputs, sf::RenderWindow* target)
+GameController::GameController(up_t<AbstractInputs> userInputs, sf::RenderWindow* target)
 {
-    m_userInputs.reset(userInputs);
+    m_userInputs = std::move(userInputs);
     m_renderWindow = target;
 
     if (target)

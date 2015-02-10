@@ -9,13 +9,13 @@ SimpleVart::SimpleVart()
 
 }
 
-SimpleVart::SimpleVart(const SimpleHitbox& hitbox, AbstractDrawable* sprite)
+SimpleVart::SimpleVart(const SimpleHitbox& hitbox, up_t<AbstractDrawable> sprite)
 {
     set(hitbox);
     setSprite(sprite);
 }
 
-SimpleVart::SimpleVart(AbstractDrawable* sprite)
+SimpleVart::SimpleVart(up_t<AbstractDrawable> sprite)
 {
     setSprite(sprite);
 }
@@ -36,9 +36,9 @@ bool SimpleVart::doDelete() const
     return m_toDelete;
 }
 
-std::unique_ptr<AbstractDrawable> SimpleVart::setSprite(AbstractDrawable* sprite)
+up_t<AbstractDrawable> SimpleVart::setSprite(up_t<AbstractDrawable> sprite)
 {
-    std::unique_ptr<AbstractDrawable> sprite_(sprite);
+    up_t<AbstractDrawable> sprite_(sprite);
     std::swap(sprite_, m_sprite);
     return sprite_;
 }

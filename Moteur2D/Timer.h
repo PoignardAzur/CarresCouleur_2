@@ -29,7 +29,7 @@ class Timer
     float m_maxTime;
 };
 
-std::vector<bool> decrement(std::vector<Timer> tableau, float dt);
+std::vector<bool> decrement(std::vector<Timer>& tableau, float dt);
 
 
 #endif

@@ -13,7 +13,7 @@ class GameController
 {
     public :
 
-    GameController(AbstractInputs* userInputs, sf::RenderWindow* target);
+    GameController(up_t<AbstractInputs> userInputs, sf::RenderWindow* target);
     virtual ~GameController() {}
 
     virtual void update(float dt);                               // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
@@ -28,8 +28,8 @@ class GameController
 
     private :
 
-    std::unique_ptr<AbstractInputs> m_userInputs;     // has-a
-    std::unique_ptr<AbstractDrawer> m_window;         // has-a
+    up_t<AbstractInputs> m_userInputs;     // has-a
+    up_t<AbstractDrawer> m_window;         // has-a
 
     sf::RenderWindow* m_renderWindow;                 // use-a
 };

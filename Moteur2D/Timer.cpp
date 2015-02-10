@@ -59,7 +59,7 @@ float Timer::getCurrentTime() const
 
 
 
-std::vector<bool> decrement(std::vector<Timer> tableau, float dt)
+std::vector<bool> decrement(std::vector<Timer>& tableau, float dt)
 {
     std::vector<bool> tableauRetour (tableau.size(), true);
     auto p1 = tableau.begin();

@@ -6,6 +6,7 @@
 #include "AbsVart.h"
 #include "SimpleHitbox.h"
 #include <memory>
+#include <up.hpp>
 
 #define DRAW_VART_SPRITE true
 #define DRAW_VART_HITBOX true
@@ -17,8 +18,8 @@ class SimpleVart : public AbsVart, public SimpleHitbox
     public :
 
     SimpleVart();
-    explicit SimpleVart(AbstractDrawable* sprite);
-    explicit SimpleVart(const SimpleHitbox& hitbox, AbstractDrawable* sprite = nullptr);
+    explicit SimpleVart(up_t<AbstractDrawable> sprite);
+    explicit SimpleVart(const SimpleHitbox& hitbox, up_t<AbstractDrawable> sprite = nullptr);
     virtual ~SimpleVart();
 
     virtual void update(float dt);
@@ -28,14 +29,14 @@ class SimpleVart : public AbsVart, public SimpleHitbox
 
     protected :
 
-    std::unique_ptr<AbstractDrawable> setSprite(AbstractDrawable* sprite);
+    up_t<AbstractDrawable> setSprite(up_t<AbstractDrawable> sprite);
     virtual void removeThis();
 
 
     private :
 
     bool m_toDelete = false;
-    std::unique_ptr<AbstractDrawable> m_sprite;
+    up_t<AbstractDrawable> m_sprite;
 };
 
 
