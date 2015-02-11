@@ -8,12 +8,12 @@
 #define BUTTON_SIZE sf::Vector2f(100, 50)
 
 
-PauseMenu::PauseMenu() : Menu::AbstractMenu(false, false)
+PauseMenu::PauseMenu() : Menu::MenuAbstraction(false, false)
 {
     m_text.setString("Revenir à l'écran titre ?");
 }
 
-void PauseMenu::set(const sf::Font* f, AbstractInputs* in)
+void PauseMenu::set(const sf::Font* f, InputsAbstraction* in)
 {
     setUserInputs(in);
 
@@ -54,7 +54,7 @@ bool PauseMenu::isLayered() const
 }
 
 
-void PauseMenu::drawThisIn(AbstractDrawer& window, float dt)
+void PauseMenu::drawThisIn(DrawerAbstraction& window, float dt)
 {
     sf::RectangleShape rect(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
     rect.setFillColor(sf::Color(0, 0, 0, 128));

@@ -26,14 +26,14 @@ void Menu::ItemStack::setItems(std::vector<std::pair<AbsItemPtr, Alignement>> it
     updateOwnSize();
 }
 
-void Menu::ItemStack::addItem(AbstractItem* item, Alignement align)
+void Menu::ItemStack::addItem(ItemAbstraction* item, Alignement align)
 {
     m_items.push_back(std::pair<AbsItemPtr, Alignement>(AbsItemPtr(item), align));
     item->setParent(this);
     updateOwnSize();
 }
 
-void Menu::ItemStack::drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const
+void Menu::ItemStack::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
 {
     sf::FloatRect box(position.x, position.y, m_size.x, m_size.y);
 

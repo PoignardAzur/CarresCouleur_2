@@ -12,7 +12,7 @@ class BossClass : public GameController
 {
     public :
 
-    BossClass(up_t<AbstractInputs> userInputs, sf::RenderWindow* target);
+    BossClass(up_t<InputsAbstraction> userInputs, sf::RenderWindow* target);
 
     AbstractGameInterface<float>* interface();
     void update(float dt);

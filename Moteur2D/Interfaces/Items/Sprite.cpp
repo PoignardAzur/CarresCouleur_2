@@ -20,7 +20,7 @@ void Menu::Sprite::set(const sf::Sprite& spr)
 }
 
 
-void Menu::Sprite::drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const
+void Menu::Sprite::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
 {
     (void) isHitboxDrawn;
 

@@ -52,7 +52,7 @@ void Level_HUD::update(const float& dt)
     );
 }
 
-void Level_HUD::drawIn(AbstractDrawer& window, LevelBase* level, float dt)
+void Level_HUD::drawIn(DrawerAbstraction& window, LevelBase* level, float dt)
 {
     level->drawIn(window, dt);
     m_box.drawIn(window, sf::Vector2f(2,2));

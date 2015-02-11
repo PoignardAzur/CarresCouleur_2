@@ -14,7 +14,7 @@ class GameController
 {
     public :
 
-    GameController(up_t<AbstractInputs> userInputs, sf::RenderWindow* target);
+    GameController(up_t<InputsAbstraction> userInputs, sf::RenderWindow* target);
     virtual ~GameController() {}
 
     virtual void update(float dt);                               // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
@@ -23,15 +23,15 @@ class GameController
 
     protected :
 
-    AbstractInputs* windowInputs();
-    AbstractDrawer* renderingWindow();
+    InputsAbstraction* windowInputs();
+    DrawerAbstraction* renderingWindow();
     virtual AbstractGameInterface<float>* interface() = 0;       // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
 
 
     private :
 
-    up_t<AbstractInputs> m_userInputs;     // has-a
-    up_t<AbstractDrawer> m_window;         // has-a
+    up_t<InputsAbstraction> m_userInputs;     // has-a
+    up_t<DrawerAbstraction> m_window;         // has-a
 
     sf::RenderWindow* m_renderWindow;      // use-a
 };

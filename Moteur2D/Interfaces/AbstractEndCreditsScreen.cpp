@@ -28,7 +28,7 @@ sf::FloatRect AbstractEndCreditsScreen::getTargetBounds()
     return m_targetBounds;
 }
 
-void AbstractEndCreditsScreen::drawIn(AbstractDrawer& window, float dt)
+void AbstractEndCreditsScreen::drawIn(DrawerAbstraction& window, float dt)
 {
     for (const auto& risingItem : m_risingItemFile)
     {
@@ -71,7 +71,7 @@ void AbstractEndCreditsScreen::update(const float& dt)
     }
 }
 
-void AbstractEndCreditsScreen::add_item(std::unique_ptr<Menu::AbstractItem> item)
+void AbstractEndCreditsScreen::add_item(std::unique_ptr<Menu::ItemAbstraction> item)
 {
     m_itemFile.push_back(std::move(item));
 }

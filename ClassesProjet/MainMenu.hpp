@@ -4,25 +4,26 @@
 #define MAIN_MENU_HEADER
 
 #include "LevelBase.hpp"
-#include "../Moteur2D/Interfaces/Menus/AbstractMenuInterface.hpp"
-#include "../Moteur2D/Interfaces/Menus/AbstractMenu.hpp"
+#include "../Moteur2D/Interfaces/Menus/MenuInterfaceAbstraction.hpp"
+#include "../Moteur2D/Interfaces/Menus/MenuAbstraction.hpp"
 #include "../Moteur2D/Interfaces/Menus/SimpleButton.hpp"
 #include "../Moteur2D/Interfaces/Items/Text.hpp"
 
 
-class MainMenu : public Menu::AbstractMenu, public AbstractMenuInterface
+class MainMenu : public Menu::MenuAbstraction, public MenuInterfaceAbstraction
 {
     public :
 
     MainMenu();
-    void set(const sf::Font* f, AbstractInputs* in);
+    ~MainMenu() noexcept {};
+    void set(const sf::Font* f, InputsAbstraction* in);
     virtual bool isLayered() const;
 
 
     protected :
 
     //void addButton(AbstractButton* b);
-    virtual void drawThisIn(AbstractDrawer& window, float dt);
+    virtual void drawThisIn(DrawerAbstraction& window, float dt);
     virtual void updateThis(const float& dt);
     void load(LevelBase* level, const sf::Font* f);
 

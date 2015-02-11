@@ -4,7 +4,7 @@
 #define VARIABLE_MENU_ITEM_HEADER
 
 
-#include "AbstractItem.hpp"
+#include "ItemAbstraction.hpp"
 #include <vector>
 #include <memory>
 
@@ -12,18 +12,18 @@
 namespace Menu
 {
 
-    class VariableItem : public AbstractItem
+    class VariableItem : public ItemAbstraction
     {
         public :
 
         enum ItemSize { MinimumOne, MaximumOne, Dynamic };
 
         VariableItem();
-        explicit VariableItem(const std::vector<std::shared_ptr<AbstractItem>>& items, size_t selectedOne = 0, ItemSize s = MaximumOne);
+        explicit VariableItem(const std::vector<std::shared_ptr<ItemAbstraction>>& items, size_t selectedOne = 0, ItemSize s = MaximumOne);
 
-        void addItem(AbstractItem* item);
-        void setItems(const std::vector<std::shared_ptr<AbstractItem>>& items, size_t selectedOne = 0);
-        const std::vector<std::shared_ptr<AbstractItem>>& getItems() const;
+        void addItem(ItemAbstraction* item);
+        void setItems(const std::vector<std::shared_ptr<ItemAbstraction>>& items, size_t selectedOne = 0);
+        const std::vector<std::shared_ptr<ItemAbstraction>>& getItems() const;
 
         void selectItem(size_t n);
         size_t itemSelected() const;
@@ -34,12 +34,12 @@ namespace Menu
 
         protected :
 
-        void drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const;
+        void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
 
 
         private :
 
-        std::vector<std::shared_ptr<AbstractItem>> m_items;
+        std::vector<std::shared_ptr<ItemAbstraction>> m_items;
         size_t m_drawnItem;
 
         sf::Vector2f m_sizeValue;

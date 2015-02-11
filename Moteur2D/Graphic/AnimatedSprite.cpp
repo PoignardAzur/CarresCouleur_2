@@ -44,7 +44,7 @@ float AnimatedSprite::newSpriteAge(float dt) const
     return spriteAge;
 }
 
-void AnimatedSprite::drawIn(sf::Vector2f pos, AbstractDrawer& target, sf::FloatRect limits, float dt) const
+void AnimatedSprite::drawIn(sf::Vector2f pos, DrawerAbstraction& target, sf::FloatRect limits, float dt) const
 {
     sf::Vector2u textureSize = getSprite().getTexture()->getSize(); // the size of the texture
     textureSize.x /= m_nhFrames;    // the size of an individual frame

@@ -21,7 +21,7 @@ class LevelBase : public AbstractLevel<float>
 {
     public :
 
-    virtual void drawThisIn(AbstractDrawer& window, float dt);
+    virtual void drawThisIn(DrawerAbstraction& window, float dt);
     virtual void updateThis(const float& dt);
 
     void setFont(const sf::Font* font);

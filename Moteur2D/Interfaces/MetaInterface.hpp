@@ -19,7 +19,7 @@ class MetaInterface : public AbstractGameInterface<In>
     void setInterface(AGIi* newInterface);
     ~MetaInterface();
 
-    void drawIn(AbstractDrawer& window, float dt);
+    void drawIn(DrawerAbstraction& window, float dt);
     void update(const In& inputData);
 
     virtual AGIi* next();
@@ -58,7 +58,7 @@ MetaInterface<In>::~MetaInterface()
 
 
 template <typename In>
-void MetaInterface<In>::drawIn(AbstractDrawer& window, float dt)
+void MetaInterface<In>::drawIn(DrawerAbstraction& window, float dt)
 {
     if (currentInterface())
     currentInterface()->drawIn(window, dt);

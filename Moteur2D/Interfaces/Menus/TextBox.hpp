@@ -3,7 +3,7 @@
 #ifndef TEXT_BOX_HEADER
 #define TEXT_BOX_HEADER
 
-#include "../Items/AbstractTextObject.hpp"
+#include "../Items/TextObjectAbstraction.hpp"
 #include "../Items/ItemBox.hpp"
 #include <string>
 
@@ -11,7 +11,7 @@
 namespace Menu
 {
 
-    class TextBox : public AbstractItem
+    class TextBox : public ItemAbstraction
     {
         public :
 
@@ -24,7 +24,7 @@ namespace Menu
 
         protected :
 
-        void drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const;
+        void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
         // isHitboxDrawn is used for recursion, to draw children's boxes too
 
 

@@ -6,7 +6,7 @@
 #include "PauseMenu.hpp"
 
 
-void LevelBase::drawThisIn(AbstractDrawer& window, float dt)
+void LevelBase::drawThisIn(DrawerAbstraction& window, float dt)
 {
     drawAllIn(m_carres, window, sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT), dt);
 }
@@ -43,7 +43,7 @@ void LevelBase::updateThis(const float& dt)
     {
         PauseMenu* menu = new PauseMenu();
         menu->set(m_font, getInputs());
-        pauseLevel(std::unique_ptr<AbstractMenuInterface>(menu));
+        pauseLevel(std::unique_ptr<MenuInterfaceAbstraction>(menu));
     }
 
     if (getInputs()->getKeyboardButtons()[sf::Keyboard::Space])

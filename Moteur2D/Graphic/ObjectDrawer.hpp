@@ -4,16 +4,15 @@
 #ifndef HEADER_AFFICHEUR_OBJETS
 #define HEADER_AFFICHEUR_OBJETS
 
-#include "AbstractDrawer.hpp"
+#include "DrawerAbstraction.hpp"
 
 
 
-class ObjectDrawer : public AbstractDrawer
+class ObjectDrawer : public DrawerAbstraction
 {
     public :
 
     ObjectDrawer(sf::RenderTarget* t);
-    virtual ~ObjectDrawer() {}
 
     virtual void clear();                               // reset the screen
     virtual void draw(const sf::Drawable& o);

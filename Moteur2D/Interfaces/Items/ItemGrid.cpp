@@ -8,12 +8,12 @@ Menu::ItemGrid::ItemGrid()
 
 }
 
-Menu::ItemGrid::ItemGrid(const std::vector<std::vector< std::shared_ptr<AbstractItem> >>& items, sf::Vector2f gaps)
+Menu::ItemGrid::ItemGrid(const std::vector<std::vector< std::shared_ptr<ItemAbstraction> >>& items, sf::Vector2f gaps)
 {
     set(items, gaps);
 }
 
-Menu::ItemGrid::ItemGrid(const std::vector<std::shared_ptr<AbstractItem>>& items, bool is_a_row, float gaps)
+Menu::ItemGrid::ItemGrid(const std::vector<std::shared_ptr<ItemAbstraction>>& items, bool is_a_row, float gaps)
 {
     if (is_a_row)
     setAsLine(items, gaps);
@@ -23,7 +23,7 @@ Menu::ItemGrid::ItemGrid(const std::vector<std::shared_ptr<AbstractItem>>& items
 }
 
 
-void Menu::ItemGrid::set(const std::vector<std::vector< std::shared_ptr<AbstractItem> >>& items, sf::Vector2f gaps)
+void Menu::ItemGrid::set(const std::vector<std::vector< std::shared_ptr<ItemAbstraction> >>& items, sf::Vector2f gaps)
 {
     m_itemLines = items;
     m_gaps = gaps;
@@ -33,7 +33,7 @@ void Menu::ItemGrid::set(const std::vector<std::vector< std::shared_ptr<Abstract
 }
 
 
-void Menu::ItemGrid::setAsLine(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps)
+void Menu::ItemGrid::setAsLine(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps)
 {
     m_itemLines.resize(1);
     m_itemLines[0] = items;
@@ -44,7 +44,7 @@ void Menu::ItemGrid::setAsLine(const std::vector<std::shared_ptr<AbstractItem>>&
     setItemsParent();
 }
 
-void Menu::ItemGrid::setAsColumn(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps)
+void Menu::ItemGrid::setAsColumn(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps)
 {
     m_itemLines.resize(items.size());
 
@@ -71,7 +71,7 @@ void Menu::ItemGrid::setItemsParent()
     }
 }
 
-void Menu::ItemGrid::setGridSize(size_t x, size_t y, std::shared_ptr<AbstractItem> item)
+void Menu::ItemGrid::setGridSize(size_t x, size_t y, std::shared_ptr<ItemAbstraction> item)
 {
     if (item)
     item->setParent(this);
@@ -91,13 +91,13 @@ void Menu::ItemGrid::setGridSize(size_t x, size_t y, std::shared_ptr<AbstractIte
     updateOwnSize();
 }
 
-void Menu::ItemGrid::setGridSize(size_t x, size_t y, AbstractItem* item)
+void Menu::ItemGrid::setGridSize(size_t x, size_t y, ItemAbstraction* item)
 {
-    setGridSize(x, y, std::shared_ptr<AbstractItem>(item));
+    setGridSize(x, y, std::shared_ptr<ItemAbstraction>(item));
 }
 
 
-void Menu::ItemGrid::setItem(size_t x, size_t y, std::shared_ptr<AbstractItem> item)
+void Menu::ItemGrid::setItem(size_t x, size_t y, std::shared_ptr<ItemAbstraction> item)
 {
     m_itemLines[y][x] = item;
 
@@ -107,9 +107,9 @@ void Menu::ItemGrid::setItem(size_t x, size_t y, std::shared_ptr<AbstractItem> i
     updateOwnSize();
 }
 
-void Menu::ItemGrid::setItem(size_t x, size_t y, AbstractItem* item)
+void Menu::ItemGrid::setItem(size_t x, size_t y, ItemAbstraction* item)
 {
-    setItem(x, y, std::shared_ptr<AbstractItem>(item));
+    setItem(x, y, std::shared_ptr<ItemAbstraction>(item));
 }
 
 
@@ -168,7 +168,7 @@ size_t Menu::ItemGrid::columns() const
 
 
 
-void Menu::ItemGrid::drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const
+void Menu::ItemGrid::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
 {
     for (size_t l = 0; l < lines(); l++)
     {

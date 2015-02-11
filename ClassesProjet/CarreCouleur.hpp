@@ -8,10 +8,10 @@
 
 #include "../Moteur2D/Interfaces/AbstractLevel.hpp"
 #include "../Moteur2D/Game/SimpleHitbox.hpp"
-#include "../Moteur2D/Game/AbsVart.hpp"
+#include "../Moteur2D/Game/VartAbs.hpp"
 
 
-class CarreCouleur : public AbsVart, public SimpleHitbox
+class CarreCouleur : public VartAbs, public SimpleHitbox
 {
     public :
 
@@ -23,7 +23,7 @@ class CarreCouleur : public AbsVart, public SimpleHitbox
     bool toDelete() const;
     void update(const sf::Vector2f& pos, float dt);
     void updatePos(sf::Vector2f& pos, float dt);
-    void drawIn(sf::Vector2f pos, AbstractDrawer& target, sf::FloatRect limits, float dt) const;
+    void drawIn(sf::Vector2f pos, DrawerAbstraction& target, sf::FloatRect limits, float dt) const;
 
     bool recycle(sf::Vector2f pos, sf::FloatRect limits, bool deleteIfOOB = true);
 

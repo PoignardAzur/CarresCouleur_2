@@ -3,7 +3,7 @@
 #include "GameController.hpp"
 
 
-GameController::GameController(up_t<AbstractInputs> userInputs, sf::RenderWindow* target)
+GameController::GameController(up_t<InputsAbstraction> userInputs, sf::RenderWindow* target)
 {
     m_userInputs = std::move(userInputs);
     m_renderWindow = target;
@@ -28,12 +28,12 @@ void GameController::update(float dt)
 }
 
 
-AbstractDrawer* GameController::renderingWindow()
+DrawerAbstraction* GameController::renderingWindow()
 {
     return m_window.get();
 }
 
-AbstractInputs* GameController::windowInputs()
+InputsAbstraction* GameController::windowInputs()
 {
     return m_userInputs.get();
 }

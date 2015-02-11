@@ -4,7 +4,7 @@
 #define ABSTRACT_CREDITS_SCREEN_HEADER
 
 #include "AbstractGameInterface.hpp"
-#include "Items/AbstractItem.hpp"
+#include "Items/ItemAbstraction.hpp"
 #include <list>
 #include <memory>
 
@@ -14,7 +14,7 @@
 struct RisingItem
 {
     float height;
-    std::unique_ptr<Menu::AbstractItem> item;
+    std::unique_ptr<Menu::ItemAbstraction> item;
 };
 
 
@@ -31,7 +31,7 @@ class AbstractEndCreditsScreen : public AbstractGameInterface<float>
     virtual void add_subtitle(const std::string& title) = 0;
     virtual void add_credit(const std::string& name, const std::string& role) = 0;
 
-    void drawIn(AbstractDrawer& window, float dt);
+    void drawIn(DrawerAbstraction& window, float dt);
     void update(const float& inputData);
 
     virtual AbstractGameInterface<float>* next() = 0;
@@ -40,14 +40,14 @@ class AbstractEndCreditsScreen : public AbstractGameInterface<float>
     protected :
 
     sf::FloatRect getTargetBounds();
-    virtual void add_item(std::unique_ptr<Menu::AbstractItem> item);
+    virtual void add_item(std::unique_ptr<Menu::ItemAbstraction> item);
 
 
     private :
 
     sf::FloatRect m_targetBounds;
 
-    std::list<std::unique_ptr<Menu::AbstractItem>> m_itemFile;
+    std::list<std::unique_ptr<Menu::ItemAbstraction>> m_itemFile;
     std::list<RisingItem> m_risingItemFile;
 
     float m_margin = 0;

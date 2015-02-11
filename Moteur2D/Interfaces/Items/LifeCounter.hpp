@@ -11,7 +11,7 @@
 namespace Menu
 {
 
-    class LifeCounter : public AbstractItem, public AbstractTextObject
+    class LifeCounter : public ItemAbstraction, public TextObjectAbstraction
     {
         public :
 
@@ -30,7 +30,7 @@ namespace Menu
 
         protected :
 
-        void drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const;
+        void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
         void setFontStyle(const FontStyle& f);
 
 

@@ -14,7 +14,7 @@ LevelBase* Level_3::getNextLevel()
     return new Level_4();
 }
 
-void Level_3::drawIn(AbstractDrawer& window, float dt)
+void Level_3::drawIn(DrawerAbstraction& window, float dt)
 {
     m_carreGris.drawIn(getInputs()->cursor(),window, sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT), dt);
     LevelBase::drawIn(window, dt);

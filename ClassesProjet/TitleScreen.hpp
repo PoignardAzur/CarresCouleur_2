@@ -11,8 +11,8 @@ class TitleScreen : public PressAnyKeyMenu<float>
 {
     public :
 
-    TitleScreen(AbstractGameInterface<float>* nextInterface, AbstractInputs* in, const sf::Font* font);
-    void drawIn(AbstractDrawer& window, float dt);
+    TitleScreen(AbstractGameInterface<float>* nextInterface, InputsAbstraction* in, const sf::Font* font);
+    void drawIn(DrawerAbstraction& window, float dt);
 
 
     private :

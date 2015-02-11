@@ -1,7 +1,7 @@
 
 
-#ifndef ABSTRACT_TEXT_OBJECT
-#define ABSTRACT_TEXT_OBJECT
+#ifndef TEXT_OBJECT_ABSTRACTION_HEADER
+#define TEXT_OBJECT_ABSTRACTION_HEADER
 
 #include <SFML/Graphics.hpp>
 
@@ -22,12 +22,12 @@ namespace Menu
     };
 
 
-    class AbstractTextObject
+    class TextObjectAbstraction
     {
         public :
 
-        AbstractTextObject();
-        virtual ~AbstractTextObject() {}
+        TextObjectAbstraction();
+        virtual ~TextObjectAbstraction() = default;
 
         void setFont(const FontStyle& f);
         void setFont(const sf::Font* f, unsigned int charSize = DEFAULT_FONT_SIZE);
@@ -48,4 +48,4 @@ namespace Menu
 }
 
 
-#endif // ABSTRACT_TEXT_OBJECT
+#endif // TEXT_OBJECT_ABSTRACTION_HEADER

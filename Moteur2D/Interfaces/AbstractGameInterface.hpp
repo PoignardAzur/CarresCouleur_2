@@ -4,7 +4,7 @@
 #define ABSTRACT_GAME_INTERFACE_HEADER
 
 #include "../Entries/InputsArray.hpp"
-#include "../Graphic/AbstractDrawer.hpp"
+#include "../Graphic/DrawerAbstraction.hpp"
 
 
 template <typename In>
@@ -15,8 +15,8 @@ class AbstractGameInterface
     AbstractGameInterface() {}
     virtual ~AbstractGameInterface() {}
 
-    virtual void drawIn(AbstractDrawer& window, float dt) = 0;
-    virtual void setUserInputs(AbstractInputs*);
+    virtual void drawIn(DrawerAbstraction& window, float dt) = 0;
+    virtual void setUserInputs(InputsAbstraction*);
 
     virtual void update(const In& inputData) = 0;       // by default, In is the number of ticks since the last update
     virtual bool isDone() const;                        // if this returns true, the interface must be deleted and replaced by
@@ -26,14 +26,14 @@ class AbstractGameInterface
     protected :
 
     virtual void endThisLater();
-    virtual AbstractInputs* getInputs();
-    virtual const AbstractInputs* getInputs() const;
+    virtual InputsAbstraction* getInputs();
+    virtual const InputsAbstraction* getInputs() const;
 
 
     private :
 
     bool m_deleteLater = false;
-    AbstractInputs* m_inputs = nullptr; // use-a
+    InputsAbstraction* m_inputs = nullptr; // use-a
 };
 
 
@@ -56,7 +56,7 @@ void AbstractGameInterface<In>::endThisLater()
 
 
 template <typename In>
-void AbstractGameInterface<In>::setUserInputs(AbstractInputs* newInputs)
+void AbstractGameInterface<In>::setUserInputs(InputsAbstraction* newInputs)
 {
     m_inputs = newInputs;
 }
@@ -64,14 +64,14 @@ void AbstractGameInterface<In>::setUserInputs(AbstractInputs* newInputs)
 
 
 template <typename In>
-AbstractInputs* AbstractGameInterface<In>::getInputs()
+InputsAbstraction* AbstractGameInterface<In>::getInputs()
 {
     return m_inputs;
 }
 
 
 template <typename In>
-const AbstractInputs* AbstractGameInterface<In>::getInputs() const
+const InputsAbstraction* AbstractGameInterface<In>::getInputs() const
 {
     return const_cast<AbstractGameInterface*>(this)->getInputs();
 }

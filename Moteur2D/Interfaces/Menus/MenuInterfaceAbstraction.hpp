@@ -1,17 +1,16 @@
 
-
-#ifndef ABSTRACT_MENU_INTERFACE
-#define ABSTRACT_MENU_INTERFACE
+#ifndef MENU_INTERFACE_ABSTRACTION_HEADER
+#define MENU_INTERFACE_ABSTRACTION_HEADER
 
 #include "../AbstractGameInterface.hpp"
 #include <memory>
 
 
-class AbstractMenuInterface : public AbstractGameInterface<float>
+class MenuInterfaceAbstraction : public AbstractGameInterface<float>
 {
     public :
 
-    void drawIn(AbstractDrawer& window, float dt);
+    void drawIn(DrawerAbstraction& window, float dt);
     void update(const float& inputData);
     AbstractGameInterface<float>* next();
 
@@ -20,16 +19,17 @@ class AbstractMenuInterface : public AbstractGameInterface<float>
 
     protected :
 
-    void openSubmenu(std::unique_ptr<AbstractMenuInterface> submenu);
-    virtual void drawThisIn(AbstractDrawer& window, float dt) = 0;
+    void openSubmenu(std::unique_ptr<MenuInterfaceAbstraction> submenu);
+    virtual void drawThisIn(DrawerAbstraction& window, float dt) = 0;
     virtual void updateThis(const float& dt) = 0;
     virtual void setNextLevel(AbstractGameInterface<float>* nextLevel);
 
 
     private :
 
-    std::unique_ptr<AbstractMenuInterface> m_submenu;
+    std::unique_ptr<MenuInterfaceAbstraction> m_submenu;
     AbstractGameInterface<float>* m_nextLevel = nullptr;
 };
 
-#endif // ABSTRACT_MENU_INTERFACE
+
+#endif // MENU_INTERFACE_ABSTRACTION_HEADER

@@ -3,7 +3,7 @@
 #include "ItemBox.hpp"
 
 
-Menu::ItemBox::ItemBox(AbstractItem* item, Alignement a, float x_offset, float y_offset)
+Menu::ItemBox::ItemBox(ItemAbstraction* item, Alignement a, float x_offset, float y_offset)
 {
     setSize(sf::Vector2f(0,0), true);
     setItem(item);
@@ -11,9 +11,9 @@ Menu::ItemBox::ItemBox(AbstractItem* item, Alignement a, float x_offset, float y
 }
 
 
-std::unique_ptr<Menu::AbstractItem> Menu::ItemBox::setItem(AbstractItem* item)
+std::unique_ptr<Menu::ItemAbstraction> Menu::ItemBox::setItem(ItemAbstraction* item)
 {
-    std::unique_ptr<AbstractItem> item_(item);
+    std::unique_ptr<ItemAbstraction> item_(item);
     std::swap(m_item, item_);
 
     if (m_item)
@@ -44,7 +44,7 @@ void Menu::ItemBox::setSize(sf::Vector2f size, bool relative)
 }
 
 
-void Menu::ItemBox::drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const
+void Menu::ItemBox::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
 {
     if (m_item)
     {

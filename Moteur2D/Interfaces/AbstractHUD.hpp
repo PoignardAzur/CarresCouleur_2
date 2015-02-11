@@ -15,8 +15,8 @@ class AbstractHUD : public AbstractGameInterface<In>
     virtual void setLevel(LevelType* level);
     virtual ~AbstractHUD();
 
-    virtual void drawIn(AbstractDrawer& window, float dt);
-    virtual void setUserInputs(AbstractInputs*);
+    virtual void drawIn(DrawerAbstraction& window, float dt);
+    virtual void setUserInputs(InputsAbstraction*);
 
     virtual void update(const In& inputData);
     virtual bool isDone() const;
@@ -25,10 +25,10 @@ class AbstractHUD : public AbstractGameInterface<In>
 
     protected :
 
-    virtual AbstractInputs* getInputs();
-    virtual const AbstractInputs* getInputs() const;
+    virtual InputsAbstraction* getInputs();
+    virtual const InputsAbstraction* getInputs() const;
 
-    virtual void drawIn(AbstractDrawer& window, LevelType* level, float dt) = 0;
+    virtual void drawIn(DrawerAbstraction& window, LevelType* level, float dt) = 0;
     virtual const LevelType* getLevel() const;
 
     private:
@@ -62,7 +62,7 @@ void AbstractHUD<In, LevelType>::setLevel(LevelType* level)
 
 
 template <typename In, typename LevelType>
-void AbstractHUD<In, LevelType>::drawIn(AbstractDrawer& window, float dt)
+void AbstractHUD<In, LevelType>::drawIn(DrawerAbstraction& window, float dt)
 {
     drawIn(window, m_level, dt);
 }
@@ -85,7 +85,7 @@ bool AbstractHUD<In, LevelType>::isDone() const
 
 
 template <typename In, typename LevelType>
-void AbstractHUD<In, LevelType>::setUserInputs(AbstractInputs* userInputs)
+void AbstractHUD<In, LevelType>::setUserInputs(InputsAbstraction* userInputs)
 {
     m_level->setUserInputs(userInputs);
 }
@@ -106,14 +106,14 @@ AbstractGameInterface<In>* AbstractHUD<In, LevelType>::next()
 }
 
 template <typename In, typename LevelType>
-AbstractInputs* AbstractHUD<In, LevelType>::getInputs()
+InputsAbstraction* AbstractHUD<In, LevelType>::getInputs()
 {
     return nullptr;
 }
 
 
 template <typename In, typename LevelType>
-const AbstractInputs* AbstractHUD<In, LevelType>::getInputs() const
+const InputsAbstraction* AbstractHUD<In, LevelType>::getInputs() const
 {
     return nullptr;
 }

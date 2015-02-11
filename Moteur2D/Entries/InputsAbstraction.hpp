@@ -1,6 +1,6 @@
 
-#ifndef ABSTRACT_INPUT_ARRAY_HEADER
-#define ABSTRACT_INPUT_ARRAY_HEADER
+#ifndef INPUT_ARRAY_ABSTRACTION_HEADER
+#define INPUT_ARRAY_ABSTRACTION_HEADER
 
 #include <map>
 #include <list>
@@ -12,11 +12,11 @@
 Class used to check the state of inputs without dealing with event handling
 This abstraction allows an input-simulating class to be used instead of user inputs
 */
-class AbstractInputs
+class InputsAbstraction
 {
     public :
 
-    virtual ~AbstractInputs() {}
+    virtual ~InputsAbstraction() = default;
 
     virtual bool closeWindow() const = 0;           // true when the window must be closed or the escape key is pressed
     virtual sf::Vector2f cursor() const = 0;        // cursor position
@@ -49,5 +49,5 @@ class AbstractInputs
 };
 
 
-#endif
+#endif // INPUT_ARRAY_ABSTRACTION_HEADER
 

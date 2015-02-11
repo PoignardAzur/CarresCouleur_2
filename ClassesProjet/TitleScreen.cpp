@@ -8,7 +8,7 @@
 #define FONT_FILE_NAME "Resources/arial.ttf"
 
 
-TitleScreen::TitleScreen(AbstractGameInterface<float>* nextInterface, AbstractInputs* in, const sf::Font* font)
+TitleScreen::TitleScreen(AbstractGameInterface<float>* nextInterface, InputsAbstraction* in, const sf::Font* font)
 {
     m_font = font;
 
@@ -24,7 +24,7 @@ TitleScreen::TitleScreen(AbstractGameInterface<float>* nextInterface, AbstractIn
     m_subtitle.setColor(sf::Color(200, 200, 0));
 }
 
-void TitleScreen::drawIn(AbstractDrawer& window, float dt)
+void TitleScreen::drawIn(DrawerAbstraction& window, float dt)
 {
     m_title.drawInBox(window, sf::FloatRect(0, 0, WINDOW_WIDTH, 2 * WINDOW_HEIGHT / 3));
     m_subtitle.drawInBox(window, sf::FloatRect(0, 0, WINDOW_WIDTH, 2 * WINDOW_HEIGHT / 3 + 100));

@@ -3,19 +3,20 @@
 #ifndef MENU_TEXT_HEADER
 #define MENU_TEXT_HEADER
 
-#include "AbstractItem.hpp"
-#include "AbstractTextObject.hpp"
+#include "ItemAbstraction.hpp"
+#include "TextObjectAbstraction.hpp"
 
 
 namespace Menu
 {
 
-    class Text : public AbstractItem, public AbstractTextObject
+    class Text : public ItemAbstraction, public TextObjectAbstraction
     {
         public :
 
         explicit Text(const std::string& str = "", FontStyle f = FontStyle());
         explicit Text(FontStyle f);
+        ~Text() noexcept {};
 
         void setString(const std::string& str);
 
@@ -24,7 +25,7 @@ namespace Menu
 
         protected :
 
-        void drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const;
+        void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
         void setFontStyle(const FontStyle& f);
 
 

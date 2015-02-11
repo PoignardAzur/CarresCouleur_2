@@ -1,25 +1,24 @@
 
-
-#ifndef HEADER_VART_ABSTRAIT
-#define HEADER_VART_ABSTRAIT
+#ifndef VART_ABSTRACTION_HEADER
+#define VART_ABSTRACTION_HEADER
 
 #include "../Graphic/ObjectDrawer.hpp"
 
 
 // Object that can be drawn and updated
-class AbsVart
+class VartAbs
 {
     public :
 
     virtual bool toDelete() const = 0;
     virtual void update(const sf::Vector2f& pos, float dt) = 0;
     virtual void updatePos(sf::Vector2f& pos, float dt) = 0;
-    virtual void drawIn(sf::Vector2f pos, AbstractDrawer& target, sf::FloatRect limits, float dt) const = 0;
+    virtual void drawIn(sf::Vector2f pos, DrawerAbstraction& target, sf::FloatRect limits, float dt) const = 0;
 
 //    virtual sf::Vector2f getPos() const = 0; /// TO UTTERLY REMOVE FROM THE CODE
 
-    virtual ~AbsVart() {}
+    virtual ~VartAbs() {}
 };
 
 
-#endif
+#endif // VART_ABSTRACTION_HEADER

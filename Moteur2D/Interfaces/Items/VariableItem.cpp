@@ -9,25 +9,25 @@ Menu::VariableItem::VariableItem()
 
 }
 
-Menu::VariableItem::VariableItem(const std::vector<std::shared_ptr<AbstractItem>>& items, size_t selectedOne, ItemSize s)
+Menu::VariableItem::VariableItem(const std::vector<std::shared_ptr<ItemAbstraction>>& items, size_t selectedOne, ItemSize s)
 {
     setItems(items, selectedOne);
     setSize(s);
 }
 
-void Menu::VariableItem::addItem(AbstractItem* item)
+void Menu::VariableItem::addItem(ItemAbstraction* item)
 {
-    m_items.push_back(std::shared_ptr<AbstractItem>(item));
+    m_items.push_back(std::shared_ptr<ItemAbstraction>(item));
 }
 
-void Menu::VariableItem::setItems(const std::vector<std::shared_ptr<AbstractItem>>& items, size_t selectedOne)
+void Menu::VariableItem::setItems(const std::vector<std::shared_ptr<ItemAbstraction>>& items, size_t selectedOne)
 {
     m_items = items;
     m_drawnItem = selectedOne;
     setSize(m_size);
 }
 
-const std::vector<std::shared_ptr<Menu::AbstractItem>>& Menu::VariableItem::getItems() const
+const std::vector<std::shared_ptr<Menu::ItemAbstraction>>& Menu::VariableItem::getItems() const
 {
     return m_items;
 }
@@ -43,7 +43,7 @@ size_t Menu::VariableItem::itemSelected() const
 }
 
 
-void Menu::VariableItem::drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const
+void Menu::VariableItem::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
 {
     m_items[m_drawnItem]->drawIn(target, position, isHitboxDrawn);
 }

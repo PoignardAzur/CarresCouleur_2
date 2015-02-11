@@ -3,7 +3,7 @@
 #ifndef HEADER_VARTS
 #define HEADER_VARTS
 
-#include "AbsVart.hpp"
+#include "VartAbs.hpp"
 #include "SimpleHitbox.hpp"
 #include <up.hpp>
 
@@ -12,31 +12,31 @@
 
 
 //Represents a basic object with a provided hitbox and sprite.
-class SimpleVart : public AbsVart, public SimpleHitbox
+class SimpleVart : public VartAbs, public SimpleHitbox
 {
     public :
 
     SimpleVart();
-    explicit SimpleVart(up_t<AbstractDrawable> sprite);
-    explicit SimpleVart(const SimpleHitbox& hitbox, up_t<AbstractDrawable> sprite = nullptr);
+    explicit SimpleVart(up_t<DrawableObjectAbstraction> sprite);
+    explicit SimpleVart(const SimpleHitbox& hitbox, up_t<DrawableObjectAbstraction> sprite = nullptr);
     virtual ~SimpleVart();
 
     virtual void update(const sf::Vector2f& pos, float dt);
     virtual void updatePos(sf::Vector2f& pos, float dt);
     virtual bool doDelete() const;
-    virtual void drawIn(sf::Vector2f pos, AbstractDrawer& target, sf::FloatRect limits, float dt) const;
+    virtual void drawIn(sf::Vector2f pos, DrawerAbstraction& target, sf::FloatRect limits, float dt) const;
 
 
     protected :
 
-    up_t<AbstractDrawable> setSprite(up_t<AbstractDrawable> sprite);
+    up_t<DrawableObjectAbstraction> setSprite(up_t<DrawableObjectAbstraction> sprite);
     virtual void removeThis();
 
 
     private :
 
     bool m_toDelete = false;
-    up_t<AbstractDrawable> m_sprite;
+    up_t<DrawableObjectAbstraction> m_sprite;
 };
 
 

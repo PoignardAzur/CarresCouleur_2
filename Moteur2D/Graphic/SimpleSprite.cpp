@@ -1,7 +1,7 @@
 
 
 #include "SimpleSprite.hpp"
-#include "AbstractDrawer.hpp"
+#include "DrawerAbstraction.hpp"
 
 
 SimpleSprite::SimpleSprite()
@@ -27,7 +27,7 @@ sf::Sprite& SimpleSprite::getSprite() const
     return m_sprite;
 }
 
-void SimpleSprite::drawIn(sf::Vector2f pos, AbstractDrawer& target, sf::FloatRect limits, float dt) const
+void SimpleSprite::drawIn(sf::Vector2f pos, DrawerAbstraction& target, sf::FloatRect limits, float dt) const
 {
     (void) limits;
     (void) dt;

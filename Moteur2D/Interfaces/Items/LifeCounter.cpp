@@ -55,7 +55,7 @@ void Menu::LifeCounter::setGaps(float gap)
 
 
 
-void Menu::LifeCounter::drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const
+void Menu::LifeCounter::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
 {
     sf::FloatRect box(position.x, position.y, getSize().x, getSize().y);
 

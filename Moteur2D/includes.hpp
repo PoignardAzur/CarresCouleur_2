@@ -19,7 +19,7 @@
     #include "Interfaces/Items/Label.hpp"
     #include "Interfaces/Items/LifeCounter.hpp"
 
-    #include "Interfaces/Menus/AbstractMenu.hpp"
+    #include "Interfaces/Menus/MenuAbstraction.hpp"
     #include "Interfaces/Menus/SimpleButton.hpp"
 
     #include "Interfaces/AbstractHUD.h"

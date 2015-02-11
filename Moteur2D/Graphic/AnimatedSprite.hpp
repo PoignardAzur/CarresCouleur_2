@@ -20,7 +20,7 @@ class AnimatedSprite : public SimpleSprite
     void update(float dt);
     virtual float newSpriteAge(float dt) const;     // returns the new value m_spriteAge would have after dt ticks, taking into account the value of m_loopAnim
 
-    virtual void drawIn(sf::Vector2f pos, AbstractDrawer& target, sf::FloatRect limits, float dt) const;
+    virtual void drawIn(sf::Vector2f pos, DrawerAbstraction& target, sf::FloatRect limits, float dt) const;
 
 
     private :

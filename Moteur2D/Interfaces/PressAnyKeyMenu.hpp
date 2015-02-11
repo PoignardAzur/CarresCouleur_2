@@ -12,7 +12,7 @@ class PressAnyKeyMenu : public AbstractGameInterface<In>
 {
     public :
 
-    virtual void drawIn(AbstractDrawer& window, float dt) = 0;
+    virtual void drawIn(DrawerAbstraction& window, float dt) = 0;
     virtual void update(const In& inputData);
 
     void setNext(AbstractGameInterface<In>* nextInterface);         // as soon as a key is pressed, this interface is killed and replaced by nextInterface

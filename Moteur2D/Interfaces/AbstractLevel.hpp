@@ -3,7 +3,7 @@
 #ifndef LEVEL_HEADER
 #define LEVEL_HEADER
 
-#include "Menus/AbstractMenuInterface.hpp"
+#include "Menus/MenuInterfaceAbstraction.hpp"
 #include <random>
 #include <chrono>
 #include <memory>
@@ -33,13 +33,13 @@ class AbstractLevel : public AbstractGameInterface<In>
 
     virtual std_rng& rng();
 
-    virtual void drawIn(AbstractDrawer& window, float dt);
+    virtual void drawIn(DrawerAbstraction& window, float dt);
     virtual void update(const In& inputData);
 
-    virtual void drawThisIn(AbstractDrawer& window, float dt) = 0;
+    virtual void drawThisIn(DrawerAbstraction& window, float dt) = 0;
     virtual void updateThis(const In& inputData) = 0;
 
-    virtual void pauseLevel(std::unique_ptr<AbstractMenuInterface> pauseMenu);
+    virtual void pauseLevel(std::unique_ptr<MenuInterfaceAbstraction> pauseMenu);
     virtual void setNextInterface(std::unique_ptr<AbstractGameInterface<In>> nextInt);
     virtual AbstractGameInterface<In>* next();
 
@@ -47,7 +47,7 @@ class AbstractLevel : public AbstractGameInterface<In>
     private :
 
     std_rng m_randomGenerator;
-    std::unique_ptr<AbstractMenuInterface> m_pauseMenu;
+    std::unique_ptr<MenuInterfaceAbstraction> m_pauseMenu;
     AbstractGameInterface<In>* m_nextInt = nullptr; // has-a
 };
 
@@ -91,7 +91,7 @@ std_rng& AbstractLevel<In>::rng()
 }
 
 template <typename In>
-void AbstractLevel<In>::drawIn(AbstractDrawer& window, float dt)
+void AbstractLevel<In>::drawIn(DrawerAbstraction& window, float dt)
 {
     if (m_pauseMenu)
     {
@@ -130,7 +130,7 @@ void AbstractLevel<In>::update(const In& inputData)
 
 
 template <typename In>
-void AbstractLevel<In>::pauseLevel(std::unique_ptr<AbstractMenuInterface> pauseMenu)
+void AbstractLevel<In>::pauseLevel(std::unique_ptr<MenuInterfaceAbstraction> pauseMenu)
 {
     m_pauseMenu = std::move(pauseMenu);
 }

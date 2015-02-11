@@ -59,7 +59,7 @@ void Menu::Counter::setFontStyle(const FontStyle& f)
 }
 
 
-void Menu::Counter::drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const
+void Menu::Counter::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
 {
     if (m_rightAligned)
     m_drawnText.drawIn(target, sf::Vector2f(position.x + getSize().x - m_drawnText.getSize().x, position.y), isHitboxDrawn);

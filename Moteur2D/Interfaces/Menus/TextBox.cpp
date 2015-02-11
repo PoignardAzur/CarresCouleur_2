@@ -22,7 +22,7 @@ sf::Vector2f Menu::TextBox::getSize() const
     return m_box.getSize();
 }
 
-void Menu::TextBox::drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const
+void Menu::TextBox::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
 {
     m_box.drawIn(target, position, isHitboxDrawn);
 }

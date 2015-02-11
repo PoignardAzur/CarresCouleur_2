@@ -7,7 +7,7 @@
 #include <list>
 
 
-template <typename V = AbsVart>
+template <typename V = VartAbs>
 using VartList = std::list<Placed<V>>;
 
 template <typename V>
@@ -29,7 +29,7 @@ void updateAll(VartList<V>& list, float dt, bool delDeadVarts = true, bool updat
 
 
 template <typename V>
-void drawAllIn(VartList<V>& list, AbstractDrawer& target, sf::FloatRect limits, float dt)
+void drawAllIn(VartList<V>& list, DrawerAbstraction& target, sf::FloatRect limits, float dt)
 {
     for (auto& placedVart : list)
     {
@@ -61,7 +61,7 @@ void updateAllPositions(VartList<V>& list, float dt)
 }
 
 
-template <typename V = AbsVart>
+template <typename V = VartAbs>
 class VartPusher
 {
     public :

@@ -1,22 +1,22 @@
 
 
-#include "AbstractItem.hpp"
+#include "ItemAbstraction.hpp"
 
 
 bool DRAW_ITEM_HITBOX = false; // doesn't need to be const
 
 
-Menu::AbstractItem::AbstractItem(AbstractItem* parent)
+Menu::ItemAbstraction::ItemAbstraction(ItemAbstraction* parent)
 {
     setParent(parent);
 }
 
-void Menu::AbstractItem::setParent(AbstractItem* parent)
+void Menu::ItemAbstraction::setParent(ItemAbstraction* parent)
 {
     m_parent = parent;
 }
 
-void Menu::AbstractItem::drawIn(AbstractDrawer& target, sf::Vector2f position, bool drawHitbox) const
+void Menu::ItemAbstraction::drawIn(DrawerAbstraction& target, sf::Vector2f position, bool drawHitbox) const
 {
     if (drawHitbox)
     drawHitboxIn(target, position);
@@ -25,7 +25,7 @@ void Menu::AbstractItem::drawIn(AbstractDrawer& target, sf::Vector2f position, b
 }
 
 
-void Menu::AbstractItem::drawInBox(AbstractDrawer& target, sf::FloatRect box, Alignement a, bool drawHitbox) const
+void Menu::ItemAbstraction::drawInBox(DrawerAbstraction& target, sf::FloatRect box, Alignement a, bool drawHitbox) const
 {
     sf::Vector2f position(box.left, box.top);
 
@@ -48,12 +48,12 @@ void Menu::AbstractItem::drawInBox(AbstractDrawer& target, sf::FloatRect box, Al
 }
 
 
-int Menu::AbstractItem::hashToColor(float x) const
+int Menu::ItemAbstraction::hashToColor(float x) const
 {
     return static_cast<int>(x * 17) % 255;
 }
 
-void Menu::AbstractItem::drawHitboxIn(AbstractDrawer& target, sf::Vector2f position) const
+void Menu::ItemAbstraction::drawHitboxIn(DrawerAbstraction& target, sf::Vector2f position) const
 {
     sf::RectangleShape hitbox(getSize());
     hitbox.setPosition(position);
@@ -63,20 +63,15 @@ void Menu::AbstractItem::drawHitboxIn(AbstractDrawer& target, sf::Vector2f posit
 }
 
 
-void Menu::AbstractItem::updateParentSize()
+void Menu::ItemAbstraction::updateParentSize()
 {
     if (m_parent)
     m_parent->updateOwnSize();
 }
 
-void Menu::AbstractItem::updateOwnSize()
+void Menu::ItemAbstraction::updateOwnSize()
 {
     updateParentSize();
-}
-
-Menu::AbstractItem::~AbstractItem()
-{
-
 }
 
 

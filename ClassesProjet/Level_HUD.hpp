@@ -20,7 +20,7 @@ class Level_HUD : public AbstractHUD<float, LevelBase>
     void setLevel(LevelBase* level);
     void update(const float& dt);
 
-    void drawIn(AbstractDrawer& window, LevelBase* level, float dt);
+    void drawIn(DrawerAbstraction& window, LevelBase* level, float dt);
     void increaseScore(int points, bool draw = true);
 
 

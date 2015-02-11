@@ -44,7 +44,7 @@ void CarreCouleur::updatePos(sf::Vector2f& pos, float dt)
     pos += getSpeed() * dt;
 }
 
-void CarreCouleur::drawIn(sf::Vector2f pos, AbstractDrawer& target, sf::FloatRect limits, float dt) const
+void CarreCouleur::drawIn(sf::Vector2f pos, DrawerAbstraction& target, sf::FloatRect limits, float dt) const
 {
     (void) limits;
 

@@ -4,7 +4,7 @@
 #define SIMPLE_CREDITS_SCREEN_HEADER
 
 #include "AbstractEndCreditsScreen.hpp"
-#include "Items/AbstractTextObject.hpp"
+#include "Items/TextObjectAbstraction.hpp"
 
 
 class SimpleEndCreditsScreen : public AbstractEndCreditsScreen
@@ -26,7 +26,7 @@ class SimpleEndCreditsScreen : public AbstractEndCreditsScreen
     virtual AbstractGameInterface<float>* next() = 0;
 
 //    sf::FloatRect getTargetBounds();
-//    virtual void add_item(std::unique_ptr<Menu::AbstractItem> item);
+//    virtual void add_item(std::unique_ptr<Menu::ItemAbstraction> item);
 
 
     private :

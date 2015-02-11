@@ -16,12 +16,12 @@
 #define GAP_BETWEEN_BUTTONS (BUTTON_SIZE.y + 20)
 
 
-MainMenu::MainMenu() : Menu::AbstractMenu(true, false)
+MainMenu::MainMenu() : Menu::MenuAbstraction(true, false)
 {
     m_text.setString("Sélectionner un niveau");
 }
 
-void MainMenu::set(const sf::Font* f, AbstractInputs* in)
+void MainMenu::set(const sf::Font* f, InputsAbstraction* in)
 {
     setUserInputs(in);
 
@@ -88,7 +88,7 @@ bool MainMenu::isLayered() const
 }
 
 
-void MainMenu::drawThisIn(AbstractDrawer& window, float dt)
+void MainMenu::drawThisIn(DrawerAbstraction& window, float dt)
 {
     m_text.drawInBox(window, sf::FloatRect(0, HEIGHT_MENU_TITLE, WINDOW_WIDTH, 1), Menu::MiddleTopSide);
 

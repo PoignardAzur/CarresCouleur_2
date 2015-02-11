@@ -10,7 +10,7 @@
 namespace Menu
 {
 
-    class Counter : public AbstractItem, public AbstractTextObject
+    class Counter : public ItemAbstraction, public TextObjectAbstraction
     {
         public :
 
@@ -29,7 +29,7 @@ namespace Menu
         protected :
 
         void setFontStyle(const FontStyle& f);
-        void drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const;
+        void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
         void updateOwnSize();
         void updateText();
 

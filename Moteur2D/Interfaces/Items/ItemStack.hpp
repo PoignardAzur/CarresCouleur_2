@@ -4,29 +4,29 @@
 #ifndef MENU_ITEM_STACK_HEADER
 #define MENU_ITEM_STACK_HEADER
 
-#include "AbstractItem.hpp"
+#include "ItemAbstraction.hpp"
 #include <memory>
 
 namespace Menu
 {
 
-    class ItemStack : public AbstractItem
+    class ItemStack : public ItemAbstraction
     {
         public :
 
-        using AbsItemPtr = std::unique_ptr<AbstractItem>;
+        using AbsItemPtr = std::unique_ptr<ItemAbstraction>;
 
         ItemStack();
         ItemStack(std::vector<std::pair<AbsItemPtr, Alignement>> items, bool sizeIsMax = true);
 
         void setItems(std::vector<std::pair<AbsItemPtr, Alignement>> items, bool sizeIsMax = true);
-        void addItem(AbstractItem* item, Alignement align);
+        void addItem(ItemAbstraction* item, Alignement align);
         sf::Vector2f getSize() const;
 
 
         protected :
 
-        void drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const;
+        void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
 
 
         private :

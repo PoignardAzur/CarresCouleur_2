@@ -2,7 +2,7 @@
 #include "Label.hpp"
 
 
-Menu::Label::Label(AbstractItem* item, const std::string& str, FontStyle f, bool horizontalAlignement, float gap)
+Menu::Label::Label(ItemAbstraction* item, const std::string& str, FontStyle f, bool horizontalAlignement, float gap)
 {
     setItem(item);
     setLabel(str);
@@ -10,9 +10,9 @@ Menu::Label::Label(AbstractItem* item, const std::string& str, FontStyle f, bool
     setFont(f);
 }
 
-void Menu::Label::setItem(AbstractItem* item)
+void Menu::Label::setItem(ItemAbstraction* item)
 {
-    m_item = std::shared_ptr<AbstractItem>(item);
+    m_item = std::shared_ptr<ItemAbstraction>(item);
 
     if (m_item)
     m_item->setParent(this);
@@ -44,7 +44,7 @@ sf::Vector2f Menu::Label::getSize() const
     return m_size;
 }
 
-void Menu::Label::drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const
+void Menu::Label::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
 {
     sf::FloatRect box(position.x, position.y, getSize().x, getSize().y);
 

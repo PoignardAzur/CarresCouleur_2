@@ -1,14 +1,14 @@
 
 
-#ifndef TABLEAU_ENTREES
-#define TABLEAU_ENTREES
+#ifndef INPUTS_ARRAY
+#define INPUTS_ARRAY
 
 #include <SFML/Graphics.hpp>
-#include "AbstractInputsArray.hpp"
+#include "InputsAbstraction.hpp"
 
 
 // Class used to check the state of inputs without dealing with event handling
-class Inputs : public AbstractInputs
+class Inputs : public InputsAbstraction
 {
     public :
 
@@ -52,9 +52,4 @@ class Inputs : public AbstractInputs
 };
 
 
-
-
-#endif
-
-
-
+#endif // INPUTS_ARRAY

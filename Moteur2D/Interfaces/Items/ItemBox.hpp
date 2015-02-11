@@ -4,19 +4,19 @@
 #define MENU_ITEM_BOX_HEADER
 
 #include <memory>
-#include "AbstractItem.hpp"
+#include "ItemAbstraction.hpp"
 
 
 namespace Menu
 {
 
-    class ItemBox : public AbstractItem
+    class ItemBox : public ItemAbstraction
     {
         public :
 
-        explicit ItemBox(AbstractItem* item = nullptr, Alignement a = Center, float x_offset = 0, float y_offset = 0);
+        explicit ItemBox(ItemAbstraction* item = nullptr, Alignement a = Center, float x_offset = 0, float y_offset = 0);
 
-        std::unique_ptr<AbstractItem> setItem(AbstractItem* item);      // returns a pointer owning the previous item
+        std::unique_ptr<ItemAbstraction> setItem(ItemAbstraction* item);      // returns a pointer owning the previous item
         void setColor(sf::Color c);
         void setAlignement(Alignement a, float x_offset, float y_offset);
         void setSize(sf::Vector2f size, bool relative = false);
@@ -26,12 +26,12 @@ namespace Menu
 
         protected :
 
-        void drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const;
+        void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
 
 
         private :
 
-        std::unique_ptr<AbstractItem> m_item;
+        std::unique_ptr<ItemAbstraction> m_item;
         Alignement m_align;
 
         sf::Color m_boxColor = sf::Color(0, 0, 0, 0);

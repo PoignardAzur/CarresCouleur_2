@@ -11,13 +11,13 @@ namespace Menu
 {
 
     // Draws a label next to another item
-    class Label : public AbstractItem, public AbstractTextObject
+    class Label : public ItemAbstraction, public TextObjectAbstraction
     {
         public :
 
-        explicit Label(AbstractItem* item = nullptr, const std::string& str = "", FontStyle f = FontStyle(), bool horizontalAlignement = true, float gap = 0);
+        explicit Label(ItemAbstraction* item = nullptr, const std::string& str = "", FontStyle f = FontStyle(), bool horizontalAlignement = true, float gap = 0);
 
-        void setItem(AbstractItem* item);
+        void setItem(ItemAbstraction* item);
         void setLabel(const std::string& str);
 
         void setAlignement(bool horizontal, float gap);
@@ -27,13 +27,13 @@ namespace Menu
         protected :
 
         void setFontStyle(const FontStyle& f);
-        void drawImageIn(AbstractDrawer& target, sf::Vector2f position, bool isHitboxDrawn) const;
+        void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
         void setOwnSize();
 
 
         private :
 
-        std::shared_ptr<AbstractItem> m_item;
+        std::shared_ptr<ItemAbstraction> m_item;
         Text m_label;
 
         float m_gap;
