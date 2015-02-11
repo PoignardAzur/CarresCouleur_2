@@ -13,7 +13,7 @@ class SimpleHitbox
 {
     public :
 
-    explicit SimpleHitbox(sf::FloatRect box = NULL_RECT, sf::Vector2f pos = NULL_PT, sf::Vector2f speed = NULL_PT);
+    explicit SimpleHitbox(sf::FloatRect box = NULL_RECT, sf::Vector2f speed = NULL_PT);
     SimpleHitbox(const SimpleHitbox& other);
     virtual ~SimpleHitbox() {}
 
@@ -22,9 +22,6 @@ class SimpleHitbox
 
     sf::FloatRect getHitbox(sf::Vector2f center = NULL_PT) const;     // get the placed hitbox of the object
 
-    void setPos(sf::Vector2f pos);
-    sf::Vector2f getPos() const;
-
     void setSpeed(sf::Vector2f speed, bool relative = false);
     sf::Vector2f getSpeed() const;
 
@@ -32,8 +29,6 @@ class SimpleHitbox
     private :
 
     sf::FloatRect m_box;
-
-    sf::Vector2f m_pos;  /// TO UTTERLY REMOVE FROM THE CODE
     sf::Vector2f m_speed;
 };
 

@@ -29,18 +29,18 @@ void Level_3::update(const float& dt)
 
 void Level_3::leftClick(sf::Vector2f pos)
 {
-    for (auto& carre_ptr : getCarres())
+    for (auto& placedCarre : getCarres())
     {
-        if (carre_ptr->recycle(m_carreGris.getHitbox(pos), false))
+        if (placedCarre.get().recycle(placedCarre.getPos(), m_carreGris.getHitbox(pos), false))
         increaseScore(20);
     }
 }
 
 void Level_3::rightClick(sf::Vector2f pos)
 {
-    for (auto& carre_ptr : getCarres())
+    for (auto& placedCarre : getCarres())
     {
-        if (carre_ptr->getHitbox(carre_ptr->getPos()).intersects(m_carreGris.getHitbox(pos)))
-        carre_ptr->randomizeSpeed(rng());
+        if (placedCarre.get().getHitbox(placedCarre.getPos()).intersects(m_carreGris.getHitbox(pos)))
+        placedCarre.get().randomizeSpeed(rng());
     }
 }

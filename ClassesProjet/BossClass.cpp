@@ -15,9 +15,9 @@ BossClass::BossClass(up_t<AbstractInputs> userInputs, sf::RenderWindow* target) 
     throw "Couldn't load font" FONT_FILE_NAME;
 
     MainMenu* menu = new MainMenu;
-    menu->set(&m_font, userInputs.get());
+    menu->set(&m_font, windowInputs());
 
-    m_interface.setInterface(new TitleScreen(menu, userInputs.get(), &m_font));
+    m_interface.setInterface(new TitleScreen(menu, windowInputs(), &m_font));
 }
 
 AbstractGameInterface<float>* BossClass::interface()

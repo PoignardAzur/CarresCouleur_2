@@ -78,6 +78,7 @@
 		<Unit filename="Moteur2D/GameController.cpp" />
 		<Unit filename="Moteur2D/GameController.hpp" />
 		<Unit filename="Moteur2D/Game/AbsVart.hpp" />
+		<Unit filename="Moteur2D/Game/PlacedVart.hpp" />
 		<Unit filename="Moteur2D/Game/SimpleHitbox.cpp" />
 		<Unit filename="Moteur2D/Game/SimpleHitbox.hpp" />
 		<Unit filename="Moteur2D/Game/SimpleVart.cpp" />

@@ -3,7 +3,7 @@
 #include "SimpleHitbox.hpp"
 
 
-SimpleHitbox::SimpleHitbox(sf::FloatRect box, sf::Vector2f pos, sf::Vector2f speed) : m_box(box), m_pos(pos), m_speed(speed)
+SimpleHitbox::SimpleHitbox(sf::FloatRect box, sf::Vector2f speed) : m_box(box), m_speed(speed)
 {
 
 }
@@ -22,25 +22,12 @@ void SimpleHitbox::set(const SimpleHitbox& other)
 {
     setHitbox(other.m_box);
     setSpeed(other.m_speed);
-
-    m_pos = other.m_pos;
 }
 
 
 sf::FloatRect SimpleHitbox::getHitbox(sf::Vector2f center) const     // get the placed hitbox of the object
 {
     return sf::FloatRect(m_box.left + center.x, m_box.top + center.y, m_box.width, m_box.height);
-}
-
-
-void SimpleHitbox::setPos(sf::Vector2f nposition)    /// TO DELETE
-{
-    m_pos = nposition;
-}
-
-sf::Vector2f SimpleHitbox::getPos() const
-{
-    return m_pos;
 }
 
 

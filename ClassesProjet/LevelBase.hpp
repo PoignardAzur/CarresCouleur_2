@@ -44,6 +44,7 @@ class LevelBase : public AbstractLevel<float>
 
     const VartList<CarreCouleur>& getCarres() const;
     VartList<CarreCouleur>& getCarres();
+    void addCarre(up_t<CarreCouleur> vart, sf::Vector2f pos);
 
     void giveCarres(LevelBase* nextLevel);
 

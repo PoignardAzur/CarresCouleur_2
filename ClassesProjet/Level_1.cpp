@@ -16,10 +16,9 @@ void Level_1::leftClick(sf::Vector2f pos)
     increaseScore(10);
 
     CarreCouleur* carre = new CarreCouleur(rng());
-    carre->setPos(pos);
     carre->randomizeSpeed(rng());
 
-    getCarres().push_back(up(carre));
+    addCarre(up(carre), pos);
 }
 
 void Level_1::rightClick(sf::Vector2f pos)
@@ -38,7 +37,7 @@ void Level_1::rightClick(sf::Vector2f pos)
         i --;
     }
 
-    (*it)->setPos(pos);
-    (*it)->randomizeSpeed(rng());
+    it->setPos(pos);
+    it->get().randomizeSpeed(rng());
 }
 

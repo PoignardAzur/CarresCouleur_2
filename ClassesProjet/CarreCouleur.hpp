@@ -21,11 +21,11 @@ class CarreCouleur : public AbsVart, public SimpleHitbox
     void randomizeSpeed(std_rng& rng);
 
     bool toDelete() const;
-    void update(float dt);
+    void update(const sf::Vector2f& pos, float dt);
+    void updatePos(sf::Vector2f& pos, float dt);
     void drawIn(sf::Vector2f pos, AbstractDrawer& target, sf::FloatRect limits, float dt) const;
 
-    sf::Vector2f getPos() const;
-    bool recycle(sf::FloatRect limits, bool deleteIfOOB = true);
+    bool recycle(sf::Vector2f pos, sf::FloatRect limits, bool deleteIfOOB = true);
 
     private :
 

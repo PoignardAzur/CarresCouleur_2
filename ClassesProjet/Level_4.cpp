@@ -16,10 +16,9 @@ void Level_4::update(const float& dt)
     {
         float carreSize = float_dice(DEFAULT_CARRE_SIZE / 2, DEFAULT_CARRE_SIZE * 2)(rng());
         CarreCouleur* carre = new CarreCouleur(rng(), carreSize);
-        carre->setPos(getInputs()->cursor());
         carre->randomizeSpeed(rng());
 
-        getCarres().push_back(up(carre));
+        addCarre(up(carre), getInputs()->cursor());
         m_timeBeforeNextCarre = TIME_BETWEEN_CARRES;
     }
 }

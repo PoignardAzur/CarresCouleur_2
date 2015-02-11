@@ -26,9 +26,15 @@ SimpleVart::~SimpleVart()
 }
 
 
-void SimpleVart::update(float dt)
+void SimpleVart::update(const sf::Vector2f& pos, float dt)
 {
     (void) dt;
+    (void) pos;
+}
+
+void SimpleVart::updatePos(sf::Vector2f& pos, float dt)
+{
+    pos += getSpeed() * dt;
 }
 
 bool SimpleVart::doDelete() const
@@ -39,7 +45,7 @@ bool SimpleVart::doDelete() const
 up_t<AbstractDrawable> SimpleVart::setSprite(up_t<AbstractDrawable> sprite)
 {
     std::swap(sprite, m_sprite);
-    return sprite;
+    return sprite;                      // returns what was m_sprite before calling this function
 }
 
 void SimpleVart::removeThis()

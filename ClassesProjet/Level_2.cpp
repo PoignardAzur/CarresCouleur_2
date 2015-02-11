@@ -16,25 +16,25 @@ void Level_2::update(const float& dt)
 }
 
 
-void pushAround(CarreCouleur& carre, sf::Vector2f pos, float force)
+void pushAround(Placed<CarreCouleur>& carre, sf::Vector2f pos, float force)
 {
     pos -= carre.getPos();
     float squared_distance = sqrt(pos.x * pos.x + pos.y * pos.y);
-    carre.setSpeed(500000.0f * pos * force / (squared_distance * squared_distance * squared_distance), true);
+    carre.get().setSpeed(500000.0f * pos * force / (squared_distance * squared_distance * squared_distance), true);
 }
 
 void Level_2::leftClick(sf::Vector2f pos)
 {
-    for (auto& carre_ptr : getCarres())
+    for (auto& placedCarre : getCarres())
     {
-        pushAround(*carre_ptr, pos, -3);
+        pushAround(placedCarre, pos, -3);
     }
 }
 
 void Level_2::rightClick(sf::Vector2f pos)
 {
-    for (auto& carre_ptr : getCarres())
+    for (auto& placedCarre : getCarres())
     {
-        pushAround(*carre_ptr, pos, 2);
+        pushAround(placedCarre, pos, 2);
     }
 }

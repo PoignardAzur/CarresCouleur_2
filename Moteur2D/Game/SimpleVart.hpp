@@ -5,7 +5,6 @@
 
 #include "AbsVart.hpp"
 #include "SimpleHitbox.hpp"
-#include <memory>
 #include <up.hpp>
 
 #define DRAW_VART_SPRITE true
@@ -22,7 +21,8 @@ class SimpleVart : public AbsVart, public SimpleHitbox
     explicit SimpleVart(const SimpleHitbox& hitbox, up_t<AbstractDrawable> sprite = nullptr);
     virtual ~SimpleVart();
 
-    virtual void update(float dt);
+    virtual void update(const sf::Vector2f& pos, float dt);
+    virtual void updatePos(sf::Vector2f& pos, float dt);
     virtual bool doDelete() const;
     virtual void drawIn(sf::Vector2f pos, AbstractDrawer& target, sf::FloatRect limits, float dt) const;
 

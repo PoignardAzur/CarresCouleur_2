@@ -23,12 +23,12 @@ void LevelBase::setHUD(Level_HUD* hud)
 
 void LevelBase::updateThis(const float& dt)
 {
-    updatePositions(m_carres, dt);
+    updateAllPositions(m_carres, dt);
     updateAll(m_carres, dt);
 
-    for (auto& carre_ptr : m_carres)
+    for (auto& placedCarre : m_carres)
     {
-        carre_ptr->recycle(sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
+        placedCarre.get().recycle(placedCarre.getPos(), sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
     }
 
 
@@ -89,6 +89,7 @@ void LevelBase::updateThis(const float& dt)
 void LevelBase::generateCarre()
 {
     CarreCouleur* carre = new CarreCouleur(rng());
+    sf::Vector2f pos;
 
     int i = int_dice(1, 4)(rng());
     int s = 1;
@@ -101,29 +102,25 @@ void LevelBase::generateCarre()
 
     if (i == 1)
     {
-        float x = float_dice(WINDOW_WIDTH / 4, WINDOW_WIDTH - WINDOW_WIDTH / 4)(rng());
-        float y = WINDOW_HEIGHT * (s + 1) / 2;
-        y += s * DEFAULT_CARRE_SIZE / 2;
+        pos.x = float_dice(WINDOW_WIDTH / 4, WINDOW_WIDTH - WINDOW_WIDTH / 4)(rng());
+        pos.y = WINDOW_HEIGHT * (s + 1) / 2;
+        pos.y += s * DEFAULT_CARRE_SIZE / 2;
 
         float_dice speed(0, DEFAULT_CARRE_SPEED);
-
-        carre->setPos(sf::Vector2f(x, y));
         carre->setSpeed(sf::Vector2f(speed(rng()) - DEFAULT_CARRE_SPEED / 2, speed(rng()) * -s));
     }
 
     else
     {
-        float x = WINDOW_WIDTH * (s + 1) / 2;
-        x += s * DEFAULT_CARRE_SIZE / 2;
-        float y = float_dice(WINDOW_HEIGHT / 4, WINDOW_HEIGHT - WINDOW_HEIGHT / 4)(rng());
+        pos.x = WINDOW_WIDTH * (s + 1) / 2;
+        pos.x += s * DEFAULT_CARRE_SIZE / 2;
+        pos.y = float_dice(WINDOW_HEIGHT / 4, WINDOW_HEIGHT - WINDOW_HEIGHT / 4)(rng());
 
         float_dice speed(0, DEFAULT_CARRE_SPEED);
-
-        carre->setPos(sf::Vector2f(x, y));
         carre->setSpeed(sf::Vector2f(speed(rng()) * -s, speed(rng()) - DEFAULT_CARRE_SPEED / 2));
     }
 
-    getCarres().push_back(up(carre));
+    addCarre(up(carre), pos);
 }
 
 void LevelBase::generateCarreStream(float dt, float minDelay, float maxDelay, int minCarresNumber, int maxCarresNumber)
@@ -199,6 +196,11 @@ const VartList<CarreCouleur>& LevelBase::getCarres() const
 VartList<CarreCouleur>& LevelBase::getCarres()
 {
     return m_carres;
+}
+
+void LevelBase::addCarre(up_t<CarreCouleur> vart, sf::Vector2f pos)
+{
+    VartPusher<CarreCouleur>(&getCarres()).add(mv(vart), pos);
 }
 
 void LevelBase::giveCarres(LevelBase* nextLevel)
