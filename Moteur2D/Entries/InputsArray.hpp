@@ -20,6 +20,12 @@ class Inputs : public AbstractInputs
 
     void update(float dt);
 
+    //using mouseEvent = std::function<void(bool/*pressed*/,sf::Vector2f/*cursorPosition*/)>;
+    //using keyboardEvent = std::function<void(bool/*pressed*/)>;
+
+    void setMouseButtonEvents(std::map<sf::Mouse::Button, mouseEvent> events);
+    void setKeyboardButtonEvents(std::map<sf::Keyboard::Key, keyboardEvent> events);
+
 
     protected :
 
@@ -36,6 +42,9 @@ class Inputs : public AbstractInputs
     std::map<sf::Keyboard::Key , bool> t_boutonsClavier;
     sf::Vector2f m_cursor;
     int m_molette;
+
+    std::map<sf::Mouse::Button, mouseEvent> m_mouseButtonEvents;
+    std::map<sf::Keyboard::Key, keyboardEvent> m_keyboardButtonEvents;
 
     bool m_closeWindow = false;
     bool m_escapeMeansClose;

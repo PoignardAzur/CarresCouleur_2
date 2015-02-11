@@ -39,37 +39,48 @@ void Inputs::update(float dt)
         switch(m_event.type)
         {
             case sf::Event::MouseWheelMoved : // Counts the number of mouse wheel ticks (most of the times, one)
-            m_molette += m_event.mouseWheel.delta;
+                m_molette += m_event.mouseWheel.delta;
             break;
 
             case sf::Event::MouseButtonPressed : // A mouse button is pressed
-            t_boutonsSouris[m_event.mouseButton.button] = true;
+                t_boutonsSouris[m_event.mouseButton.button] = true;
+
+                if (m_mouseButtonEvents.count(m_event.mouseButton.button))
+                m_mouseButtonEvents[m_event.mouseButton.button](true, m_cursor);
             break;
 
             case sf::Event::MouseButtonReleased : // A mouse button is released
-            t_boutonsSouris[m_event.mouseButton.button] = false;
+                t_boutonsSouris[m_event.mouseButton.button] = false;
+
+                if (m_mouseButtonEvents.count(m_event.mouseButton.button))
+                m_mouseButtonEvents[m_event.mouseButton.button](false, m_cursor);
             break;
 
             case sf::Event::KeyPressed : // Same for keyboard buttons
-            t_boutonsClavier[m_event.key.code] = true;
+                t_boutonsClavier[m_event.key.code] = true;
 
-            if (m_event.key.code == sf::Keyboard::Escape && m_escapeMeansClose) // In simple games, pressing escape can be a
-            m_closeWindow = true;                                               // shortcut to exit the game (as well as Alt+F4)
+                if (m_event.key.code == sf::Keyboard::Escape && m_escapeMeansClose) // In simple games, pressing escape can be a
+                m_closeWindow = true;                                               // shortcut to exit the game (as well as Alt+F4)
 
+                if (m_keyboardButtonEvents.count(m_event.key.code))
+                m_keyboardButtonEvents[m_event.key.code](true);
             break;
 
             case sf::Event::KeyReleased :
-            t_boutonsClavier[m_event.key.code] = false;
+                t_boutonsClavier[m_event.key.code] = false;
+
+                if (m_keyboardButtonEvents.count(m_event.key.code))
+                m_keyboardButtonEvents[m_event.key.code](false);
             break;
 
 
             case sf::Event::MouseMoved : // Sets the new mouse position (the relative moving is not tracked)
-            m_cursor.x = m_event.mouseMove.x;
-            m_cursor.y = m_event.mouseMove.y;
+                m_cursor.x = m_event.mouseMove.x;
+                m_cursor.y = m_event.mouseMove.y;
             break;
 
             case sf::Event::Closed : // Detects attempts to close the window (Alt+F4, Red X, etc)
-            m_closeWindow = true;
+                m_closeWindow = true;
             break;
 
             default :
@@ -77,6 +88,16 @@ void Inputs::update(float dt)
             break;
         }
     }
+}
+
+void Inputs::setMouseButtonEvents(std::map<sf::Mouse::Button, mouseEvent> events)
+{
+    m_mouseButtonEvents = std::move(events);
+}
+
+void Inputs::setKeyboardButtonEvents(std::map<sf::Keyboard::Key, keyboardEvent> events)
+{
+    m_keyboardButtonEvents = std::move(events);
 }
 
 std::map<sf::Mouse::Button, bool>& Inputs::_getMouseButtons()
