@@ -29,14 +29,14 @@ void Level_HUD::setFont(const sf::Font* font)
 
 void Level_HUD::setLevel(LevelBase* level)
 {
-    AbstractHUD<float, LevelBase>::setLevel(level);
+    AbstractHUD<LevelBase>::setLevel(level);
     level->setHUD(this);
     level->setFont(m_font);
 }
 
 void Level_HUD::update(const float& dt)
 {
-    AbstractHUD<float, LevelBase>::update(dt);
+    AbstractHUD<LevelBase>::update(dt);
 
     for (auto& plusMark : m_plussesList)
     {

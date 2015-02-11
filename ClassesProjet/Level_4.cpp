@@ -1,13 +1,12 @@
 
-
 #include "Level_4.hpp"
 
 #define TIME_BETWEEN_CARRES 0.1
 
 
-void Level_4::update(const float& dt)
+void Level_4::updateThis(float dt)
 {
-    LevelBase::update(dt);
+    LevelBase::updateThis(dt);
 
     if (m_timeBeforeNextCarre > 0)
     m_timeBeforeNextCarre -= dt;

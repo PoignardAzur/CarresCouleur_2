@@ -24,7 +24,7 @@ class PauseMenu : public Menu::MenuAbstraction, public MenuInterfaceAbstraction
 
     //void addButton(AbstractButton* b);
     virtual void drawThisIn(DrawerAbstraction& window, float dt);
-    virtual void updateThis(const float& dt);
+    virtual void updateThis(float dt);
 
 
     private :

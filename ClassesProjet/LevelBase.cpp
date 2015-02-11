@@ -21,7 +21,7 @@ void LevelBase::setHUD(Level_HUD* hud)
     m_hud = hud;
 }
 
-void LevelBase::updateThis(const float& dt)
+void LevelBase::updateThis(float dt)
 {
     updateAllPositions(m_carres, dt);
     updateAll(m_carres, dt);
@@ -154,7 +154,7 @@ void LevelBase::setNext()
         credits->setAllCredits();
 
         endThisLater();
-        setNextInterface(std::unique_ptr<AbstractGameInterface<float>>(credits));
+        setNextInterface(std::unique_ptr<AbstractGameInterface>(credits));
     }
 
     else
@@ -170,7 +170,7 @@ void LevelBase::setNext()
         hud->increaseScore(score(), false);
 
         endThisLater();
-        setNextInterface(std::unique_ptr<AbstractGameInterface<float>>(hud));
+        setNextInterface(std::unique_ptr<AbstractGameInterface>(hud));
     }
 }
 

@@ -20,7 +20,7 @@ BossClass::BossClass(up_t<InputsAbstraction> userInputs, sf::RenderWindow* targe
     m_interface.setInterface(new TitleScreen(menu, windowInputs(), &m_font));
 }
 
-AbstractGameInterface<float>* BossClass::interface()
+AbstractGameInterface* BossClass::interface()
 {
     return &m_interface;
 }

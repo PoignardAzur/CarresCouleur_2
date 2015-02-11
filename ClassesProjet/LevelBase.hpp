@@ -17,12 +17,12 @@
 
 class Level_HUD;
 
-class LevelBase : public AbstractLevel<float>
+class LevelBase : public AbstractLevel
 {
     public :
 
     virtual void drawThisIn(DrawerAbstraction& window, float dt);
-    virtual void updateThis(const float& dt);
+    virtual void updateThis(float dt);
 
     void setFont(const sf::Font* font);
     void setHUD(Level_HUD* hud);

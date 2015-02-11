@@ -8,7 +8,7 @@
 #define FONT_FILE_NAME "Resources/arial.ttf"
 
 
-TitleScreen::TitleScreen(AbstractGameInterface<float>* nextInterface, InputsAbstraction* in, const sf::Font* font)
+TitleScreen::TitleScreen(AbstractGameInterface* nextInterface, InputsAbstraction* in, const sf::Font* font)
 {
     m_font = font;
 

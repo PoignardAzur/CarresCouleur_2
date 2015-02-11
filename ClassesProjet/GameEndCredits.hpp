@@ -14,7 +14,7 @@ class GameEndCredits : public SimpleEndCreditsScreen
     void setFonts(const sf::Font* f);
     void setAllCredits();
 
-    virtual AbstractGameInterface<float>* next();
+    virtual AbstractGameInterface* next();
 };
 
 

@@ -25,7 +25,7 @@ class GameController
 
     InputsAbstraction* windowInputs();
     DrawerAbstraction* renderingWindow();
-    virtual AbstractGameInterface<float>* interface() = 0;       // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
+    virtual AbstractGameInterface* interface() = 0;       // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
 
 
     private :

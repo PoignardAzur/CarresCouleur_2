@@ -7,11 +7,11 @@
 #include "../Moteur2D/Interfaces/Items/Text.hpp"
 
 
-class TitleScreen : public PressAnyKeyMenu<float>
+class TitleScreen : public PressAnyKeyMenu
 {
     public :
 
-    TitleScreen(AbstractGameInterface<float>* nextInterface, InputsAbstraction* in, const sf::Font* font);
+    TitleScreen(AbstractGameInterface* nextInterface, InputsAbstraction* in, const sf::Font* font);
     void drawIn(DrawerAbstraction& window, float dt);
 
 

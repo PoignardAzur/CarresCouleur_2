@@ -23,7 +23,7 @@ class SimpleEndCreditsScreen : public AbstractEndCreditsScreen
     void add_credit(const std::string& name, const std::string& role);
     void add_sprite(const sf::Sprite& sprite);
 
-    virtual AbstractGameInterface<float>* next() = 0;
+    virtual AbstractGameInterface* next() = 0;
 
 //    sf::FloatRect getTargetBounds();
 //    virtual void add_item(std::unique_ptr<Menu::ItemAbstraction> item);

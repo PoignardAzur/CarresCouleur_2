@@ -1,5 +1,4 @@
 
-
 #ifndef HEADER_LEVEL_3
 #define HEADER_LEVEL_3
 
@@ -13,8 +12,8 @@ class Level_3 : public LevelBase
     Level_3();
 
     LevelBase* getNextLevel();
-    void drawIn(DrawerAbstraction& window, float dt);
-    virtual void update(const float& dt);
+    virtual void updateThis(float dt);
+    void drawThisIn(DrawerAbstraction& window, float dt);
 
     void generateCarre();
 
@@ -22,17 +21,10 @@ class Level_3 : public LevelBase
     void rightClick(sf::Vector2f pos);
 
 
-    protected :
-
-//  VartArray<CarreCouleur> getCarres();
-//  virtual std::default_random_engine& rng();
-
-//  void increaseScore(int points);
-//  int score() const;
-
     private :
 
     CarreCouleur m_carreGris;
 };
+
 
 #endif // HEADER_LEVEL_3

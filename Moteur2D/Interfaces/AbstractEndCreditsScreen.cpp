@@ -37,7 +37,7 @@ void AbstractEndCreditsScreen::drawIn(DrawerAbstraction& window, float dt)
     }
 }
 
-void AbstractEndCreditsScreen::update(const float& dt)
+void AbstractEndCreditsScreen::update(float dt)
 {
     for (auto& risingItem : m_risingItemFile)
     {

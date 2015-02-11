@@ -1,13 +1,12 @@
 
-
 #ifndef HUD_HEADER
 #define HUD_HEADER
 
 #include "AbstractLevel.hpp"
 
 
-template <typename In, typename LevelType = AbstractLevel<In> >
-class AbstractHUD : public AbstractGameInterface<In>
+template <typename LevelType = AbstractLevel>
+class AbstractHUD : public AbstractGameInterface
 {
     public :
 
@@ -18,9 +17,9 @@ class AbstractHUD : public AbstractGameInterface<In>
     virtual void drawIn(DrawerAbstraction& window, float dt);
     virtual void setUserInputs(InputsAbstraction*);
 
-    virtual void update(const In& inputData);
+    virtual void update(float dt);
     virtual bool isDone() const;
-    virtual AbstractGameInterface<In>* next();
+    virtual AbstractGameInterface* next();
 
 
     protected :
@@ -38,90 +37,78 @@ class AbstractHUD : public AbstractGameInterface<In>
 
 
 
-template <typename In, typename LevelType>
-AbstractHUD<In, LevelType>::AbstractHUD(LevelType* level)
+template <typename LevelType>
+AbstractHUD<LevelType>::AbstractHUD(LevelType* level)
 {
     setLevel(level);
 }
 
-template <typename In, typename LevelType>
-AbstractHUD<In, LevelType>::~AbstractHUD()
+template <typename LevelType>
+AbstractHUD<LevelType>::~AbstractHUD()
 {
     if (m_level)
     delete m_level;
 }
 
 
-template <typename In, typename LevelType>
-void AbstractHUD<In, LevelType>::setLevel(LevelType* level)
+template <typename LevelType>
+void AbstractHUD<LevelType>::setLevel(LevelType* level)
 {
     m_level = level;
 }
 
 
-
-
-template <typename In, typename LevelType>
-void AbstractHUD<In, LevelType>::drawIn(DrawerAbstraction& window, float dt)
+template <typename LevelType>
+void AbstractHUD<LevelType>::drawIn(DrawerAbstraction& window, float dt)
 {
     drawIn(window, m_level, dt);
 }
 
-template <typename In, typename LevelType>
-const LevelType* AbstractHUD<In, LevelType>::getLevel() const
+template <typename LevelType>
+const LevelType* AbstractHUD<LevelType>::getLevel() const
 {
     return m_level;
 }
 
 
-
-
-
-template <typename In, typename LevelType>
-bool AbstractHUD<In, LevelType>::isDone() const
+template <typename LevelType>
+bool AbstractHUD<LevelType>::isDone() const
 {
     return m_level->isDone();
 }
 
 
-template <typename In, typename LevelType>
-void AbstractHUD<In, LevelType>::setUserInputs(InputsAbstraction* userInputs)
+template <typename LevelType>
+void AbstractHUD<LevelType>::setUserInputs(InputsAbstraction* userInputs)
 {
     m_level->setUserInputs(userInputs);
 }
 
 
-template <typename In, typename LevelType>
-void AbstractHUD<In, LevelType>::update(const In& inputData)
+template <typename LevelType>
+void AbstractHUD<LevelType>::update(float dt)
 {
-    m_level->update(inputData);
+    m_level->update(dt);
 }
 
 
-
-template <typename In, typename LevelType>
-AbstractGameInterface<In>* AbstractHUD<In, LevelType>::next()
+template <typename LevelType>
+AbstractGameInterface* AbstractHUD<LevelType>::next()
 {
     return m_level->next();
 }
 
-template <typename In, typename LevelType>
-InputsAbstraction* AbstractHUD<In, LevelType>::getInputs()
+template <typename LevelType>
+InputsAbstraction* AbstractHUD<LevelType>::getInputs()
 {
     return nullptr;
 }
 
-
-template <typename In, typename LevelType>
-const InputsAbstraction* AbstractHUD<In, LevelType>::getInputs() const
+template <typename LevelType>
+const InputsAbstraction* AbstractHUD<LevelType>::getInputs() const
 {
     return nullptr;
 }
-
-
-
-
 
 
 #endif // HUD_HEADER
-

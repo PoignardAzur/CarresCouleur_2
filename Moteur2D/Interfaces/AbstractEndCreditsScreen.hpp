@@ -18,7 +18,7 @@ struct RisingItem
 };
 
 
-class AbstractEndCreditsScreen : public AbstractGameInterface<float>
+class AbstractEndCreditsScreen : public AbstractGameInterface
 {
     public :
 
@@ -32,9 +32,9 @@ class AbstractEndCreditsScreen : public AbstractGameInterface<float>
     virtual void add_credit(const std::string& name, const std::string& role) = 0;
 
     void drawIn(DrawerAbstraction& window, float dt);
-    void update(const float& inputData);
+    void update(float dt);
 
-    virtual AbstractGameInterface<float>* next() = 0;
+    virtual AbstractGameInterface* next() = 0;
 
 
     protected :

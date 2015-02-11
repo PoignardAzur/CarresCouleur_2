@@ -94,9 +94,12 @@
 		<Unit filename="Moteur2D/Graphic/SimpleSprite.hpp" />
 		<Unit filename="Moteur2D/Interfaces/AbstractEndCreditsScreen.cpp" />
 		<Unit filename="Moteur2D/Interfaces/AbstractEndCreditsScreen.hpp" />
+		<Unit filename="Moteur2D/Interfaces/AbstractGameInterface.cpp" />
 		<Unit filename="Moteur2D/Interfaces/AbstractGameInterface.hpp" />
 		<Unit filename="Moteur2D/Interfaces/AbstractHUD.hpp" />
+		<Unit filename="Moteur2D/Interfaces/AbstractLevel.cpp" />
 		<Unit filename="Moteur2D/Interfaces/AbstractLevel.hpp" />
+		<Unit filename="Moteur2D/Interfaces/BasicArcadeLevel.cpp" />
 		<Unit filename="Moteur2D/Interfaces/BasicArcadeLevel.hpp" />
 		<Unit filename="Moteur2D/Interfaces/Items/Counter.cpp" />
 		<Unit filename="Moteur2D/Interfaces/Items/Counter.hpp" />
@@ -131,7 +134,9 @@
 		<Unit filename="Moteur2D/Interfaces/Menus/SimpleButton.hpp" />
 		<Unit filename="Moteur2D/Interfaces/Menus/TextBox.cpp" />
 		<Unit filename="Moteur2D/Interfaces/Menus/TextBox.hpp" />
+		<Unit filename="Moteur2D/Interfaces/MetaInterface.cpp" />
 		<Unit filename="Moteur2D/Interfaces/MetaInterface.hpp" />
+		<Unit filename="Moteur2D/Interfaces/PressAnyKeyMenu.cpp" />
 		<Unit filename="Moteur2D/Interfaces/PressAnyKeyMenu.hpp" />
 		<Unit filename="Moteur2D/Interfaces/SimpleEndCreditsScreen.cpp" />
 		<Unit filename="Moteur2D/Interfaces/SimpleEndCreditsScreen.hpp" />

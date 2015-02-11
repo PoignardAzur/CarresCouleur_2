@@ -9,9 +9,9 @@ LevelBase* Level_2::getNextLevel()
     return new Level_3();
 }
 
-void Level_2::update(const float& dt)
+void Level_2::updateThis(float dt)
 {
-    LevelBase::update(dt);
+    LevelBase::updateThis(dt);
     generateCarreStream(dt);
 }
 
@@ -38,3 +38,4 @@ void Level_2::rightClick(sf::Vector2f pos)
         pushAround(placedCarre, pos, 2);
     }
 }
+

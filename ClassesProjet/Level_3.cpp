@@ -1,5 +1,4 @@
 
-
 #include "Level_3.hpp"
 #include "Level_4.hpp"
 
@@ -14,16 +13,16 @@ LevelBase* Level_3::getNextLevel()
     return new Level_4();
 }
 
-void Level_3::drawIn(DrawerAbstraction& window, float dt)
+void Level_3::updateThis(float dt)
 {
-    m_carreGris.drawIn(getInputs()->cursor(),window, sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT), dt);
-    LevelBase::drawIn(window, dt);
+    LevelBase::updateThis(dt);
+    generateCarreStream(dt);
 }
 
-void Level_3::update(const float& dt)
+void Level_3::drawThisIn(DrawerAbstraction& window, float dt)
 {
-    LevelBase::update(dt);
-    generateCarreStream(dt);
+    m_carreGris.drawIn(getInputs()->cursor(),window, sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT), dt);
+    LevelBase::drawThisIn(window, dt);
 }
 
 
@@ -44,3 +43,4 @@ void Level_3::rightClick(sf::Vector2f pos)
         placedCarre.get().randomizeSpeed(rng());
     }
 }
+

@@ -101,7 +101,7 @@ void MainMenu::drawThisIn(DrawerAbstraction& window, float dt)
 }
 
 
-void MainMenu::updateThis(const float& dt)
+void MainMenu::updateThis(float dt)
 {
     if (getInputs()->getKeyboardButtons()[sf::Keyboard::Up])
     {

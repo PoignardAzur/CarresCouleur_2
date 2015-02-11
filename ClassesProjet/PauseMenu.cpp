@@ -65,7 +65,7 @@ void PauseMenu::drawThisIn(DrawerAbstraction& window, float dt)
     m_noButton.drawInBox(window, sf::FloatRect(WINDOW_WIDTH / 2 + 5, WINDOW_HEIGHT / 2 + 10, 1, 1), Menu::TopLeftCorner);
 }
 
-void PauseMenu::updateThis(const float& dt)
+void PauseMenu::updateThis(float dt)
 {
     if (getInputs()->getKeyboardButtons()[sf::Keyboard::Left])
     left();

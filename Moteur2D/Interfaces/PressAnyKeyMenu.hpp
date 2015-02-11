@@ -7,55 +7,23 @@
 #include <functional>
 
 
-template <typename In>
-class PressAnyKeyMenu : public AbstractGameInterface<In>
+class PressAnyKeyMenu : public AbstractGameInterface
 {
     public :
 
     virtual void drawIn(DrawerAbstraction& window, float dt) = 0;
-    virtual void update(const In& inputData);
+    virtual void update(float dt);
 
-    void setNext(AbstractGameInterface<In>* nextInterface);         // as soon as a key is pressed, this interface is killed and replaced by nextInterface
-    void setNext(std::function<AbstractGameInterface<In>*(void)> nextInterface);
-    AbstractGameInterface<In>* next();
+    // as soon as a key is pressed, this interface is killed and replaced by nextInterface
+    void setNext(AbstractGameInterface* nextInterface);
+    void setNext(std::function<AbstractGameInterface*(void)> nextInterface);
+    AbstractGameInterface* next();
 
 
     private :
 
-    std::function<AbstractGameInterface<In>*(void)> m_nextInterface;
+    std::function<AbstractGameInterface*(void)> m_nextInterface;
 };
-
-
-template <typename In>
-void PressAnyKeyMenu<In>::update(const In& inputData)
-{
-    if (AbstractGameInterface<In>::getInputs()->isAnyKeyPressed())
-    AbstractGameInterface<In>::endThisLater();
-}
-
-template <typename In>
-void PressAnyKeyMenu<In>::setNext(AbstractGameInterface<In>* nextInterface)
-{
-    setNext
-    (
-        [=](void)
-        {
-            return nextInterface;
-        }
-    );
-}
-
-template <typename In>
-void PressAnyKeyMenu<In>::setNext(std::function<AbstractGameInterface<In>*(void)> nextInterface)
-{
-    m_nextInterface = nextInterface;
-}
-
-template <typename In>
-AbstractGameInterface<In>* PressAnyKeyMenu<In>::next()
-{
-    return m_nextInterface();
-}
 
 
 #endif // PAK_MENU_HEADER

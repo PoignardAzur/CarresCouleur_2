@@ -14,13 +14,13 @@ class BossClass : public GameController
 
     BossClass(up_t<InputsAbstraction> userInputs, sf::RenderWindow* target);
 
-    AbstractGameInterface<float>* interface();
+    AbstractGameInterface* interface();
     void update(float dt);
     bool isDone() const;
 
     private :
 
-    MetaInterface<float> m_interface;
+    MetaInterface m_interface;
     sf::Font m_font;
 };
 

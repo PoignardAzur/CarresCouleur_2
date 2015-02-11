@@ -16,7 +16,7 @@ void MenuInterfaceAbstraction::drawIn(DrawerAbstraction& window, float dt)
     drawThisIn(window, dt);
 }
 
-void MenuInterfaceAbstraction::update(const float& dt)
+void MenuInterfaceAbstraction::update(float dt)
 {
     if (m_submenu)
     {
@@ -34,7 +34,7 @@ void MenuInterfaceAbstraction::update(const float& dt)
 }
 
 
-AbstractGameInterface<float>* MenuInterfaceAbstraction::next()
+AbstractGameInterface* MenuInterfaceAbstraction::next()
 {
     return m_nextLevel;
 }
@@ -44,7 +44,7 @@ void MenuInterfaceAbstraction::openSubmenu(std::unique_ptr<MenuInterfaceAbstract
     m_submenu = std::move(submenu);
 }
 
-void MenuInterfaceAbstraction::setNextLevel(AbstractGameInterface<float>* nextLevel)
+void MenuInterfaceAbstraction::setNextLevel(AbstractGameInterface* nextLevel)
 {
     m_nextLevel = nextLevel;
 }

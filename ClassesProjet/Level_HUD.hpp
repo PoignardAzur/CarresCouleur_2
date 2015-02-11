@@ -10,7 +10,7 @@
 #include <list>
 
 
-class Level_HUD : public AbstractHUD<float, LevelBase>
+class Level_HUD : public AbstractHUD<LevelBase>
 {
     public :
 

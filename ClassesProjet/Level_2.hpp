@@ -11,7 +11,7 @@ class Level_2 : public LevelBase
     public :
 
     LevelBase* getNextLevel();
-    virtual void update(const float& dt);
+    void updateThis(float dt);
 
     void leftClick(sf::Vector2f pos);
     void rightClick(sf::Vector2f pos);
