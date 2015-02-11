@@ -23,9 +23,9 @@ class GameController
 
     protected :
 
-    InputsAbstraction* windowInputs();
-    DrawerAbstraction* renderingWindow();
-    virtual AbstractGameInterface* interface() = 0;       // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
+    InputsAbstraction& windowInputs();
+    DrawerAbstraction& renderingWindow();
+    virtual AbstractGameInterface& interface() = 0;       // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
 
 
     private :

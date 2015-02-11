@@ -12,6 +12,11 @@ AbstractLevel::AbstractLevel(std::seed_seq& seed) : m_randomGenerator(seed)
 
 }
 
+AbstractLevel::~AbstractLevel()
+{
+
+}
+
 void AbstractLevel::setSeed(unsigned int seed)
 {
     m_randomGenerator.seed(seed);
@@ -20,11 +25,6 @@ void AbstractLevel::setSeed(unsigned int seed)
 void AbstractLevel::setSeed(std::seed_seq& seed)
 {
     m_randomGenerator.seed(seed);
-}
-
-AbstractLevel::~AbstractLevel()
-{
-
 }
 
 
@@ -36,16 +36,14 @@ std_rng& AbstractLevel::rng()
 
 void AbstractLevel::drawIn(DrawerAbstraction& window, float dt)
 {
-    if (m_pauseMenu)
+    if (!m_pauseMenu || m_pauseMenu->isLayered())
     {
-        if (m_pauseMenu->isLayered())
-        drawThisIn(window, 0);
-
-        m_pauseMenu->drawIn(window, dt);
+        drawThisIn(window, dt);
+        drawHUDIn(window, dt);
     }
 
-    else
-    drawThisIn(window, dt);
+    if (m_pauseMenu)
+    m_pauseMenu->drawIn(window, dt);
 }
 
 void AbstractLevel::update(float dt)
@@ -56,8 +54,7 @@ void AbstractLevel::update(float dt)
 
         if (m_pauseMenu->isDone())
         {
-            delete m_nextInt;
-            m_nextInt = m_pauseMenu->next();
+            m_nextInt.reset(m_pauseMenu->next().release());
             m_pauseMenu.reset();
 
             if (m_nextInt)
@@ -77,11 +74,11 @@ void AbstractLevel::pauseLevel(std::unique_ptr<MenuInterfaceAbstraction> pauseMe
 
 void AbstractLevel::setNextInterface(std::unique_ptr<AbstractGameInterface> nextInt)
 {
-    m_nextInt = nextInt.release();
+    m_nextInt = mv(nextInt);
 }
 
-AbstractGameInterface* AbstractLevel::next()
+up_t<AbstractGameInterface> AbstractLevel::next()
 {
-    return m_nextInt;
+    return mv(m_nextInt);
 }
 

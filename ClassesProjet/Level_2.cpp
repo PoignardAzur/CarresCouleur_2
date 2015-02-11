@@ -4,9 +4,9 @@
 #include "Level_3.hpp"
 #include <cmath>
 
-LevelBase* Level_2::getNextLevel()
+up_t<LevelBase> Level_2::getNextLevel()
 {
-    return new Level_3();
+    return up(new Level_3());
 }
 
 void Level_2::updateThis(float dt)

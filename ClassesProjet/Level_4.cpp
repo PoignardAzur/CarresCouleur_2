@@ -22,9 +22,9 @@ void Level_4::updateThis(float dt)
     }
 }
 
-LevelBase* Level_4::getNextLevel()
+up_t<LevelBase> Level_4::getNextLevel()
 {
-    return nullptr;
+    return up_t<LevelBase>();
 }
 
 void Level_4::leftClick(sf::Vector2f pos)

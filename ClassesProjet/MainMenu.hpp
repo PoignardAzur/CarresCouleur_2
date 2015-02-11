@@ -25,7 +25,7 @@ class MainMenu : public Menu::MenuAbstraction, public MenuInterfaceAbstraction
     //void addButton(AbstractButton* b);
     virtual void drawThisIn(DrawerAbstraction& window, float dt);
     virtual void updateThis(float dt);
-    void load(LevelBase* level, const sf::Font* f);
+    void load(up_t<LevelBase> level, const sf::Font* f);
 
 
     private :

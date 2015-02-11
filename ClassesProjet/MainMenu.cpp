@@ -39,7 +39,7 @@ void MainMenu::set(const sf::Font* f, InputsAbstraction* in)
     (
         [this, f]()
         {
-            load(new Level_1, f);
+            load(up_t<LevelBase>(new Level_1), f);
         }
     );
 
@@ -47,7 +47,7 @@ void MainMenu::set(const sf::Font* f, InputsAbstraction* in)
     (
         [this, f]()
         {
-            load(new Level_2, f);
+            load(up_t<LevelBase>(new Level_2), f);
         }
     );
 
@@ -55,7 +55,7 @@ void MainMenu::set(const sf::Font* f, InputsAbstraction* in)
     (
         [this, f]()
         {
-            load(new Level_3, f);
+            load(up_t<LevelBase>(new Level_3), f);
         }
     );
 
@@ -63,7 +63,7 @@ void MainMenu::set(const sf::Font* f, InputsAbstraction* in)
     (
         [this, f]()
         {
-            load(new Level_4, f);
+            load(up_t<LevelBase>(new Level_4), f);
         }
     );
 
@@ -150,16 +150,16 @@ void MainMenu::updateThis(float dt)
 }
 
 
-void MainMenu::load(LevelBase* level, const sf::Font* f)
+void MainMenu::load(up_t<LevelBase> level, const sf::Font* f)
 {
-    level->setUserInputs(getInputs());
-
     Level_HUD* hud = new Level_HUD;
-
     hud->setFont(f);
-    hud->setLevel(level);
+
+    level->setUserInputs(getInputs());
+    level->setFont(f);
+    level->setHUD(up_t<Level_HUD>(hud));
 
     endThisLater();
-    setNextLevel(hud);
+    setNextLevel(mv(level));
 }
 

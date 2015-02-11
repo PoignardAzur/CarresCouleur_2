@@ -34,7 +34,7 @@ class AbstractEndCreditsScreen : public AbstractGameInterface
     void drawIn(DrawerAbstraction& window, float dt);
     void update(float dt);
 
-    virtual AbstractGameInterface* next() = 0;
+    virtual up_t<AbstractGameInterface> next() = 0;
 
 
     protected :

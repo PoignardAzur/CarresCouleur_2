@@ -10,7 +10,7 @@ class Level_2 : public LevelBase
 {
     public :
 
-    LevelBase* getNextLevel();
+    up_t<LevelBase> getNextLevel();
     void updateThis(float dt);
 
     void leftClick(sf::Vector2f pos);

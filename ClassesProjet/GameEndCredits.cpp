@@ -29,8 +29,8 @@ void GameEndCredits::setAllCredits()
     add_credit("Distribution", "-");
 }
 
-AbstractGameInterface* GameEndCredits::next()
+up_t<AbstractGameInterface> GameEndCredits::next()
 {
-    return nullptr;
+    return up_t<AbstractGameInterface>();
 }
 

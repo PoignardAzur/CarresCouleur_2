@@ -30,7 +30,7 @@ void PauseMenu::set(const sf::Font* f, InputsAbstraction* in)
             MainMenu* menu = new MainMenu;
             menu->set(f, getInputs());
 
-            setNextLevel(menu);
+            setNextLevel(up_t<MainMenu>(menu));
             endThisLater();
         }
     );

@@ -8,9 +8,9 @@ Level_3::Level_3() : m_carreGris(sf::Color(128, 128, 128), DEFAULT_CARRE_SIZE * 
 
 }
 
-LevelBase* Level_3::getNextLevel()
+up_t<LevelBase> Level_3::getNextLevel()
 {
-    return new Level_4();
+    return up(new Level_4());
 }
 
 void Level_3::updateThis(float dt)

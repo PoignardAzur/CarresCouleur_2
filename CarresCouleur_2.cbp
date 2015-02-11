@@ -134,8 +134,6 @@
 		<Unit filename="Moteur2D/Interfaces/Menus/SimpleButton.hpp" />
 		<Unit filename="Moteur2D/Interfaces/Menus/TextBox.cpp" />
 		<Unit filename="Moteur2D/Interfaces/Menus/TextBox.hpp" />
-		<Unit filename="Moteur2D/Interfaces/MetaInterface.cpp" />
-		<Unit filename="Moteur2D/Interfaces/MetaInterface.hpp" />
 		<Unit filename="Moteur2D/Interfaces/PressAnyKeyMenu.cpp" />
 		<Unit filename="Moteur2D/Interfaces/PressAnyKeyMenu.hpp" />
 		<Unit filename="Moteur2D/Interfaces/SimpleEndCreditsScreen.cpp" />

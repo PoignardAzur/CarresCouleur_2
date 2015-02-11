@@ -10,6 +10,7 @@
 #define MIN_CARRES_NUMBER 1
 #define MAX_CARRES_NUMBER 6
 
+#include "Level_HUD.hpp"
 #include "../Moteur2D/Interfaces/AbstractLevel.hpp"
 #include "../Moteur2D/Game/VartList.hpp"
 #include "CarreCouleur.hpp"
@@ -21,14 +22,11 @@ class LevelBase : public AbstractLevel
 {
     public :
 
-    virtual void drawThisIn(DrawerAbstraction& window, float dt);
-    virtual void updateThis(float dt);
-
     void setFont(const sf::Font* font);
-    void setHUD(Level_HUD* hud);
+    void setHUD(up_t<Level_HUD> hud);
 
     void setNext();
-    virtual LevelBase* getNextLevel() = 0;
+    virtual up_t<LevelBase> getNextLevel() = 0;
 
     virtual void leftClick(sf::Vector2f pos) = 0;
     virtual void rightClick(sf::Vector2f pos) = 0;
@@ -38,6 +36,10 @@ class LevelBase : public AbstractLevel
 
 
     protected :
+
+    virtual void drawThisIn(DrawerAbstraction& window, float dt);
+    virtual void drawHUDIn(DrawerAbstraction& window, float dt);
+    virtual void updateThis(float dt);
 
     void increaseScore(int points);
     int score() const;
@@ -51,6 +53,7 @@ class LevelBase : public AbstractLevel
 
     private :
 
+    up_t<Level_HUD> m_hud;
     VartList<CarreCouleur> m_carres;
     float m_timeBeforeRespawn = 0;
 
@@ -59,7 +62,6 @@ class LevelBase : public AbstractLevel
     bool m_enterPressed = true;
 
     int m_score = 0;
-    Level_HUD* m_hud = nullptr;
     const sf::Font* m_font;
 };
 

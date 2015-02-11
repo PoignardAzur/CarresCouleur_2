@@ -1,6 +1,5 @@
 
-
-#include "Level_HUD.hpp"
+#include "LevelBase.hpp"
 
 #define SCORE_BOX_GAPS 20
 #define PLUS_MARK_DURATION 1
@@ -27,17 +26,8 @@ void Level_HUD::setFont(const sf::Font* font)
     m_score_ptr->setFont(m_font, DEFAULT_FONT_SIZE * 2, sf::Color::White);
 }
 
-void Level_HUD::setLevel(LevelBase* level)
+void Level_HUD::update(float dt)
 {
-    AbstractHUD<LevelBase>::setLevel(level);
-    level->setHUD(this);
-    level->setFont(m_font);
-}
-
-void Level_HUD::update(const float& dt)
-{
-    AbstractHUD<LevelBase>::update(dt);
-
     for (auto& plusMark : m_plussesList)
     {
         plusMark.first += dt;
@@ -52,9 +42,10 @@ void Level_HUD::update(const float& dt)
     );
 }
 
-void Level_HUD::drawIn(DrawerAbstraction& window, LevelBase* level, float dt)
+void Level_HUD::drawIn(DrawerAbstraction& window, const LevelBase& level, float dt)
 {
-    level->drawIn(window, dt);
+    (void) level;
+
     m_box.drawIn(window, sf::Vector2f(2,2));
 
     Menu::Text text("", Menu::FontStyle(m_font, 2 * DEFAULT_FONT_SIZE / 3));

@@ -5,6 +5,7 @@
 
 #include "../Entries/InputsArray.hpp"
 #include "../Graphic/DrawerAbstraction.hpp"
+#include "up.hpp"
 
 
 class AbstractGameInterface
@@ -17,9 +18,9 @@ class AbstractGameInterface
     virtual void drawIn(DrawerAbstraction& window, float dt) = 0;
     virtual void setUserInputs(InputsAbstraction*);
 
-    virtual void update(float dt) = 0;       // by default, In is the number of ticks since the last update
+    virtual void update(float dt) = 0;                  // the number of ticks since the last update
     virtual bool isDone() const;                        // if this returns true, the interface must be deleted and replaced by
-    virtual AbstractGameInterface* next() = 0;      // the next interface
+    virtual up_t<AbstractGameInterface> next() = 0;     // the next interface
 
 
     protected :

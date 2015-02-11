@@ -18,23 +18,23 @@ void GameController::update(float dt)
     if (m_window)
     m_window->clear();
 
-    interface()->update(dt);
+    interface().update(dt);
 
-    if (m_window && !interface()->isDone())
-    interface()->drawIn(*m_window, dt);
+    if (m_window && !interface().isDone())
+    interface().drawIn(*m_window, dt);
 
     if (m_userInputs)
     m_userInputs->update();
 }
 
 
-DrawerAbstraction* GameController::renderingWindow()
+DrawerAbstraction& GameController::renderingWindow()
 {
-    return m_window.get();
+    return *(m_window.get());
 }
 
-InputsAbstraction* GameController::windowInputs()
+InputsAbstraction& GameController::windowInputs()
 {
-    return m_userInputs.get();
+    return *(m_userInputs.get());
 }
 

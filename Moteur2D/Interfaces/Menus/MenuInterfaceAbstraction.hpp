@@ -12,23 +12,23 @@ class MenuInterfaceAbstraction : public AbstractGameInterface
 
     void drawIn(DrawerAbstraction& window, float dt);
     void update(float dt);
-    AbstractGameInterface* next();
+    up_t<AbstractGameInterface> next();
 
     virtual bool isLayered() const = 0;
     // if this returns true, the menu is drawn on top of the level / another menu, which must be drawn first
 
     protected :
 
-    void openSubmenu(std::unique_ptr<MenuInterfaceAbstraction> submenu);
+    void openSubmenu(up_t<MenuInterfaceAbstraction> submenu);
     virtual void drawThisIn(DrawerAbstraction& window, float dt) = 0;
     virtual void updateThis(float dt) = 0;
-    virtual void setNextLevel(AbstractGameInterface* nextLevel);
+    virtual void setNextLevel(up_t<AbstractGameInterface> nextLevel);
 
 
     private :
 
-    std::unique_ptr<MenuInterfaceAbstraction> m_submenu;
-    AbstractGameInterface* m_nextLevel = nullptr;
+    up_t<MenuInterfaceAbstraction> m_submenu;
+    up_t<AbstractGameInterface> m_nextLevel;
 };
 
 

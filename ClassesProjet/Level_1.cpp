@@ -5,9 +5,9 @@
 #include <random>
 
 
-LevelBase* Level_1::getNextLevel()
+up_t<LevelBase> Level_1::getNextLevel()
 {
-    return new Level_2();
+    return up(new Level_2());
 }
 
 
