@@ -13,7 +13,7 @@ class Level_3 : public LevelBase
 
     up_t<LevelBase> getNextLevel();
     virtual void updateThis(float dt);
-    void drawThisIn(DrawerAbstraction& window, float dt);
+    void drawThisIn(DrawerAbstraction& window, float dt) const;
 
     void generateCarre();
 

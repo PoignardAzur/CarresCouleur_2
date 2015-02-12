@@ -37,8 +37,8 @@ class LevelBase : public AbstractLevel
 
     protected :
 
-    virtual void drawThisIn(DrawerAbstraction& window, float dt);
-    virtual void drawHUDIn(DrawerAbstraction& window, float dt);
+    virtual void drawThisIn(DrawerAbstraction& window, float dt) const;
+    virtual void drawHUDIn(DrawerAbstraction& window, float dt) const;
     virtual void updateThis(float dt);
 
     void increaseScore(int points);

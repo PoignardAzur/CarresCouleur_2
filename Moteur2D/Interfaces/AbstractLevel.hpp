@@ -31,14 +31,14 @@ class AbstractLevel : public AbstractGameInterface
 
     virtual std_rng& rng();
 
-    virtual void drawIn(DrawerAbstraction& window, float dt) final;
+    virtual void drawIn(DrawerAbstraction& window, float dt) const final;
     virtual void update(float dt) final;
 
 
     protected :
 
-    virtual void drawThisIn(DrawerAbstraction& window, float dt) = 0;
-    virtual void drawHUDIn(DrawerAbstraction& window, float dt) = 0;
+    virtual void drawThisIn(DrawerAbstraction& window, float dt) const = 0;
+    virtual void drawHUDIn(DrawerAbstraction& window, float dt) const = 0;
     virtual void updateThis(float dt) = 0;
 
     virtual void pauseLevel(std::unique_ptr<MenuInterfaceAbstraction> pauseMenu);

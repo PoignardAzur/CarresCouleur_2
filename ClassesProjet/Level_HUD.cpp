@@ -42,7 +42,7 @@ void Level_HUD::update(float dt)
     );
 }
 
-void Level_HUD::drawIn(DrawerAbstraction& window, const LevelBase& level, float dt)
+void Level_HUD::drawIn(DrawerAbstraction& window, const LevelBase& level, float dt) const
 {
     (void) level;
 

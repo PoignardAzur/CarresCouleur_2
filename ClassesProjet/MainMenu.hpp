@@ -23,7 +23,7 @@ class MainMenu : public Menu::MenuAbstraction, public MenuInterfaceAbstraction
     protected :
 
     //void addButton(AbstractButton* b);
-    virtual void drawThisIn(DrawerAbstraction& window, float dt);
+    virtual void drawThisIn(DrawerAbstraction& window, float dt) const;
     virtual void updateThis(float dt);
     void load(up_t<LevelBase> level, const sf::Font* f);
 

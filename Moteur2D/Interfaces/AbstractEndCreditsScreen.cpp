@@ -28,7 +28,7 @@ sf::FloatRect AbstractEndCreditsScreen::getTargetBounds()
     return m_targetBounds;
 }
 
-void AbstractEndCreditsScreen::drawIn(DrawerAbstraction& window, float dt)
+void AbstractEndCreditsScreen::drawIn(DrawerAbstraction& window, float dt) const
 {
     for (const auto& risingItem : m_risingItemFile)
     {

@@ -19,7 +19,7 @@ void Level_3::updateThis(float dt)
     generateCarreStream(dt);
 }
 
-void Level_3::drawThisIn(DrawerAbstraction& window, float dt)
+void Level_3::drawThisIn(DrawerAbstraction& window, float dt) const
 {
     m_carreGris.drawIn(getInputs()->cursor(),window, sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT), dt);
     LevelBase::drawThisIn(window, dt);

@@ -54,7 +54,7 @@ bool PauseMenu::isLayered() const
 }
 
 
-void PauseMenu::drawThisIn(DrawerAbstraction& window, float dt)
+void PauseMenu::drawThisIn(DrawerAbstraction& window, float dt) const
 {
     sf::RectangleShape rect(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
     rect.setFillColor(sf::Color(0, 0, 0, 128));

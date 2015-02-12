@@ -24,7 +24,7 @@ TitleScreen::TitleScreen(AbstractGameInterface* nextInterface, InputsAbstraction
     m_subtitle.setColor(sf::Color(200, 200, 0));
 }
 
-void TitleScreen::drawIn(DrawerAbstraction& window, float dt)
+void TitleScreen::drawIn(DrawerAbstraction& window, float dt) const
 {
     m_title.drawInBox(window, sf::FloatRect(0, 0, WINDOW_WIDTH, 2 * WINDOW_HEIGHT / 3));
     m_subtitle.drawInBox(window, sf::FloatRect(0, 0, WINDOW_WIDTH, 2 * WINDOW_HEIGHT / 3 + 100));

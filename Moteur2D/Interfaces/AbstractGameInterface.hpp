@@ -15,7 +15,7 @@ class AbstractGameInterface
     AbstractGameInterface();
     virtual ~AbstractGameInterface();
 
-    virtual void drawIn(DrawerAbstraction& window, float dt) = 0;
+    virtual void drawIn(DrawerAbstraction& window, float dt) const = 0;
     virtual void setUserInputs(InputsAbstraction*);
 
     virtual void update(float dt) = 0;                  // the number of ticks since the last update

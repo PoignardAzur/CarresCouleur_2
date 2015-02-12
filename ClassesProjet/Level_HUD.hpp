@@ -19,7 +19,7 @@ class Level_HUD : public AbstractHUD<LevelBase>
     void setFont(const sf::Font* font);
     void update(float dt);
 
-    void drawIn(DrawerAbstraction& window, const LevelBase& level, float dt);
+    void drawIn(DrawerAbstraction& window, const LevelBase& level, float dt) const;
     void increaseScore(int points, bool draw = true);
 
 

@@ -29,9 +29,9 @@ void updateAll(VartList<V>& list, float dt, bool delDeadVarts = true, bool updat
 
 
 template <typename V>
-void drawAllIn(VartList<V>& list, DrawerAbstraction& target, sf::FloatRect limits, float dt)
+void drawAllIn(const VartList<V>& list, DrawerAbstraction& target, sf::FloatRect limits, float dt)
 {
-    for (auto& placedVart : list)
+    for (const auto& placedVart : list)
     {
         placedVart.get().drawIn(placedVart.getPos(), target, limits, dt);
     }

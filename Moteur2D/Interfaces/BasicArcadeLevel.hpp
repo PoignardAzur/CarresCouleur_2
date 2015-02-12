@@ -19,7 +19,7 @@ class BasicArcadeLevel : public AbstractLevel
     virtual void respawnPlayer() = 0;
     virtual void playerKilled(bool isGameOver) = 0;
 
-    virtual void drawThisIn(DrawerAbstraction& window, float dt) = 0;
+    virtual void drawThisIn(DrawerAbstraction& window, float dt) const = 0;
     virtual void updateThis(float dt) = 0;
 
 

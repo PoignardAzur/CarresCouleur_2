@@ -12,7 +12,7 @@ class TitleScreen : public PressAnyKeyMenu
     public :
 
     TitleScreen(AbstractGameInterface* nextInterface, InputsAbstraction* in, const sf::Font* font);
-    void drawIn(DrawerAbstraction& window, float dt);
+    void drawIn(DrawerAbstraction& window, float dt) const;
 
 
     private :

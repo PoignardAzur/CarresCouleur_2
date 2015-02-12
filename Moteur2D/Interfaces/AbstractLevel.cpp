@@ -34,7 +34,7 @@ std_rng& AbstractLevel::rng()
 }
 
 
-void AbstractLevel::drawIn(DrawerAbstraction& window, float dt)
+void AbstractLevel::drawIn(DrawerAbstraction& window, float dt) const
 {
     if (!m_pauseMenu || m_pauseMenu->isLayered())
     {

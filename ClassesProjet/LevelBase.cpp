@@ -105,12 +105,12 @@ void LevelBase::setNext()
 }
 
 
-void LevelBase::drawThisIn(DrawerAbstraction& window, float dt)
+void LevelBase::drawThisIn(DrawerAbstraction& window, float dt) const
 {
     drawAllIn(m_carres, window, sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT), dt);
 }
 
-void LevelBase::drawHUDIn(DrawerAbstraction& window, float dt)
+void LevelBase::drawHUDIn(DrawerAbstraction& window, float dt) const
 {
     m_hud->drawIn(window, *this, dt);
 }

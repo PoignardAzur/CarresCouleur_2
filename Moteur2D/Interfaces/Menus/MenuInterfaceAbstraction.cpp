@@ -2,7 +2,7 @@
 #include "MenuInterfaceAbstraction.hpp"
 
 
-void MenuInterfaceAbstraction::drawIn(DrawerAbstraction& window, float dt)
+void MenuInterfaceAbstraction::drawIn(DrawerAbstraction& window, float dt) const
 {
     if (m_submenu)
     {

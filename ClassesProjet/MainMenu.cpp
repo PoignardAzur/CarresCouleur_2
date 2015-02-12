@@ -88,7 +88,7 @@ bool MainMenu::isLayered() const
 }
 
 
-void MainMenu::drawThisIn(DrawerAbstraction& window, float dt)
+void MainMenu::drawThisIn(DrawerAbstraction& window, float dt) const
 {
     m_text.drawInBox(window, sf::FloatRect(0, HEIGHT_MENU_TITLE, WINDOW_WIDTH, 1), Menu::MiddleTopSide);
 

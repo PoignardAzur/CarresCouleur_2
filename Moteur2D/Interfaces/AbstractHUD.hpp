@@ -14,7 +14,7 @@ class AbstractHUD
     virtual void setLevel(LevelType* level);
     virtual ~AbstractHUD() = default;
 
-    virtual void drawIn(DrawerAbstraction& window, const LevelType& level, float dt) = 0;
+    virtual void drawIn(DrawerAbstraction& window, const LevelType& level, float dt) const = 0;
     virtual void update(float dt);
 
 
