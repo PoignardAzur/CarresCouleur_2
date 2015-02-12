@@ -22,9 +22,29 @@ int main(int /*argc*/, char** /*argv*/)
         sf::Clock chronos;
         chronos.restart();
 
+        const float min_dt = 1.0f/60.0f;    // those are the bounds of the dt value passed in all functions "update(float dt)"
+        const float max_dt = 0.1f;
+        float accumulatedTime = 0.0;        // represents the advance the renderer has over the engine
+
         while (!bigBrother.isDone())
         {
-            bigBrother.update(chronos.restart().asSeconds());
+            accumulatedTime += chronos.restart().asSeconds();
+
+            if (accumulatedTime > 1)  // this lines prevents the engine from falling in a spiral of death (not catching up to the renderer)
+            accumulatedTime = 1;
+
+            // The way is work is : the (real) world produces time that the engine consumes in dt-sized chunks
+            while (accumulatedTime >= min_dt && !bigBrother.isDone())
+            {
+                float dt = max_dt < accumulatedTime ? max_dt : accumulatedTime;
+
+                bigBrother.update(dt);
+                accumulatedTime -= dt;
+            }
+
+            if (!bigBrother.isDone())
+            bigBrother.display(accumulatedTime);
+
             fenetre->display();
         }
 

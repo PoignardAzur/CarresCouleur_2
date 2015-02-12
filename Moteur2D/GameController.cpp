@@ -15,16 +15,18 @@ GameController::GameController(up_t<InputsAbstraction> userInputs, sf::RenderWin
 
 void GameController::update(float dt)
 {
-    if (m_window)
-    m_window->clear();
-
-    interface().update(dt);
-
-    if (m_window && !interface().isDone())
-    interface().drawIn(*m_window, dt);
-
     if (m_userInputs)
     m_userInputs->update();
+
+    interface().update(dt);
+}
+
+void GameController::display(float dt)
+{
+    m_window->clear();
+
+    if (!interface().isDone())
+    interface().drawIn(*m_window, dt);
 }
 
 

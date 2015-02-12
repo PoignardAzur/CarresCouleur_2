@@ -18,6 +18,7 @@ class GameController
     virtual ~GameController() {}
 
     virtual void update(float dt);                               // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
+    virtual void display(float dt);
     virtual bool isDone() const = 0;                             // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
 
 
