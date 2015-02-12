@@ -63,6 +63,11 @@ void AbstractEndCreditsScreen::update(float dt)
     }
 }
 
+bool AbstractEndCreditsScreen::isDone() const
+{
+    return (m_itemFile.empty() && m_risingItemFile.empty()) || AbstractGameInterface::isDone();
+}
+
 void AbstractEndCreditsScreen::pushItem(float height)
 {
     if (m_itemFile.empty())

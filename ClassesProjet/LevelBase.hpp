@@ -14,6 +14,7 @@
 #include "../Moteur2D/Interfaces/AbstractLevel.hpp"
 #include "../Moteur2D/Game/VartList.hpp"
 #include "CarreCouleur.hpp"
+#include "PauseMenu.hpp"
 
 
 class Level_HUD;
@@ -24,6 +25,7 @@ class LevelBase : public AbstractLevel
 
     void setFont(const sf::Font* font);
     void setHUD(up_t<Level_HUD> hud);
+    void setInputs(InputsAbstraction* inputs);
 
     void setNext();
     virtual up_t<LevelBase> getNextLevel() = 0;
@@ -57,9 +59,7 @@ class LevelBase : public AbstractLevel
     VartList<CarreCouleur> m_carres;
     float m_timeBeforeRespawn = 0;
 
-    bool m_leftClick = false;
-    bool m_rightClick = false;
-    bool m_enterPressed = true;
+    PauseMenu* m_pauseMenu;
 
     int m_score = 0;
     const sf::Font* m_font;

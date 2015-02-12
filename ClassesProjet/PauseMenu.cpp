@@ -15,7 +15,7 @@ PauseMenu::PauseMenu() : Menu::MenuAbstraction(false, false)
 
 void PauseMenu::set(const sf::Font* f, InputsAbstraction* in)
 {
-    setUserInputs(in);
+    setInputs(in);
 
     m_text.setFont(f, DEFAULT_FONT_SIZE * 2, sf::Color::White);
 
@@ -47,15 +47,27 @@ void PauseMenu::set(const sf::Font* f, InputsAbstraction* in)
     addButton(&m_noButton);
 }
 
+void PauseMenu::setInputs(InputsAbstraction* in)
+{
+    AbstractGameInterface::setInputs(in);
+}
+
 
 bool PauseMenu::isLayered() const
 {
     return true;
 }
 
+void PauseMenu::close()
+{
+    endThisLater();
+}
+
 
 void PauseMenu::drawThisIn(DrawerAbstraction& window, float dt) const
 {
+    (void) dt;
+
     sf::RectangleShape rect(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
     rect.setFillColor(sf::Color(0, 0, 0, 128));
     window.draw(rect);
@@ -67,10 +79,15 @@ void PauseMenu::drawThisIn(DrawerAbstraction& window, float dt) const
 
 void PauseMenu::updateThis(float dt)
 {
-    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Left])
+    (void) dt;
+
+    bool leftPressed = getInputs()->getKeyboardButtons()[sf::Keyboard::Left];
+    bool rightPressed = getInputs()->getKeyboardButtons()[sf::Keyboard::Right];
+
+    if (leftPressed && !rightPressed)
     left();
 
-    else if (getInputs()->getKeyboardButtons()[sf::Keyboard::Right])
+    if (rightPressed && !leftPressed)
     right();
 
     if (getInputs()->getKeyboardButtons()[sf::Keyboard::Space] || getInputs()->getKeyboardButtons()[sf::Keyboard::Return])

@@ -30,6 +30,7 @@ namespace Menu
 
         ButtonAbstraction* selectedButton();
         const ButtonAbstraction* selectedButton() const;
+        void setSelectedButton(size_t selectedButtonSlot);
         void setButtonList(std::vector<ButtonAbstraction*> buttonList, size_t selectedButtonSlot = 0);
         void addButton(ButtonAbstraction* b);
 

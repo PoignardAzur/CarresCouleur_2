@@ -23,17 +23,19 @@ MainMenu::MainMenu() : Menu::MenuAbstraction(true, false)
 
 void MainMenu::set(const sf::Font* f, InputsAbstraction* in)
 {
-    setUserInputs(in);
+    setInputs(in);
 
     m_text.setFont(f, DEFAULT_FONT_SIZE * 2, sf::Color::White);
 
     Menu::FontStyle fs(f, DEFAULT_FONT_SIZE, sf::Color::White);
+    sf::Color yellow(120, 120, 0);
+    sf::Color red = sf::Color::Red;
 
-    m_level_1_button.setSprites(new Menu::TextBox(BUTTON_SIZE, sf::Color(120, 120, 0), "Niveau 1", fs), new Menu::TextBox(BUTTON_SIZE, sf::Color::Red, "Niveau 1", fs));
-    m_level_2_button.setSprites(new Menu::TextBox(BUTTON_SIZE, sf::Color(120, 120, 0), "Niveau 2", fs), new Menu::TextBox(BUTTON_SIZE, sf::Color::Red, "Niveau 2", fs));
-    m_level_3_button.setSprites(new Menu::TextBox(BUTTON_SIZE, sf::Color(120, 120, 0), "Niveau 3", fs), new Menu::TextBox(BUTTON_SIZE, sf::Color::Red, "Niveau 3", fs));
-    m_level_4_button.setSprites(new Menu::TextBox(BUTTON_SIZE, sf::Color(120, 120, 0), "Niveau 4", fs), new Menu::TextBox(BUTTON_SIZE, sf::Color::Red, "Niveau 4", fs));
-    m_quit_button.setSprites(new Menu::TextBox(BUTTON_SIZE, sf::Color(120, 120, 0), "Quitter", fs), new Menu::TextBox(BUTTON_SIZE, sf::Color::Red, "Quitter", fs));
+    m_level_1_button.setSprites(new Menu::TextBox(BUTTON_SIZE, yellow, "Niveau 1", fs), new Menu::TextBox(BUTTON_SIZE, red, "Niveau 1", fs));
+    m_level_2_button.setSprites(new Menu::TextBox(BUTTON_SIZE, yellow, "Niveau 2", fs), new Menu::TextBox(BUTTON_SIZE, red, "Niveau 2", fs));
+    m_level_3_button.setSprites(new Menu::TextBox(BUTTON_SIZE, yellow, "Niveau 3", fs), new Menu::TextBox(BUTTON_SIZE, red, "Niveau 3", fs));
+    m_level_4_button.setSprites(new Menu::TextBox(BUTTON_SIZE, yellow, "Niveau 4", fs), new Menu::TextBox(BUTTON_SIZE, red, "Niveau 4", fs));
+    m_quit_button.setSprites(new Menu::TextBox(BUTTON_SIZE, yellow, "Quitter", fs), new Menu::TextBox(BUTTON_SIZE, red, "Quitter", fs));
 
     m_level_1_button.setFunction
     (
@@ -82,6 +84,57 @@ void MainMenu::set(const sf::Font* f, InputsAbstraction* in)
     addButton(&m_quit_button);
 }
 
+void MainMenu::setInputs(InputsAbstraction* inputs)
+{
+    AbstractGameInterface::setInputs(inputs);
+
+    std::map<sf::Mouse::Button, InputsAbstraction::mouseEvent> mouseEvents;
+    std::map<sf::Keyboard::Key, InputsAbstraction::keyboardEvent> keyboardEvents;
+
+    keyboardEvents[sf::Keyboard::Up] = [this](bool pressed)
+    {
+        if (pressed)
+        {
+            up(false);
+        }
+    };
+
+    keyboardEvents[sf::Keyboard::Down] = [this](bool pressed)
+    {
+        if (pressed)
+        {
+            down(false);
+        }
+    };
+
+    keyboardEvents[sf::Keyboard::Space] = [this](bool pressed)
+    {
+        if (pressed)
+        {
+            press();
+        }
+    };
+
+    keyboardEvents[sf::Keyboard::Return] = [this](bool pressed)
+    {
+        if (pressed)
+        {
+            press();
+        }
+    };
+
+    keyboardEvents[sf::Keyboard::Escape] = [this](bool pressed)
+    {
+        if (pressed)
+        {
+            setSelectedButton(4);
+        }
+    };
+
+    setInputsEvents(std::move(mouseEvents), std::move(keyboardEvents));
+}
+
+
 bool MainMenu::isLayered() const
 {
     return false;
@@ -90,6 +143,8 @@ bool MainMenu::isLayered() const
 
 void MainMenu::drawThisIn(DrawerAbstraction& window, float dt) const
 {
+    (void) dt;
+
     m_text.drawInBox(window, sf::FloatRect(0, HEIGHT_MENU_TITLE, WINDOW_WIDTH, 1), Menu::MiddleTopSide);
 
     m_level_1_button.drawInBox(window, sf::FloatRect(0, HEIGHT_FIRST_BUTTON, WINDOW_WIDTH, 1), Menu::MiddleTopSide);
@@ -103,50 +158,7 @@ void MainMenu::drawThisIn(DrawerAbstraction& window, float dt) const
 
 void MainMenu::updateThis(float dt)
 {
-    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Up])
-    {
-        if (!m_upPressed)
-        up();
-
-        m_upPressed = true;
-    }
-
-    else
-    m_upPressed = false;
-
-
-    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Down])
-    {
-        if (!m_downPressed)
-        down();
-
-        m_downPressed = true;
-    }
-
-    else
-    m_downPressed = false;
-
-    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Space])
-    {
-        if (!m_spacePressed)
-        press();
-
-        m_spacePressed = true;
-    }
-
-    else
-    m_spacePressed = false;
-
-    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Return])
-    {
-        if (!m_enterPressed)
-        press();
-
-        m_enterPressed = true;
-    }
-
-    else
-    m_enterPressed = false;
+    (void) dt;
 }
 
 
@@ -155,7 +167,7 @@ void MainMenu::load(up_t<LevelBase> level, const sf::Font* f)
     Level_HUD* hud = new Level_HUD;
     hud->setFont(f);
 
-    level->setUserInputs(getInputs());
+    level->setInputs(getInputs());
     level->setFont(f);
     level->setHUD(up_t<Level_HUD>(hud));
 

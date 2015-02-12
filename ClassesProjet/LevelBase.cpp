@@ -3,7 +3,6 @@
 #include "LevelBase.hpp"
 #include "Level_HUD.hpp"
 #include "GameEndCredits.hpp"
-#include "PauseMenu.hpp"
 
 
 void LevelBase::setFont(const sf::Font* font)
@@ -14,6 +13,92 @@ void LevelBase::setFont(const sf::Font* font)
 void LevelBase::setHUD(up_t<Level_HUD> hud)
 {
     m_hud = mv(hud);
+}
+
+void LevelBase::setInputs(InputsAbstraction* inputs)
+{
+    AbstractLevel::AbstractGameInterface::setInputs(inputs);
+
+    std::map<sf::Mouse::Button, InputsAbstraction::mouseEvent> mouseEvents;
+    std::map<sf::Keyboard::Key, InputsAbstraction::keyboardEvent> keyboardEvents;
+
+    mouseEvents[sf::Mouse::Left] = [this](bool pressed, sf::Vector2f cursor)
+    {
+        if (pressed && !getPauseMenu())
+        {
+            leftClick(cursor);
+        }
+    };
+
+    mouseEvents[sf::Mouse::Right] = [this](bool pressed, sf::Vector2f cursor)
+    {
+        if (pressed && !getPauseMenu())
+        {
+            rightClick(cursor);
+        }
+    };
+
+    keyboardEvents[sf::Keyboard::Left] = [this](bool pressed)
+    {
+        if (pressed && getPauseMenu())
+        {
+            m_pauseMenu->left(false);
+        }
+    };
+
+    keyboardEvents[sf::Keyboard::Right] = [this](bool pressed)
+    {
+        if (pressed && getPauseMenu())
+        {
+            m_pauseMenu->right(false);
+        }
+    };
+
+    keyboardEvents[sf::Keyboard::Escape] = [this](bool pressed)
+    {
+        if (pressed)
+        {
+            if (getPauseMenu())
+            m_pauseMenu->close();
+
+            else
+            {
+                m_pauseMenu = new PauseMenu();
+                m_pauseMenu->set(m_font, getInputs());
+                pauseLevel(std::unique_ptr<MenuInterfaceAbstraction>(m_pauseMenu));
+            }
+        }
+    };
+
+    keyboardEvents[sf::Keyboard::Space] = [this](bool pressed)
+    {
+        if (pressed)
+        {
+            if (getPauseMenu())
+            {
+                m_pauseMenu->select();
+            }
+
+            else
+            m_carres.clear();
+        }
+    };
+
+    keyboardEvents[sf::Keyboard::Return] = [this](bool pressed)
+    {
+        if (pressed)
+        {
+            if (getPauseMenu())
+            {
+                m_pauseMenu->select();
+            }
+
+            else
+            setNext();
+        }
+    };
+
+    setInputsEvents(std::move(mouseEvents), std::move(keyboardEvents));
 }
 
 void LevelBase::generateCarre()
@@ -78,7 +163,7 @@ void LevelBase::setNext()
     if (!p)
     {
         GameEndCredits* credits = new GameEndCredits();
-        credits->setUserInputs(getInputs());
+        credits->setInputs(getInputs());
         credits->setTargetBounds(sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
         credits->setFonts(m_font);
         credits->setAllCredits();
@@ -97,7 +182,7 @@ void LevelBase::setNext()
 
         p->setFont(m_font);
         p->increaseScore(score());
-        p->setUserInputs(getInputs());
+        p->setInputs(getInputs());
 
         endThisLater();
         setNextInterface(mv(p));
@@ -126,59 +211,8 @@ void LevelBase::updateThis(float dt)
         placedCarre.get().recycle(placedCarre.getPos(), sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
     }
 
-
-    getInputs()->update(dt);
-
-
     if (getInputs()->closeWindow())
     endThisLater();
-
-
-    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Escape])
-    {
-        PauseMenu* menu = new PauseMenu();
-        menu->set(m_font, getInputs());
-        pauseLevel(std::unique_ptr<MenuInterfaceAbstraction>(menu));
-    }
-
-    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Space])
-    m_carres.clear();
-
-
-    if (getInputs()->getKeyboardButtons()[sf::Keyboard::Return])
-    {
-        if (!m_enterPressed)
-        setNext();
-
-        m_enterPressed = true;
-    }
-
-    else
-    m_enterPressed = false;
-
-
-    if (getInputs()->getMouseButtons()[sf::Mouse::Left])
-    {
-        if (!m_leftClick)
-        leftClick(getInputs()->cursor());
-
-        m_leftClick = true;
-    }
-
-    else
-    m_leftClick = false;
-
-
-    if (getInputs()->getMouseButtons()[sf::Mouse::Right])
-    {
-        if (!m_rightClick)
-        rightClick(getInputs()->cursor());
-
-        m_rightClick = true;
-    }
-
-    else
-    m_rightClick = false;
 }
 
 

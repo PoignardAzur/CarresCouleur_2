@@ -16,7 +16,7 @@ GameController::GameController(up_t<InputsAbstraction> userInputs, sf::RenderWin
 void GameController::update(float dt)
 {
     if (m_userInputs)
-    m_userInputs->update();
+    m_userInputs->update(dt);
 
     interface().update(dt);
 }

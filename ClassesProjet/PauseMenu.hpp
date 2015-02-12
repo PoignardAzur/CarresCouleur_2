@@ -17,7 +17,10 @@ class PauseMenu : public Menu::MenuAbstraction, public MenuInterfaceAbstraction
     PauseMenu();
     ~PauseMenu() noexcept {}
     void set(const sf::Font* f, InputsAbstraction* in);
+    void setInputs(InputsAbstraction*);
     virtual bool isLayered() const;
+
+    void close();
 
 
     protected :

@@ -9,13 +9,6 @@ up_t<LevelBase> Level_2::getNextLevel()
     return up(new Level_3());
 }
 
-void Level_2::updateThis(float dt)
-{
-    LevelBase::updateThis(dt);
-    generateCarreStream(dt);
-}
-
-
 void pushAround(Placed<CarreCouleur>& carre, sf::Vector2f pos, float force)
 {
     pos -= carre.getPos();
@@ -23,19 +16,35 @@ void pushAround(Placed<CarreCouleur>& carre, sf::Vector2f pos, float force)
     carre.get().setSpeed(500000.0f * pos * force / (squared_distance * squared_distance * squared_distance), true);
 }
 
+void Level_2::updateThis(float dt)
+{
+    LevelBase::updateThis(dt);
+    generateCarreStream(dt);
+
+    if (getInputs()->getMouseButtons()[sf::Mouse::Left])
+    {
+        for (auto& placedCarre : getCarres())
+        {
+            pushAround(placedCarre, getInputs()->cursor(), -0.3);
+        }
+    }
+
+    if (getInputs()->getMouseButtons()[sf::Mouse::Right])
+    {
+        for (auto& placedCarre : getCarres())
+        {
+            pushAround(placedCarre, getInputs()->cursor(), 0.2);
+        }
+    }
+}
+
 void Level_2::leftClick(sf::Vector2f pos)
 {
-    for (auto& placedCarre : getCarres())
-    {
-        pushAround(placedCarre, pos, -3);
-    }
+    (void) pos;
 }
 
 void Level_2::rightClick(sf::Vector2f pos)
 {
-    for (auto& placedCarre : getCarres())
-    {
-        pushAround(placedCarre, pos, 2);
-    }
+    (void) pos;
 }
 

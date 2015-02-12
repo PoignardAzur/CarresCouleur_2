@@ -12,7 +12,7 @@ TitleScreen::TitleScreen(AbstractGameInterface* nextInterface, InputsAbstraction
 {
     m_font = font;
 
-    setUserInputs(in);
+    setInputs(in);
     setNext(up(nextInterface));
 
     m_title.setString(TITLE_TEXT);
@@ -24,8 +24,11 @@ TitleScreen::TitleScreen(AbstractGameInterface* nextInterface, InputsAbstraction
     m_subtitle.setColor(sf::Color(200, 200, 0));
 }
 
+
 void TitleScreen::drawIn(DrawerAbstraction& window, float dt) const
 {
+    (void) dt;
+
     m_title.drawInBox(window, sf::FloatRect(0, 0, WINDOW_WIDTH, 2 * WINDOW_HEIGHT / 3));
     m_subtitle.drawInBox(window, sf::FloatRect(0, 0, WINDOW_WIDTH, 2 * WINDOW_HEIGHT / 3 + 100));
 }

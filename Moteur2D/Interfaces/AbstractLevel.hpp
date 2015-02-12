@@ -42,6 +42,9 @@ class AbstractLevel : public AbstractGameInterface
     virtual void updateThis(float dt) = 0;
 
     virtual void pauseLevel(std::unique_ptr<MenuInterfaceAbstraction> pauseMenu);
+    virtual const MenuInterfaceAbstraction* getPauseMenu() const;
+    virtual MenuInterfaceAbstraction* getPauseMenu();
+
     virtual void setNextInterface(std::unique_ptr<AbstractGameInterface> nextInt);
     virtual up_t<AbstractGameInterface> next();
 

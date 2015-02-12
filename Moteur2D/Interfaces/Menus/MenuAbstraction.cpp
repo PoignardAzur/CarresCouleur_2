@@ -71,12 +71,16 @@ const Menu::ButtonAbstraction* Menu::MenuAbstraction::selectedButton() const
     return m_buttonList[m_selectedButton];
 }
 
+void Menu::MenuAbstraction::setSelectedButton(size_t selectedButtonSlot)
+{
+    m_selectedButton = (m_buttonList.size() < selectedButtonSlot) ? m_buttonList.size() : selectedButtonSlot;
+    updateSelected();
+}
+
 void Menu::MenuAbstraction::setButtonList(std::vector<ButtonAbstraction*> buttonList, size_t selectedButtonSlot)
 {
     m_buttonList = std::move(buttonList);
-    m_selectedButton = (m_buttonList.size() < selectedButtonSlot) ? m_buttonList.size() : selectedButtonSlot;
-
-    updateSelected();
+    setSelectedButton(selectedButtonSlot);
 }
 
 void Menu::MenuAbstraction::addButton(ButtonAbstraction* b)

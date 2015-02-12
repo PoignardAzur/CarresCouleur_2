@@ -72,6 +72,16 @@ void AbstractLevel::pauseLevel(std::unique_ptr<MenuInterfaceAbstraction> pauseMe
     m_pauseMenu = std::move(pauseMenu);
 }
 
+const MenuInterfaceAbstraction* AbstractLevel::getPauseMenu() const
+{
+    return m_pauseMenu.get();
+}
+
+MenuInterfaceAbstraction* AbstractLevel::getPauseMenu()
+{
+    return m_pauseMenu.get();
+}
+
 void AbstractLevel::setNextInterface(std::unique_ptr<AbstractGameInterface> nextInt)
 {
     m_nextInt = mv(nextInt);

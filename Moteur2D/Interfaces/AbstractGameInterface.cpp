@@ -27,9 +27,15 @@ void AbstractGameInterface::endThisLater()
 }
 
 
-void AbstractGameInterface::setUserInputs(InputsAbstraction* newInputs)
+void AbstractGameInterface::setInputs(InputsAbstraction* newInputs)
 {
     m_inputs = newInputs;
+}
+
+void AbstractGameInterface::setInputsEvents(mouseEventsMap mouseEvents, keyboardEventsMap keyboardEvents)
+{
+    m_inputs->setMouseButtonEvents(std::move(mouseEvents));
+    m_inputs->setKeyboardButtonEvents(std::move(keyboardEvents));
 }
 
 InputsAbstraction* AbstractGameInterface::getInputs()

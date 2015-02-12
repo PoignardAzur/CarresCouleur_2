@@ -31,9 +31,10 @@ class AbstractEndCreditsScreen : public AbstractGameInterface
     virtual void add_subtitle(const std::string& title) = 0;
     virtual void add_credit(const std::string& name, const std::string& role, float gap) = 0;
 
-    void drawIn(DrawerAbstraction& window, float dt) const;
-    void update(float dt);
+    virtual void drawIn(DrawerAbstraction& window, float dt) const;
+    virtual void update(float dt);
 
+    virtual bool isDone() const;
     virtual up_t<AbstractGameInterface> next() = 0;
 
 

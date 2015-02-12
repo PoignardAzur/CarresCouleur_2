@@ -12,10 +12,10 @@ class StartEnd
 
     StartEnd(bool nValue = false);
 
-    inline bool value();
-    inline bool started();
-    inline bool ended();
-    inline bool changed();
+    bool value();
+    bool started();
+    bool ended();
+    bool changed();
 
     bool update(bool nValue);
     bool operator()(bool nValue);

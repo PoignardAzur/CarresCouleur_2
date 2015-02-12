@@ -16,7 +16,11 @@ class AbstractGameInterface
     virtual ~AbstractGameInterface();
 
     virtual void drawIn(DrawerAbstraction& window, float dt) const = 0;
-    virtual void setUserInputs(InputsAbstraction*);
+
+    using mouseEventsMap = std::map<sf::Mouse::Button, InputsAbstraction::mouseEvent>;
+    using keyboardEventsMap = std::map<sf::Keyboard::Key, InputsAbstraction::keyboardEvent>;
+    virtual void setInputs(InputsAbstraction*) = 0;
+    virtual void setInputsEvents(mouseEventsMap mouseEvents, keyboardEventsMap keyboardEvents);
 
     virtual void update(float dt) = 0;                  // the number of ticks since the last update
     virtual bool isDone() const;                        // if this returns true, the interface must be deleted and replaced by

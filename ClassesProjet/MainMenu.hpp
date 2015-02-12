@@ -17,6 +17,7 @@ class MainMenu : public Menu::MenuAbstraction, public MenuInterfaceAbstraction
     MainMenu();
     ~MainMenu() noexcept {};
     void set(const sf::Font* f, InputsAbstraction* in);
+    void setInputs(InputsAbstraction* inputs);
     virtual bool isLayered() const;
 
 
@@ -37,12 +38,6 @@ class MainMenu : public Menu::MenuAbstraction, public MenuInterfaceAbstraction
     Menu::SimpleButton m_level_3_button;
     Menu::SimpleButton m_level_4_button;
     Menu::SimpleButton m_quit_button;
-
-    bool m_enterPressed = true;
-    bool m_spacePressed = true;
-
-    bool m_upPressed = true;
-    bool m_downPressed = true;
 };
 
 
