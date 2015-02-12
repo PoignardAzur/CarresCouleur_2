@@ -10,8 +10,8 @@ class MenuInterfaceAbstraction : public AbstractGameInterface
 {
     public :
 
-    void drawIn(DrawerAbstraction& window, float dt);
-    void update(float dt);
+    void drawIn(DrawerAbstraction& window, float dt) final;
+    void update(float dt) final;
     up_t<AbstractGameInterface> next();
 
     virtual bool isLayered() const = 0;

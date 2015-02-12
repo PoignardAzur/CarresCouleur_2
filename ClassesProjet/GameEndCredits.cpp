@@ -20,13 +20,13 @@ void GameEndCredits::setAllCredits()
     add_title("CARRES COULEUR 2");
     add_subtitle("Le retour de la vengeance");
 
-    add_credit("Game Design", "Olivier FAURE");
-    add_credit("Sound Design", "-");
-    add_credit("Graphismes", "Olivier FAURE");
-    add_credit("Scenario", "-");
-    add_credit("Level Design", "-");
-    add_credit("Marketing", "-");
-    add_credit("Distribution", "-");
+    add_credit("Game Design", "Olivier FAURE", 10);
+    add_credit("Sound Design", "-", 10);
+    add_credit("Graphismes", "Olivier FAURE", 10);
+    add_credit("Scenario", "-", 10);
+    add_credit("Level Design", "-", 10);
+    add_credit("Marketing", "-", 10);
+    add_credit("Distribution", "-", 10);
 }
 
 up_t<AbstractGameInterface> GameEndCredits::next()

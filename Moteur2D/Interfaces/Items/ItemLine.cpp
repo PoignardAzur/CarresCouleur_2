@@ -38,6 +38,16 @@ void Menu::ItemRow::setItem(size_t n, std::shared_ptr<ItemAbstraction> item)
     m_grid.setItem(n, 0, item);
 }
 
+void Menu::ItemRow::addItem(ItemAbstraction* item)
+{
+    setItemsCount(getItemsCount() + 1, item);
+}
+
+void Menu::ItemRow::addItem(std::shared_ptr<ItemAbstraction> item)
+{
+    setItemsCount(getItemsCount() + 1, item);
+}
+
 void Menu::ItemRow::setInternPosition(Alignement align, float gaps)
 {
     m_grid.setInternPosition(align, sf::Vector2f(gaps, 0));
@@ -103,6 +113,16 @@ void Menu::ItemColumn::setItem(size_t n, ItemAbstraction* item)
 void Menu::ItemColumn::setItem(size_t n, std::shared_ptr<ItemAbstraction> item)
 {
     m_grid.setItem(0, n, item);
+}
+
+void Menu::ItemColumn::addItem(ItemAbstraction* item)
+{
+    setItemsCount(getItemsCount() + 1, item);
+}
+
+void Menu::ItemColumn::addItem(std::shared_ptr<ItemAbstraction> item)
+{
+    setItemsCount(getItemsCount() + 1, item);
 }
 
 void Menu::ItemColumn::setInternPosition(Alignement align, float gaps)

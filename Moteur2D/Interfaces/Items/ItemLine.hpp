@@ -21,6 +21,8 @@ namespace Menu
         void setItems(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
         void setItem(size_t n, ItemAbstraction* item);
         void setItem(size_t n, std::shared_ptr<ItemAbstraction> item);
+        void addItem(ItemAbstraction* item);
+        void addItem(std::shared_ptr<ItemAbstraction> item);
 
         void setInternPosition(Alignement align, float gaps);
         void expandToFill(float nSize, bool allowNegativeSizes = true);
@@ -54,6 +56,8 @@ namespace Menu
         void setItems(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
         void setItem(size_t n, ItemAbstraction* item);
         void setItem(size_t n, std::shared_ptr<ItemAbstraction> item);
+        void addItem(ItemAbstraction* item);
+        void addItem(std::shared_ptr<ItemAbstraction> item);
 
         void setInternPosition(Alignement align, float gaps);
         void expandToFill(float nSize, bool allowNegativeSizes = true);

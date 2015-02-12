@@ -16,10 +16,10 @@ namespace Menu
         virtual void deselect() = 0;
         virtual void press() = 0;
 
-        virtual void left(bool big = false)     { (void) big; }     // those four commands are useful for sub_menus and slides
-        virtual void right(bool big = false)    { (void) big; }     // by default, they do nothing
+        virtual void left(bool big = false)     { (void) big; }     // those four commands are useful
+        virtual void right(bool big = false)    { (void) big; }     // for sub_menus and slides
         virtual void up(bool big = false)       { (void) big; }
-        virtual void down(bool big = false)     { (void) big; }
+        virtual void down(bool big = false)     { (void) big; }     // by default, they do nothing
 
         virtual ~ButtonAbstraction() = default;
     };

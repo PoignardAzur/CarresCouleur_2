@@ -29,7 +29,7 @@ class AbstractEndCreditsScreen : public AbstractGameInterface
 
     virtual void add_title(const std::string& title) = 0;
     virtual void add_subtitle(const std::string& title) = 0;
-    virtual void add_credit(const std::string& name, const std::string& role) = 0;
+    virtual void add_credit(const std::string& name, const std::string& role, float gap) = 0;
 
     void drawIn(DrawerAbstraction& window, float dt);
     void update(float dt);
@@ -49,6 +49,8 @@ class AbstractEndCreditsScreen : public AbstractGameInterface
 
     std::list<std::unique_ptr<Menu::ItemAbstraction>> m_itemFile;
     std::list<RisingItem> m_risingItemFile;
+    void pushItem(float height);
+    float lastItemHeight();
 
     float m_margin = 0;
     float m_gap = 0;

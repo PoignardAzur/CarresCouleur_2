@@ -76,12 +76,7 @@ void Menu::ItemGrid::setGridSize(size_t x, size_t y, std::shared_ptr<ItemAbstrac
     if (item)
     item->setParent(this);
 
-    if (x > 0)
     m_itemLines.resize(y);
-
-    else
-    m_itemLines.resize(0);
-
 
     for (auto& itemLine : m_itemLines)
     {

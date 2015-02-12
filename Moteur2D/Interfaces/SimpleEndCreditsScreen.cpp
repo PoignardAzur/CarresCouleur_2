@@ -2,7 +2,7 @@
 
 #include "SimpleEndCreditsScreen.hpp"
 #include "Items/ItemBox.hpp"
-#include "Items/ItemStack.hpp"
+#include "Items/ItemLine.hpp"
 #include "Items/Text.hpp"
 #include "Items/Sprite.hpp"
 
@@ -48,20 +48,17 @@ void SimpleEndCreditsScreen::add_subtitle(const std::string& subtitle)
     add_item(std::unique_ptr<Menu::Text>(text));
 }
 
-void SimpleEndCreditsScreen::add_credit(const std::string& name, const std::string& role)
+void SimpleEndCreditsScreen::add_credit(const std::string& name, const std::string& role, float gap)
 {
     Menu::Text* text1 = new Menu::Text(name, m_creditNameFont);
     Menu::Text* text2 = new Menu::Text(role, m_creditRoleFont);
 
-    sf::Vector2f size(text1->getSize().x, text1->getSize().y + text2->getSize().y + 30);
-    Menu::ItemBox* box = new Menu::ItemBox(text1);
-    box->setSize(size);
+    Menu::ItemColumn* both = new Menu::ItemColumn();
+    both->setInternPosition(Menu::Center, gap);
+    both->addItem(text1);
+    both->addItem(text2);
 
-    Menu::ItemStack* both = new Menu::ItemStack();
-    both->addItem(box, Menu::MiddleTopSide);
-    both->addItem(text2, Menu::MiddleBottomSide);
-
-    add_item(std::unique_ptr<Menu::ItemStack>(both));
+    add_item(up(both));
 }
 
 void SimpleEndCreditsScreen::add_sprite(const sf::Sprite& sprite)

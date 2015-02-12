@@ -14,7 +14,6 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="C:/Programmation/SFML/SFML-2.2/include" />
-					<Add directory="J:/Projets/Programmation/Bibliotheque/UsingSmartPointers" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics-d" />
@@ -46,6 +45,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="J:/Projets/Programmation/Bibliotheque/UsingSmartPointers" />
 		</Compiler>
 		<Unit filename="ClassesProjet/BossClass.cpp" />
 		<Unit filename="ClassesProjet/BossClass.hpp" />

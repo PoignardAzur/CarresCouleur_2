@@ -20,7 +20,7 @@ class SimpleEndCreditsScreen : public AbstractEndCreditsScreen
 
     void add_title(const std::string& title);
     void add_subtitle(const std::string& subtitle);
-    void add_credit(const std::string& name, const std::string& role);
+    void add_credit(const std::string& name, const std::string& role, float gap);
     void add_sprite(const sf::Sprite& sprite);
 
     virtual up_t<AbstractGameInterface> next() = 0;
