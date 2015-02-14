@@ -12,8 +12,8 @@ void GameEndCredits::setInputs(InputsAbstraction* inputs)
 {
     AbstractGameInterface::setInputs(inputs);
 
-    std::map<sf::Mouse::Button, InputsAbstraction::mouseEvent> mouseEvents;
-    std::map<sf::Keyboard::Key, InputsAbstraction::keyboardEvent> keyboardEvents;
+    EventsMap::mouseEventsMap mouseEvents;
+    EventsMap::keyboardEventsMap keyboardEvents;
 
     keyboardEvents[sf::Keyboard::Space] = [this](bool pressed)
     {
@@ -83,7 +83,7 @@ void GameEndCredits::update(float dt)
 up_t<AbstractGameInterface> GameEndCredits::next()
 {
     MainMenu* menu = new MainMenu;
-    menu->set(m_font, getInputs());
+    menu->set(getInputs(), m_font);
     return up(menu);
 }
 

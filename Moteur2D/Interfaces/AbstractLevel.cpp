@@ -27,6 +27,41 @@ void AbstractLevel::setSeed(std::seed_seq& seed)
     m_randomGenerator.seed(seed);
 }
 
+void AbstractLevel::setInputs(InputsAbstraction* inputs)
+{
+    AbstractGameInterface::setInputs(inputs);
+
+    EventsMap::mouseEventsMap mouseEvents;
+    EventsMap::keyboardEventsMap keyboardEvents;
+
+    std::list<sf::Mouse::Button> triggerButtons = getTriggerButtons();
+    std::list<sf::Keyboard::Key> triggerKeys = getTriggerKeys();
+
+    for (const auto& button : triggerButtons)
+    {
+        mouseEvents[button] = [this, button](bool pressed, sf::Vector2f cursor)
+        {
+            if (!getPauseMenu())
+            {
+                trigger(button, pressed, cursor);
+            }
+        };
+    }
+
+    for (const auto& key : triggerKeys)
+    {
+        keyboardEvents[key] = [this, key](bool pressed)
+        {
+            if (!getPauseMenu())
+            {
+                trigger(key, pressed);
+            }
+        };
+    }
+
+    setInputsEvents(std::move(mouseEvents), std::move(keyboardEvents));
+}
+
 
 std_rng& AbstractLevel::rng()
 {
@@ -50,12 +85,20 @@ void AbstractLevel::update(float dt)
 {
     if (m_pauseMenu)
     {
+        if (!m_pauseMenuLoaded)
+        {
+            m_pauseMenu->load();
+            m_pauseMenuLoaded = true;
+        }
+
         m_pauseMenu->update(dt);
 
         if (m_pauseMenu->isDone())
         {
             m_nextInt.reset(m_pauseMenu->next().release());
             m_pauseMenu.reset();
+
+            m_pauseMenuLoaded = false;
 
             if (m_nextInt)
             AbstractGameInterface::endThisLater();

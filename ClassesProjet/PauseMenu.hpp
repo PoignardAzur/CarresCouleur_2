@@ -3,31 +3,28 @@
 #ifndef PAUSE_MENU_HEADER
 #define PAUSE_MENU_HEADER
 
-#include "../Moteur2D/Interfaces/Menus/MenuInterfaceAbstraction.hpp"
-#include "../Moteur2D/Interfaces/Menus/MenuAbstraction.hpp"
+#include "../Moteur2D/Interfaces/Menus/MenuInterface.hpp"
 #include "../Moteur2D/Interfaces/Menus/SimpleButton.hpp"
 #include "../Moteur2D/Interfaces/Menus/TextBox.hpp"
 #include "../Moteur2D/Interfaces/Items/Text.hpp"
 
 
-class PauseMenu : public Menu::MenuAbstraction, public MenuInterfaceAbstraction
+class PauseMenu : public Menu::MenuInterface
 {
     public :
 
     PauseMenu();
     ~PauseMenu() noexcept {}
     void set(const sf::Font* f, InputsAbstraction* in);
-    void setInputs(InputsAbstraction*);
     virtual bool isLayered() const;
 
-    void close();
+    void escape();
 
 
     protected :
 
     //void addButton(AbstractButton* b);
     virtual void drawThisIn(DrawerAbstraction& window, float dt) const;
-    virtual void updateThis(float dt);
 
 
     private :

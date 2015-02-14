@@ -9,7 +9,16 @@ AbstractGameInterface::AbstractGameInterface()
 
 AbstractGameInterface::~AbstractGameInterface()
 {
+    if (m_eventsMap)
+    m_eventsMap->remove();
+}
 
+void AbstractGameInterface::load()
+{
+    m_eventsMap = m_unloadedEventsMap.get();
+
+    if (m_eventsMap)
+    m_inputs->addEventsMap(mv(m_unloadedEventsMap));
 }
 
 bool AbstractGameInterface::isDone() const
@@ -32,10 +41,9 @@ void AbstractGameInterface::setInputs(InputsAbstraction* newInputs)
     m_inputs = newInputs;
 }
 
-void AbstractGameInterface::setInputsEvents(mouseEventsMap mouseEvents, keyboardEventsMap keyboardEvents)
+void AbstractGameInterface::setInputsEvents(EventsMap::mouseEventsMap mouseEvents, EventsMap::keyboardEventsMap keyboardEvents)
 {
-    m_inputs->setMouseButtonEvents(std::move(mouseEvents));
-    m_inputs->setKeyboardButtonEvents(std::move(keyboardEvents));
+    m_unloadedEventsMap.reset(new EventsMap( mv(mouseEvents), mv(keyboardEvents) ));
 }
 
 InputsAbstraction* AbstractGameInterface::getInputs()

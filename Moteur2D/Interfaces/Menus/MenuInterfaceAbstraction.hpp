@@ -20,6 +20,9 @@ class MenuInterfaceAbstraction : public AbstractGameInterface
     protected :
 
     void openSubmenu(up_t<MenuInterfaceAbstraction> submenu);
+    virtual const MenuInterfaceAbstraction* getSubmenu() const;
+    virtual MenuInterfaceAbstraction* getSubmenu();
+
     virtual void drawThisIn(DrawerAbstraction& window, float dt) const = 0;
     virtual void updateThis(float dt) = 0;
     virtual void setNextLevel(up_t<AbstractGameInterface> nextLevel);
@@ -28,6 +31,7 @@ class MenuInterfaceAbstraction : public AbstractGameInterface
     private :
 
     up_t<MenuInterfaceAbstraction> m_submenu;
+    bool m_submenuLoaded = false;
     up_t<AbstractGameInterface> m_nextLevel;
 };
 

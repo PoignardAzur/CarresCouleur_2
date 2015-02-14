@@ -17,20 +17,21 @@ class Inputs : public InputsAbstraction
 
     bool closeWindow() const;             // true when the window must be closed
     sf::Vector2f cursor() const;          // cursor position
+    int mouseWheel() const;
+    void resetMouseWheel() const;
 
-    void update(float dt);
+    void update(float dt, bool resetWheel = true);
 
     //using mouseEvent = std::function<void(bool/*pressed*/,sf::Vector2f/*cursorPosition*/)>;
     //using keyboardEvent = std::function<void(bool/*pressed*/)>;
 
-    void setMouseButtonEvents(std::map<sf::Mouse::Button, mouseEvent> events);
-    void setKeyboardButtonEvents(std::map<sf::Keyboard::Key, keyboardEvent> events);
+    void addEvents(std::unique_ptr<EventsMap> events);
 
 
     protected :
 
     std::map<sf::Mouse::Button, bool>& _getMouseButtons();           // map of mouse buttons
-    std::map<sf::Keyboard::Key , bool>& _getKeyboardButtons();       // map of keyboard keys
+    std::map<sf::Keyboard::Key, bool>& _getKeyboardButtons();        // map of keyboard keys
 
 
     private :
@@ -41,10 +42,7 @@ class Inputs : public InputsAbstraction
     std::map<sf::Mouse::Button, bool> t_boutonsSouris;
     std::map<sf::Keyboard::Key , bool> t_boutonsClavier;
     sf::Vector2f m_cursor;
-    int m_molette;
-
-    std::map<sf::Mouse::Button, mouseEvent> m_mouseButtonEvents;
-    std::map<sf::Keyboard::Key, keyboardEvent> m_keyboardButtonEvents;
+    int m_mouseWheel;
 
     bool m_closeWindow = false;
     bool m_escapeMeansClose;

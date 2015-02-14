@@ -29,6 +29,8 @@ class AbstractLevel : public AbstractGameInterface
     void setSeed(unsigned int seed = epoch_to_now().count());
     void setSeed(std::seed_seq& seed);
 
+    virtual void setInputs(InputsAbstraction*);
+
     virtual std_rng& rng();
 
     virtual void drawIn(DrawerAbstraction& window, float dt) const final;
@@ -36,6 +38,12 @@ class AbstractLevel : public AbstractGameInterface
 
 
     protected :
+
+    virtual std::list<sf::Mouse::Button> getTriggerButtons() const = 0;
+    virtual std::list<sf::Keyboard::Key> getTriggerKeys() const = 0;
+
+    virtual void trigger(sf::Mouse::Button button, bool pressed, sf::Vector2f cursor) = 0;
+    virtual void trigger(sf::Keyboard::Key key, bool pressed) = 0;
 
     virtual void drawThisIn(DrawerAbstraction& window, float dt) const = 0;
     virtual void drawHUDIn(DrawerAbstraction& window, float dt) const = 0;
@@ -53,6 +61,7 @@ class AbstractLevel : public AbstractGameInterface
 
     std_rng m_randomGenerator;
     up_t<MenuInterfaceAbstraction> m_pauseMenu;
+    bool m_pauseMenuLoaded = false;
     up_t<AbstractGameInterface> m_nextInt;
 };
 

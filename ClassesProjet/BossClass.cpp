@@ -12,10 +12,7 @@ BossClass::BossClass(up_t<InputsAbstraction> userInputs, sf::RenderWindow* targe
     if (!m_font.loadFromFile(FONT_FILE_NAME))
     throw "Couldn't load font" FONT_FILE_NAME;
 
-    MainMenu* menu = new MainMenu;
-    menu->set(&m_font, &windowInputs());
-
-    m_interface.reset(new TitleScreen(menu, &windowInputs(), &m_font));
+    m_interface.reset(new TitleScreen(new MainMenu, &windowInputs(), &m_font));
 }
 
 AbstractGameInterface& BossClass::interface()
@@ -33,6 +30,9 @@ void BossClass::update(float dt)
 
         if (!m_interface)
         m_isDone = true;
+
+        else
+        m_interface->load();
     }
 }
 

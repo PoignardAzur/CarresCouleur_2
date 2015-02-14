@@ -25,7 +25,6 @@ class LevelBase : public AbstractLevel
 
     void setFont(const sf::Font* font);
     void setHUD(up_t<Level_HUD> hud);
-    void setInputs(InputsAbstraction* inputs);
 
     void setNext();
     virtual up_t<LevelBase> getNextLevel() = 0;
@@ -39,11 +38,17 @@ class LevelBase : public AbstractLevel
 
     protected :
 
+    std::list<sf::Mouse::Button> getTriggerButtons() const;
+    std::list<sf::Keyboard::Key> getTriggerKeys() const;
+
+    void trigger(sf::Mouse::Button button, bool pressed, sf::Vector2f cursor);
+    void trigger(sf::Keyboard::Key key, bool pressed);
+
     virtual void drawThisIn(DrawerAbstraction& window, float dt) const;
     virtual void drawHUDIn(DrawerAbstraction& window, float dt) const;
     virtual void updateThis(float dt);
 
-    void increaseScore(int points);
+    void increaseScore(int points, bool draw = true);
     int score() const;
 
     const VartList<CarreCouleur>& getCarres() const;

@@ -11,7 +11,6 @@ class PressAnyKeyMenu : public AbstractGameInterface
 {
     public :
 
-    void setInputs(InputsAbstraction* inputs);
     virtual void drawIn(DrawerAbstraction& window, float dt) const = 0;
     virtual void update(float dt);
 

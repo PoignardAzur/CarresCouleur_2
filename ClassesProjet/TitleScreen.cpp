@@ -8,12 +8,14 @@
 #define FONT_FILE_NAME "Resources/arial.ttf"
 
 
-TitleScreen::TitleScreen(AbstractGameInterface* nextInterface, InputsAbstraction* in, const sf::Font* font)
+TitleScreen::TitleScreen(MainMenu* nextInterface, InputsAbstraction* in, const sf::Font* font)
 {
     m_font = font;
 
     setInputs(in);
-    setNext(up(nextInterface));
+
+    nextInterface->set(in, font);
+    setNext(up_t<AbstractGameInterface>(nextInterface));
 
     m_title.setString(TITLE_TEXT);
     m_title.setFont(m_font, DEFAULT_FONT_SIZE * 2);

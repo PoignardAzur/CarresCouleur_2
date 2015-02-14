@@ -71,6 +71,8 @@
 		<Unit filename="ClassesProjet/PauseMenu.hpp" />
 		<Unit filename="ClassesProjet/TitleScreen.cpp" />
 		<Unit filename="ClassesProjet/TitleScreen.hpp" />
+		<Unit filename="Moteur2D/Entries/EventsMap.cpp" />
+		<Unit filename="Moteur2D/Entries/EventsMap.hpp" />
 		<Unit filename="Moteur2D/Entries/InputsAbstraction.cpp" />
 		<Unit filename="Moteur2D/Entries/InputsAbstraction.hpp" />
 		<Unit filename="Moteur2D/Entries/InputsArray.cpp" />
@@ -128,6 +130,8 @@
 		<Unit filename="Moteur2D/Interfaces/Menus/ButtonAbstraction.hpp" />
 		<Unit filename="Moteur2D/Interfaces/Menus/MenuAbstraction.cpp" />
 		<Unit filename="Moteur2D/Interfaces/Menus/MenuAbstraction.hpp" />
+		<Unit filename="Moteur2D/Interfaces/Menus/MenuInterface.cpp" />
+		<Unit filename="Moteur2D/Interfaces/Menus/MenuInterface.hpp" />
 		<Unit filename="Moteur2D/Interfaces/Menus/MenuInterfaceAbstraction.cpp" />
 		<Unit filename="Moteur2D/Interfaces/Menus/MenuInterfaceAbstraction.hpp" />
 		<Unit filename="Moteur2D/Interfaces/Menus/SimpleButton.cpp" />

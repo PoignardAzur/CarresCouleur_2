@@ -15,91 +15,6 @@ void LevelBase::setHUD(up_t<Level_HUD> hud)
     m_hud = mv(hud);
 }
 
-void LevelBase::setInputs(InputsAbstraction* inputs)
-{
-    AbstractLevel::AbstractGameInterface::setInputs(inputs);
-
-    std::map<sf::Mouse::Button, InputsAbstraction::mouseEvent> mouseEvents;
-    std::map<sf::Keyboard::Key, InputsAbstraction::keyboardEvent> keyboardEvents;
-
-    mouseEvents[sf::Mouse::Left] = [this](bool pressed, sf::Vector2f cursor)
-    {
-        if (pressed && !getPauseMenu())
-        {
-            leftClick(cursor);
-        }
-    };
-
-    mouseEvents[sf::Mouse::Right] = [this](bool pressed, sf::Vector2f cursor)
-    {
-        if (pressed && !getPauseMenu())
-        {
-            rightClick(cursor);
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Left] = [this](bool pressed)
-    {
-        if (pressed && getPauseMenu())
-        {
-            m_pauseMenu->left(false);
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Right] = [this](bool pressed)
-    {
-        if (pressed && getPauseMenu())
-        {
-            m_pauseMenu->right(false);
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Escape] = [this](bool pressed)
-    {
-        if (pressed)
-        {
-            if (getPauseMenu())
-            m_pauseMenu->close();
-
-            else
-            {
-                m_pauseMenu = new PauseMenu();
-                m_pauseMenu->set(m_font, getInputs());
-                pauseLevel(std::unique_ptr<MenuInterfaceAbstraction>(m_pauseMenu));
-            }
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Space] = [this](bool pressed)
-    {
-        if (pressed)
-        {
-            if (getPauseMenu())
-            {
-                m_pauseMenu->select();
-            }
-
-            else
-            m_carres.clear();
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Return] = [this](bool pressed)
-    {
-        if (pressed)
-        {
-            if (getPauseMenu())
-            {
-                m_pauseMenu->select();
-            }
-
-            else
-            setNext();
-        }
-    };
-
-    setInputsEvents(std::move(mouseEvents), std::move(keyboardEvents));
-}
 
 void LevelBase::generateCarre()
 {
@@ -156,6 +71,59 @@ void LevelBase::generateCarreStream(float dt, float minDelay, float maxDelay, in
 }
 
 
+std::list<sf::Mouse::Button> LevelBase::getTriggerButtons() const
+{
+    return {sf::Mouse::Left, sf::Mouse::Right};
+}
+
+std::list<sf::Keyboard::Key> LevelBase::getTriggerKeys() const
+{
+    return {sf::Keyboard::Space, sf::Keyboard::Return, sf::Keyboard::Escape};
+}
+
+void LevelBase::trigger(sf::Mouse::Button button, bool pressed, sf::Vector2f cursor)
+{
+    if (pressed)
+    {
+        if (button == sf::Mouse::Left)
+        {
+            leftClick(cursor);
+        }
+
+        if (button == sf::Mouse::Right)
+        {
+            rightClick(cursor);
+        }
+    }
+}
+
+void LevelBase::trigger(sf::Keyboard::Key key, bool pressed)
+{
+    if (pressed)
+    {
+        switch (key)
+        {
+            case sf::Keyboard::Space :
+                m_carres.clear();
+            break;
+
+            case sf::Keyboard::Return :
+                setNext();
+            break;
+
+            case sf::Keyboard::Escape :
+                m_pauseMenu = new PauseMenu();
+                m_pauseMenu->set(m_font, getInputs());
+                pauseLevel(std::unique_ptr<MenuInterfaceAbstraction>(m_pauseMenu));
+            break;
+
+            default:
+            break;
+        }
+    }
+}
+
+
 void LevelBase::setNext()
 {
     up_t<LevelBase> p = getNextLevel();
@@ -181,7 +149,7 @@ void LevelBase::setNext()
         p->setHUD(up(hud));
 
         p->setFont(m_font);
-        p->increaseScore(score());
+        p->increaseScore(score(), false);
         p->setInputs(getInputs());
 
         endThisLater();
@@ -216,10 +184,10 @@ void LevelBase::updateThis(float dt)
 }
 
 
-void LevelBase::increaseScore(int points)
+void LevelBase::increaseScore(int points, bool draw)
 {
     m_score += points;
-    m_hud->increaseScore(points);
+    m_hud->increaseScore(points, draw);
 }
 
 int LevelBase::score() const

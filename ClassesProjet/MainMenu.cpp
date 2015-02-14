@@ -16,12 +16,12 @@
 #define GAP_BETWEEN_BUTTONS (BUTTON_SIZE.y + 20)
 
 
-MainMenu::MainMenu() : Menu::MenuAbstraction(true, false)
+MainMenu::MainMenu() : Menu::MenuInterface(true, false)
 {
     m_text.setString("Sélectionner un niveau");
 }
 
-void MainMenu::set(const sf::Font* f, InputsAbstraction* in)
+void MainMenu::set(InputsAbstraction* in, const sf::Font* f)
 {
     setInputs(in);
 
@@ -84,56 +84,6 @@ void MainMenu::set(const sf::Font* f, InputsAbstraction* in)
     addButton(&m_quit_button);
 }
 
-void MainMenu::setInputs(InputsAbstraction* inputs)
-{
-    AbstractGameInterface::setInputs(inputs);
-
-    std::map<sf::Mouse::Button, InputsAbstraction::mouseEvent> mouseEvents;
-    std::map<sf::Keyboard::Key, InputsAbstraction::keyboardEvent> keyboardEvents;
-
-    keyboardEvents[sf::Keyboard::Up] = [this](bool pressed)
-    {
-        if (pressed)
-        {
-            up(false);
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Down] = [this](bool pressed)
-    {
-        if (pressed)
-        {
-            down(false);
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Space] = [this](bool pressed)
-    {
-        if (pressed)
-        {
-            press();
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Return] = [this](bool pressed)
-    {
-        if (pressed)
-        {
-            press();
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Escape] = [this](bool pressed)
-    {
-        if (pressed)
-        {
-            setSelectedButton(4);
-        }
-    };
-
-    setInputsEvents(std::move(mouseEvents), std::move(keyboardEvents));
-}
-
 
 bool MainMenu::isLayered() const
 {
@@ -156,12 +106,6 @@ void MainMenu::drawThisIn(DrawerAbstraction& window, float dt) const
 }
 
 
-void MainMenu::updateThis(float dt)
-{
-    (void) dt;
-}
-
-
 void MainMenu::load(up_t<LevelBase> level, const sf::Font* f)
 {
     Level_HUD* hud = new Level_HUD;
@@ -173,5 +117,10 @@ void MainMenu::load(up_t<LevelBase> level, const sf::Font* f)
 
     endThisLater();
     setNextLevel(mv(level));
+}
+
+void MainMenu::escape()
+{
+    setSelectedButton(4);
 }
 

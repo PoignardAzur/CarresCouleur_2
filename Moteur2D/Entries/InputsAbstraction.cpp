@@ -3,6 +3,20 @@
 #include "InputsAbstraction.hpp"
 
 
+void InputsAbstraction::update(float dt, bool resetWheel)      // the number of ticks is not really important
+{
+    (void) dt;
+    (void) resetWheel;
+
+    m_events.remove_if
+    (
+        [](const std::unique_ptr<EventsMap>& eventMap_ptr)
+        {
+            return eventMap_ptr->toDelete();
+        }
+    );
+}
+
 std::list<sf::Mouse::Button> InputsAbstraction::getPressedMouseButtons() const          // array of pressed mouse buttons
 {
     std::list<sf::Mouse::Button> pmb;
@@ -74,4 +88,25 @@ std::map<sf::Keyboard::Key , bool>& InputsAbstraction::getKeyboardButtons()
     return _getKeyboardButtons();
 }
 
+
+void InputsAbstraction::addEventsMap(std::unique_ptr<EventsMap> eventsMap)
+{
+    m_events.push_back(std::move(eventsMap));
+}
+
+void InputsAbstraction::trigger(sf::Mouse::Button button, bool pressed, sf::Vector2f cursorPosition)
+{
+    for (auto& eventMap_ptr : m_events)
+    {
+        eventMap_ptr->trigger(button, pressed, cursorPosition);
+    }
+}
+
+void InputsAbstraction::trigger(sf::Keyboard::Key key, bool pressed)
+{
+    for (auto& eventMap_ptr : m_events)
+    {
+        eventMap_ptr->trigger(key, pressed);
+    }
+}
 

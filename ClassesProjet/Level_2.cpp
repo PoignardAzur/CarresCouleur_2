@@ -25,7 +25,7 @@ void Level_2::updateThis(float dt)
     {
         for (auto& placedCarre : getCarres())
         {
-            pushAround(placedCarre, getInputs()->cursor(), -0.3);
+            pushAround(placedCarre, getInputs()->cursor(), -3*dt);
         }
     }
 
@@ -33,7 +33,7 @@ void Level_2::updateThis(float dt)
     {
         for (auto& placedCarre : getCarres())
         {
-            pushAround(placedCarre, getInputs()->cursor(), 0.2);
+            pushAround(placedCarre, getInputs()->cursor(), 2*dt);
         }
     }
 }

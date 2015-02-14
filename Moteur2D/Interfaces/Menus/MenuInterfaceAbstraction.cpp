@@ -20,10 +20,19 @@ void MenuInterfaceAbstraction::update(float dt)
 {
     if (m_submenu)
     {
+        if (!m_submenuLoaded)
+        {
+            m_submenu->load();
+            m_submenuLoaded = true;
+        }
+
         m_submenu->update(dt);
 
         if (m_submenu->isDone())
-        m_nextLevel = m_submenu->next();
+        {
+            m_nextLevel = m_submenu->next();
+            m_submenuLoaded = false;
+        }
 
         if (m_nextLevel)
         endThisLater();
@@ -42,6 +51,16 @@ up_t<AbstractGameInterface> MenuInterfaceAbstraction::next()
 void MenuInterfaceAbstraction::openSubmenu(std::unique_ptr<MenuInterfaceAbstraction> submenu)
 {
     m_submenu = std::move(submenu);
+}
+
+const MenuInterfaceAbstraction* MenuInterfaceAbstraction::getSubmenu() const
+{
+    return m_submenu.get();
+}
+
+MenuInterfaceAbstraction* MenuInterfaceAbstraction::getSubmenu()
+{
+    return m_submenu.get();
 }
 
 void MenuInterfaceAbstraction::setNextLevel(up_t<AbstractGameInterface> nextLevel)
