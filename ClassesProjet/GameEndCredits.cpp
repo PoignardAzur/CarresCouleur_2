@@ -62,6 +62,7 @@ void GameEndCredits::setAllCredits()
     add_credit("Level Design", "-", 10);
     add_credit("Marketing", "-", 10);
     add_credit("Distribution", "-", 10);
+    add_credit("Testeur principal", "Marc FAURE", 10);
 }
 
 void GameEndCredits::update(float dt)
