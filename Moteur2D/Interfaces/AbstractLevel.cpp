@@ -127,11 +127,11 @@ MenuInterfaceAbstraction* AbstractLevel::getPauseMenu()
 
 void AbstractLevel::setNextInterface(std::unique_ptr<AbstractGameInterface> nextInt)
 {
-    m_nextInt = mv(nextInt);
+    m_nextInt = move(nextInt);
 }
 
-up_t<AbstractGameInterface> AbstractLevel::next()
+uptrt<AbstractGameInterface> AbstractLevel::next()
 {
-    return mv(m_nextInt);
+    return move(m_nextInt);
 }
 

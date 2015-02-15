@@ -14,7 +14,7 @@ sf::Color plusMarkColor(int alpha)
 Level_HUD::Level_HUD()
 {
     m_score_ptr = new Menu::Counter(Menu::FontStyle(), true, 0, 0 , 10000);
-    m_box.setItem(up(m_score_ptr));
+    m_box.setItem(uptr(m_score_ptr));
     m_box.setSize(sf::Vector2f(SCORE_BOX_GAPS, SCORE_BOX_GAPS), true);
     m_box.setAlignement(Menu::MiddleRightSide, sf::Vector2f(SCORE_BOX_GAPS, 0));
     m_box.setColor(sf::Color(128, 128, 128));

@@ -17,9 +17,9 @@ SimpleVart::SimpleVart(sf::Sprite sprite, sf::Vector2f center)
     setSprite(sprite, center);
 }
 
-SimpleVart::SimpleVart(up_t<DrawableObjectAbstraction> sprite)
+SimpleVart::SimpleVart(uptrt<DrawableObjectAbstraction> sprite)
 {
-    setSprite(mv(sprite));
+    setSprite(move(sprite));
 }
 
 SimpleVart::SimpleVart(const SimpleHitbox& hitbox, sf::Sprite sprite, sf::Vector2f center)
@@ -28,10 +28,10 @@ SimpleVart::SimpleVart(const SimpleHitbox& hitbox, sf::Sprite sprite, sf::Vector
     setSprite(sprite, center);
 }
 
-SimpleVart::SimpleVart(const SimpleHitbox& hitbox, up_t<DrawableObjectAbstraction> sprite)
+SimpleVart::SimpleVart(const SimpleHitbox& hitbox, uptrt<DrawableObjectAbstraction> sprite)
 {
     set(hitbox);
-    setSprite(mv(sprite));
+    setSprite(move(sprite));
 }
 
 SimpleVart::~SimpleVart()
@@ -56,12 +56,12 @@ bool SimpleVart::doDelete() const
     return m_toDelete;
 }
 
-up_t<DrawableObjectAbstraction> SimpleVart::setSprite(sf::Sprite sprite, sf::Vector2f center)
+uptrt<DrawableObjectAbstraction> SimpleVart::setSprite(sf::Sprite sprite, sf::Vector2f center)
 {
-    return setSprite( up(new SimpleSprite(sprite, center)) );
+    return setSprite( uptr(new SimpleSprite(sprite, center)) );
 }
 
-up_t<DrawableObjectAbstraction> SimpleVart::setSprite(up_t<DrawableObjectAbstraction> sprite)
+uptrt<DrawableObjectAbstraction> SimpleVart::setSprite(uptrt<DrawableObjectAbstraction> sprite)
 {
     std::swap(sprite, m_sprite);
     return sprite;                      // returns what was m_sprite before calling this function

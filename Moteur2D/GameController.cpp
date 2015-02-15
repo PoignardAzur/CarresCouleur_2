@@ -3,7 +3,7 @@
 #include "GameController.hpp"
 
 
-GameController::GameController(up_t<InputsAbstraction> userInputs, sf::RenderWindow* target)
+GameController::GameController(uptrt<InputsAbstraction> userInputs, sf::RenderWindow* target)
 {
     m_userInputs = std::move(userInputs);
     m_renderWindow = target;

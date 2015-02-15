@@ -26,9 +26,9 @@ void Menu::ItemStack::setItems(std::vector<ItemAlignPair> items, bool sizeIsMax)
     updateOwnSize();
 }
 
-void Menu::ItemStack::addItem(up_t<ItemAbstraction> item, Alignement align)
+void Menu::ItemStack::addItem(uptrt<ItemAbstraction> item, Alignement align)
 {
-    m_items.push_back(ItemAlignPair(mv(item), align));
+    m_items.push_back(ItemAlignPair(move(item), align));
     item->setParent(this);
     updateOwnSize();
 }

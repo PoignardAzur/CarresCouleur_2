@@ -15,14 +15,14 @@ class PressAnyKeyMenu : public AbstractGameInterface
     virtual void update(float dt);
 
     // as soon as a key is pressed, this interface is killed and replaced by nextInterface
-    void setNext(up_t<AbstractGameInterface> nextInterface);
-    void setNext(std::function<up_t<AbstractGameInterface>(void)> nextInterface);
-    up_t<AbstractGameInterface> next();
+    void setNext(uptrt<AbstractGameInterface> nextInterface);
+    void setNext(std::function<uptrt<AbstractGameInterface>(void)> nextInterface);
+    uptrt<AbstractGameInterface> next();
 
 
     private :
 
-    std::function<up_t<AbstractGameInterface>(void)> m_nextInterface;
+    std::function<uptrt<AbstractGameInterface>(void)> m_nextInterface;
 };
 
 

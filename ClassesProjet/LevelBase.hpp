@@ -24,10 +24,10 @@ class LevelBase : public AbstractLevel
     public :
 
     void setFont(const sf::Font* font);
-    void setHUD(up_t<Level_HUD> hud);
+    void setHUD(uptrt<Level_HUD> hud);
 
     void setNext();
-    virtual up_t<LevelBase> getNextLevel() = 0;
+    virtual uptrt<LevelBase> getNextLevel() = 0;
 
     virtual void leftClick(sf::Vector2f pos) = 0;
     virtual void rightClick(sf::Vector2f pos) = 0;
@@ -53,14 +53,14 @@ class LevelBase : public AbstractLevel
 
     const VartList<CarreCouleur>& getCarres() const;
     VartList<CarreCouleur>& getCarres();
-    void addCarre(up_t<CarreCouleur> vart, sf::Vector2f pos);
+    void addCarre(uptrt<CarreCouleur> vart, sf::Vector2f pos);
 
     void giveCarres(LevelBase* nextLevel);
 
 
     private :
 
-    up_t<Level_HUD> m_hud;
+    uptrt<Level_HUD> m_hud;
     VartList<CarreCouleur> m_carres;
     float m_timeBeforeRespawn = 0;
 

@@ -87,6 +87,6 @@ float AbstractEndCreditsScreen::lastItemHeight()
 
 void AbstractEndCreditsScreen::add_item(std::unique_ptr<Menu::ItemAbstraction> item)
 {
-    m_itemFile.push_back(mv(item));
+    m_itemFile.push_back(move(item));
 }
 

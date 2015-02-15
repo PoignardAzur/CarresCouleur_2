@@ -34,7 +34,7 @@ class AbstractEndCreditsScreen : public AbstractGameInterface
     virtual void update(float dt);
 
     virtual bool isDone() const;
-    virtual up_t<AbstractGameInterface> next() = 0;
+    virtual uptrt<AbstractGameInterface> next() = 0;
 
 
     protected :

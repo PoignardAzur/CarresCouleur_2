@@ -12,7 +12,7 @@ class Fixed
 {
     public :
 
-    Fixed(up_t<V> vart);
+    Fixed(uptrt<V> vart);
     Fixed(Fixed&& other);
     virtual ~Fixed() = default;
 
@@ -25,7 +25,7 @@ class Fixed
 
     private :
 
-    up_t<V> m_vart;
+    uptrt<V> m_vart;
 };
 
 
@@ -35,7 +35,7 @@ class Placed : public Fixed<V>
 {
     public :
 
-    Placed(up_t<V> vart, sf::Vector2f n_pos);
+    Placed(uptrt<V> vart, sf::Vector2f n_pos);
     Placed(Placed&& other);
 
     sf::Vector2f getPos() const;
@@ -47,15 +47,15 @@ class Placed : public Fixed<V>
 
 
 template <typename V>
-Fixed<V>::Fixed(up_t<V> vart)
+Fixed<V>::Fixed(uptrt<V> vart)
 {
-    m_vart = mv(vart);
+    m_vart = move(vart);
 }
 
 template <typename V>
 Fixed<V>::Fixed(Fixed&& other)
 {
-    m_vart = mv(other.m_vart);
+    m_vart = move(other.m_vart);
 }
 
 template <typename V>
@@ -72,13 +72,13 @@ const V& Fixed<V>::get() const
 
 
 template <typename V>
-Placed<V>::Placed(up_t<V> n_v, sf::Vector2f n_pos) : Fixed<V>(mv(n_v))
+Placed<V>::Placed(uptrt<V> n_v, sf::Vector2f n_pos) : Fixed<V>(move(n_v))
 {
     setPos(n_pos);
 }
 
 template <typename V>
-Placed<V>::Placed(Placed<V>&& other) : Fixed<V>(mv(other))
+Placed<V>::Placed(Placed<V>&& other) : Fixed<V>(move(other))
 {
     setPos(other.pos);
 }

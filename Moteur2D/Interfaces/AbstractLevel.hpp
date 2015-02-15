@@ -49,20 +49,20 @@ class AbstractLevel : public AbstractGameInterface
     virtual void drawHUDIn(DrawerAbstraction& window, float dt) const = 0;
     virtual void updateThis(float dt) = 0;
 
-    virtual void pauseLevel(up_t<MenuInterfaceAbstraction> pauseMenu);          // this methods pauses the level until pauseMenu is closed
+    virtual void pauseLevel(uptrt<MenuInterfaceAbstraction> pauseMenu);          // this methods pauses the level until pauseMenu is closed
     virtual const MenuInterfaceAbstraction* getPauseMenu() const;
     virtual MenuInterfaceAbstraction* getPauseMenu();
 
-    virtual void setNextInterface(up_t<AbstractGameInterface> nextInt);
-    virtual up_t<AbstractGameInterface> next();
+    virtual void setNextInterface(uptrt<AbstractGameInterface> nextInt);
+    virtual uptrt<AbstractGameInterface> next();
 
 
     private :
 
     std_rng m_randomGenerator;
-    up_t<MenuInterfaceAbstraction> m_pauseMenu;
+    uptrt<MenuInterfaceAbstraction> m_pauseMenu;
     bool m_pauseMenuLoaded = false;
-    up_t<AbstractGameInterface> m_nextInt;
+    uptrt<AbstractGameInterface> m_nextInt;
 };
 
 

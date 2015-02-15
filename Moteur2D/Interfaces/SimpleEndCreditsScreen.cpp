@@ -58,7 +58,7 @@ void SimpleEndCreditsScreen::add_credit(const std::string& name, const std::stri
     both->addItem(text1);
     both->addItem(text2);
 
-    add_item(up(both));
+    add_item(uptr(both));
 }
 
 void SimpleEndCreditsScreen::add_sprite(const sf::Sprite& sprite)

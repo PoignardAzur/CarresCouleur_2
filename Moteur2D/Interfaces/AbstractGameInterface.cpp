@@ -18,7 +18,7 @@ void AbstractGameInterface::load()
     m_eventsMap = m_unloadedEventsMap.get();
 
     if (m_eventsMap)
-    m_inputs->addEventsMap(mv(m_unloadedEventsMap));
+    m_inputs->addEventsMap(move(m_unloadedEventsMap));
 }
 
 bool AbstractGameInterface::isDone() const
@@ -43,7 +43,7 @@ void AbstractGameInterface::setInputs(InputsAbstraction* newInputs)
 
 void AbstractGameInterface::setInputsEvents(EventsMap::MouseEventsMap mouseEvents, EventsMap::KeyboardEventsMap keyboardEvents)
 {
-    m_unloadedEventsMap.reset(new EventsMap( mv(mouseEvents), mv(keyboardEvents) ));
+    m_unloadedEventsMap.reset(new EventsMap( move(mouseEvents), move(keyboardEvents) ));
 }
 
 InputsAbstraction* AbstractGameInterface::getInputs()

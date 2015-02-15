@@ -10,7 +10,7 @@ class Level_1 : public LevelBase
 {
     public :
 
-    up_t<LevelBase> getNextLevel();
+    uptrt<LevelBase> getNextLevel();
 
     void leftClick(sf::Vector2f pos);
     void rightClick(sf::Vector2f pos);

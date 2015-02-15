@@ -7,7 +7,7 @@
 #define FONT_FILE_NAME "Resources/arial.ttf"
 
 
-BossClass::BossClass(up_t<InputsAbstraction> userInputs, sf::RenderWindow* target) : GameController(mv(userInputs), target)
+BossClass::BossClass(uptrt<InputsAbstraction> userInputs, sf::RenderWindow* target) : GameController(move(userInputs), target)
 {
     if (!m_font.loadFromFile(FONT_FILE_NAME))
     throw "Couldn't load font" FONT_FILE_NAME;

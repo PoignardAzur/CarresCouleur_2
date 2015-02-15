@@ -14,9 +14,9 @@ namespace Menu
     {
         public :
 
-        explicit Label(up_t<ItemAbstraction> item = nullptr, const std::string& str = "", FontStyle f = FontStyle(), bool horizontalAlignement = true, float gap = 0);
+        explicit Label(uptrt<ItemAbstraction> item = nullptr, const std::string& str = "", FontStyle f = FontStyle(), bool horizontalAlignement = true, float gap = 0);
 
-        up_t<ItemAbstraction> setItem(up_t<ItemAbstraction> item);      // returns the previous item
+        uptrt<ItemAbstraction> setItem(uptrt<ItemAbstraction> item);      // returns the previous item
         void setLabel(const std::string& str);
 
         void setAlignement(bool horizontal, float gap);
@@ -32,7 +32,7 @@ namespace Menu
 
         private :
 
-        up_t<ItemAbstraction> m_item;
+        uptrt<ItemAbstraction> m_item;
         Text m_label;
 
         float m_gap;

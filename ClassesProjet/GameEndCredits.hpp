@@ -15,7 +15,7 @@ class GameEndCredits : public SimpleEndCreditsScreen
     void setAllCredits();
 
     void update(float dt);
-    virtual up_t<AbstractGameInterface> next();
+    virtual uptrt<AbstractGameInterface> next();
 
 
     private :

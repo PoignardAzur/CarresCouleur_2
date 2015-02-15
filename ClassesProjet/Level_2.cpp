@@ -4,9 +4,9 @@
 #include "Level_3.hpp"
 #include <cmath>
 
-up_t<LevelBase> Level_2::getNextLevel()
+uptrt<LevelBase> Level_2::getNextLevel()
 {
-    return up(new Level_3());
+    return uptr(new Level_3());
 }
 
 void pushAround(Placed<CarreCouleur>& carre, sf::Vector2f pos, float force)

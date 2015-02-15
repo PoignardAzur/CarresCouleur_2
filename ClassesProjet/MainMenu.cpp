@@ -39,7 +39,7 @@ void MainMenu::set(InputsAbstraction* in, const sf::Font* f)
     (
         [this, f]()
         {
-            load(up_t<LevelBase>(new Level_1), f);
+            load(uptrt<LevelBase>(new Level_1), f);
         }
     );
 
@@ -47,7 +47,7 @@ void MainMenu::set(InputsAbstraction* in, const sf::Font* f)
     (
         [this, f]()
         {
-            load(up_t<LevelBase>(new Level_2), f);
+            load(uptrt<LevelBase>(new Level_2), f);
         }
     );
 
@@ -55,7 +55,7 @@ void MainMenu::set(InputsAbstraction* in, const sf::Font* f)
     (
         [this, f]()
         {
-            load(up_t<LevelBase>(new Level_3), f);
+            load(uptrt<LevelBase>(new Level_3), f);
         }
     );
 
@@ -63,7 +63,7 @@ void MainMenu::set(InputsAbstraction* in, const sf::Font* f)
     (
         [this, f]()
         {
-            load(up_t<LevelBase>(new Level_4), f);
+            load(uptrt<LevelBase>(new Level_4), f);
         }
     );
 
@@ -104,17 +104,17 @@ void MainMenu::drawThisIn(DrawerAbstraction& window, float dt) const
 }
 
 
-void MainMenu::load(up_t<LevelBase> level, const sf::Font* f)
+void MainMenu::load(uptrt<LevelBase> level, const sf::Font* f)
 {
     Level_HUD* hud = new Level_HUD;
     hud->setFont(f);
 
     level->setInputs(getInputs());
     level->setFont(f);
-    level->setHUD(up_t<Level_HUD>(hud));
+    level->setHUD(uptrt<Level_HUD>(hud));
 
     endThisLater();
-    setNextLevel(mv(level));
+    setNextLevel(move(level));
 }
 
 void MainMenu::escape()
@@ -123,21 +123,21 @@ void MainMenu::escape()
 }
 
 
-up_t<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs, bool small)
+uptrt<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs, bool small)
 {
     if (!small)
-    return up(new Menu::TextBox(BIG_BUTTON_SIZE, sf::Color(120, 120, 0), str, fs));
+    return uptr(new Menu::TextBox(BIG_BUTTON_SIZE, sf::Color(120, 120, 0), str, fs));
 
     else
-    return up(new Menu::TextBox(SMALL_BUTTON_SIZE, sf::Color(120, 120, 0), str, fs));
+    return uptr(new Menu::TextBox(SMALL_BUTTON_SIZE, sf::Color(120, 120, 0), str, fs));
 }
 
-up_t<Menu::ItemAbstraction> redBox(const char* str, Menu::FontStyle& fs, bool small)
+uptrt<Menu::ItemAbstraction> redBox(const char* str, Menu::FontStyle& fs, bool small)
 {
     if (!small)
-    return up(new Menu::TextBox(BIG_BUTTON_SIZE, sf::Color::Red, str, fs));
+    return uptr(new Menu::TextBox(BIG_BUTTON_SIZE, sf::Color::Red, str, fs));
 
     else
-    return up(new Menu::TextBox(SMALL_BUTTON_SIZE, sf::Color::Red, str, fs));
+    return uptr(new Menu::TextBox(SMALL_BUTTON_SIZE, sf::Color::Red, str, fs));
 }
 

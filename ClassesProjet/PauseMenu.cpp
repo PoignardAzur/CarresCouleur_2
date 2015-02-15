@@ -5,8 +5,8 @@
 #include "MainMenu.hpp"
 
 
-up_t<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs);
-up_t<Menu::ItemAbstraction> redBox(const char* str, Menu::FontStyle& fs);
+uptrt<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs);
+uptrt<Menu::ItemAbstraction> redBox(const char* str, Menu::FontStyle& fs);
 
 
 PauseMenu::PauseMenu() : MenuInterface(false, false)
@@ -31,7 +31,7 @@ void PauseMenu::set(const sf::Font* f, InputsAbstraction* in)
             MainMenu* menu = new MainMenu;
             menu->set(getInputs(), f);
 
-            setNextLevel(up_t<MainMenu>(menu));
+            setNextLevel(uptrt<MainMenu>(menu));
             endThisLater();
         }
     );

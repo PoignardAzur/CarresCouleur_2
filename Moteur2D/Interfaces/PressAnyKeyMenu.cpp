@@ -10,7 +10,7 @@ void PressAnyKeyMenu::update(float dt)
     (void) dt;
 }
 
-void PressAnyKeyMenu::setNext(up_t<AbstractGameInterface> nextInterface)
+void PressAnyKeyMenu::setNext(uptrt<AbstractGameInterface> nextInterface)
 {
     AbstractGameInterface* nextInterface_ = nextInterface.release();
 
@@ -18,17 +18,17 @@ void PressAnyKeyMenu::setNext(up_t<AbstractGameInterface> nextInterface)
     (
         [=](void)
         {
-            return up(nextInterface_);
+            return uptr(nextInterface_);
         }
     );
 }
 
-void PressAnyKeyMenu::setNext(std::function<up_t<AbstractGameInterface>(void)> nextInterface)
+void PressAnyKeyMenu::setNext(std::function<uptrt<AbstractGameInterface>(void)> nextInterface)
 {
     m_nextInterface = nextInterface;
 }
 
-up_t<AbstractGameInterface> PressAnyKeyMenu::next()
+uptrt<AbstractGameInterface> PressAnyKeyMenu::next()
 {
     return m_nextInterface();
 }

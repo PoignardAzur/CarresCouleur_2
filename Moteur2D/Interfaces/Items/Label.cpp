@@ -2,15 +2,15 @@
 #include "Label.hpp"
 
 
-Menu::Label::Label(up_t<ItemAbstraction> item, const std::string& str, FontStyle f, bool horizontalAlignement, float gap)
+Menu::Label::Label(uptrt<ItemAbstraction> item, const std::string& str, FontStyle f, bool horizontalAlignement, float gap)
 {
-    setItem(mv(item));
+    setItem(move(item));
     setLabel(str);
     setAlignement(horizontalAlignement, gap);
     setFont(f);
 }
 
-up_t<Menu::ItemAbstraction> Menu::Label::setItem(up_t<ItemAbstraction> item)
+uptrt<Menu::ItemAbstraction> Menu::Label::setItem(uptrt<ItemAbstraction> item)
 {
     std::swap(m_item, item);
 

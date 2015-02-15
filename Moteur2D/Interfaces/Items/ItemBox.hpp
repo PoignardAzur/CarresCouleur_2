@@ -13,9 +13,9 @@ namespace Menu
     {
         public :
 
-        explicit ItemBox(up_t<ItemAbstraction> item = nullptr, Alignement a = Center, sf::Vector2f gaps = sf::Vector2f(0,0));
+        explicit ItemBox(uptrt<ItemAbstraction> item = nullptr, Alignement a = Center, sf::Vector2f gaps = sf::Vector2f(0,0));
 
-        up_t<ItemAbstraction> setItem(up_t<ItemAbstraction> item);          // returns a pointer owning the previous item
+        uptrt<ItemAbstraction> setItem(uptrt<ItemAbstraction> item);          // returns a pointer owning the previous item
         void setColor(sf::Color c);                                         // makes the box not transparent even when !isHitboxDrawn
 
         void setAlignement(Alignement a, sf::Vector2f gaps);                // see the code of drawImageIn() for how these
@@ -30,7 +30,7 @@ namespace Menu
 
         private :
 
-        up_t<ItemAbstraction> m_item;
+        uptrt<ItemAbstraction> m_item;
         Alignement m_align;
 
         sf::Color m_boxColor = sf::Color(0,0,0, 0);

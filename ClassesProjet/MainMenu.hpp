@@ -22,7 +22,7 @@ class MainMenu : public Menu::MenuInterface
 
     //void addButton(AbstractButton* b);
     virtual void drawThisIn(DrawerAbstraction& window, float dt) const;
-    void load(up_t<LevelBase> level, const sf::Font* f);
+    void load(uptrt<LevelBase> level, const sf::Font* f);
 
     void escape();
 
@@ -38,8 +38,8 @@ class MainMenu : public Menu::MenuInterface
     Menu::SimpleButton m_quit_button;
 };
 
-up_t<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs, bool small = false);
-up_t<Menu::ItemAbstraction> redBox(const char* str, Menu::FontStyle& fs, bool small = false);
+uptrt<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs, bool small = false);
+uptrt<Menu::ItemAbstraction> redBox(const char* str, Menu::FontStyle& fs, bool small = false);
 
 
 #endif // MAIN_MENU_HEADER

@@ -12,7 +12,7 @@ Menu::TextBox::TextBox(sf::Vector2f boxSize, sf::Color c, const std::string& tex
 
 void Menu::TextBox::set(sf::Vector2f boxSize, sf::Color c, const std::string& text, FontStyle f)
 {
-    m_box.setItem(up(new Text(text, f)));
+    m_box.setItem(uptr(new Text(text, f)));
     m_box.setSize(boxSize);
     m_box.setColor(c);
 }

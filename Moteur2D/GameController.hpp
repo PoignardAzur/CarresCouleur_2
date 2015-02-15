@@ -13,7 +13,7 @@ class GameController
 {
     public :
 
-    GameController(up_t<InputsAbstraction> userInputs, sf::RenderWindow* target);
+    GameController(uptrt<InputsAbstraction> userInputs, sf::RenderWindow* target);
     virtual ~GameController() {}
 
     virtual void update(float dt);                               // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
@@ -30,8 +30,8 @@ class GameController
 
     private :
 
-    up_t<InputsAbstraction> m_userInputs;
-    up_t<DrawerAbstraction> m_window;
+    uptrt<InputsAbstraction> m_userInputs;
+    uptrt<DrawerAbstraction> m_window;
 
     sf::RenderWindow* m_renderWindow; // use-a
 };

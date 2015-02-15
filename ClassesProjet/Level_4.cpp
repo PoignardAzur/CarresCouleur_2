@@ -17,14 +17,14 @@ void Level_4::updateThis(float dt)
         CarreCouleur* carre = new CarreCouleur(rng(), carreSize);
         carre->randomizeSpeed(rng());
 
-        addCarre(up(carre), getInputs()->cursor());
+        addCarre(uptr(carre), getInputs()->cursor());
         m_timeBeforeNextCarre = TIME_BETWEEN_CARRES;
     }
 }
 
-up_t<LevelBase> Level_4::getNextLevel()
+uptrt<LevelBase> Level_4::getNextLevel()
 {
-    return up_t<LevelBase>();
+    return uptrt<LevelBase>();
 }
 
 void Level_4::leftClick(sf::Vector2f pos)

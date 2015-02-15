@@ -5,9 +5,9 @@
 #include <random>
 
 
-up_t<LevelBase> Level_1::getNextLevel()
+uptrt<LevelBase> Level_1::getNextLevel()
 {
-    return up(new Level_2());
+    return uptr(new Level_2());
 }
 
 
@@ -18,7 +18,7 @@ void Level_1::leftClick(sf::Vector2f pos)
     CarreCouleur* carre = new CarreCouleur(rng());
     carre->randomizeSpeed(rng());
 
-    addCarre(up(carre), pos);
+    addCarre(uptr(carre), pos);
 }
 
 void Level_1::rightClick(sf::Vector2f pos)

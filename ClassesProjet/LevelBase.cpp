@@ -16,9 +16,9 @@ void LevelBase::setFont(const sf::Font* font)
     m_font = font;
 }
 
-void LevelBase::setHUD(up_t<Level_HUD> hud)
+void LevelBase::setHUD(uptrt<Level_HUD> hud)
 {
-    m_hud = mv(hud);
+    m_hud = move(hud);
 }
 
 
@@ -56,7 +56,7 @@ void LevelBase::generateCarre()
         carre->setSpeed(sf::Vector2f(speed(rng()) * -s, speed(rng()) - DEFAULT_CARRE_SPEED / 2));
     }
 
-    addCarre(up(carre), pos);
+    addCarre(uptr(carre), pos);
 }
 
 void LevelBase::generateCarreStream(float dt, float minDelay, float maxDelay, int minCarresNumber, int maxCarresNumber)
@@ -132,7 +132,7 @@ void LevelBase::trigger(sf::Keyboard::Key key, bool pressed)
 
 void LevelBase::setNext()
 {
-    up_t<LevelBase> p = getNextLevel();
+    uptrt<LevelBase> p = getNextLevel();
 
     if (!p)
     {
@@ -152,14 +152,14 @@ void LevelBase::setNext()
 
         Level_HUD* hud = new Level_HUD;
         hud->setFont(m_font);
-        p->setHUD(up(hud));
+        p->setHUD(uptr(hud));
 
         p->setFont(m_font);
         p->increaseScore(score(), false);
         p->setInputs(getInputs());
 
         endThisLater();
-        setNextInterface(mv(p));
+        setNextInterface(move(p));
     }
 }
 
@@ -211,9 +211,9 @@ VartList<CarreCouleur>& LevelBase::getCarres()
     return m_carres;
 }
 
-void LevelBase::addCarre(up_t<CarreCouleur> vart, sf::Vector2f pos)
+void LevelBase::addCarre(uptrt<CarreCouleur> vart, sf::Vector2f pos)
 {
-    VartPusher<CarreCouleur>(&getCarres()).add(mv(vart), pos);
+    VartPusher<CarreCouleur>(&getCarres()).add(move(vart), pos);
 }
 
 void LevelBase::giveCarres(LevelBase* nextLevel)

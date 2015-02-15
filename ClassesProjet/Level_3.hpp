@@ -11,7 +11,7 @@ class Level_3 : public LevelBase
 
     Level_3();
 
-    up_t<LevelBase> getNextLevel();
+    uptrt<LevelBase> getNextLevel();
     virtual void updateThis(float dt);
     void drawThisIn(DrawerAbstraction& window, float dt) const;
 

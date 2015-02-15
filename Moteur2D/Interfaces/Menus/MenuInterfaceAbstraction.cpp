@@ -43,9 +43,9 @@ void MenuInterfaceAbstraction::update(float dt)
 }
 
 
-up_t<AbstractGameInterface> MenuInterfaceAbstraction::next()
+uptrt<AbstractGameInterface> MenuInterfaceAbstraction::next()
 {
-    return mv(m_nextLevel);
+    return move(m_nextLevel);
 }
 
 void MenuInterfaceAbstraction::openSubmenu(std::unique_ptr<MenuInterfaceAbstraction> submenu)
@@ -63,9 +63,9 @@ MenuInterfaceAbstraction* MenuInterfaceAbstraction::getSubmenu()
     return m_submenu.get();
 }
 
-void MenuInterfaceAbstraction::setNextLevel(up_t<AbstractGameInterface> nextLevel)
+void MenuInterfaceAbstraction::setNextLevel(uptrt<AbstractGameInterface> nextLevel)
 {
-    m_nextLevel = mv(nextLevel);
+    m_nextLevel = move(nextLevel);
 }
 
 

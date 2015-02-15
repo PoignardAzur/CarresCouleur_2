@@ -68,7 +68,7 @@ class VartPusher
 
     explicit VartPusher(VartList<V>* list);
     virtual ~VartPusher();
-    void add(up_t<V> vart, sf::Vector2f pos);
+    void add(uptrt<V> vart, sf::Vector2f pos);
 
 
     private :
@@ -89,9 +89,9 @@ VartPusher<V>::~VartPusher()
 }
 
 template <typename V>
-void VartPusher<V>::add(up_t<V> vart, sf::Vector2f pos)
+void VartPusher<V>::add(uptrt<V> vart, sf::Vector2f pos)
 {
-    m_list->push_back(Placed<V>(mv(vart), pos));
+    m_list->push_back(Placed<V>(move(vart), pos));
 }
 
 

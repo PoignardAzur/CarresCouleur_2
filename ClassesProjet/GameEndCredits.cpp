@@ -80,10 +80,10 @@ void GameEndCredits::update(float dt)
     m_enterPressed = false;
 }
 
-up_t<AbstractGameInterface> GameEndCredits::next()
+uptrt<AbstractGameInterface> GameEndCredits::next()
 {
     MainMenu* menu = new MainMenu;
     menu->set(getInputs(), m_font);
-    return up(menu);
+    return uptr(menu);
 }
 

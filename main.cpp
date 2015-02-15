@@ -15,10 +15,10 @@ int main(int /*argc*/, char** /*argv*/)
 {
     try
     {
-        up_t<sf::RenderWindow> fenetre(new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE));
+        uptrt<sf::RenderWindow> fenetre(new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE));
 
         fenetre->setFramerateLimit(30);
-        BossClass bigBrother(up(new Inputs(fenetre.get(), false)), fenetre.get());
+        BossClass bigBrother(uptr(new Inputs(fenetre.get(), false)), fenetre.get());
         sf::Clock chronos;
         chronos.restart();
 
