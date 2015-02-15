@@ -41,7 +41,7 @@ void AbstractGameInterface::setInputs(InputsAbstraction* newInputs)
     m_inputs = newInputs;
 }
 
-void AbstractGameInterface::setInputsEvents(EventsMap::mouseEventsMap mouseEvents, EventsMap::keyboardEventsMap keyboardEvents)
+void AbstractGameInterface::setInputsEvents(EventsMap::MouseEventsMap mouseEvents, EventsMap::KeyboardEventsMap keyboardEvents)
 {
     m_unloadedEventsMap.reset(new EventsMap( mv(mouseEvents), mv(keyboardEvents) ));
 }

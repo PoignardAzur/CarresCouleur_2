@@ -17,7 +17,7 @@ class AbstractGameInterface
     virtual void load();                                // Must be called once at the start of an UPDATE PHASE before any call to update()
 
     virtual void setInputs(InputsAbstraction*);         // Must be overloaded to personalize Events handling
-    virtual void setInputsEvents(EventsMap::mouseEventsMap mouseEvents, EventsMap::keyboardEventsMap keyboardEvents);
+    virtual void setInputsEvents(EventsMap::MouseEventsMap mouseEvents, EventsMap::KeyboardEventsMap keyboardEvents);
 
     virtual void update(float dt) = 0;                  // the number of ticks since the last update
     virtual bool isDone() const;                        // if this returns true, the interface must be deleted and replaced by

@@ -31,8 +31,8 @@ void AbstractLevel::setInputs(InputsAbstraction* inputs)
 {
     AbstractGameInterface::setInputs(inputs);
 
-    EventsMap::mouseEventsMap mouseEvents;
-    EventsMap::keyboardEventsMap keyboardEvents;
+    EventsMap::MouseEventsMap mouseEvents;
+    EventsMap::KeyboardEventsMap keyboardEvents;
 
     std::list<sf::Mouse::Button> triggerButtons = getTriggerButtons();
     std::list<sf::Keyboard::Key> triggerKeys = getTriggerKeys();

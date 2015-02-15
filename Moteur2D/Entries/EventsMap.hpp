@@ -16,16 +16,16 @@ class EventsMap
 {
     public :
 
-    using mouseEvent = std::function<void(bool/*pressed*/,sf::Vector2f/*cursorPosition*/)>;
-    using keyboardEvent = std::function<void(bool/*pressed*/)>;
+    using MouseEvent = std::function<void(bool/*pressed*/,sf::Vector2f/*cursorPosition*/)>;
+    using KeyboardEvent = std::function<void(bool/*pressed*/)>;
 
-    using mouseEventsMap = std::map<sf::Mouse::Button, mouseEvent>;
-    using keyboardEventsMap = std::map<sf::Keyboard::Key, keyboardEvent>;
+    using MouseEventsMap = std::map<sf::Mouse::Button, MouseEvent>;
+    using KeyboardEventsMap = std::map<sf::Keyboard::Key, KeyboardEvent>;
 
     EventsMap() = default;
     EventsMap(EventsMap&& other);
-    EventsMap(mouseEventsMap mouseButtonEvents, keyboardEventsMap keyboardButtonEvents);
-    void set(mouseEventsMap mouseButtonEvents, keyboardEventsMap keyboardButtonEvents);
+    EventsMap(MouseEventsMap mouseButtonEvents, KeyboardEventsMap keyboardButtonEvents);
+    void set(MouseEventsMap mouseButtonEvents, KeyboardEventsMap keyboardButtonEvents);
 
     void trigger(sf::Mouse::Button button, bool pressed, sf::Vector2f cursorPosition);
     void trigger(sf::Keyboard::Key key, bool pressed);
@@ -36,8 +36,8 @@ class EventsMap
 
     private :
 
-    std::map<sf::Mouse::Button, mouseEvent> m_mouseButtonEvents;
-    std::map<sf::Keyboard::Key, keyboardEvent> m_keyboardButtonEvents;
+    MouseEventsMap m_mouseButtonEvents;
+    KeyboardEventsMap m_keyboardButtonEvents;
 
     bool m_toDelete = false;
 };

@@ -127,7 +127,7 @@ void Menu::MenuAbstraction::increment(bool big)
 
     else
     {
-        if (m_selectedButton + 1 < m_buttonList.size())
+        if (static_cast<size_t>(m_selectedButton + 1) < m_buttonList.size())
         m_selectedButton ++;
 
         else if (m_doesLoop && !m_buttonList.empty())

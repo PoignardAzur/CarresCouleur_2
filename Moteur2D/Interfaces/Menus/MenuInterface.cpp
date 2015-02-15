@@ -11,8 +11,8 @@ void Menu::MenuInterface::setInputs(InputsAbstraction* inputs)
 {
     AbstractGameInterface::setInputs(inputs);
 
-    EventsMap::mouseEventsMap mouseEvents;
-    EventsMap::keyboardEventsMap keyboardEvents;
+    EventsMap::MouseEventsMap mouseEvents;
+    EventsMap::KeyboardEventsMap keyboardEvents;
 
     keyboardEvents[sf::Keyboard::Up] = [this](bool pressed)
     {

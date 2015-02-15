@@ -25,10 +25,10 @@ class InputsAbstraction
     virtual void update(float dt = 0, bool resetWheel = true) = 0;          // the number of ticks is not really important
 
     std::map<sf::Mouse::Button, bool>& getMouseButtons();                   // these four methods all return the
-    std::map<sf::Keyboard::Key , bool>& getKeyboardButtons();               // same value as _get[m|k]Buttons()
+    std::map<sf::Keyboard::Key, bool>& getKeyboardButtons();                // same value as _get[m|k]Buttons()
 
     const std::map<sf::Mouse::Button, bool>& getMouseButtons() const;       // their name is different to avoid
-    const std::map<sf::Keyboard::Key , bool>& getKeyboardButtons() const;   // inheritance problems with name overloading
+    const std::map<sf::Keyboard::Key, bool>& getKeyboardButtons() const;    // inheritance problems with name overloading
 
     std::list<sf::Mouse::Button> getPressedMouseButtons() const;            // array of pressed mouse buttons
     std::list<sf::Keyboard::Key> getPressedKeyboardButtons() const;         // array of pressed keyboard keys

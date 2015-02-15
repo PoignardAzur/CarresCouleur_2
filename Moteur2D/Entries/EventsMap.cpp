@@ -7,12 +7,12 @@ EventsMap::EventsMap(EventsMap&& other)
     set(std::move(other.m_mouseButtonEvents), std::move(other.m_keyboardButtonEvents));
 }
 
-EventsMap::EventsMap(mouseEventsMap mouseButtonEvents, keyboardEventsMap keyboardButtonEvents)
+EventsMap::EventsMap(MouseEventsMap mouseButtonEvents, KeyboardEventsMap keyboardButtonEvents)
 {
     set(mouseButtonEvents, keyboardButtonEvents);
 }
 
-void EventsMap::set(mouseEventsMap mouseButtonEvents, keyboardEventsMap keyboardButtonEvents)
+void EventsMap::set(MouseEventsMap mouseButtonEvents, KeyboardEventsMap keyboardButtonEvents)
 {
     m_mouseButtonEvents = std::move(mouseButtonEvents);
     m_keyboardButtonEvents = std::move(keyboardButtonEvents);
