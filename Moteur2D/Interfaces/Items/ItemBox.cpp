@@ -1,27 +1,24 @@
 
-
 #include "ItemBox.hpp"
 
 
-Menu::ItemBox::ItemBox(ItemAbstraction* item, Alignement a, float x_offset, float y_offset)
+Menu::ItemBox::ItemBox(up_t<ItemAbstraction> item, Alignement a, sf::Vector2f gaps)
 {
-    setSize(sf::Vector2f(0,0), true);
-    setItem(item);
-    setAlignement(a, x_offset, y_offset);
+    setItem(mv(item));
+    setAlignement(a, gaps);
 }
 
 
-std::unique_ptr<Menu::ItemAbstraction> Menu::ItemBox::setItem(ItemAbstraction* item)
+up_t<Menu::ItemAbstraction> Menu::ItemBox::setItem(up_t<ItemAbstraction> item)
 {
-    std::unique_ptr<ItemAbstraction> item_(item);
-    std::swap(m_item, item_);
+    std::swap(m_item, item);
 
     if (m_item)
     m_item->setParent(this);
 
     updateParentSize();
 
-    return item_;
+    return item;
 }
 
 void Menu::ItemBox::setColor(sf::Color c)
@@ -29,10 +26,10 @@ void Menu::ItemBox::setColor(sf::Color c)
     m_boxColor = c;
 }
 
-void Menu::ItemBox::setAlignement(Alignement a, float x_offset, float y_offset)
+void Menu::ItemBox::setAlignement(Alignement a, sf::Vector2f gaps)
 {
     m_align = a;
-    m_gaps = sf::Vector2f(x_offset, y_offset);
+    m_gaps = gaps;
 }
 
 void Menu::ItemBox::setSize(sf::Vector2f size, bool relative)
@@ -48,7 +45,7 @@ void Menu::ItemBox::drawImageIn(DrawerAbstraction& target, sf::Vector2f position
 {
     if (m_item)
     {
-        if (!isHitboxDrawn && m_boxColor.a != 0)
+        if (!isHitboxDrawn && m_boxColor.a != 0) // if the hitbox is drawn, the ItemBox isn't to avoid masking it
         {
             sf::RectangleShape rect(getSize());
             rect.setPosition(position);
@@ -69,7 +66,4 @@ sf::Vector2f Menu::ItemBox::getSize() const
     else
     return m_size;
 }
-
-
-
 

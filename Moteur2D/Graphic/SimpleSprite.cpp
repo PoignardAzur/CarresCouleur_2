@@ -1,5 +1,4 @@
 
-
 #include "SimpleSprite.hpp"
 #include "DrawerAbstraction.hpp"
 
@@ -24,6 +23,7 @@ void SimpleSprite::set(const sf::Sprite& sprite, sf::Vector2f center)
 
 sf::Sprite& SimpleSprite::getSprite() const
 {
+    m_sprite.setPosition(NULL_PT); // that way, the value of m_sprite does not depend on previous calls to the const method drawIn
     return m_sprite;
 }
 

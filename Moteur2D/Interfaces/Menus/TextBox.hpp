@@ -1,5 +1,4 @@
 
-
 #ifndef TEXT_BOX_HEADER
 #define TEXT_BOX_HEADER
 
@@ -11,6 +10,7 @@
 namespace Menu
 {
 
+    // Basic way to draw a button : a text in a colored box
     class TextBox : public ItemAbstraction
     {
         public :
@@ -19,17 +19,11 @@ namespace Menu
         void set(sf::Vector2f boxSize, sf::Color c, const std::string& text, FontStyle f);
 
         sf::Vector2f getSize() const;
-        // returns the size of the item's "box"
-
 
         protected :
-
         void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
-        // isHitboxDrawn is used for recursion, to draw children's boxes too
-
 
         private :
-
         ItemBox m_box;
     };
 

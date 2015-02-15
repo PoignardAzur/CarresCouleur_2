@@ -9,6 +9,7 @@
 namespace Menu
 {
 
+    // Standard implementation of the abstractions in Menu::MenuAbstraction and MenuInterfaceAbstraction
     class MenuInterface : public Menu::MenuAbstraction, public MenuInterfaceAbstraction
     {
         public :
@@ -22,7 +23,7 @@ namespace Menu
 
         protected :
 
-        virtual void escape() = 0;
+        virtual void escape() = 0;  // this method is called when the Esc button is pressed
         virtual void drawThisIn(DrawerAbstraction& window, float dt) const = 0;
         virtual void updateThis(float dt);
 

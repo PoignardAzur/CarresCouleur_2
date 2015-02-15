@@ -5,7 +5,7 @@
 #include "AbstractLevel.hpp"
 
 
-template <typename LevelType = AbstractLevel>
+template <typename LevelType = AbstractLevel>   /// TODO - Rebuild this class ?
 class AbstractHUD
 {
     public :

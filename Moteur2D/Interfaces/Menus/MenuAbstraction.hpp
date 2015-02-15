@@ -16,9 +16,9 @@ namespace Menu
 
         MenuAbstraction(bool isVertical = true, bool doesLoop = false);
 
-        virtual void select();
-        virtual void deselect();
-        virtual void press();
+        virtual void select();                                  // each method is applied to the
+        virtual void deselect();                                // currently selected button
+        virtual void press();                                   // if there is one
 
         virtual void left(bool big = false);
         virtual void right(bool big = false);
@@ -28,7 +28,7 @@ namespace Menu
 
         protected :
 
-        ButtonAbstraction* selectedButton();
+        ButtonAbstraction* selectedButton();                    // can be nullptr
         const ButtonAbstraction* selectedButton() const;
         void setSelectedButton(size_t selectedButtonSlot);
         void setButtonList(std::vector<ButtonAbstraction*> buttonList, size_t selectedButtonSlot = 0);
@@ -39,8 +39,8 @@ namespace Menu
 
         private :
 
-        size_t m_selectedButton = 0;
-        std::vector<ButtonAbstraction*> m_buttonList;      // use-a ; none of the pointers have any ownership
+        int m_selectedButton = -1;                              // if no button is selected, m_selectedButton equals -1
+        std::vector<ButtonAbstraction*> m_buttonList;           // use-a ; none of the pointers have any ownership
         bool m_isVertical;
         bool m_doesLoop;
 

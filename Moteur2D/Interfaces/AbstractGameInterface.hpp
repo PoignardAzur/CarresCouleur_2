@@ -1,5 +1,4 @@
 
-
 #ifndef ABSTRACT_GAME_INTERFACE_HEADER
 #define ABSTRACT_GAME_INTERFACE_HEADER
 
@@ -8,20 +7,21 @@
 #include "up.hpp"
 
 
+// Class that represents a chunk of the game experience (Level, Menu, Screen, etc)
 class AbstractGameInterface
 {
     public :
 
     AbstractGameInterface();
     virtual ~AbstractGameInterface();
-    virtual void load();
+    virtual void load();                                // Must be called once at the start of an UPDATE PHASE before any call to update()
 
-    virtual void setInputs(InputsAbstraction*);
+    virtual void setInputs(InputsAbstraction*);         // Must be overloaded to personalize Events handling
     virtual void setInputsEvents(EventsMap::mouseEventsMap mouseEvents, EventsMap::keyboardEventsMap keyboardEvents);
 
     virtual void update(float dt) = 0;                  // the number of ticks since the last update
     virtual bool isDone() const;                        // if this returns true, the interface must be deleted and replaced by
-    virtual up_t<AbstractGameInterface> next() = 0;     // the next interface
+    virtual up_t<AbstractGameInterface> next() = 0;     // the next interface (if next() is null, then the game closes)
 
     virtual void drawIn(DrawerAbstraction& window, float dt) const = 0;
 
@@ -39,10 +39,8 @@ class AbstractGameInterface
     InputsAbstraction* m_inputs = nullptr; // use-a
 
     EventsMap* m_eventsMap = nullptr; // use-a
-    up_t<EventsMap> m_unloadedEventsMap; // use-a
+    up_t<EventsMap> m_unloadedEventsMap;
 };
 
 
 #endif
-
-

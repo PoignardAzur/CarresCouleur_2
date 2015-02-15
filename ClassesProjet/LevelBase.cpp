@@ -1,8 +1,14 @@
 
-
 #include "LevelBase.hpp"
 #include "Level_HUD.hpp"
 #include "GameEndCredits.hpp"
+
+const int WINDOW_HEIGHT = 500;
+const int WINDOW_WIDTH = 800;
+
+const float MAX_RESPAWN_DELAY = 4.0;
+const int MIN_CARRES_NUMBER = 1;
+const int MAX_CARRES_NUMBER = 6;
 
 
 void LevelBase::setFont(const sf::Font* font)

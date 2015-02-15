@@ -1,5 +1,4 @@
 
-
 #ifndef RESSOURCE_LIST_HEADER
 #define RESSOURCE_LIST_HEADER
 
@@ -7,7 +6,6 @@
 #include <map>
 #include <vector>
 #include <string>
-
 
 
 template <typename R>
@@ -129,9 +127,4 @@ void ResourceList<R>::unload()
 }
 
 
-
-
-
 #endif // TEXTURE_LIST_HEADER
-
-

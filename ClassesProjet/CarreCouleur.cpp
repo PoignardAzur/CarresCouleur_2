@@ -1,6 +1,8 @@
 
-
 #include "CarreCouleur.hpp"
+
+int DEFAULT_CARRE_SIZE = 30;
+int DEFAULT_CARRE_SPEED = 160;
 
 
 CarreCouleur::CarreCouleur(sf::Color color, float sizeCarre)
@@ -55,9 +57,9 @@ void CarreCouleur::drawIn(sf::Vector2f pos, DrawerAbstraction& target, sf::Float
     target.draw(rect);
 }
 
-bool CarreCouleur::recycle(sf::Vector2f pos, sf::FloatRect limits, bool deleteIfOOB)
+bool CarreCouleur::recycle(sf::Vector2f pos, sf::FloatRect limits, bool deleteIfOOB, bool ignoreAge)
 {
-    m_toDelete = m_age > 1 && (getHitbox(pos).intersects(limits) xor deleteIfOOB);
+    m_toDelete = (ignoreAge || m_age > 1) && (getHitbox(pos).intersects(limits) xor deleteIfOOB);
     return m_toDelete;
 }
 

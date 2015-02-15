@@ -1,5 +1,4 @@
 
-
 #ifndef GAME_END_CREDITS_HEADER
 #define GAME_END_CREDITS_HEADER
 

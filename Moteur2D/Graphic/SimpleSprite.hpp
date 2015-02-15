@@ -1,12 +1,11 @@
 
-
 #ifndef SIMPLE_SPRITE_HEADER
 #define SIMPLE_SPRITE_HEADER
 
 #include "DrawableAbstraction.hpp"
 #include <memory>
 
-#define NULL_PT sf::Vector2f(0,0)
+extern const sf::Vector2f NULL_PT; // defined in Game/SimpleHitbox
 
 
 class SimpleSprite : public DrawableObjectAbstraction
@@ -25,7 +24,7 @@ class SimpleSprite : public DrawableObjectAbstraction
 
     private :
 
-    mutable sf::Sprite m_sprite;
+    mutable sf::Sprite m_sprite;        // is mutable because m_sprite.setPosition(pos) is called in the drawIn method
     sf::Vector2f m_center;
 };
 

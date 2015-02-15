@@ -5,10 +5,11 @@
 
 #include <SFML/Graphics/Rect.hpp>
 
-#define NULL_PT sf::Vector2f(0,0)
-#define NULL_RECT sf::FloatRect(0,0,0,0)
+extern const sf::Vector2f NULL_PT;
+extern const sf::FloatRect NULL_RECT;
 
 
+// A rectangular box with a speed and no position
 class SimpleHitbox
 {
     public :

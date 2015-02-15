@@ -1,5 +1,4 @@
 
-
 #ifndef MENU_SPRITE_HEADER
 #define MENU_SPRITE_HEADER
 

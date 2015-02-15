@@ -1,14 +1,14 @@
 
-
-#ifndef HEADER_CARRE_COULEUR
-#define HEADER_CARRE_COULEUR
-
-#define DEFAULT_CARRE_SIZE 30
-#define DEFAULT_CARRE_SPEED 160
+#ifndef CARRE_COULEUR_HEADER
+#define CARRE_COULEUR_HEADER
 
 #include "../Moteur2D/Interfaces/AbstractLevel.hpp"
 #include "../Moteur2D/Game/SimpleHitbox.hpp"
 #include "../Moteur2D/Game/VartAbs.hpp"
+
+
+extern int DEFAULT_CARRE_SIZE;
+extern int DEFAULT_CARRE_SPEED;
 
 
 class CarreCouleur : public VartAbs, public SimpleHitbox
@@ -25,7 +25,7 @@ class CarreCouleur : public VartAbs, public SimpleHitbox
     void updatePos(sf::Vector2f& pos, float dt);
     void drawIn(sf::Vector2f pos, DrawerAbstraction& target, sf::FloatRect limits, float dt) const;
 
-    bool recycle(sf::Vector2f pos, sf::FloatRect limits, bool deleteIfOOB = true);
+    bool recycle(sf::Vector2f pos, sf::FloatRect limits, bool deleteIfOOB = true, bool ignoreAge = false);
 
     private :
 
@@ -37,4 +37,4 @@ class CarreCouleur : public VartAbs, public SimpleHitbox
 };
 
 
-#endif // HEADER_CARRE_COULEUR
+#endif // CARRE_COULEUR_HEADER

@@ -1,5 +1,4 @@
 
-
 #ifndef SIMPLE_CREDITS_SCREEN_HEADER
 #define SIMPLE_CREDITS_SCREEN_HEADER
 
@@ -7,6 +6,7 @@
 #include "Items/TextObjectAbstraction.hpp"
 
 
+// Basic implementation of AbstractEndCreditsScreen
 class SimpleEndCreditsScreen : public AbstractEndCreditsScreen
 {
     public :
@@ -25,8 +25,9 @@ class SimpleEndCreditsScreen : public AbstractEndCreditsScreen
 
     virtual up_t<AbstractGameInterface> next() = 0;
 
-//    sf::FloatRect getTargetBounds();
-//    virtual void add_item(std::unique_ptr<Menu::ItemAbstraction> item);
+//  INHERITED METHODS
+//  sf::FloatRect getTargetBounds();
+//  virtual void add_item(std::unique_ptr<Menu::ItemAbstraction> item);
 
 
     private :

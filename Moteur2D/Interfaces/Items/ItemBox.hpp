@@ -1,9 +1,8 @@
 
-
 #ifndef MENU_ITEM_BOX_HEADER
 #define MENU_ITEM_BOX_HEADER
 
-#include <memory>
+#include "up.hpp"
 #include "ItemAbstraction.hpp"
 
 
@@ -14,13 +13,13 @@ namespace Menu
     {
         public :
 
-        explicit ItemBox(ItemAbstraction* item = nullptr, Alignement a = Center, float x_offset = 0, float y_offset = 0);
+        explicit ItemBox(up_t<ItemAbstraction> item = nullptr, Alignement a = Center, sf::Vector2f gaps = sf::Vector2f(0,0));
 
-        std::unique_ptr<ItemAbstraction> setItem(ItemAbstraction* item);      // returns a pointer owning the previous item
-        void setColor(sf::Color c);
-        void setAlignement(Alignement a, float x_offset, float y_offset);
-        void setSize(sf::Vector2f size, bool relative = false);
+        up_t<ItemAbstraction> setItem(up_t<ItemAbstraction> item);          // returns a pointer owning the previous item
+        void setColor(sf::Color c);                                         // makes the box not transparent even when !isHitboxDrawn
 
+        void setAlignement(Alignement a, sf::Vector2f gaps);                // see the code of drawImageIn() for how these
+        void setSize(sf::Vector2f size, bool relative = false);             // two functions interact with each other
         sf::Vector2f getSize() const;
 
 
@@ -31,18 +30,17 @@ namespace Menu
 
         private :
 
-        std::unique_ptr<ItemAbstraction> m_item;
+        up_t<ItemAbstraction> m_item;
         Alignement m_align;
 
-        sf::Color m_boxColor = sf::Color(0, 0, 0, 0);
+        sf::Color m_boxColor = sf::Color(0,0,0, 0);
+        sf::Vector2f m_size = sf::Vector2f(0, 0);
+        bool m_relative;
 
-        sf::Vector2f m_size;
         sf::Vector2f m_gaps;        // if m_gaps are positive, the item is drawn in a box smaller than indicated by getSize()
-        bool m_relative;            // if m_gaps are negative, the item is drawn in a box bigger than indicated by getSize()
-    };
+    };                              // if m_gaps are negative, the item is drawn in a box bigger than indicated by getSize()
 
 }
 
 
 #endif // MENU_ITEM_BOX_HEADER
-

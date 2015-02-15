@@ -1,5 +1,4 @@
 
-
 #ifndef MENU_LIFE_COUNTER_HEADER
 #define MENU_LIFE_COUNTER_HEADER
 
@@ -11,6 +10,7 @@
 namespace Menu
 {
 
+    // Draws a given value (m_count) ; if the value is below a given maximum, it is drawn as [m_count] sprites next to one another
     class LifeCounter : public ItemAbstraction, public TextObjectAbstraction
     {
         public :

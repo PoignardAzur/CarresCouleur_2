@@ -16,7 +16,7 @@ Menu::ItemGrid::ItemGrid(const std::vector<std::vector< std::shared_ptr<ItemAbst
 Menu::ItemGrid::ItemGrid(const std::vector<std::shared_ptr<ItemAbstraction>>& items, bool is_a_row, float gaps)
 {
     if (is_a_row)
-    setAsLine(items, gaps);
+    setAsRow(items, gaps);
 
     else
     setAsColumn(items, gaps);
@@ -33,7 +33,7 @@ void Menu::ItemGrid::set(const std::vector<std::vector< std::shared_ptr<ItemAbst
 }
 
 
-void Menu::ItemGrid::setAsLine(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps)
+void Menu::ItemGrid::setAsRow(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps)
 {
     m_itemLines.resize(1);
     m_itemLines[0] = items;

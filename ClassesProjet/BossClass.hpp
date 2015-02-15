@@ -1,5 +1,4 @@
 
-
 #ifndef BOSS_CLASS_HEADER
 #define BOSS_CLASS_HEADER
 

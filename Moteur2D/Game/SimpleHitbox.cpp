@@ -1,6 +1,8 @@
 
-
 #include "SimpleHitbox.hpp"
+
+const sf::Vector2f NULL_PT(0,0);
+const sf::FloatRect NULL_RECT(0,0,0,0);
 
 
 SimpleHitbox::SimpleHitbox(sf::FloatRect box, sf::Vector2f speed) : m_box(box), m_speed(speed)
@@ -46,7 +48,6 @@ sf::Vector2f SimpleHitbox::getSpeed() const
 }
 
 
-
 sf::Vector2f getCenter(const sf::FloatRect& rect)
 {
     return sf::Vector2f(rect.left + (rect.width / 2), rect.top + (rect.height / 2));
@@ -56,5 +57,4 @@ bool testCollision(const SimpleHitbox& o1, sf::Vector2f pos1, const SimpleHitbox
 {
     return o1.getHitbox(pos1).intersects(o2.getHitbox(pos2));
 }
-
 

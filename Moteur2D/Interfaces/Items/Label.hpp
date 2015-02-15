@@ -1,10 +1,9 @@
 
-
 #ifndef MENU_LABEL_HEADER
 #define MENU_LABEL_HEADER
 
 #include "Text.hpp"
-#include <memory>
+#include "up.hpp"
 
 
 namespace Menu
@@ -15,9 +14,9 @@ namespace Menu
     {
         public :
 
-        explicit Label(ItemAbstraction* item = nullptr, const std::string& str = "", FontStyle f = FontStyle(), bool horizontalAlignement = true, float gap = 0);
+        explicit Label(up_t<ItemAbstraction> item = nullptr, const std::string& str = "", FontStyle f = FontStyle(), bool horizontalAlignement = true, float gap = 0);
 
-        void setItem(ItemAbstraction* item);
+        up_t<ItemAbstraction> setItem(up_t<ItemAbstraction> item);      // returns the previous item
         void setLabel(const std::string& str);
 
         void setAlignement(bool horizontal, float gap);
@@ -28,12 +27,12 @@ namespace Menu
 
         void setFontStyle(const FontStyle& f);
         void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
-        void setOwnSize();
+        void updateOwnSize();
 
 
         private :
 
-        std::shared_ptr<ItemAbstraction> m_item;
+        up_t<ItemAbstraction> m_item;
         Text m_label;
 
         float m_gap;

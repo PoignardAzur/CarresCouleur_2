@@ -1,8 +1,8 @@
 
 // Includes every file of the engine
 
-#ifndef HEADER_INCLUDES
-#define HEADER_INCLUDES
+#ifndef INCLUDES_FILE_HEADER
+#define INCLUDES_FILE_HEADER
 
 //namespace CtB
 //{
@@ -35,4 +35,4 @@
 //}
 
 
-#endif
+#endif // INCLUDES_FILE_HEADER

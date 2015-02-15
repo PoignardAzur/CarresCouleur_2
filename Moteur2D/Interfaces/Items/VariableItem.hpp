@@ -1,8 +1,6 @@
 
-
 #ifndef VARIABLE_MENU_ITEM_HEADER
 #define VARIABLE_MENU_ITEM_HEADER
-
 
 #include "ItemAbstraction.hpp"
 #include <vector>
@@ -46,12 +44,7 @@ namespace Menu
         ItemSize m_size;       // if true, the size given is the biggest frame's size; if false, the size given is the smallest frame's size
     };
 
-
 }
 
 
-
 #endif // VARIABLE_MENU_ITEM_HEADER
-
-
-

@@ -25,7 +25,7 @@ void Menu::ItemRow::setItemsCount(size_t n, std::shared_ptr<ItemAbstraction> ite
 
 void Menu::ItemRow::setItems(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps)
 {
-    m_grid.setAsLine(items, gaps);
+    m_grid.setAsRow(items, gaps);
 }
 
 void Menu::ItemRow::setItem(size_t n, ItemAbstraction* item)

@@ -8,12 +8,12 @@ Menu::ItemStack::ItemStack()
     m_size = sf::Vector2f(0,0);
 }
 
-Menu::ItemStack::ItemStack(std::vector<std::pair<AbsItemPtr, Alignement>> items, bool sizeIsMax)
+Menu::ItemStack::ItemStack(std::vector<ItemAlignPair> items, bool sizeIsMax)
 {
     setItems(std::move(items), sizeIsMax);
 }
 
-void Menu::ItemStack::setItems(std::vector<std::pair<AbsItemPtr, Alignement>> items, bool sizeIsMax)
+void Menu::ItemStack::setItems(std::vector<ItemAlignPair> items, bool sizeIsMax)
 {
     for (auto& item : items)
     {
@@ -26,9 +26,9 @@ void Menu::ItemStack::setItems(std::vector<std::pair<AbsItemPtr, Alignement>> it
     updateOwnSize();
 }
 
-void Menu::ItemStack::addItem(ItemAbstraction* item, Alignement align)
+void Menu::ItemStack::addItem(up_t<ItemAbstraction> item, Alignement align)
 {
-    m_items.push_back(std::pair<AbsItemPtr, Alignement>(AbsItemPtr(item), align));
+    m_items.push_back(ItemAlignPair(mv(item), align));
     item->setParent(this);
     updateOwnSize();
 }
@@ -63,7 +63,7 @@ void Menu::ItemStack::updateOwnSize()
 
     else if (m_items.size())
     {
-        m_size = m_items[0].first->getSize();
+        m_size = m_items.front().first->getSize();
 
         for (auto const& alignedItem : m_items)
         {

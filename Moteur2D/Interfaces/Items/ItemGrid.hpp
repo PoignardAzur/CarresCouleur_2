@@ -1,5 +1,4 @@
 
-
 #ifndef MENU_ITEM_GRID_HEADER
 #define MENU_ITEM_GRID_HEADER
 
@@ -21,7 +20,7 @@ namespace Menu
         ItemGrid(const std::vector<std::shared_ptr<ItemAbstraction>>& items, bool is_a_row, float gaps = 0);
 
         void set(const std::vector<std::vector< std::shared_ptr<ItemAbstraction> >>& items, sf::Vector2f gaps = sf::Vector2f(0,0));
-        void setAsLine(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
+        void setAsRow(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
         void setAsColumn(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
 
         void setInternPosition(Alignement align, sf::Vector2f gaps);

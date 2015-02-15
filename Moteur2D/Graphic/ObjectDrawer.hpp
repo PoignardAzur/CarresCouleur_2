@@ -1,11 +1,8 @@
 
-
-
-#ifndef HEADER_AFFICHEUR_OBJETS
-#define HEADER_AFFICHEUR_OBJETS
+#ifndef OBJECT_DRAWER_HEADER
+#define OBJECT_DRAWER_HEADER
 
 #include "DrawerAbstraction.hpp"
-
 
 
 class ObjectDrawer : public DrawerAbstraction
@@ -15,20 +12,14 @@ class ObjectDrawer : public DrawerAbstraction
     ObjectDrawer(sf::RenderTarget* t);
 
     virtual void clear();                               // reset the screen
-    virtual void draw(const sf::Drawable& o);
-//    void display();
-
+    virtual void draw(const sf::Drawable& object);
 
     protected :
-    sf::RenderTarget& target(); /// TODO - Change this to getTarget()
-
+    sf::RenderTarget& getTarget();
 
     private :
     sf::RenderTarget* m_target;       // use-a
 };
 
 
-
-
 #endif
-

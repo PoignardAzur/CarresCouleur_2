@@ -12,13 +12,13 @@ BasicArcadeLevel::BasicArcadeLevel(std::seed_seq& seed) : AbstractLevel(seed), m
 
 }
 
-void BasicArcadeLevel::updateLivesAndTimer(float ticks)
+void BasicArcadeLevel::updateLivesAndTimer(float dt)
 {
     if (!isPlayerAlive())
     {
         if (m_timeBeforeRespawn.getCurrentTime() > 0)
         {
-            if (m_timeBeforeRespawn.decrement(ticks))
+            if (m_timeBeforeRespawn.decrement(dt))
             {
                 m_lives--;
                 respawnPlayer();
@@ -28,15 +28,14 @@ void BasicArcadeLevel::updateLivesAndTimer(float ticks)
         else if (m_lives)
         {
             m_timeBeforeRespawn.resetTimeToMax();
-            playerKilled(false);
+            playerKilledEvent(false);
         }
 
-        else if (!gameOver())
+        else if (!isGameOver())
         {
             setGameOver();
-            playerKilled(true);
+            playerKilledEvent(true);
         }
-
     }
 }
 
@@ -47,12 +46,12 @@ BasicArcadeLevel::~BasicArcadeLevel()
 }
 
 
-int BasicArcadeLevel::score() const
+int BasicArcadeLevel::getScore() const
 {
     return m_score;
 }
 
-void BasicArcadeLevel::setPoints(int p, bool rel)
+void BasicArcadeLevel::setScore(int p, bool rel)
 {
     if (rel)
     m_score += p;
@@ -61,7 +60,7 @@ void BasicArcadeLevel::setPoints(int p, bool rel)
     m_score = p;
 }
 
-int BasicArcadeLevel::lives() const
+int BasicArcadeLevel::getLives() const
 {
     return m_lives;
 }
@@ -76,7 +75,7 @@ void BasicArcadeLevel::setLives(int l, bool rel)
 }
 
 
-bool BasicArcadeLevel::gameOver() const
+bool BasicArcadeLevel::isGameOver() const
 {
     return m_gameOver;
 }

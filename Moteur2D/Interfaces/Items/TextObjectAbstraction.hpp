@@ -1,11 +1,10 @@
 
-
 #ifndef TEXT_OBJECT_ABSTRACTION_HEADER
 #define TEXT_OBJECT_ABSTRACTION_HEADER
 
 #include <SFML/Graphics.hpp>
 
-#define DEFAULT_FONT_SIZE 30
+extern const int DEFAULT_FONT_SIZE;
 
 
 namespace Menu

@@ -1,7 +1,6 @@
 
-
-#ifndef HEADER_GESTIONNAIRE
-#define HEADER_GESTIONNAIRE
+#ifndef GAME_CONTROLLER_HEADER
+#define GAME_CONTROLLER_HEADER
 
 #include "Interfaces/AbstractLevel.hpp"
 #include "Graphic/ObjectDrawer.hpp"
@@ -18,8 +17,8 @@ class GameController
     virtual ~GameController() {}
 
     virtual void update(float dt);                               // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
-    virtual void display(float dt);
     virtual bool isDone() const = 0;                             // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
+    virtual void display(float dt);
 
 
     protected :
@@ -31,11 +30,11 @@ class GameController
 
     private :
 
-    up_t<InputsAbstraction> m_userInputs;     // has-a
-    up_t<DrawerAbstraction> m_window;         // has-a
+    up_t<InputsAbstraction> m_userInputs;
+    up_t<DrawerAbstraction> m_window;
 
-    sf::RenderWindow* m_renderWindow;      // use-a
+    sf::RenderWindow* m_renderWindow; // use-a
 };
 
 
-#endif
+#endif // GAME_CONTROLLER_HEADER

@@ -2,33 +2,36 @@
 #include "Label.hpp"
 
 
-Menu::Label::Label(ItemAbstraction* item, const std::string& str, FontStyle f, bool horizontalAlignement, float gap)
+Menu::Label::Label(up_t<ItemAbstraction> item, const std::string& str, FontStyle f, bool horizontalAlignement, float gap)
 {
-    setItem(item);
+    setItem(mv(item));
     setLabel(str);
     setAlignement(horizontalAlignement, gap);
     setFont(f);
 }
 
-void Menu::Label::setItem(ItemAbstraction* item)
+up_t<Menu::ItemAbstraction> Menu::Label::setItem(up_t<ItemAbstraction> item)
 {
-    m_item = std::shared_ptr<ItemAbstraction>(item);
+    std::swap(m_item, item);
 
     if (m_item)
     m_item->setParent(this);
-    setOwnSize();
+
+    updateOwnSize();
+
+    return item;
 }
 
 void Menu::Label::setLabel(const std::string& str)
 {
     m_label.setString(str);
-    setOwnSize();
+    updateOwnSize();
 }
 
 void Menu::Label::setFontStyle(const FontStyle& f)
 {
     m_label.setFont(f);
-    setOwnSize();
+    updateOwnSize();
 }
 
 void Menu::Label::setAlignement(bool horizontal, float gap)
@@ -36,7 +39,7 @@ void Menu::Label::setAlignement(bool horizontal, float gap)
     m_horizontalAlignement = horizontal;
     m_gap = gap;
 
-    setOwnSize();
+    updateOwnSize();
 }
 
 sf::Vector2f Menu::Label::getSize() const
@@ -65,7 +68,7 @@ void Menu::Label::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, 
     }
 }
 
-void Menu::Label::setOwnSize()
+void Menu::Label::updateOwnSize()
 {
     if (!m_item)
     m_size = m_label.getSize();

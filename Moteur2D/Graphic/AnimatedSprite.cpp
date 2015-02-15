@@ -1,7 +1,8 @@
 
-
 #include "AnimatedSprite.hpp"
 #include <cmath>
+
+const float DEFAULT_ANIM_FRAME_LENGTH = 0.2f;
 
 
 AnimatedSprite::AnimatedSprite()
@@ -58,6 +59,4 @@ void AnimatedSprite::drawIn(sf::Vector2f pos, DrawerAbstraction& target, sf::Flo
 
     SimpleSprite::drawIn(pos, target, limits, dt);
 }
-
-
 

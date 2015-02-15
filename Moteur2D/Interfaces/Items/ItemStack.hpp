@@ -1,11 +1,9 @@
 
-
-
 #ifndef MENU_ITEM_STACK_HEADER
 #define MENU_ITEM_STACK_HEADER
 
 #include "ItemAbstraction.hpp"
-#include <memory>
+#include "up.hpp"
 
 namespace Menu
 {
@@ -14,34 +12,31 @@ namespace Menu
     {
         public :
 
-        using AbsItemPtr = std::unique_ptr<ItemAbstraction>;
+        using ItemAlignPair = std::pair<up_t<ItemAbstraction>, Alignement>;
 
         ItemStack();
-        ItemStack(std::vector<std::pair<AbsItemPtr, Alignement>> items, bool sizeIsMax = true);
+        ItemStack(std::vector<ItemAlignPair> items, bool sizeIsMax = true);
 
-        void setItems(std::vector<std::pair<AbsItemPtr, Alignement>> items, bool sizeIsMax = true);
-        void addItem(ItemAbstraction* item, Alignement align);
+        void setItems(std::vector<ItemAlignPair> items, bool sizeIsMax = true);
+        void addItem(up_t<ItemAbstraction> item, Alignement align);
+
         sf::Vector2f getSize() const;
 
 
         protected :
 
         void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
+        void updateOwnSize();
 
 
         private :
 
-        std::vector<std::pair<AbsItemPtr, Alignement>> m_items;
-        sf::Vector2f m_size;
-        void updateOwnSize();
-        bool m_sizeIsMax;
+        std::vector<std::pair<up_t<ItemAbstraction>, Alignement>> m_items;
+        sf::Vector2f m_size;    // if m_sizeIsMax is true, then m_size is worth the greatest Item's size
+        bool m_sizeIsMax;       // else it's worth the smallest item's size
     };
 
 }
 
 
-
 #endif // MENU_ITEM_STACK_HEADER
-
-
-

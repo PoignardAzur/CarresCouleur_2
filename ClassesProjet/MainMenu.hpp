@@ -1,5 +1,4 @@
 
-
 #ifndef MAIN_MENU_HEADER
 #define MAIN_MENU_HEADER
 
@@ -38,6 +37,9 @@ class MainMenu : public Menu::MenuInterface
     Menu::SimpleButton m_level_4_button;
     Menu::SimpleButton m_quit_button;
 };
+
+up_t<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs, bool small = false);
+up_t<Menu::ItemAbstraction> redBox(const char* str, Menu::FontStyle& fs, bool small = false);
 
 
 #endif // MAIN_MENU_HEADER

@@ -1,8 +1,5 @@
 
-
-
 #include "Counter.hpp"
-
 
 
 Menu::Counter::Counter(FontStyle f, bool rightAligned, int n, int min, int max, int /*base*/)
@@ -75,7 +72,6 @@ sf::Vector2f Menu::Counter::getSize() const
 }
 
 
-
 void Menu::Counter::updateOwnSize()
 {
     std::string currentText = std::to_string(m_value > m_maximumValue ? m_maximumValue : (m_value < m_minimumValue ? m_minimumValue : m_value));
@@ -93,15 +89,8 @@ void Menu::Counter::updateOwnSize()
     updateParentSize();
 }
 
-
 void Menu::Counter::updateText()
 {
     m_drawnText.setString(std::to_string(m_value > m_maximumValue ? m_maximumValue : (m_value < m_minimumValue ? m_minimumValue : m_value)));
 }
-
-
-
-
-
-
 

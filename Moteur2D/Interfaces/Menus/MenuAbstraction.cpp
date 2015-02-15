@@ -1,6 +1,6 @@
 
-
 #include "MenuAbstraction.hpp"
+
 
 Menu::MenuAbstraction::MenuAbstraction(bool isVertical, bool doesLoop)
 {
@@ -10,16 +10,19 @@ Menu::MenuAbstraction::MenuAbstraction(bool isVertical, bool doesLoop)
 
 void Menu::MenuAbstraction::select()
 {
+    if (selectedButton())
     selectedButton()->select();
 }
 
 void Menu::MenuAbstraction::deselect()
 {
+    if (selectedButton())
     selectedButton()->deselect();
 }
 
 void Menu::MenuAbstraction::press()
 {
+    if (selectedButton())
     selectedButton()->press();
 }
 
@@ -27,36 +30,49 @@ void Menu::MenuAbstraction::press()
 void Menu::MenuAbstraction::left(bool big)
 {
     if (m_isVertical)
-    selectedButton()->left(big);
+    {
+        if (selectedButton())
+        selectedButton()->left(big);
+    }
 
-    else
+    else // horizontal menu
     decrement(big);
 }
 
 void Menu::MenuAbstraction::right(bool big)
 {
     if (m_isVertical)
-    selectedButton()->right(big);
+    {
+        if (selectedButton())
+        selectedButton()->right(big);
+    }
 
-    else
+
+    else // horizontal menu
     increment(big);
 }
 
 void Menu::MenuAbstraction::up(bool big)
 {
-    if (!m_isVertical)
-    selectedButton()->up(big);
+    if (!m_isVertical) // horizontal menu
+    {
+        if (selectedButton())
+        selectedButton()->up(big);
+    }
 
-    else
+    else // vertical menu
     decrement(big);
 }
 
 void Menu::MenuAbstraction::down(bool big)
 {
-    if (!m_isVertical)
-    selectedButton()->down(big);
+    if (!m_isVertical) // horizontal menu
+    {
+        if (selectedButton())
+        selectedButton()->down(big);
+    }
 
-    else
+    else // vertical menu
     increment(big);
 }
 
@@ -68,7 +84,7 @@ Menu::ButtonAbstraction* Menu::MenuAbstraction::selectedButton()
 
 const Menu::ButtonAbstraction* Menu::MenuAbstraction::selectedButton() const
 {
-    return m_buttonList[m_selectedButton];
+    return const_cast<Menu::MenuAbstraction*>(this)->selectedButton();
 }
 
 void Menu::MenuAbstraction::setSelectedButton(size_t selectedButtonSlot)
@@ -85,6 +101,9 @@ void Menu::MenuAbstraction::setButtonList(std::vector<ButtonAbstraction*> button
 
 void Menu::MenuAbstraction::addButton(ButtonAbstraction* b)
 {
+    if (m_selectedButton == -1)
+    m_selectedButton = 0;
+
     m_buttonList.push_back(b);
     updateSelected();
 }
@@ -104,14 +123,14 @@ void Menu::MenuAbstraction::updateSelected()
 void Menu::MenuAbstraction::increment(bool big)
 {
     if (big)
-    m_selectedButton = m_buttonList.size() - 1;
+    m_selectedButton = m_buttonList.size() - 1; // if m_buttonList is empty, this is worth -1
 
     else
     {
         if (m_selectedButton + 1 < m_buttonList.size())
         m_selectedButton ++;
 
-        else if (m_doesLoop)
+        else if (m_doesLoop && !m_buttonList.empty())
         m_selectedButton = 0;
     }
 
@@ -120,7 +139,7 @@ void Menu::MenuAbstraction::increment(bool big)
 
 void Menu::MenuAbstraction::decrement(bool big)
 {
-    if (big)
+    if (big && !m_buttonList.empty())
     m_selectedButton = 0;
 
     else
@@ -129,7 +148,7 @@ void Menu::MenuAbstraction::decrement(bool big)
         m_selectedButton --;
 
         else if (m_doesLoop)
-        m_selectedButton = m_buttonList.size();
+        m_selectedButton = m_buttonList.size() - 1; // if m_buttonList is empty, this is worth -1
     }
 
     updateSelected();

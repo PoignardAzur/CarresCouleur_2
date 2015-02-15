@@ -1,11 +1,12 @@
 
-
 #include "PauseMenu.hpp"
 #include "Level_HUD.hpp"
 #include "Level_1.hpp"
 #include "MainMenu.hpp"
 
-#define BUTTON_SIZE sf::Vector2f(100, 50)
+
+up_t<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs);
+up_t<Menu::ItemAbstraction> redBox(const char* str, Menu::FontStyle& fs);
 
 
 PauseMenu::PauseMenu() : MenuInterface(false, false)
@@ -20,8 +21,8 @@ void PauseMenu::set(const sf::Font* f, InputsAbstraction* in)
     m_text.setFont(f, DEFAULT_FONT_SIZE * 2, sf::Color::White);
 
     Menu::FontStyle fs(f, DEFAULT_FONT_SIZE, sf::Color::White);
-    m_yesButton.setSprites(new Menu::TextBox(BUTTON_SIZE, sf::Color(120, 120, 0), "Oui", fs), new Menu::TextBox(BUTTON_SIZE, sf::Color::Red, "Oui", fs));
-    m_noButton.setSprites(new Menu::TextBox(BUTTON_SIZE, sf::Color(120, 120, 0), "Non", fs), new Menu::TextBox(BUTTON_SIZE, sf::Color::Red, "Non", fs));
+    m_yesButton.setSprites(yellowBox("Oui", fs, true), redBox("Oui", fs, true));
+    m_noButton.setSprites(yellowBox("Non", fs, true), redBox("Non", fs, true));
 
     m_yesButton.setFunction
     (

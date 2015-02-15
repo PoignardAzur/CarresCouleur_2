@@ -1,11 +1,9 @@
 
-
 #include "TitleScreen.hpp"
 #include "LevelBase.hpp"
 
-#define TITLE_TEXT "CARRES COULEUR 2"
-#define SUBTITLE_TEXT "Le retour de la vengeance"
-#define FONT_FILE_NAME "Resources/arial.ttf"
+const char* const TITLE_TEXT = "CARRES COULEUR 2";
+const char* const SUBTITLE_TEXT = "Le retour de la vengeance";
 
 
 TitleScreen::TitleScreen(MainMenu* nextInterface, InputsAbstraction* in, const sf::Font* font)

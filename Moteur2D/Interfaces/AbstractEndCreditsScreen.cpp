@@ -1,6 +1,7 @@
 
-
 #include "AbstractEndCreditsScreen.hpp"
+
+const int DEFAULT_CREDITS_SPEED = 60;
 
 
 void AbstractEndCreditsScreen::setMargin(float margin)

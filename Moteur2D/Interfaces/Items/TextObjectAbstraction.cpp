@@ -1,6 +1,7 @@
 
-
 #include "TextObjectAbstraction.hpp"
+
+const int DEFAULT_FONT_SIZE = 30;
 
 
 Menu::FontStyle::FontStyle(const sf::Font* n_f, unsigned int n_charSize, const sf::Color& n_c)
@@ -49,5 +50,4 @@ Menu::FontStyle Menu::TextObjectAbstraction::getFontStyle() const
 {
     return m_fontStyle;
 }
-
 

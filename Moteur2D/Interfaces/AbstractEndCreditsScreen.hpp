@@ -1,5 +1,4 @@
 
-
 #ifndef ABSTRACT_CREDITS_SCREEN_HEADER
 #define ABSTRACT_CREDITS_SCREEN_HEADER
 
@@ -8,7 +7,7 @@
 #include <list>
 #include <memory>
 
-#define DEFAULT_CREDITS_SPEED 60
+extern const int DEFAULT_CREDITS_SPEED;
 
 
 struct RisingItem
@@ -25,7 +24,7 @@ class AbstractEndCreditsScreen : public AbstractGameInterface
     void setMargin(float margin);
     void setGap(float gapBetweenItems);
     void setSpeed(float verticalItemSpeed);
-    void setTargetBounds(sf::FloatRect bounds);
+    void setTargetBounds(sf::FloatRect bounds);     // usually the bounds of the screen
 
     virtual void add_title(const std::string& title) = 0;
     virtual void add_subtitle(const std::string& title) = 0;
@@ -59,4 +58,4 @@ class AbstractEndCreditsScreen : public AbstractGameInterface
 };
 
 
-#endif // CREDIT_SCREEN_HEADER
+#endif // ABSTRACT_CREDITS_SCREEN_HEADER

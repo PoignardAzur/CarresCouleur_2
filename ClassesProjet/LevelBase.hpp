@@ -1,20 +1,20 @@
 
-
 #ifndef LEVEL_BASE_HEADER
 #define LEVEL_BASE_HEADER
-
-#define WINDOW_HEIGHT 500
-#define WINDOW_WIDTH 800
-
-#define MAX_RESPAWN_DELAY 4.0
-#define MIN_CARRES_NUMBER 1
-#define MAX_CARRES_NUMBER 6
 
 #include "Level_HUD.hpp"
 #include "../Moteur2D/Interfaces/AbstractLevel.hpp"
 #include "../Moteur2D/Game/VartList.hpp"
 #include "CarreCouleur.hpp"
 #include "PauseMenu.hpp"
+
+
+extern const int WINDOW_HEIGHT;
+extern const int WINDOW_WIDTH;
+
+extern const float MAX_RESPAWN_DELAY;
+extern const int MIN_CARRES_NUMBER;
+extern const int MAX_CARRES_NUMBER;
 
 
 class Level_HUD;
@@ -67,7 +67,8 @@ class LevelBase : public AbstractLevel
     PauseMenu* m_pauseMenu;
 
     int m_score = 0;
-    const sf::Font* m_font;
+    const sf::Font* m_font = nullptr;
 };
+
 
 #endif // LEVEL_BASE_HEADER

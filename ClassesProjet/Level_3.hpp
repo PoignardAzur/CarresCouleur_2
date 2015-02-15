@@ -24,6 +24,7 @@ class Level_3 : public LevelBase
     private :
 
     CarreCouleur m_carreGris;
+    sf::Vector2f m_carreGrisPos;
 };
 
 

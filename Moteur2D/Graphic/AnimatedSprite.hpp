@@ -1,12 +1,11 @@
 
-
 #ifndef ANIMATED_SPRITE_HEADER
 #define ANIMATED_SPRITE_HEADER
 
 #include "SimpleSprite.hpp"
 #include <memory>
 
-#define DEFAULT_ANIM_FRAME_LENGTH 0.2f
+extern const float DEFAULT_ANIM_FRAME_LENGTH;
 
 
 class AnimatedSprite : public SimpleSprite

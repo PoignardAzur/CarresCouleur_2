@@ -1,7 +1,6 @@
 
-
-#ifndef HEADER_TABLEAU_VARTS
-#define HEADER_TABLEAU_VARTS
+#ifndef VART_LIST_HEADER
+#define VART_LIST_HEADER
 
 #include "PlacedVart.hpp"
 #include <list>
@@ -23,8 +22,8 @@ void updateAll(VartList<V>& list, float dt, bool delDeadVarts = true, bool updat
 
     if (delDeadVarts)
     deleteDeadVarts(list);
-    /* we could just call erase(p) in the loop, but it could lead to
-    problems should a live Vart need variables from a deleted one */
+    /* we could just call erase(p) in the loop, but it could lead to problems
+    should a live Vart need variables from a deleted one during its update */
 }
 
 
@@ -56,11 +55,12 @@ void updateAllPositions(VartList<V>& list, float dt)
 {
     for (auto& placedVart : list)
     {
-        placedVart.get().updatePos(placedVart.pos, dt);
+        placedVart.updatePos(dt);
     }
 }
 
 
+// This class is useful for letting a class add Varts to a list, but not modify the list
 template <typename V = VartAbs>
 class VartPusher
 {
@@ -95,5 +95,4 @@ void VartPusher<V>::add(up_t<V> vart, sf::Vector2f pos)
 }
 
 
-#endif
-
+#endif // VART_LIST_HEADER

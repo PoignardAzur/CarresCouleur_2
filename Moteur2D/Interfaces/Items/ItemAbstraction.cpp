@@ -1,7 +1,5 @@
 
-
 #include "ItemAbstraction.hpp"
-
 
 bool DRAW_ITEM_HITBOX = false; // doesn't need to be const
 
@@ -47,7 +45,7 @@ void Menu::ItemAbstraction::drawInBox(DrawerAbstraction& target, sf::FloatRect b
     drawIn(target, position, drawHitbox);
 }
 
-
+// used to determine the hitbox's color arbitrarily, and differentiate it from other Items' hitboxes
 int Menu::ItemAbstraction::hashToColor(float x) const
 {
     return static_cast<int>(x * 17) % 255;
@@ -73,8 +71,4 @@ void Menu::ItemAbstraction::updateOwnSize()
 {
     updateParentSize();
 }
-
-
-
-
 

@@ -5,15 +5,15 @@
 #include "../Items/Text.hpp"
 
 
-Menu::SimpleButton::SimpleButton(ItemAbstraction* unselected, ItemAbstraction* selected)
+Menu::SimpleButton::SimpleButton(up_t<ItemAbstraction> unselected, up_t<ItemAbstraction> selected)
 {
-    setSprites(unselected, selected);
+    setSprites(mv(unselected), mv(selected));
 }
 
-void Menu::SimpleButton::setSprites(ItemAbstraction* unselected, ItemAbstraction* selected)
+void Menu::SimpleButton::setSprites(up_t<ItemAbstraction> unselected, up_t<ItemAbstraction> selected)
 {
-    m_unselected_sprite.reset(unselected);
-    m_selected_sprite.reset(selected);
+    m_unselected_sprite = mv(unselected);
+    m_selected_sprite = mv(selected);
 }
 
 

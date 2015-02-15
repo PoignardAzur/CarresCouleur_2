@@ -6,6 +6,7 @@
 #include "../Timer.hpp"
 
 
+// Basic implementation of AbstractLevel, with lives, a score and a Game Over event
 class BasicArcadeLevel : public AbstractLevel
 {
     public :
@@ -14,25 +15,32 @@ class BasicArcadeLevel : public AbstractLevel
     BasicArcadeLevel(std::seed_seq& seed);
     virtual ~BasicArcadeLevel();
 
-    bool gameOver() const;
-    virtual bool isPlayerAlive() const = 0;
-    virtual void respawnPlayer() = 0;
-    virtual void playerKilled(bool isGameOver) = 0;
-
-    virtual void drawThisIn(DrawerAbstraction& window, float dt) const = 0;
-    virtual void updateThis(float dt) = 0;
-
 
     protected :
 
-    int score() const;
-    void setPoints(int p, bool rel = false);
+    bool isGameOver() const;
+    virtual bool isPlayerAlive() const = 0;
+    virtual void respawnPlayer() = 0;
+    virtual void playerKilledEvent(bool isGameOver) = 0;
 
-    int lives() const;
+    virtual std::list<sf::Mouse::Button> getTriggerButtons() const = 0;
+    virtual std::list<sf::Keyboard::Key> getTriggerKeys() const = 0;
+
+    virtual void trigger(sf::Mouse::Button button, bool pressed, sf::Vector2f cursor) = 0;
+    virtual void trigger(sf::Keyboard::Key key, bool pressed) = 0;
+
+    virtual void drawThisIn(DrawerAbstraction& window, float dt) const = 0;
+    virtual void drawHUDIn(DrawerAbstraction& window, float dt) const = 0;
+    virtual void updateThis(float dt) = 0;
+
+    int getScore() const;
+    void setScore(int p, bool rel = false);
+
+    int getLives() const;
     void setLives(int l, bool rel = false);
 
     void setRespawnTime(float ticks);
-    void updateLivesAndTimer(float ticks);
+    void updateLivesAndTimer(float dt);
     void setGameOver();
 
 

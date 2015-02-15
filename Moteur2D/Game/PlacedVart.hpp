@@ -1,5 +1,4 @@
 
-
 #ifndef PLACED_VART_HEADER
 #define PLACED_VART_HEADER
 
@@ -7,6 +6,7 @@
 #include <up.hpp>
 
 
+// This abstraction allows to modify a Vart without modifying its position
 template <typename V>
 class Fixed
 {
@@ -17,7 +17,8 @@ class Fixed
     virtual ~Fixed() = default;
 
     virtual sf::Vector2f getPos() const = 0;
-//    virtual void updatePos(float dt) = 0;
+    virtual void updatePos(float dt) = 0;
+
     V& get();
     const V& get() const;
 
@@ -28,6 +29,7 @@ class Fixed
 };
 
 
+// This class represents the set of a Vart (V) and its position
 template <typename V>
 class Placed : public Fixed<V>
 {
@@ -38,7 +40,7 @@ class Placed : public Fixed<V>
 
     sf::Vector2f getPos() const;
     void setPos(sf::Vector2f p);
-//    virtual void updatePos(float dt) = 0;
+    void updatePos(float dt);
 
     sf::Vector2f pos;
 };
@@ -93,5 +95,11 @@ void Placed<V>::setPos(sf::Vector2f p)
     pos = p;
 }
 
+template <typename V>
+void Placed<V>::updatePos(float dt)
+{
+    Fixed<V>::get().updatePos(pos, dt);
+}
 
-#endif
+
+#endif // PLACED_VART_HEADER

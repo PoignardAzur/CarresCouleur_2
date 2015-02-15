@@ -16,7 +16,7 @@ void Inputs::set(sf::Window* window, bool escapeMeansClose)
     m_escapeMeansClose = escapeMeansClose;
 }
 
-bool Inputs::closeWindow() const
+bool Inputs::closeWindow() const // true when the window must be closed or the escape key is pressed
 {
     return m_closeWindow;
 }
@@ -31,7 +31,7 @@ int Inputs::mouseWheel() const
     return m_mouseWheel;
 }
 
-void Inputs::resetMouseWheel() const
+void Inputs::resetMouseWheel()
 {
     m_mouseWheel = 0;
 }
@@ -49,6 +49,8 @@ void Inputs::update(float dt, bool resetWheel)
     if (resetWheel)
     resetMouseWheel();
 
+    /* This function asks the window for events that have happened since the last update ;
+    the rest of the loop handles the given events */
     while (m_fenetre->pollEvent(m_event))
     {
         switch(m_event.type)

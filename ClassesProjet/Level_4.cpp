@@ -1,7 +1,7 @@
 
 #include "Level_4.hpp"
 
-#define TIME_BETWEEN_CARRES 0.1
+const float TIME_BETWEEN_CARRES = 0.1;
 
 
 void Level_4::updateThis(float dt)

@@ -1,7 +1,6 @@
 
-
-#ifndef HEADER_TIMER
-#define HEADER_TIMER
+#ifndef TIMER_HEADER
+#define TIMER_HEADER
 
 #include <vector>
 
@@ -32,4 +31,4 @@ class Timer
 std::vector<bool> decrement(std::vector<Timer>& tableau, float dt);
 
 
-#endif
+#endif // TIMER_HEADER

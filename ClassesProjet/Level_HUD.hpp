@@ -1,5 +1,4 @@
 
-
 #ifndef LEVEL_HUD_HEADER
 #define LEVEL_HUD_HEADER
 

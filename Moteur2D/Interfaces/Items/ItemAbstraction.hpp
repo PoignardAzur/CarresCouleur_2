@@ -1,12 +1,11 @@
 
-
 #ifndef MENU_ITEM_ABSTRACTION_HEADER
 #define MENU_ITEM_ABSTRACTION_HEADER
 
 #include "../../Graphic/DrawerAbstraction.hpp"
 
 
-extern bool DRAW_ITEM_HITBOX; // doesn't need to be const
+extern bool DRAW_ITEM_HITBOX; // is not const to reduce compile time, should not be modified
 
 namespace Menu
 {
@@ -26,7 +25,7 @@ namespace Menu
         BottomRightCorner
     };
 
-
+    // Represents any item drawn in a menu
     class ItemAbstraction
     {
         public :
@@ -50,14 +49,13 @@ namespace Menu
         virtual int hashToColor(float x) const;     // used to determine the hitbox's color
 
         virtual void updateParentSize();    // useful for items that need to change their box's size whenever their children do
-        virtual void updateOwnSize();
+        virtual void updateOwnSize();       // this method is called by classes with a m_size attribute when it needs to be modified
 
 
         private :
 
         ItemAbstraction* m_parent;
     };
-
 
 
     inline bool isLeft(Alignement a)

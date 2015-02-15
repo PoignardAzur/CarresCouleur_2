@@ -7,6 +7,11 @@
 #include <SFML/Graphics.hpp>
 
 
+/*
+Class used with InputsAbstraction to provide simple event-handling mechanics.
+This class keeps function objects pointing to an outside Interface,
+which is why it's marked for deletion by the Interface's destructor
+*/
 class EventsMap
 {
     public :

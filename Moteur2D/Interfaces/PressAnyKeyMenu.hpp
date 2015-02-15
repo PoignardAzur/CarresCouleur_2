@@ -1,5 +1,4 @@
 
-
 #ifndef PAK_MENU_HEADER
 #define PAK_MENU_HEADER
 
@@ -7,6 +6,7 @@
 #include <functional>
 
 
+// A simple menu to begin the game ; the menu is replaced by the next one when you press a key
 class PressAnyKeyMenu : public AbstractGameInterface
 {
     public :

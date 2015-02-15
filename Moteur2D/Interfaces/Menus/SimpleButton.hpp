@@ -1,11 +1,10 @@
 
-
 #ifndef SIMPLE_MENU_BUTTON_HEADER
 #define SIMPLE_MENU_BUTTON_HEADER
 
 #include "ButtonAbstraction.hpp"
 #include "../Items/ItemAbstraction.hpp"
-#include <memory>
+#include "up.hpp"
 #include <functional>
 
 
@@ -16,9 +15,9 @@ namespace Menu
     {
         public :
 
-        SimpleButton(ItemAbstraction* unselected = nullptr, ItemAbstraction* selected = nullptr);
-        void setSprites(ItemAbstraction* unselected, ItemAbstraction* selected = nullptr);
-        void setFunction(std::function<void(void)> triggeredFunction);
+        SimpleButton(up_t<ItemAbstraction> unselected = nullptr, up_t<ItemAbstraction> selected = nullptr);
+        void setSprites(up_t<ItemAbstraction> unselected, up_t<ItemAbstraction> selected = nullptr);
+        void setFunction(std::function<void(void)> triggeredFunction);  // the function called when the method press() is called
         ~SimpleButton() noexcept {};
 
         void select();
@@ -31,7 +30,7 @@ namespace Menu
         protected :
 
         void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
-        const ItemAbstraction* currentSprite() const;
+        const ItemAbstraction* currentSprite() const;   // can be worth nullptr
         ItemAbstraction* currentSprite();
 
         virtual void trigger();
@@ -42,8 +41,8 @@ namespace Menu
         bool m_pressed;
         bool m_selected;
 
-        std::unique_ptr<ItemAbstraction> m_unselected_sprite;
-        std::unique_ptr<ItemAbstraction> m_selected_sprite;
+        up_t<ItemAbstraction> m_unselected_sprite;
+        up_t<ItemAbstraction> m_selected_sprite;
 
         std::function<void(void)> m_triggeredFunction;
     };
@@ -52,4 +51,3 @@ namespace Menu
 
 
 #endif
-

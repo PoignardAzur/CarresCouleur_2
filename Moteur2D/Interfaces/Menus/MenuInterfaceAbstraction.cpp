@@ -32,10 +32,10 @@ void MenuInterfaceAbstraction::update(float dt)
         {
             m_nextLevel = m_submenu->next();
             m_submenuLoaded = false;
-        }
 
-        if (m_nextLevel)
-        endThisLater();
+            if (m_nextLevel)
+            endThisLater();
+        }
     }
 
     else

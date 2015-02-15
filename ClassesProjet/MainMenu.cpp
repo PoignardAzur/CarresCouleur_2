@@ -1,5 +1,4 @@
 
-
 #include "MainMenu.hpp"
 #include "../Moteur2D/Interfaces/Menus/TextBox.hpp"
 
@@ -9,11 +8,13 @@
 #include "Level_4.hpp"
 #include "Level_HUD.hpp"
 
-#define BUTTON_SIZE sf::Vector2f(140, 50)
 
-#define HEIGHT_MENU_TITLE 60
-#define HEIGHT_FIRST_BUTTON HEIGHT_MENU_TITLE + 80
-#define GAP_BETWEEN_BUTTONS (BUTTON_SIZE.y + 20)
+const sf::Vector2f BIG_BUTTON_SIZE(140, 50);
+const sf::Vector2f SMALL_BUTTON_SIZE(100, 50);
+
+const int HEIGHT_MENU_TITLE = 60;
+const int HEIGHT_FIRST_BUTTON = HEIGHT_MENU_TITLE + 80;
+const int GAP_BETWEEN_BUTTONS = BIG_BUTTON_SIZE.y + 20;
 
 
 MainMenu::MainMenu() : Menu::MenuInterface(true, false)
@@ -26,16 +27,13 @@ void MainMenu::set(InputsAbstraction* in, const sf::Font* f)
     setInputs(in);
 
     m_text.setFont(f, DEFAULT_FONT_SIZE * 2, sf::Color::White);
-
     Menu::FontStyle fs(f, DEFAULT_FONT_SIZE, sf::Color::White);
-    sf::Color yellow(120, 120, 0);
-    sf::Color red = sf::Color::Red;
 
-    m_level_1_button.setSprites(new Menu::TextBox(BUTTON_SIZE, yellow, "Niveau 1", fs), new Menu::TextBox(BUTTON_SIZE, red, "Niveau 1", fs));
-    m_level_2_button.setSprites(new Menu::TextBox(BUTTON_SIZE, yellow, "Niveau 2", fs), new Menu::TextBox(BUTTON_SIZE, red, "Niveau 2", fs));
-    m_level_3_button.setSprites(new Menu::TextBox(BUTTON_SIZE, yellow, "Niveau 3", fs), new Menu::TextBox(BUTTON_SIZE, red, "Niveau 3", fs));
-    m_level_4_button.setSprites(new Menu::TextBox(BUTTON_SIZE, yellow, "Niveau 4", fs), new Menu::TextBox(BUTTON_SIZE, red, "Niveau 4", fs));
-    m_quit_button.setSprites(new Menu::TextBox(BUTTON_SIZE, yellow, "Quitter", fs), new Menu::TextBox(BUTTON_SIZE, red, "Quitter", fs));
+    m_level_1_button.setSprites( std::move(yellowBox("Niveau 1", fs)), std::move(redBox("Niveau 1", fs) ));
+    m_level_2_button.setSprites( std::move(yellowBox("Niveau 2", fs)), std::move(redBox("Niveau 2", fs) ));
+    m_level_3_button.setSprites( std::move(yellowBox("Niveau 3", fs)), std::move(redBox("Niveau 3", fs) ));
+    m_level_4_button.setSprites( std::move(yellowBox("Niveau 4", fs)), std::move(redBox("Niveau 4", fs) ));
+    m_quit_button.setSprites( std::move(yellowBox("Quitter", fs)), std::move(redBox("Quitter", fs) ));
 
     m_level_1_button.setFunction
     (
@@ -122,5 +120,24 @@ void MainMenu::load(up_t<LevelBase> level, const sf::Font* f)
 void MainMenu::escape()
 {
     setSelectedButton(4);
+}
+
+
+up_t<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs, bool small)
+{
+    if (!small)
+    return up(new Menu::TextBox(BIG_BUTTON_SIZE, sf::Color(120, 120, 0), str, fs));
+
+    else
+    return up(new Menu::TextBox(SMALL_BUTTON_SIZE, sf::Color(120, 120, 0), str, fs));
+}
+
+up_t<Menu::ItemAbstraction> redBox(const char* str, Menu::FontStyle& fs, bool small)
+{
+    if (!small)
+    return up(new Menu::TextBox(BIG_BUTTON_SIZE, sf::Color::Red, str, fs));
+
+    else
+    return up(new Menu::TextBox(SMALL_BUTTON_SIZE, sf::Color::Red, str, fs));
 }
 

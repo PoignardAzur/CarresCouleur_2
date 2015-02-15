@@ -1,5 +1,4 @@
 
-
 #ifndef PAUSE_MENU_HEADER
 #define PAUSE_MENU_HEADER
 
