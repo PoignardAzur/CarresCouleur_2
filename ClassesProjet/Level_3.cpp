@@ -2,7 +2,7 @@
 #include "Level_3.hpp"
 #include "Level_4.hpp"
 
-const bool MOVE_CARRE_GRIS_DURING_PAUSE = false;
+const bool MOVE_CARRE_GRIS_DURING_PAUSE = true;
 
 
 Level_3::Level_3() : m_carreGris(sf::Color(128, 128, 128), DEFAULT_CARRE_SIZE * 3)
@@ -36,11 +36,16 @@ void Level_3::drawThisIn(DrawerAbstraction& window, float dt) const
 
 void Level_3::leftClick(sf::Vector2f pos)
 {
+    int pointsMade = 0;
+
     for (auto& placedCarre : getCarres())
     {
         if (placedCarre.get().recycle(placedCarre.getPos(), m_carreGris.getHitbox(pos), false, true))
-        increaseScore(20);
+        pointsMade += 20;
     }
+
+    if (pointsMade)
+    increaseScore(pointsMade);
 }
 
 void Level_3::rightClick(sf::Vector2f pos)
