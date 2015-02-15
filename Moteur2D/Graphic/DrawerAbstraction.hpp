@@ -3,7 +3,7 @@
 #define DRAWER_ABSTRACTION_HEADER
 
 #include <SFML/Graphics.hpp>
-#include "DrawableAbstraction.hpp"
+#include "DrawableObject.hpp"
 
 
 class DrawerAbstraction
@@ -14,7 +14,7 @@ class DrawerAbstraction
     virtual void clear() = 0;                                // reset the screen
     virtual void draw(const sf::Drawable& object) = 0;
 
-    virtual void draw(const DrawableObjectAbstraction& object, sf::Vector2f pos, sf::FloatRect limits, float dt)
+    virtual void draw(const DrawableObject& object, sf::Vector2f pos, sf::FloatRect limits, float dt)
     {
         object.drawIn(pos, *this, limits, dt); // see DrawableObjectAbstraction::drawIn(...)
     }

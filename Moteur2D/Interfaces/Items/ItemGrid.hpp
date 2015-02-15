@@ -5,31 +5,31 @@
 #include <vector>
 #include <memory>
 
-#include "ItemAbstraction.hpp"
+#include "AbstractItem.hpp"
 
 
 namespace Menu
 {
 
-    class ItemGrid : public ItemAbstraction
+    class ItemGrid : public AbstractItem
     {
         public :
 
         ItemGrid();
-        explicit ItemGrid(const std::vector<std::vector< std::shared_ptr<ItemAbstraction> >>& items, sf::Vector2f gaps = sf::Vector2f(0,0));
-        ItemGrid(const std::vector<std::shared_ptr<ItemAbstraction>>& items, bool is_a_row, float gaps = 0);
+        explicit ItemGrid(const std::vector<std::vector< std::shared_ptr<AbstractItem> >>& items, sf::Vector2f gaps = sf::Vector2f(0,0));
+        ItemGrid(const std::vector<std::shared_ptr<AbstractItem>>& items, bool is_a_row, float gaps = 0);
 
-        void set(const std::vector<std::vector< std::shared_ptr<ItemAbstraction> >>& items, sf::Vector2f gaps = sf::Vector2f(0,0));
-        void setAsRow(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
-        void setAsColumn(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
+        void set(const std::vector<std::vector< std::shared_ptr<AbstractItem> >>& items, sf::Vector2f gaps = sf::Vector2f(0,0));
+        void setAsRow(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps = 0);
+        void setAsColumn(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps = 0);
 
         void setInternPosition(Alignement align, sf::Vector2f gaps);
         void expandToFill(sf::Vector2f nSize, bool allowNegativeSizes = true);
 
-        void setGridSize(size_t x, size_t y, ItemAbstraction* item = nullptr);
-        void setGridSize(size_t x, size_t y, std::shared_ptr<ItemAbstraction> item);
-        void setItem(size_t x, size_t y, ItemAbstraction* item);
-        void setItem(size_t x, size_t y, std::shared_ptr<ItemAbstraction> item);
+        void setGridSize(size_t x, size_t y, AbstractItem* item = nullptr);
+        void setGridSize(size_t x, size_t y, std::shared_ptr<AbstractItem> item);
+        void setItem(size_t x, size_t y, AbstractItem* item);
+        void setItem(size_t x, size_t y, std::shared_ptr<AbstractItem> item);
 
         sf::Vector2f getSize() const;
 
@@ -47,7 +47,7 @@ namespace Menu
 
         private :
 
-        std::vector<std::vector< std::shared_ptr<ItemAbstraction> >> m_itemLines;     // it's an array of lines, each one being an array of items
+        std::vector<std::vector< std::shared_ptr<AbstractItem> >> m_itemLines;     // it's an array of lines, each one being an array of items
         sf::Vector2f m_gaps;
         Alignement m_align;
 

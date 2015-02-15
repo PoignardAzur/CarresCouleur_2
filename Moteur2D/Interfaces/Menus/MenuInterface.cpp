@@ -9,7 +9,7 @@ Menu::MenuInterface::MenuInterface(bool isVertical, bool doesLoop) : MenuAbstrac
 
 void Menu::MenuInterface::setInputs(InputsAbstraction* inputs)
 {
-    AbstractGameInterface::setInputs(inputs);
+    GameInterfaceAbstraction::setInputs(inputs);
 
     EventsMap::MouseEventsMap mouseEvents;
     EventsMap::KeyboardEventsMap keyboardEvents;

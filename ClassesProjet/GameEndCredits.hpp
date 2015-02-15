@@ -2,10 +2,10 @@
 #ifndef GAME_END_CREDITS_HEADER
 #define GAME_END_CREDITS_HEADER
 
-#include "../Moteur2D/Interfaces/SimpleEndCreditsScreen.hpp"
+#include "../Moteur2D/Interfaces/BasicEndCreditsScreen.hpp"
 
 
-class GameEndCredits : public SimpleEndCreditsScreen
+class GameEndCredits : public BasicEndCreditsScreen
 {
     public :
 
@@ -15,7 +15,7 @@ class GameEndCredits : public SimpleEndCreditsScreen
     void setAllCredits();
 
     void update(float dt);
-    virtual uptrt<AbstractGameInterface> next();
+    virtual uptrt<GameInterfaceAbstraction> next();
 
 
     private :

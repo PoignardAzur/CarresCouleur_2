@@ -9,7 +9,7 @@ namespace Menu
 {
 
     // Class representing a Counter displayed on the screen
-    class Counter : public ItemAbstraction, public TextObjectAbstraction
+    class Counter : public AbstractItem, public TextObjectAbstraction
     {
         public :
 

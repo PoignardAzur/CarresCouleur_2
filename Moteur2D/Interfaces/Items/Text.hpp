@@ -2,14 +2,14 @@
 #ifndef MENU_TEXT_HEADER
 #define MENU_TEXT_HEADER
 
-#include "ItemAbstraction.hpp"
+#include "AbstractItem.hpp"
 #include "TextObjectAbstraction.hpp"
 
 
 namespace Menu
 {
 
-    class Text : public ItemAbstraction, public TextObjectAbstraction
+    class Text : public AbstractItem, public TextObjectAbstraction
     {
         public :
 

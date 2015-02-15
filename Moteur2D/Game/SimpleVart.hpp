@@ -17,13 +17,13 @@ class SimpleVart : public VartAbs, public SimpleHitbox
 
     SimpleVart();
     explicit SimpleVart(sf::Sprite sprite, sf::Vector2f center = NULL_PT);
-    explicit SimpleVart(uptrt<DrawableObjectAbstraction> sprite);
+    explicit SimpleVart(uptrt<DrawableObject> sprite);
     explicit SimpleVart(const SimpleHitbox& hitbox, sf::Sprite sprite, sf::Vector2f center = NULL_PT);
-    explicit SimpleVart(const SimpleHitbox& hitbox, uptrt<DrawableObjectAbstraction> sprite = nullptr);
+    explicit SimpleVart(const SimpleHitbox& hitbox, uptrt<DrawableObject> sprite = nullptr);
     virtual ~SimpleVart();
 
-    uptrt<DrawableObjectAbstraction> setSprite(sf::Sprite sprite, sf::Vector2f center = NULL_PT);
-    uptrt<DrawableObjectAbstraction> setSprite(uptrt<DrawableObjectAbstraction> sprite);
+    uptrt<DrawableObject> setSprite(sf::Sprite sprite, sf::Vector2f center = NULL_PT);
+    uptrt<DrawableObject> setSprite(uptrt<DrawableObject> sprite);
 
     virtual void update(const sf::Vector2f& pos, float dt);
     virtual void updatePos(sf::Vector2f& pos, float dt);
@@ -39,7 +39,7 @@ class SimpleVart : public VartAbs, public SimpleHitbox
     private :
 
     bool m_toDelete = false;
-    uptrt<DrawableObjectAbstraction> m_sprite;
+    uptrt<DrawableObject> m_sprite;
 };
 
 

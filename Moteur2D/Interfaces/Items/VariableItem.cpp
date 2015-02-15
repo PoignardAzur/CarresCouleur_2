@@ -1,6 +1,4 @@
 
-
-
 #include "VariableItem.hpp"
 
 
@@ -9,25 +7,25 @@ Menu::VariableItem::VariableItem()
 
 }
 
-Menu::VariableItem::VariableItem(const std::vector<std::shared_ptr<ItemAbstraction>>& items, size_t selectedOne, ItemSize s)
+Menu::VariableItem::VariableItem(const std::vector<std::shared_ptr<AbstractItem>>& items, size_t selectedOne, ItemSize s)
 {
     setItems(items, selectedOne);
     setSize(s);
 }
 
-void Menu::VariableItem::addItem(ItemAbstraction* item)
+void Menu::VariableItem::addItem(AbstractItem* item)
 {
-    m_items.push_back(std::shared_ptr<ItemAbstraction>(item));
+    m_items.push_back(std::shared_ptr<AbstractItem>(item));
 }
 
-void Menu::VariableItem::setItems(const std::vector<std::shared_ptr<ItemAbstraction>>& items, size_t selectedOne)
+void Menu::VariableItem::setItems(const std::vector<std::shared_ptr<AbstractItem>>& items, size_t selectedOne)
 {
     m_items = items;
     m_drawnItem = selectedOne;
     setSize(m_size);
 }
 
-const std::vector<std::shared_ptr<Menu::ItemAbstraction>>& Menu::VariableItem::getItems() const
+const std::vector<std::shared_ptr<Menu::AbstractItem>>& Menu::VariableItem::getItems() const
 {
     return m_items;
 }
@@ -79,14 +77,4 @@ void Menu::VariableItem::setSize(ItemSize s)
 
     updateParentSize();
 }
-
-
-
-
-
-
-
-
-
-
 

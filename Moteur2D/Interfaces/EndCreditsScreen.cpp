@@ -1,35 +1,35 @@
 
-#include "AbstractEndCreditsScreen.hpp"
+#include "EndCreditsScreen.hpp"
 
 const int DEFAULT_CREDITS_SPEED = 60;
 
 
-void AbstractEndCreditsScreen::setMargin(float margin)
+void EndCreditsScreen::setMargin(float margin)
 {
     m_margin = margin;
 }
 
-void AbstractEndCreditsScreen::setGap(float gapBetweenItems)
+void EndCreditsScreen::setGap(float gapBetweenItems)
 {
     m_gap = gapBetweenItems;
 }
 
-void AbstractEndCreditsScreen::setSpeed(float verticalItemSpeed)
+void EndCreditsScreen::setSpeed(float verticalItemSpeed)
 {
     m_speed = verticalItemSpeed;
 }
 
-void AbstractEndCreditsScreen::setTargetBounds(sf::FloatRect bounds)
+void EndCreditsScreen::setTargetBounds(sf::FloatRect bounds)
 {
     m_targetBounds = bounds;
 }
 
-sf::FloatRect AbstractEndCreditsScreen::getTargetBounds()
+sf::FloatRect EndCreditsScreen::getTargetBounds()
 {
     return m_targetBounds;
 }
 
-void AbstractEndCreditsScreen::drawIn(DrawerAbstraction& window, float dt) const
+void EndCreditsScreen::drawIn(DrawerAbstraction& window, float dt) const
 {
     for (const auto& risingItem : m_risingItemFile)
     {
@@ -38,7 +38,7 @@ void AbstractEndCreditsScreen::drawIn(DrawerAbstraction& window, float dt) const
     }
 }
 
-void AbstractEndCreditsScreen::update(float dt)
+void EndCreditsScreen::update(float dt)
 {
     for (auto& risingItem : m_risingItemFile)
     {
@@ -64,12 +64,12 @@ void AbstractEndCreditsScreen::update(float dt)
     }
 }
 
-bool AbstractEndCreditsScreen::isDone() const
+bool EndCreditsScreen::isDone() const
 {
-    return (m_itemFile.empty() && m_risingItemFile.empty()) || AbstractGameInterface::isDone();
+    return (m_itemFile.empty() && m_risingItemFile.empty()) || GameInterfaceAbstraction::isDone();
 }
 
-void AbstractEndCreditsScreen::pushItem(float height)
+void EndCreditsScreen::pushItem(float height)
 {
     if (m_itemFile.empty())
     return;
@@ -80,12 +80,12 @@ void AbstractEndCreditsScreen::pushItem(float height)
     m_itemFile.pop_front();
 }
 
-float AbstractEndCreditsScreen::lastItemHeight()
+float EndCreditsScreen::lastItemHeight()
 {
     return m_risingItemFile.back().height;
 }
 
-void AbstractEndCreditsScreen::add_item(std::unique_ptr<Menu::ItemAbstraction> item)
+void EndCreditsScreen::add_item(std::unique_ptr<Menu::AbstractItem> item)
 {
     m_itemFile.push_back(move(item));
 }

@@ -43,7 +43,7 @@ void MenuInterfaceAbstraction::update(float dt)
 }
 
 
-uptrt<AbstractGameInterface> MenuInterfaceAbstraction::next()
+uptrt<GameInterfaceAbstraction> MenuInterfaceAbstraction::next()
 {
     return move(m_nextLevel);
 }
@@ -63,7 +63,7 @@ MenuInterfaceAbstraction* MenuInterfaceAbstraction::getSubmenu()
     return m_submenu.get();
 }
 
-void MenuInterfaceAbstraction::setNextLevel(uptrt<AbstractGameInterface> nextLevel)
+void MenuInterfaceAbstraction::setNextLevel(uptrt<GameInterfaceAbstraction> nextLevel)
 {
     m_nextLevel = move(nextLevel);
 }

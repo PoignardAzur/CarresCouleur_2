@@ -2,7 +2,7 @@
 #ifndef CARRE_COULEUR_HEADER
 #define CARRE_COULEUR_HEADER
 
-#include "../Moteur2D/Interfaces/AbstractLevel.hpp"
+#include "../Moteur2D/Interfaces/Level.hpp"
 #include "../Moteur2D/Game/SimpleHitbox.hpp"
 #include "../Moteur2D/Game/VartAbs.hpp"
 

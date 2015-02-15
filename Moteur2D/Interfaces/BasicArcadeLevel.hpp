@@ -2,12 +2,12 @@
 #ifndef BASIC_ARCADE_LEVEL_HEADER
 #define BASIC_ARCADE_LEVEL_HEADER
 
-#include "AbstractLevel.hpp"
+#include "Level.hpp"
 #include "../Timer.hpp"
 
 
-// Basic implementation of AbstractLevel, with lives, a score and a Game Over event
-class BasicArcadeLevel : public AbstractLevel
+// Basic implementation of Level, with lives, a score and a Game Over event
+class BasicArcadeLevel : public Level
 {
     public :
 

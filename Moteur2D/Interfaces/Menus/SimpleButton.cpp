@@ -5,12 +5,12 @@
 #include "../Items/Text.hpp"
 
 
-Menu::SimpleButton::SimpleButton(uptrt<ItemAbstraction> unselected, uptrt<ItemAbstraction> selected)
+Menu::SimpleButton::SimpleButton(uptrt<AbstractItem> unselected, uptrt<AbstractItem> selected)
 {
     setSprites(move(unselected), move(selected));
 }
 
-void Menu::SimpleButton::setSprites(uptrt<ItemAbstraction> unselected, uptrt<ItemAbstraction> selected)
+void Menu::SimpleButton::setSprites(uptrt<AbstractItem> unselected, uptrt<AbstractItem> selected)
 {
     m_unselected_sprite = move(unselected);
     m_selected_sprite = move(selected);
@@ -63,12 +63,12 @@ void Menu::SimpleButton::drawImageIn(DrawerAbstraction& target, sf::Vector2f pos
     currentSprite()->drawIn(target, position, isHitboxDrawn);
 }
 
-const Menu::ItemAbstraction* Menu::SimpleButton::currentSprite() const
+const Menu::AbstractItem* Menu::SimpleButton::currentSprite() const
 {
     return const_cast<SimpleButton*>(this)->currentSprite();
 }
 
-Menu::ItemAbstraction* Menu::SimpleButton::currentSprite()
+Menu::AbstractItem* Menu::SimpleButton::currentSprite()
 {
     if (m_selected && m_selected_sprite)
     return m_selected_sprite.get();

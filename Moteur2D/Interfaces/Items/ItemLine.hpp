@@ -9,25 +9,25 @@
 namespace Menu
 {
 
-    class ItemRow : public ItemAbstraction
+    class ItemRow : public AbstractItem
     {
         public :
 
         ItemRow();
-        explicit ItemRow(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
+        explicit ItemRow(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps = 0);
 
-        void setItemsCount(size_t n, ItemAbstraction* item = nullptr);
-        void setItemsCount(size_t n, std::shared_ptr<ItemAbstraction> item);
-        void setItems(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
-        void setItem(size_t n, ItemAbstraction* item);
-        void setItem(size_t n, std::shared_ptr<ItemAbstraction> item);
-        void addItem(ItemAbstraction* item);
-        void addItem(std::shared_ptr<ItemAbstraction> item);
+        void setItemsCount(size_t n, AbstractItem* item = nullptr);
+        void setItemsCount(size_t n, std::shared_ptr<AbstractItem> item);
+        void setItems(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps = 0);
+        void setItem(size_t n, AbstractItem* item);
+        void setItem(size_t n, std::shared_ptr<AbstractItem> item);
+        void addItem(AbstractItem* item);
+        void addItem(std::shared_ptr<AbstractItem> item);
 
         void setInternPosition(Alignement align, float gaps);
         void expandToFill(float nSize, bool allowNegativeSizes = true);
 
-        void setParent(ItemAbstraction* parent);
+        void setParent(AbstractItem* parent);
 
         sf::Vector2f getSize() const;
         size_t getItemsCount() const;
@@ -44,25 +44,25 @@ namespace Menu
     };
 
 
-    class ItemColumn : public ItemAbstraction
+    class ItemColumn : public AbstractItem
     {
         public :
 
         ItemColumn();
-        explicit ItemColumn(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
+        explicit ItemColumn(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps = 0);
 
-        void setItemsCount(size_t n, ItemAbstraction* item = nullptr);
-        void setItemsCount(size_t n, std::shared_ptr<ItemAbstraction> item);
-        void setItems(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
-        void setItem(size_t n, ItemAbstraction* item);
-        void setItem(size_t n, std::shared_ptr<ItemAbstraction> item);
-        void addItem(ItemAbstraction* item);
-        void addItem(std::shared_ptr<ItemAbstraction> item);
+        void setItemsCount(size_t n, AbstractItem* item = nullptr);
+        void setItemsCount(size_t n, std::shared_ptr<AbstractItem> item);
+        void setItems(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps = 0);
+        void setItem(size_t n, AbstractItem* item);
+        void setItem(size_t n, std::shared_ptr<AbstractItem> item);
+        void addItem(AbstractItem* item);
+        void addItem(std::shared_ptr<AbstractItem> item);
 
         void setInternPosition(Alignement align, float gaps);
         void expandToFill(float nSize, bool allowNegativeSizes = true);
 
-        void setParent(ItemAbstraction* parent);
+        void setParent(AbstractItem* parent);
 
         sf::Vector2f getSize() const;
         size_t getItemsCount() const;

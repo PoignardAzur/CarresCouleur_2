@@ -2,10 +2,10 @@
 #ifndef HUD_HEADER
 #define HUD_HEADER
 
-#include "AbstractLevel.hpp"
+#include "Level.hpp"
 
 
-template <typename LevelType = AbstractLevel>   /// TODO - Rebuild this class ?
+template <typename LevelType = Level>   /// TODO - Rebuild this class ?
 class AbstractHUD
 {
     public :

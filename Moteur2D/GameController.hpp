@@ -2,7 +2,7 @@
 #ifndef GAME_CONTROLLER_HEADER
 #define GAME_CONTROLLER_HEADER
 
-#include "Interfaces/AbstractLevel.hpp"
+#include "Interfaces/Level.hpp"
 #include "Graphic/ObjectDrawer.hpp"
 #include <memory>
 #include "up.hpp"
@@ -25,7 +25,7 @@ class GameController
 
     InputsAbstraction& windowInputs();
     DrawerAbstraction& renderingWindow();
-    virtual AbstractGameInterface& interface() = 0;       // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
+    virtual GameInterfaceAbstraction& interface() = 0;       // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
 
 
     private :

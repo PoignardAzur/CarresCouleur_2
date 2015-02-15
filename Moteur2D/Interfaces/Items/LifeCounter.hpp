@@ -11,7 +11,7 @@ namespace Menu
 {
 
     // Draws a given value (m_count) ; if the value is below a given maximum, it is drawn as [m_count] sprites next to one another
-    class LifeCounter : public ItemAbstraction, public TextObjectAbstraction
+    class LifeCounter : public AbstractItem, public TextObjectAbstraction
     {
         public :
 

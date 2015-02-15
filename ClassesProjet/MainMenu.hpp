@@ -38,8 +38,8 @@ class MainMenu : public Menu::MenuInterface
     Menu::SimpleButton m_quit_button;
 };
 
-uptrt<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs, bool small = false);
-uptrt<Menu::ItemAbstraction> redBox(const char* str, Menu::FontStyle& fs, bool small = false);
+uptrt<Menu::AbstractItem> yellowBox(const char* str, Menu::FontStyle& fs, bool small = false);
+uptrt<Menu::AbstractItem> redBox(const char* str, Menu::FontStyle& fs, bool small = false);
 
 
 #endif // MAIN_MENU_HEADER

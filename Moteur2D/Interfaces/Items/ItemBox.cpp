@@ -2,14 +2,14 @@
 #include "ItemBox.hpp"
 
 
-Menu::ItemBox::ItemBox(uptrt<ItemAbstraction> item, Alignement a, sf::Vector2f gaps)
+Menu::ItemBox::ItemBox(uptrt<AbstractItem> item, Alignement a, sf::Vector2f gaps)
 {
     setItem(move(item));
     setAlignement(a, gaps);
 }
 
 
-uptrt<Menu::ItemAbstraction> Menu::ItemBox::setItem(uptrt<ItemAbstraction> item)
+uptrt<Menu::AbstractItem> Menu::ItemBox::setItem(uptrt<AbstractItem> item)
 {
     std::swap(m_item, item);
 

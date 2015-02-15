@@ -10,7 +10,7 @@ GameEndCredits::GameEndCredits()
 
 void GameEndCredits::setInputs(InputsAbstraction* inputs)
 {
-    AbstractGameInterface::setInputs(inputs);
+    GameInterfaceAbstraction::setInputs(inputs);
 
     EventsMap::MouseEventsMap mouseEvents;
     EventsMap::KeyboardEventsMap keyboardEvents;
@@ -66,7 +66,7 @@ void GameEndCredits::setAllCredits()
 
 void GameEndCredits::update(float dt)
 {
-    SimpleEndCreditsScreen::AbstractEndCreditsScreen::update(dt);
+    BasicEndCreditsScreen::EndCreditsScreen::update(dt);
 
     if (getInputs()->getKeyboardButtons()[sf::Keyboard::Key::Return])
     {
@@ -80,7 +80,7 @@ void GameEndCredits::update(float dt)
     m_enterPressed = false;
 }
 
-uptrt<AbstractGameInterface> GameEndCredits::next()
+uptrt<GameInterfaceAbstraction> GameEndCredits::next()
 {
     MainMenu* menu = new MainMenu;
     menu->set(getInputs(), m_font);

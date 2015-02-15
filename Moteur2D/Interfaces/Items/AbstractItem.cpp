@@ -1,20 +1,20 @@
 
-#include "ItemAbstraction.hpp"
+#include "AbstractItem.hpp"
 
 bool DRAW_ITEM_HITBOX = false; // doesn't need to be const
 
 
-Menu::ItemAbstraction::ItemAbstraction(ItemAbstraction* parent)
+Menu::AbstractItem::AbstractItem(AbstractItem* parent)
 {
     setParent(parent);
 }
 
-void Menu::ItemAbstraction::setParent(ItemAbstraction* parent)
+void Menu::AbstractItem::setParent(AbstractItem* parent)
 {
     m_parent = parent;
 }
 
-void Menu::ItemAbstraction::drawIn(DrawerAbstraction& target, sf::Vector2f position, bool drawHitbox) const
+void Menu::AbstractItem::drawIn(DrawerAbstraction& target, sf::Vector2f position, bool drawHitbox) const
 {
     if (drawHitbox)
     drawHitboxIn(target, position);
@@ -23,7 +23,7 @@ void Menu::ItemAbstraction::drawIn(DrawerAbstraction& target, sf::Vector2f posit
 }
 
 
-void Menu::ItemAbstraction::drawInBox(DrawerAbstraction& target, sf::FloatRect box, Alignement a, bool drawHitbox) const
+void Menu::AbstractItem::drawInBox(DrawerAbstraction& target, sf::FloatRect box, Alignement a, bool drawHitbox) const
 {
     sf::Vector2f position(box.left, box.top);
 
@@ -46,12 +46,12 @@ void Menu::ItemAbstraction::drawInBox(DrawerAbstraction& target, sf::FloatRect b
 }
 
 // used to determine the hitbox's color arbitrarily, and differentiate it from other Items' hitboxes
-int Menu::ItemAbstraction::hashToColor(float x) const
+int Menu::AbstractItem::hashToColor(float x) const
 {
     return static_cast<int>(x * 17) % 255;
 }
 
-void Menu::ItemAbstraction::drawHitboxIn(DrawerAbstraction& target, sf::Vector2f position) const
+void Menu::AbstractItem::drawHitboxIn(DrawerAbstraction& target, sf::Vector2f position) const
 {
     sf::RectangleShape hitbox(getSize());
     hitbox.setPosition(position);
@@ -61,13 +61,13 @@ void Menu::ItemAbstraction::drawHitboxIn(DrawerAbstraction& target, sf::Vector2f
 }
 
 
-void Menu::ItemAbstraction::updateParentSize()
+void Menu::AbstractItem::updateParentSize()
 {
     if (m_parent)
     m_parent->updateOwnSize();
 }
 
-void Menu::ItemAbstraction::updateOwnSize()
+void Menu::AbstractItem::updateOwnSize()
 {
     updateParentSize();
 }

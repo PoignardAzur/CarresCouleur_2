@@ -2,12 +2,12 @@
 #include "BasicArcadeLevel.hpp"
 
 
-BasicArcadeLevel::BasicArcadeLevel(unsigned int seed) : AbstractLevel(seed), m_lives(0), m_score(0), m_gameOver(false)
+BasicArcadeLevel::BasicArcadeLevel(unsigned int seed) : Level(seed), m_lives(0), m_score(0), m_gameOver(false)
 {
 
 }
 
-BasicArcadeLevel::BasicArcadeLevel(std::seed_seq& seed) : AbstractLevel(seed), m_lives(0), m_score(0), m_gameOver(false)
+BasicArcadeLevel::BasicArcadeLevel(std::seed_seq& seed) : Level(seed), m_lives(0), m_score(0), m_gameOver(false)
 {
 
 }

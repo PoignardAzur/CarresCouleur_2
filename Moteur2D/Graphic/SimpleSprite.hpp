@@ -2,13 +2,13 @@
 #ifndef SIMPLE_SPRITE_HEADER
 #define SIMPLE_SPRITE_HEADER
 
-#include "DrawableAbstraction.hpp"
+#include "DrawableObject.hpp"
 #include <memory>
 
 extern const sf::Vector2f NULL_PT; // defined in Game/SimpleHitbox
 
 
-class SimpleSprite : public DrawableObjectAbstraction
+class SimpleSprite : public DrawableObject
 {
     public :
 

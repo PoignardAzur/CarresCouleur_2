@@ -13,7 +13,7 @@ TitleScreen::TitleScreen(MainMenu* nextInterface, InputsAbstraction* in, const s
     setInputs(in);
 
     nextInterface->set(in, font);
-    setNext(uptrt<AbstractGameInterface>(nextInterface));
+    setNext(uptrt<GameInterfaceAbstraction>(nextInterface));
 
     m_title.setString(TITLE_TEXT);
     m_title.setFont(m_font, DEFAULT_FONT_SIZE * 2);

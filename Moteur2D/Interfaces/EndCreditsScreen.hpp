@@ -2,22 +2,22 @@
 #ifndef ABSTRACT_CREDITS_SCREEN_HEADER
 #define ABSTRACT_CREDITS_SCREEN_HEADER
 
-#include "AbstractGameInterface.hpp"
-#include "Items/ItemAbstraction.hpp"
+#include "GameInterfaceAbstraction.hpp"
+#include "Items/AbstractItem.hpp"
 #include <list>
 #include <memory>
 
-extern const int DEFAULT_CREDITS_SPEED;
 
+extern const int DEFAULT_CREDITS_SPEED;
 
 struct RisingItem
 {
     float height;
-    std::unique_ptr<Menu::ItemAbstraction> item;
+    std::unique_ptr<Menu::AbstractItem> item;
 };
 
 
-class AbstractEndCreditsScreen : public AbstractGameInterface
+class EndCreditsScreen : public GameInterfaceAbstraction
 {
     public :
 
@@ -34,20 +34,20 @@ class AbstractEndCreditsScreen : public AbstractGameInterface
     virtual void update(float dt);
 
     virtual bool isDone() const;
-    virtual uptrt<AbstractGameInterface> next() = 0;
+    virtual uptrt<GameInterfaceAbstraction> next() = 0;
 
 
     protected :
 
     sf::FloatRect getTargetBounds();
-    virtual void add_item(std::unique_ptr<Menu::ItemAbstraction> item);
+    virtual void add_item(std::unique_ptr<Menu::AbstractItem> item);
 
 
     private :
 
     sf::FloatRect m_targetBounds;
 
-    std::list<std::unique_ptr<Menu::ItemAbstraction>> m_itemFile;
+    std::list<std::unique_ptr<Menu::AbstractItem>> m_itemFile;
     std::list<RisingItem> m_risingItemFile;
     void pushItem(float height);
     float lastItemHeight();

@@ -1,35 +1,35 @@
 
-#include "AbstractLevel.hpp"
+#include "Level.hpp"
 
 
-AbstractLevel::AbstractLevel(unsigned int seed) : m_randomGenerator(seed)
+Level::Level(unsigned int seed) : m_randomGenerator(seed)
 {
 
 }
 
-AbstractLevel::AbstractLevel(std::seed_seq& seed) : m_randomGenerator(seed)
+Level::Level(std::seed_seq& seed) : m_randomGenerator(seed)
 {
 
 }
 
-AbstractLevel::~AbstractLevel()
+Level::~Level()
 {
 
 }
 
-void AbstractLevel::setSeed(unsigned int seed)
+void Level::setSeed(unsigned int seed)
 {
     m_randomGenerator.seed(seed);
 }
 
-void AbstractLevel::setSeed(std::seed_seq& seed)
+void Level::setSeed(std::seed_seq& seed)
 {
     m_randomGenerator.seed(seed);
 }
 
-void AbstractLevel::setInputs(InputsAbstraction* inputs)
+void Level::setInputs(InputsAbstraction* inputs)
 {
-    AbstractGameInterface::setInputs(inputs);
+    GameInterfaceAbstraction::setInputs(inputs);
 
     EventsMap::MouseEventsMap mouseEvents;
     EventsMap::KeyboardEventsMap keyboardEvents;
@@ -63,13 +63,13 @@ void AbstractLevel::setInputs(InputsAbstraction* inputs)
 }
 
 
-std_rng& AbstractLevel::rng()
+std_rng& Level::rng()
 {
     return m_randomGenerator;
 }
 
 
-void AbstractLevel::drawIn(DrawerAbstraction& window, float dt) const
+void Level::drawIn(DrawerAbstraction& window, float dt) const
 {
     if (!m_pauseMenu || m_pauseMenu->isLayered())
     {
@@ -81,7 +81,7 @@ void AbstractLevel::drawIn(DrawerAbstraction& window, float dt) const
     m_pauseMenu->drawIn(window, dt);
 }
 
-void AbstractLevel::update(float dt)
+void Level::update(float dt)
 {
     if (m_pauseMenu)
     {
@@ -101,7 +101,7 @@ void AbstractLevel::update(float dt)
             m_pauseMenuLoaded = false;
 
             if (m_nextInt)
-            AbstractGameInterface::endThisLater();
+            GameInterfaceAbstraction::endThisLater();
         }
     }
 
@@ -110,27 +110,27 @@ void AbstractLevel::update(float dt)
 }
 
 
-void AbstractLevel::pauseLevel(std::unique_ptr<MenuInterfaceAbstraction> pauseMenu)
+void Level::pauseLevel(std::unique_ptr<MenuInterfaceAbstraction> pauseMenu)
 {
     m_pauseMenu = std::move(pauseMenu);
 }
 
-const MenuInterfaceAbstraction* AbstractLevel::getPauseMenu() const
+const MenuInterfaceAbstraction* Level::getPauseMenu() const
 {
     return m_pauseMenu.get();
 }
 
-MenuInterfaceAbstraction* AbstractLevel::getPauseMenu()
+MenuInterfaceAbstraction* Level::getPauseMenu()
 {
     return m_pauseMenu.get();
 }
 
-void AbstractLevel::setNextInterface(std::unique_ptr<AbstractGameInterface> nextInt)
+void Level::setNextInterface(std::unique_ptr<GameInterfaceAbstraction> nextInt)
 {
     m_nextInt = move(nextInt);
 }
 
-uptrt<AbstractGameInterface> AbstractLevel::next()
+uptrt<GameInterfaceAbstraction> Level::next()
 {
     return move(m_nextInt);
 }

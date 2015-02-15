@@ -15,7 +15,7 @@ BossClass::BossClass(uptrt<InputsAbstraction> userInputs, sf::RenderWindow* targ
     m_interface.reset(new TitleScreen(new MainMenu, &windowInputs(), &m_font));
 }
 
-AbstractGameInterface& BossClass::interface()
+GameInterfaceAbstraction& BossClass::interface()
 {
     return *(m_interface.get());
 }

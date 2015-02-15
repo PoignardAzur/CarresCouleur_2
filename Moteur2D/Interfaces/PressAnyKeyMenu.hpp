@@ -2,12 +2,12 @@
 #ifndef PAK_MENU_HEADER
 #define PAK_MENU_HEADER
 
-#include "AbstractGameInterface.hpp"
+#include "GameInterfaceAbstraction.hpp"
 #include <functional>
 
 
 // A simple menu to begin the game ; the menu is replaced by the next one when you press a key
-class PressAnyKeyMenu : public AbstractGameInterface
+class PressAnyKeyMenu : public GameInterfaceAbstraction
 {
     public :
 
@@ -15,14 +15,14 @@ class PressAnyKeyMenu : public AbstractGameInterface
     virtual void update(float dt);
 
     // as soon as a key is pressed, this interface is killed and replaced by nextInterface
-    void setNext(uptrt<AbstractGameInterface> nextInterface);
-    void setNext(std::function<uptrt<AbstractGameInterface>(void)> nextInterface);
-    uptrt<AbstractGameInterface> next();
+    void setNext(uptrt<GameInterfaceAbstraction> nextInterface);
+    void setNext(std::function<uptrt<GameInterfaceAbstraction>(void)> nextInterface);
+    uptrt<GameInterfaceAbstraction> next();
 
 
     private :
 
-    std::function<uptrt<AbstractGameInterface>(void)> m_nextInterface;
+    std::function<uptrt<GameInterfaceAbstraction>(void)> m_nextInterface;
 };
 
 

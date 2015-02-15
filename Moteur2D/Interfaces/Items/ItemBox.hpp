@@ -3,19 +3,19 @@
 #define MENU_ITEM_BOX_HEADER
 
 #include "up.hpp"
-#include "ItemAbstraction.hpp"
+#include "AbstractItem.hpp"
 
 
 namespace Menu
 {
 
-    class ItemBox : public ItemAbstraction
+    class ItemBox : public AbstractItem
     {
         public :
 
-        explicit ItemBox(uptrt<ItemAbstraction> item = nullptr, Alignement a = Center, sf::Vector2f gaps = sf::Vector2f(0,0));
+        explicit ItemBox(uptrt<AbstractItem> item = nullptr, Alignement a = Center, sf::Vector2f gaps = sf::Vector2f(0,0));
 
-        uptrt<ItemAbstraction> setItem(uptrt<ItemAbstraction> item);          // returns a pointer owning the previous item
+        uptrt<AbstractItem> setItem(uptrt<AbstractItem> item);          // returns a pointer owning the previous item
         void setColor(sf::Color c);                                         // makes the box not transparent even when !isHitboxDrawn
 
         void setAlignement(Alignement a, sf::Vector2f gaps);                // see the code of drawImageIn() for how these
@@ -30,7 +30,7 @@ namespace Menu
 
         private :
 
-        uptrt<ItemAbstraction> m_item;
+        uptrt<AbstractItem> m_item;
         Alignement m_align;
 
         sf::Color m_boxColor = sf::Color(0,0,0, 0);

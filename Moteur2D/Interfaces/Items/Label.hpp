@@ -10,13 +10,13 @@ namespace Menu
 {
 
     // Draws a label next to another item
-    class Label : public ItemAbstraction, public TextObjectAbstraction
+    class Label : public AbstractItem, public TextObjectAbstraction
     {
         public :
 
-        explicit Label(uptrt<ItemAbstraction> item = nullptr, const std::string& str = "", FontStyle f = FontStyle(), bool horizontalAlignement = true, float gap = 0);
+        explicit Label(uptrt<AbstractItem> item = nullptr, const std::string& str = "", FontStyle f = FontStyle(), bool horizontalAlignement = true, float gap = 0);
 
-        uptrt<ItemAbstraction> setItem(uptrt<ItemAbstraction> item);      // returns the previous item
+        uptrt<AbstractItem> setItem(uptrt<AbstractItem> item);      // returns the previous item
         void setLabel(const std::string& str);
 
         void setAlignement(bool horizontal, float gap);
@@ -32,7 +32,7 @@ namespace Menu
 
         private :
 
-        uptrt<ItemAbstraction> m_item;
+        uptrt<AbstractItem> m_item;
         Text m_label;
 
         float m_gap;

@@ -2,13 +2,13 @@
 #ifndef MENU_SPRITE_HEADER
 #define MENU_SPRITE_HEADER
 
-#include "ItemAbstraction.hpp"
+#include "AbstractItem.hpp"
 
 
 namespace Menu
 {
 
-    class Sprite : public ItemAbstraction
+    class Sprite : public AbstractItem
     {
         public :
 

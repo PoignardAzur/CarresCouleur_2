@@ -2,7 +2,7 @@
 #include "Label.hpp"
 
 
-Menu::Label::Label(uptrt<ItemAbstraction> item, const std::string& str, FontStyle f, bool horizontalAlignement, float gap)
+Menu::Label::Label(uptrt<AbstractItem> item, const std::string& str, FontStyle f, bool horizontalAlignement, float gap)
 {
     setItem(move(item));
     setLabel(str);
@@ -10,7 +10,7 @@ Menu::Label::Label(uptrt<ItemAbstraction> item, const std::string& str, FontStyl
     setFont(f);
 }
 
-uptrt<Menu::ItemAbstraction> Menu::Label::setItem(uptrt<ItemAbstraction> item)
+uptrt<Menu::AbstractItem> Menu::Label::setItem(uptrt<AbstractItem> item)
 {
     std::swap(m_item, item);
 

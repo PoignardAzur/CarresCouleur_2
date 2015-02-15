@@ -5,8 +5,8 @@
 #include "MainMenu.hpp"
 
 
-uptrt<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs);
-uptrt<Menu::ItemAbstraction> redBox(const char* str, Menu::FontStyle& fs);
+uptrt<Menu::AbstractItem> yellowBox(const char* str, Menu::FontStyle& fs);
+uptrt<Menu::AbstractItem> redBox(const char* str, Menu::FontStyle& fs);
 
 
 PauseMenu::PauseMenu() : MenuInterface(false, false)

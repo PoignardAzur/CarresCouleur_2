@@ -3,7 +3,7 @@
 #define LEVEL_BASE_HEADER
 
 #include "Level_HUD.hpp"
-#include "../Moteur2D/Interfaces/AbstractLevel.hpp"
+#include "../Moteur2D/Interfaces/Level.hpp"
 #include "../Moteur2D/Game/VartList.hpp"
 #include "CarreCouleur.hpp"
 #include "PauseMenu.hpp"
@@ -19,7 +19,7 @@ extern const int MAX_CARRES_NUMBER;
 
 class Level_HUD;
 
-class LevelBase : public AbstractLevel
+class LevelBase : public Level
 {
     public :
 

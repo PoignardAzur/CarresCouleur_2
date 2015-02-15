@@ -1,6 +1,6 @@
 
-#ifndef MENU_ITEM_ABSTRACTION_HEADER
-#define MENU_ITEM_ABSTRACTION_HEADER
+#ifndef ABSTRACT_MENU_ITEM_HEADER
+#define ABSTRACT_MENU_ITEM_HEADER
 
 #include "../../Graphic/DrawerAbstraction.hpp"
 
@@ -26,13 +26,13 @@ namespace Menu
     };
 
     // Represents any item drawn in a menu
-    class ItemAbstraction
+    class AbstractItem
     {
         public :
 
-        ItemAbstraction(ItemAbstraction* parent = nullptr);
-        void setParent(ItemAbstraction* parent);
-        virtual ~ItemAbstraction() = default;
+        AbstractItem(AbstractItem* parent = nullptr);
+        void setParent(AbstractItem* parent);
+        virtual ~AbstractItem() = default;
 
         virtual void drawIn(DrawerAbstraction& target, sf::Vector2f position, bool drawHitbox = DRAW_ITEM_HITBOX) const;
         // draws the item with 'position' as the top-left corner of its "box"
@@ -54,7 +54,7 @@ namespace Menu
 
         private :
 
-        ItemAbstraction* m_parent;
+        AbstractItem* m_parent;
     };
 
 
@@ -101,4 +101,4 @@ namespace Menu
 }
 
 
-#endif // MENU_ITEM_ABSTRACTION_HEADER
+#endif // ABSTRACT_MENU_ITEM_HEADER

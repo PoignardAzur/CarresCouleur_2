@@ -4,15 +4,15 @@
 
 void PressAnyKeyMenu::update(float dt)
 {
-    if (AbstractGameInterface::getInputs()->isAnyKeyPressed())
-    AbstractGameInterface::endThisLater();
+    if (GameInterfaceAbstraction::getInputs()->isAnyKeyPressed())
+    GameInterfaceAbstraction::endThisLater();
 
     (void) dt;
 }
 
-void PressAnyKeyMenu::setNext(uptrt<AbstractGameInterface> nextInterface)
+void PressAnyKeyMenu::setNext(uptrt<GameInterfaceAbstraction> nextInterface)
 {
-    AbstractGameInterface* nextInterface_ = nextInterface.release();
+    GameInterfaceAbstraction* nextInterface_ = nextInterface.release();
 
     setNext
     (
@@ -23,12 +23,12 @@ void PressAnyKeyMenu::setNext(uptrt<AbstractGameInterface> nextInterface)
     );
 }
 
-void PressAnyKeyMenu::setNext(std::function<uptrt<AbstractGameInterface>(void)> nextInterface)
+void PressAnyKeyMenu::setNext(std::function<uptrt<GameInterfaceAbstraction>(void)> nextInterface)
 {
     m_nextInterface = nextInterface;
 }
 
-uptrt<AbstractGameInterface> PressAnyKeyMenu::next()
+uptrt<GameInterfaceAbstraction> PressAnyKeyMenu::next()
 {
     return m_nextInterface();
 }

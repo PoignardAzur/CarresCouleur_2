@@ -18,13 +18,13 @@ using int_dice= std::uniform_int_distribution<int>;
 using std_rng = std::default_random_engine;
 
 
-class AbstractLevel : public AbstractGameInterface
+class Level : public GameInterfaceAbstraction
 {
     public :
 
-    AbstractLevel(unsigned int seed = epoch_to_now().count());
-    AbstractLevel(std::seed_seq& seed);
-    virtual ~AbstractLevel();
+    Level(unsigned int seed = epoch_to_now().count());
+    Level(std::seed_seq& seed);
+    virtual ~Level();
 
     void setSeed(unsigned int seed = epoch_to_now().count());                   // sets the seed of the level's RNG
     void setSeed(std::seed_seq& seed);
@@ -53,8 +53,8 @@ class AbstractLevel : public AbstractGameInterface
     virtual const MenuInterfaceAbstraction* getPauseMenu() const;
     virtual MenuInterfaceAbstraction* getPauseMenu();
 
-    virtual void setNextInterface(uptrt<AbstractGameInterface> nextInt);
-    virtual uptrt<AbstractGameInterface> next();
+    virtual void setNextInterface(uptrt<GameInterfaceAbstraction> nextInt);
+    virtual uptrt<GameInterfaceAbstraction> next();
 
 
     private :
@@ -62,7 +62,7 @@ class AbstractLevel : public AbstractGameInterface
     std_rng m_randomGenerator;
     uptrt<MenuInterfaceAbstraction> m_pauseMenu;
     bool m_pauseMenuLoaded = false;
-    uptrt<AbstractGameInterface> m_nextInt;
+    uptrt<GameInterfaceAbstraction> m_nextInt;
 };
 
 

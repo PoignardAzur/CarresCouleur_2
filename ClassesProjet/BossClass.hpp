@@ -3,7 +3,7 @@
 #define BOSS_CLASS_HEADER
 
 #include "../Moteur2D/GameController.hpp"
-#include "../Moteur2D/Interfaces/AbstractGameInterface.hpp"
+#include "../Moteur2D/Interfaces/GameInterfaceAbstraction.hpp"
 #include "LevelBase.hpp"
 
 
@@ -13,13 +13,13 @@ class BossClass : public GameController
 
     BossClass(uptrt<InputsAbstraction> userInputs, sf::RenderWindow* target);
 
-    AbstractGameInterface& interface();
+    GameInterfaceAbstraction& interface();
     void update(float dt);
     bool isDone() const;
 
     private :
 
-    uptrt<AbstractGameInterface> m_interface;
+    uptrt<GameInterfaceAbstraction> m_interface;
     sf::Font m_font;
     bool m_isDone = false;
 };

@@ -11,7 +11,7 @@ namespace Menu
 {
 
     // Basic way to draw a button : a text in a colored box
-    class TextBox : public ItemAbstraction
+    class TextBox : public AbstractItem
     {
         public :
 

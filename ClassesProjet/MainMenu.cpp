@@ -123,7 +123,7 @@ void MainMenu::escape()
 }
 
 
-uptrt<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs, bool small)
+uptrt<Menu::AbstractItem> yellowBox(const char* str, Menu::FontStyle& fs, bool small)
 {
     if (!small)
     return uptr(new Menu::TextBox(BIG_BUTTON_SIZE, sf::Color(120, 120, 0), str, fs));
@@ -132,7 +132,7 @@ uptrt<Menu::ItemAbstraction> yellowBox(const char* str, Menu::FontStyle& fs, boo
     return uptr(new Menu::TextBox(SMALL_BUTTON_SIZE, sf::Color(120, 120, 0), str, fs));
 }
 
-uptrt<Menu::ItemAbstraction> redBox(const char* str, Menu::FontStyle& fs, bool small)
+uptrt<Menu::AbstractItem> redBox(const char* str, Menu::FontStyle& fs, bool small)
 {
     if (!small)
     return uptr(new Menu::TextBox(BIG_BUTTON_SIZE, sf::Color::Red, str, fs));
