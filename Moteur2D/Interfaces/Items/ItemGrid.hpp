@@ -16,7 +16,7 @@ namespace Menu
         public :
 
         ItemGrid();
-        ItemGrid(const std::vector<std::vector< std::shared_ptr<ItemAbstraction> >>& items, sf::Vector2f gaps = sf::Vector2f(0,0));
+        explicit ItemGrid(const std::vector<std::vector< std::shared_ptr<ItemAbstraction> >>& items, sf::Vector2f gaps = sf::Vector2f(0,0));
         ItemGrid(const std::vector<std::shared_ptr<ItemAbstraction>>& items, bool is_a_row, float gaps = 0);
 
         void set(const std::vector<std::vector< std::shared_ptr<ItemAbstraction> >>& items, sf::Vector2f gaps = sf::Vector2f(0,0));

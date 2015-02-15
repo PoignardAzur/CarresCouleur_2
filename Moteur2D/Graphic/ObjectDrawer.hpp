@@ -9,7 +9,7 @@ class ObjectDrawer : public DrawerAbstraction
 {
     public :
 
-    ObjectDrawer(sf::RenderTarget* t);
+    explicit ObjectDrawer(sf::RenderTarget* t);
 
     virtual void clear();                               // reset the screen
     virtual void draw(const sf::Drawable& object);

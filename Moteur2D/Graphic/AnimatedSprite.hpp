@@ -13,7 +13,7 @@ class AnimatedSprite : public SimpleSprite
     public :
 
     AnimatedSprite();
-    AnimatedSprite(const sf::Sprite& sprite, sf::Vector2f center = NULL_PT, int nvFrames = 1, int nhFrames = 1, float animFrame = DEFAULT_ANIM_FRAME_LENGTH, bool loop = false);
+    explicit AnimatedSprite(const sf::Sprite& sprite, sf::Vector2f center = NULL_PT, int nvFrames = 1, int nhFrames = 1, float animFrame = DEFAULT_ANIM_FRAME_LENGTH, bool loop = false);
     void setSprite(const sf::Sprite& sprite, sf::Vector2f center = NULL_PT, int nvFrames = 1, int nhFrames = 1, float animFrame = DEFAULT_ANIM_FRAME_LENGTH, bool loop = false);
 
     void update(float dt);

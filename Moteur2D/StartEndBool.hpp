@@ -10,7 +10,7 @@ class StartEnd
 {
     public :
 
-    StartEnd(bool nValue = false);
+    explicit StartEnd(bool nValue = false);
 
     bool value();
     bool started();

@@ -15,7 +15,7 @@ namespace Menu
         using ItemAlignPair = std::pair<up_t<ItemAbstraction>, Alignement>;
 
         ItemStack();
-        ItemStack(std::vector<ItemAlignPair> items, bool sizeIsMax = true);
+        explicit ItemStack(std::vector<ItemAlignPair> items, bool sizeIsMax = true);
 
         void setItems(std::vector<ItemAlignPair> items, bool sizeIsMax = true);
         void addItem(up_t<ItemAbstraction> item, Alignement align);

@@ -14,7 +14,7 @@ namespace Menu
     {
         public :
 
-        MenuAbstraction(bool isVertical = true, bool doesLoop = false);
+        explicit MenuAbstraction(bool isVertical = true, bool doesLoop = false);
 
         virtual void select();                                  // each method is applied to the
         virtual void deselect();                                // currently selected button

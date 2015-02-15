@@ -10,7 +10,7 @@ class Timer
 {
     public :
 
-    Timer(float startTime = 0, float maxTime = 0);
+    explicit Timer(float startTime = 0, float maxTime = 0);
 
     void setMaxTime(float t);
     void setTime(float t, bool respectLimit = false);

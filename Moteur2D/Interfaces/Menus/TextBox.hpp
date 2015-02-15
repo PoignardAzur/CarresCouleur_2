@@ -15,7 +15,7 @@ namespace Menu
     {
         public :
 
-        TextBox(sf::Vector2f boxSize = sf::Vector2f(0,0), sf::Color c = sf::Color::White, const std::string& text = "", FontStyle f = FontStyle());
+        explicit TextBox(sf::Vector2f boxSize = sf::Vector2f(0,0), sf::Color c = sf::Color::White, const std::string& text = "", FontStyle f = FontStyle());
         void set(sf::Vector2f boxSize, sf::Color c, const std::string& text, FontStyle f);
 
         sf::Vector2f getSize() const;

@@ -66,7 +66,7 @@ class VartPusher
 {
     public :
 
-    VartPusher(VartList<V>* list);
+    explicit VartPusher(VartList<V>* list);
     virtual ~VartPusher();
     void add(up_t<V> vart, sf::Vector2f pos);
 

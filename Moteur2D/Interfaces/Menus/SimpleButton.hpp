@@ -15,7 +15,7 @@ namespace Menu
     {
         public :
 
-        SimpleButton(up_t<ItemAbstraction> unselected = nullptr, up_t<ItemAbstraction> selected = nullptr);
+        explicit SimpleButton(up_t<ItemAbstraction> unselected = nullptr, up_t<ItemAbstraction> selected = nullptr);
         void setSprites(up_t<ItemAbstraction> unselected, up_t<ItemAbstraction> selected = nullptr);
         void setFunction(std::function<void(void)> triggeredFunction);  // the function called when the method press() is called
         ~SimpleButton() noexcept {};

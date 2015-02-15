@@ -14,7 +14,7 @@ namespace Menu
         public :
 
         ItemRow();
-        ItemRow(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
+        explicit ItemRow(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
 
         void setItemsCount(size_t n, ItemAbstraction* item = nullptr);
         void setItemsCount(size_t n, std::shared_ptr<ItemAbstraction> item);
@@ -49,7 +49,7 @@ namespace Menu
         public :
 
         ItemColumn();
-        ItemColumn(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
+        explicit ItemColumn(const std::vector<std::shared_ptr<ItemAbstraction>>& items, float gaps = 0);
 
         void setItemsCount(size_t n, ItemAbstraction* item = nullptr);
         void setItemsCount(size_t n, std::shared_ptr<ItemAbstraction> item);

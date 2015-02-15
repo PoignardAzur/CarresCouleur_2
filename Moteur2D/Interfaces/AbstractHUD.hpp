@@ -10,7 +10,7 @@ class AbstractHUD
 {
     public :
 
-    explicit AbstractHUD(LevelType* level = nullptr);
+    AbstractHUD(LevelType* level = nullptr);
     virtual void setLevel(LevelType* level);
     virtual ~AbstractHUD() = default;
 

@@ -15,8 +15,8 @@ class CarreCouleur : public VartAbs, public SimpleHitbox
 {
     public :
 
-    CarreCouleur(sf::Color color, float sizeCarre = DEFAULT_CARRE_SIZE);
-    CarreCouleur(std_rng& rng, float sizeCarre = DEFAULT_CARRE_SIZE);
+    explicit CarreCouleur(sf::Color color, float sizeCarre = DEFAULT_CARRE_SIZE);
+    explicit CarreCouleur(std_rng& rng, float sizeCarre = DEFAULT_CARRE_SIZE);
 
     void randomizeSpeed(std_rng& rng);
 
