@@ -22,8 +22,8 @@ int main(int /*argc*/, char** /*argv*/)
         sf::Clock chronos;
         chronos.restart();
 
-        const float min_dt = 1.0f/60.0f;    // those are the bounds of the dt value passed in all functions "update(float dt)"
-        const float max_dt = 0.1f;
+        const float MIN_DT = 1.0f/60.0f;    // those are the bounds of the dt value passed in all functions "update(float dt)"
+        const float MAX_DT = 0.1f;
         float accumulatedTime = 0.0;        // represents the advance the renderer has over the engine
 
         while (!bigBrother.isDone())
@@ -34,9 +34,9 @@ int main(int /*argc*/, char** /*argv*/)
             accumulatedTime = 1;
 
             // The way is work is : the (real) world produces time that the engine consumes in dt-sized chunks
-            while (accumulatedTime >= min_dt && !bigBrother.isDone())
+            while (accumulatedTime >= MIN_DT && !bigBrother.isDone())
             {
-                float dt = max_dt < accumulatedTime ? max_dt : accumulatedTime;
+                float dt = std::min(accumulatedTime, MAX_DT);
 
                 bigBrother.update(dt);
                 accumulatedTime -= dt;
