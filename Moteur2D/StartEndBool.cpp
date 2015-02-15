@@ -1,13 +1,16 @@
 
-
-
 #include "StartEndBool.hpp"
 
 
+StartEnd::StartEnd(bool nValue, Event f) : m_value(nValue), m_lastValue(nValue)
+{
+    setFunction(f);
+}
 
-
-StartEnd::StartEnd(bool nValue) : m_value(nValue), m_lastValue(nValue)
-{}
+void StartEnd::setFunction(Event f)
+{
+    m_function = f;
+}
 
 inline bool StartEnd::value()
 {
@@ -31,15 +34,12 @@ inline bool StartEnd::changed()
 
 bool StartEnd::update(bool nValue)
 {
+    if (nValue != m_lastValue)
+    m_function(nValue);
+
     m_lastValue = m_value;
     m_value = nValue;
 
     return started();
 }
-
-bool StartEnd::operator()(bool nValue)
-{
-    return update(nValue);
-}
-
 
