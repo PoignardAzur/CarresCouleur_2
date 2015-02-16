@@ -8,7 +8,7 @@
 #include "../Moteur2D/Interfaces/Items/Text.hpp"
 
 
-class MainMenu : public Menu::MenuInterface
+class MainMenu : public MenuInterface
 {
     public :
 
@@ -22,7 +22,7 @@ class MainMenu : public Menu::MenuInterface
 
     //void addButton(AbstractButton* b);
     virtual void drawThisIn(DrawerAbstraction& window, float dt) const;
-    void load(uptrt<LevelBase> level, const sf::Font* f);
+    void loadNext(uptrt<LevelBase> level, const sf::Font* f);
 
     void escape();
 

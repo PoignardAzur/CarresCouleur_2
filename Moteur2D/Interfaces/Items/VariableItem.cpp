@@ -13,9 +13,9 @@ Menu::VariableItem::VariableItem(const std::vector<std::shared_ptr<AbstractItem>
     setSize(s);
 }
 
-void Menu::VariableItem::addItem(AbstractItem* item)
+void Menu::VariableItem::addItem(std::unique_ptr<AbstractItem> item)
 {
-    m_items.push_back(std::shared_ptr<AbstractItem>(item));
+    m_items.push_back(std::move(item));
 }
 
 void Menu::VariableItem::setItems(const std::vector<std::shared_ptr<AbstractItem>>& items, size_t selectedOne)

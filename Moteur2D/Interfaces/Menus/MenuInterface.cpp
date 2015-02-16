@@ -2,12 +2,12 @@
 #include "MenuInterface.hpp"
 
 
-Menu::MenuInterface::MenuInterface(bool isVertical, bool doesLoop) : MenuAbstraction(isVertical, doesLoop)
+MenuInterface::MenuInterface(bool isVertical, bool doesLoop) : MenuAbstraction(isVertical, doesLoop)
 {
 
 }
 
-void Menu::MenuInterface::setInputs(InputsAbstraction* inputs)
+void MenuInterface::setInputs(InputsAbstraction* inputs)
 {
     GameInterfaceAbstraction::setInputs(inputs);
 
@@ -16,7 +16,9 @@ void Menu::MenuInterface::setInputs(InputsAbstraction* inputs)
 
     keyboardEvents[sf::Keyboard::Up] = [this](bool pressed)
     {
-        if (pressed && !getSubmenu())
+        // None of those methods are called for a button release, if a submenu is open,
+        // or when the Menu has already been flagged for deletion
+        if (pressed && !getSubmenu() && !isDone())
         {
             up(false);
         }
@@ -24,7 +26,7 @@ void Menu::MenuInterface::setInputs(InputsAbstraction* inputs)
 
     keyboardEvents[sf::Keyboard::Down] = [this](bool pressed)
     {
-        if (pressed && !getSubmenu())
+        if (pressed && !getSubmenu() && !isDone())
         {
             down(false);
         }
@@ -32,7 +34,7 @@ void Menu::MenuInterface::setInputs(InputsAbstraction* inputs)
 
     keyboardEvents[sf::Keyboard::Left] = [this](bool pressed)
     {
-        if (pressed && !getSubmenu())
+        if (pressed && !getSubmenu() && !isDone())
         {
             left(false);
         }
@@ -40,7 +42,7 @@ void Menu::MenuInterface::setInputs(InputsAbstraction* inputs)
 
     keyboardEvents[sf::Keyboard::Right] = [this](bool pressed)
     {
-        if (pressed && !getSubmenu())
+        if (pressed && !getSubmenu() && !isDone())
         {
             right(false);
         }
@@ -48,7 +50,7 @@ void Menu::MenuInterface::setInputs(InputsAbstraction* inputs)
 
     keyboardEvents[sf::Keyboard::Space] = [this](bool pressed)
     {
-        if (pressed && !getSubmenu())
+        if (pressed && !getSubmenu() && !isDone())
         {
             press();
         }
@@ -56,7 +58,7 @@ void Menu::MenuInterface::setInputs(InputsAbstraction* inputs)
 
     keyboardEvents[sf::Keyboard::Return] = [this](bool pressed)
     {
-        if (pressed && !getSubmenu())
+        if (pressed && !getSubmenu() && !isDone())
         {
             press();
         }
@@ -64,7 +66,7 @@ void Menu::MenuInterface::setInputs(InputsAbstraction* inputs)
 
     keyboardEvents[sf::Keyboard::Escape] = [this](bool pressed)
     {
-        if (pressed && !getSubmenu())
+        if (pressed && !getSubmenu() && !isDone())
         {
             escape();
         }
@@ -74,7 +76,7 @@ void Menu::MenuInterface::setInputs(InputsAbstraction* inputs)
 }
 
 
-void Menu::MenuInterface::updateThis(float dt)
+void MenuInterface::updateThis(float dt)
 {
     (void) dt;
 }

@@ -5,6 +5,7 @@
 #include "DrawerAbstraction.hpp"
 
 
+// POINTER SAFETY : must not be used after 'm_target' is deleted
 class ObjectDrawer : public DrawerAbstraction
 {
     public :

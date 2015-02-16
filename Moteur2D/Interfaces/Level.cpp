@@ -41,7 +41,7 @@ void Level::setInputs(InputsAbstraction* inputs)
     {
         mouseEvents[button] = [this, button](bool pressed, sf::Vector2f cursor)
         {
-            if (!getPauseMenu())
+            if (!getPauseMenu() && !isDone())
             {
                 trigger(button, pressed, cursor);
             }
@@ -52,7 +52,7 @@ void Level::setInputs(InputsAbstraction* inputs)
     {
         keyboardEvents[key] = [this, key](bool pressed)
         {
-            if (!getPauseMenu())
+            if (!getPauseMenu() && !isDone())
             {
                 trigger(key, pressed);
             }

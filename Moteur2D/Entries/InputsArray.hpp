@@ -6,7 +6,11 @@
 #include "InputsAbstraction.hpp"
 
 
-// Class used to check the state of the inputs and easy events handling
+/*
+Class used to check the state of the inputs and easy events handling
+POINTER SAFETY : The given EventsMaps have to be safe,
+'update()' must not be called after 'window' is deleted
+*/
 class Inputs : public InputsAbstraction
 {
     public :

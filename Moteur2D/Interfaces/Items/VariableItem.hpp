@@ -19,7 +19,7 @@ namespace Menu
         VariableItem();
         explicit VariableItem(const std::vector<std::shared_ptr<AbstractItem>>& items, size_t selectedOne = 0, ItemSize s = MaximumOne);
 
-        void addItem(AbstractItem* item);
+        void addItem(std::unique_ptr<AbstractItem> item);
         void setItems(const std::vector<std::shared_ptr<AbstractItem>>& items, size_t selectedOne = 0);
         const std::vector<std::shared_ptr<AbstractItem>>& getItems() const;
 

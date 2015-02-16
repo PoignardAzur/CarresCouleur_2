@@ -64,25 +64,20 @@ std::list<sf::Keyboard::Key> InputsAbstraction::getPressedKeyboardButtons() cons
 }
 
 
+bool InputsAbstraction::isPressed(sf::Mouse::Button button) const
+{
+    return getMouseButtons().count(button) && getMouseButtons().at(button);
+}
+
+bool InputsAbstraction::isPressed(sf::Keyboard::Key key) const
+{
+    return getKeyboardButtons().count(key) && getKeyboardButtons().at(key);
+}
+
+
 void InputsAbstraction::addEventsMap(std::unique_ptr<EventsMap> eventsMap) // adds eventsMap to a list of EventsMap
 {
     m_events.push_back(std::move(eventsMap));
-}
-
-void InputsAbstraction::trigger(sf::Mouse::Button button, bool pressed, sf::Vector2f cursorPosition) // uses the respective trigger() method for every EventsMap
-{
-    for (auto& eventMap_ptr : m_events)
-    {
-        eventMap_ptr->trigger(button, pressed, cursorPosition);
-    }
-}
-
-void InputsAbstraction::trigger(sf::Keyboard::Key key, bool pressed) // uses the respective trigger() method for every EventsMap
-{
-    for (auto& eventMap_ptr : m_events)
-    {
-        eventMap_ptr->trigger(key, pressed);
-    }
 }
 
 
@@ -108,5 +103,22 @@ bool InputsAbstraction::isAnyKeyPressed() const
 
 //  default
     return false;
+}
+
+
+void InputsAbstraction::trigger(sf::Mouse::Button button, bool pressed, sf::Vector2f cursorPosition) // uses the respective trigger() method for every EventsMap
+{
+    for (auto& eventMap_ptr : m_events)
+    {
+        eventMap_ptr->trigger(button, pressed, cursorPosition);
+    }
+}
+
+void InputsAbstraction::trigger(sf::Keyboard::Key key, bool pressed) // uses the respective trigger() method for every EventsMap
+{
+    for (auto& eventMap_ptr : m_events)
+    {
+        eventMap_ptr->trigger(key, pressed);
+    }
 }
 

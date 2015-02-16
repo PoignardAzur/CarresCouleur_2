@@ -9,6 +9,7 @@
 namespace Menu
 {
 
+    // POINTER SAFETY : Must not be drawn after 'm_font' is deleted
     class Text : public AbstractItem, public TextObjectAbstraction
     {
         public :

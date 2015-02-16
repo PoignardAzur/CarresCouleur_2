@@ -11,6 +11,8 @@
 Class used with InputsAbstraction to provide simple event-handling mechanics.
 This class keeps function objects pointing to an outside Interface,
 which is why it's marked for deletion by the Interface's destructor
+POINTER SAFETY : The function objects must be safe as long as
+the interface that created this instance has not been deleted
 */
 class EventsMap
 {

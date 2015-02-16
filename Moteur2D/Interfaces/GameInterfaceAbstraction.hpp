@@ -7,7 +7,12 @@
 #include "up.hpp"
 
 
-// Class that represents a chunk of the game experience (Level, Menu, Screen, etc)
+/*
+Class that represents a chunk of the game experience (Level, Menu, Screen, etc)
+POINTER SAFETY : 'update()' must not be called after 'm_inputs' is deleted
+'load()' must be called after 'setInputs()' and before 'update()' or any method with
+repercussions outside of the class
+*/
 class GameInterfaceAbstraction
 {
     public :

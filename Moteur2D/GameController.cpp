@@ -23,10 +23,12 @@ void GameController::update(float dt)
 
 void GameController::display(float dt)
 {
-    m_window->clear();
-
     if (!interface().isDone())
-    interface().drawIn(*m_window, dt);
+    {
+        m_window->clear();
+        interface().drawIn(*m_window, dt);
+        m_renderWindow->display();
+    }
 }
 
 

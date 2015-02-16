@@ -10,6 +10,7 @@
 /*
 Class used to check the state of the inputs and easy events handling
 This abstraction allows an input-simulating class to be used instead of user inputs
+POINTER SAFETY : The given EventsMaps have to be safe
 */
 class InputsAbstraction
 {
@@ -33,9 +34,10 @@ class InputsAbstraction
     std::list<sf::Mouse::Button> getPressedMouseButtons() const;            // array of pressed mouse buttons
     std::list<sf::Keyboard::Key> getPressedKeyboardButtons() const;         // array of pressed keyboard keys
 
+    bool isPressed(sf::Mouse::Button button) const;
+    bool isPressed(sf::Keyboard::Key key) const;
+
     void addEventsMap(std::unique_ptr<EventsMap> eventsMap);                // adds eventsMap to a list of EventsMap (m_events)
-    void trigger(sf::Mouse::Button button, bool pressed, sf::Vector2f cursorPosition);
-    void trigger(sf::Keyboard::Key key, bool pressed);                      // uses the respective trigger() method for every EventsMap
 
     bool isAnyMouseButtonPressed() const;
     bool isAnyKeyPressed() const;
@@ -43,8 +45,14 @@ class InputsAbstraction
 
     protected :
 
+    void trigger(sf::Mouse::Button button, bool pressed, sf::Vector2f cursorPosition);
+    void trigger(sf::Keyboard::Key key, bool pressed);                      // uses the respective trigger() method for every EventsMap
+
     virtual std::map<sf::Mouse::Button, bool>& _getMouseButtons() = 0;      // map of all mouse buttons
     virtual std::map<sf::Keyboard::Key , bool>& _getKeyboardButtons() = 0;  // map of all keyboard keys
+
+
+    private :
 
     std::list<std::unique_ptr<EventsMap>> m_events;
 };

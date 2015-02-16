@@ -10,6 +10,7 @@
 namespace Menu
 {
 
+    // POINTER SAFETY : 'selectedButton()' must be null or safe when 'press()' is called
     class MenuAbstraction : public ButtonAbstraction
     {
         public :

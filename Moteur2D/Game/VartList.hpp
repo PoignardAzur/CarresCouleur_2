@@ -61,6 +61,7 @@ void updateAllPositions(VartList<V>& list, float dt)
 
 
 // This class is useful for letting a class add Varts to a list, but not modify the list
+// POINTER SAFETY : 'add()' must not be called after 'm_list' is deleted
 template <typename V = VartAbs>
 class VartPusher
 {
@@ -73,7 +74,7 @@ class VartPusher
 
     private :
 
-    VartList<V>* m_list;    // use-a
+    VartList<V>* m_list; // use-a
 };
 
 template <typename V>

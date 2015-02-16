@@ -8,7 +8,7 @@
 #include "../Moteur2D/Interfaces/Items/Text.hpp"
 
 
-class PauseMenu : public Menu::MenuInterface
+class PauseMenu : public MenuInterface
 {
     public :
 

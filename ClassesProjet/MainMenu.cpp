@@ -17,7 +17,7 @@ const int HEIGHT_FIRST_BUTTON = HEIGHT_MENU_TITLE + 80;
 const int GAP_BETWEEN_BUTTONS = BIG_BUTTON_SIZE.y + 20;
 
 
-MainMenu::MainMenu() : Menu::MenuInterface(true, false)
+MainMenu::MainMenu() : MenuInterface(true, false)
 {
     m_text.setString("Sélectionner un niveau");
 }
@@ -29,17 +29,17 @@ void MainMenu::set(InputsAbstraction* in, const sf::Font* f)
     m_text.setFont(f, DEFAULT_FONT_SIZE * 2, sf::Color::White);
     Menu::FontStyle fs(f, DEFAULT_FONT_SIZE, sf::Color::White);
 
-    m_level_1_button.setSprites( std::move(yellowBox("Niveau 1", fs)), std::move(redBox("Niveau 1", fs) ));
-    m_level_2_button.setSprites( std::move(yellowBox("Niveau 2", fs)), std::move(redBox("Niveau 2", fs) ));
-    m_level_3_button.setSprites( std::move(yellowBox("Niveau 3", fs)), std::move(redBox("Niveau 3", fs) ));
-    m_level_4_button.setSprites( std::move(yellowBox("Niveau 4", fs)), std::move(redBox("Niveau 4", fs) ));
-    m_quit_button.setSprites( std::move(yellowBox("Quitter", fs)), std::move(redBox("Quitter", fs) ));
+    m_level_1_button.setSprites(yellowBox("Niveau 1", fs), redBox("Niveau 1", fs));
+    m_level_2_button.setSprites(yellowBox("Niveau 2", fs), redBox("Niveau 2", fs));
+    m_level_3_button.setSprites(yellowBox("Niveau 3", fs), redBox("Niveau 3", fs));
+    m_level_4_button.setSprites(yellowBox("Niveau 4", fs), redBox("Niveau 4", fs));
+    m_quit_button.setSprites(yellowBox("Quitter", fs), redBox("Quitter", fs));
 
     m_level_1_button.setFunction
     (
         [this, f]()
         {
-            load(uptrt<LevelBase>(new Level_1), f);
+            loadNext(uptrt<LevelBase>(new Level_1), f);
         }
     );
 
@@ -47,7 +47,7 @@ void MainMenu::set(InputsAbstraction* in, const sf::Font* f)
     (
         [this, f]()
         {
-            load(uptrt<LevelBase>(new Level_2), f);
+            loadNext(uptrt<LevelBase>(new Level_2), f);
         }
     );
 
@@ -55,7 +55,7 @@ void MainMenu::set(InputsAbstraction* in, const sf::Font* f)
     (
         [this, f]()
         {
-            load(uptrt<LevelBase>(new Level_3), f);
+            loadNext(uptrt<LevelBase>(new Level_3), f);
         }
     );
 
@@ -63,7 +63,7 @@ void MainMenu::set(InputsAbstraction* in, const sf::Font* f)
     (
         [this, f]()
         {
-            load(uptrt<LevelBase>(new Level_4), f);
+            loadNext(uptrt<LevelBase>(new Level_4), f);
         }
     );
 
@@ -104,14 +104,14 @@ void MainMenu::drawThisIn(DrawerAbstraction& window, float dt) const
 }
 
 
-void MainMenu::load(uptrt<LevelBase> level, const sf::Font* f)
+void MainMenu::loadNext(uptrt<LevelBase> level, const sf::Font* f)
 {
     Level_HUD* hud = new Level_HUD;
     hud->setFont(f);
 
     level->setInputs(getInputs());
     level->setFont(f);
-    level->setHUD(uptrt<Level_HUD>(hud));
+    level->setHUD(uptr(hud));
 
     endThisLater();
     setNextLevel(move(level));

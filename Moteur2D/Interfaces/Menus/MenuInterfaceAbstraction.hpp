@@ -3,7 +3,6 @@
 #define MENU_INTERFACE_ABSTRACTION_HEADER
 
 #include "../GameInterfaceAbstraction.hpp"
-#include <memory>
 
 
 class MenuInterfaceAbstraction : public GameInterfaceAbstraction

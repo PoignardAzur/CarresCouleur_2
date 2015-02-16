@@ -11,6 +11,7 @@
 namespace Menu
 {
 
+    // POINTER SAFETY : 'triggeredFunction' must be safe when 'press()' is called
     class SimpleButton : public ButtonAbstraction, public AbstractItem
     {
         public :

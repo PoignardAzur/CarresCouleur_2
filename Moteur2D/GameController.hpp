@@ -8,7 +8,10 @@
 #include "up.hpp"
 
 
-//Abstraction of a singleton that controls the entire game.
+/*
+Abstraction of a singleton that controls the entire game.
+POINTER SAFETY : 'display()' must not be called after 'target' is deleted
+*/
 class GameController
 {
     public :

@@ -48,9 +48,9 @@ uptrt<GameInterfaceAbstraction> MenuInterfaceAbstraction::next()
     return move(m_nextLevel);
 }
 
-void MenuInterfaceAbstraction::openSubmenu(std::unique_ptr<MenuInterfaceAbstraction> submenu)
+void MenuInterfaceAbstraction::openSubmenu(uptrt<MenuInterfaceAbstraction> submenu)
 {
-    m_submenu = std::move(submenu);
+    m_submenu = move(submenu);
 }
 
 const MenuInterfaceAbstraction* MenuInterfaceAbstraction::getSubmenu() const

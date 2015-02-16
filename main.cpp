@@ -16,22 +16,23 @@ int main(int /*argc*/, char** /*argv*/)
     try
     {
         uptrt<sf::RenderWindow> fenetre(new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE));
-
         fenetre->setFramerateLimit(30);
-        BossClass bigBrother(uptr(new Inputs(fenetre.get(), false)), fenetre.get());
-        sf::Clock chronos;
-        chronos.restart();
 
-        const float MIN_DT = 1.0f/60.0f;    // those are the bounds of the dt value passed in all functions "update(float dt)"
+        BossClass bigBrother(uptr(new Inputs(fenetre.get(), false)), fenetre.get());
+
+        const float MIN_DT = 1.0f/60.0f;        // those are the bounds of the dt value passed in all functions "update(float dt)"
         const float MAX_DT = 0.1f;
-        float accumulatedTime = 0.0;        // represents the advance the renderer has over the engine
+        const float MAX_ACC = 1.0f;
+
+        sf::Clock chronos;
+        float accumulatedTime = MIN_DT;         // represents the advance the renderer has over the engine
 
         while (!bigBrother.isDone())
         {
             accumulatedTime += chronos.restart().asSeconds();
 
-            if (accumulatedTime > 1)  // this lines prevents the engine from falling in a spiral of death (not catching up to the renderer)
-            accumulatedTime = 1;
+            if (accumulatedTime > MAX_ACC)      // these lines prevent the engine from falling in a spiral of death
+            accumulatedTime = MAX_ACC;          // (not catching up to the renderer)
 
             // The way is work is : the (real) world produces time that the engine consumes in dt-sized chunks
             while (accumulatedTime >= MIN_DT && !bigBrother.isDone())
@@ -44,8 +45,6 @@ int main(int /*argc*/, char** /*argv*/)
 
             if (!bigBrother.isDone())
             bigBrother.display(accumulatedTime);
-
-            fenetre->display();
         }
 
         fenetre->close();
