@@ -2,156 +2,62 @@
 #include "ItemLine.hpp"
 
 
-// ITEM ROW
-Menu::ItemRow::ItemRow()
+// ITEM LINE
+
+Menu::ItemLine::ItemLine()
 {
 
 }
 
-Menu::ItemRow::ItemRow(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps)
+Menu::ItemLine::ItemLine(std::vector<SharedItem> items, float gaps, bool vertical) : AbstractItemLine(std::move(items), gaps)
 {
-    setItems(items, gaps);
+    setVertical(vertical);
 }
 
-void Menu::ItemRow::setItemsCount(size_t n, AbstractItem* item)
+void Menu::ItemLine::setVertical(bool vertical)
 {
-    m_grid.setGridSize(n, 1, item);
+    m_vertical = vertical;
+    updateOwnSize();
 }
 
-void Menu::ItemRow::setItemsCount(size_t n, std::shared_ptr<AbstractItem> item)
+bool Menu::ItemLine::isVertical() const
 {
-    m_grid.setGridSize(n, 1, item);
-}
-
-void Menu::ItemRow::setItems(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps)
-{
-    m_grid.setAsRow(items, gaps);
-}
-
-void Menu::ItemRow::setItem(size_t n, AbstractItem* item)
-{
-    m_grid.setItem(n, 0, item);
-}
-
-void Menu::ItemRow::setItem(size_t n, std::shared_ptr<AbstractItem> item)
-{
-    m_grid.setItem(n, 0, item);
-}
-
-void Menu::ItemRow::addItem(AbstractItem* item)
-{
-    setItemsCount(getItemsCount() + 1, item);
-}
-
-void Menu::ItemRow::addItem(std::shared_ptr<AbstractItem> item)
-{
-    setItemsCount(getItemsCount() + 1, item);
-}
-
-void Menu::ItemRow::setInternPosition(Alignement align, float gaps)
-{
-    m_grid.setInternPosition(align, sf::Vector2f(gaps, 0));
-}
-
-void Menu::ItemRow::expandToFill(float nSize, bool allowNegativeSizes)
-{
-    m_grid.expandToFill(sf::Vector2f(nSize, 0), allowNegativeSizes);
-}
-
-void Menu::ItemRow::setParent(AbstractItem* parent)
-{
-    m_grid.setParent(parent);
-}
-
-sf::Vector2f Menu::ItemRow::getSize() const
-{
-    return m_grid.getSize();
-}
-
-size_t Menu::ItemRow::getItemsCount() const
-{
-    return m_grid.columns();
-}
-
-void Menu::ItemRow::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
-{
-    m_grid.drawIn(target, position, isHitboxDrawn);
+    return m_vertical;
 }
 
 
-// ITEM COLUMN
-Menu::ItemColumn::ItemColumn()
+// VERTICAL ITEM LINE
+
+Menu::VerticalItemLine::VerticalItemLine()
 {
 
 }
 
-Menu::ItemColumn::ItemColumn(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps)
+Menu::VerticalItemLine::VerticalItemLine(std::vector<SharedItem> items, float gaps) : AbstractItemLine(std::move(items), gaps)
 {
-    setItems(items, gaps);
+
 }
 
-void Menu::ItemColumn::setItemsCount(size_t n, AbstractItem* item)
+bool Menu::VerticalItemLine::isVertical() const
 {
-    m_grid.setGridSize(1, n, item);
+    return true;
 }
 
-void Menu::ItemColumn::setItemsCount(size_t n, std::shared_ptr<AbstractItem> item)
+
+// HORIZONTAL ITEM LINE
+
+Menu::HorizontalItemLine::HorizontalItemLine()
 {
-    m_grid.setGridSize(1, n, item);
+
 }
 
-void Menu::ItemColumn::setItems(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps)
+Menu::HorizontalItemLine::HorizontalItemLine(std::vector<SharedItem> items, float gaps) : AbstractItemLine(std::move(items), gaps)
 {
-    m_grid.setAsColumn(items, gaps);
+
 }
 
-void Menu::ItemColumn::setItem(size_t n, AbstractItem* item)
+bool Menu::HorizontalItemLine::isVertical() const
 {
-    m_grid.setItem(0, n, item);
-}
-
-void Menu::ItemColumn::setItem(size_t n, std::shared_ptr<AbstractItem> item)
-{
-    m_grid.setItem(0, n, item);
-}
-
-void Menu::ItemColumn::addItem(AbstractItem* item)
-{
-    setItemsCount(getItemsCount() + 1, item);
-}
-
-void Menu::ItemColumn::addItem(std::shared_ptr<AbstractItem> item)
-{
-    setItemsCount(getItemsCount() + 1, item);
-}
-
-void Menu::ItemColumn::setInternPosition(Alignement align, float gaps)
-{
-    m_grid.setInternPosition(align, sf::Vector2f(0, gaps));
-}
-
-void Menu::ItemColumn::expandToFill(float nSize, bool allowNegativeSizes)
-{
-    m_grid.expandToFill(sf::Vector2f(0, nSize), allowNegativeSizes);
-}
-
-void Menu::ItemColumn::setParent(AbstractItem* parent)
-{
-    m_grid.setParent(parent);
-}
-
-sf::Vector2f Menu::ItemColumn::getSize() const
-{
-    return m_grid.getSize();
-}
-
-size_t Menu::ItemColumn::getItemsCount() const
-{
-    return m_grid.lines();
-}
-
-void Menu::ItemColumn::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
-{
-    m_grid.drawIn(target, position, isHitboxDrawn);
+    return false;
 }
 

@@ -46,6 +46,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add directory="J:/Projets/Programmation/Bibliotheque/UsingSmartPointers" />
+			<Add directory="F:/Projets/Programmation/Bibliotheque/UsingSmartPointers" />
 		</Compiler>
 		<Unit filename="ClassesProjet/BossClass.cpp" />
 		<Unit filename="ClassesProjet/BossClass.hpp" />
@@ -105,6 +106,10 @@
 		<Unit filename="Moteur2D/Interfaces/GameInterfaceAbstraction.hpp" />
 		<Unit filename="Moteur2D/Interfaces/Items/AbstractItem.cpp" />
 		<Unit filename="Moteur2D/Interfaces/Items/AbstractItem.hpp" />
+		<Unit filename="Moteur2D/Interfaces/Items/AbstractItemGrid.cpp" />
+		<Unit filename="Moteur2D/Interfaces/Items/AbstractItemGrid.hpp" />
+		<Unit filename="Moteur2D/Interfaces/Items/AbstractItemLine.cpp" />
+		<Unit filename="Moteur2D/Interfaces/Items/AbstractItemLine.hpp" />
 		<Unit filename="Moteur2D/Interfaces/Items/Counter.cpp" />
 		<Unit filename="Moteur2D/Interfaces/Items/Counter.hpp" />
 		<Unit filename="Moteur2D/Interfaces/Items/ItemBox.cpp" />

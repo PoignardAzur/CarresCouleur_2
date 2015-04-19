@@ -1,5 +1,4 @@
 
-
 #include "ItemGrid.hpp"
 
 
@@ -8,93 +7,76 @@ Menu::ItemGrid::ItemGrid()
 
 }
 
-Menu::ItemGrid::ItemGrid(const std::vector<std::vector< std::shared_ptr<AbstractItem> >>& items, sf::Vector2f gaps)
+Menu::ItemGrid::ItemGrid(std::vector<std::vector<SharedItem>> items, sf::Vector2f gaps)
 {
-    set(items, gaps);
+    set(std::move(items), gaps);
 }
 
-Menu::ItemGrid::ItemGrid(const std::vector<std::shared_ptr<AbstractItem>>& items, bool is_a_row, float gaps)
+void Menu::ItemGrid::set(std::vector<std::vector<SharedItem>> items, sf::Vector2f gaps)
 {
-    if (is_a_row)
-    setAsRow(items, gaps);
-
-    else
-    setAsColumn(items, gaps);
-}
-
-
-void Menu::ItemGrid::set(const std::vector<std::vector< std::shared_ptr<AbstractItem> >>& items, sf::Vector2f gaps)
-{
-    m_itemLines = items;
+    m_itemRows = std::move(items);
     m_gaps = gaps;
 
     updateOwnSize();
     setItemsParent();
 }
 
-
-void Menu::ItemGrid::setAsRow(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps)
+void Menu::ItemGrid::setAsLine(const std::vector<SharedItem>& items, bool vertical, float gaps)
 {
-    m_itemLines.resize(1);
-    m_itemLines[0] = items;
-
-    m_gaps = sf::Vector2f(gaps, 0);
-
-    updateOwnSize();
-    setItemsParent();
-}
-
-void Menu::ItemGrid::setAsColumn(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps)
-{
-    m_itemLines.resize(items.size());
-
-    for (size_t i = 0; i < items.size(); ++i)
+    if (vertical)
     {
-        m_itemLines[i].resize(1, items[i]);
-    }
+        m_itemRows.resize(items.size());
 
-    m_gaps = sf::Vector2f(0, gaps);
-
-    updateOwnSize();
-    setItemsParent();
-}
-
-void Menu::ItemGrid::setItemsParent()
-{
-    for (auto& itemLine : m_itemLines)
-    {
-        for (auto& item : itemLine)
+        for (size_t i = 0; i < items.size(); ++i)
         {
-            if (item)
-            item->setParent(this);
+            m_itemRows[i].resize(1, items[i]);
         }
+
+        m_gaps = sf::Vector2f(0, gaps);
     }
-}
 
-void Menu::ItemGrid::setGridSize(size_t x, size_t y, std::shared_ptr<AbstractItem> item)
-{
-    if (item)
-    item->setParent(this);
-
-    m_itemLines.resize(y);
-
-    for (auto& itemLine : m_itemLines)
+    else
     {
-        itemLine.resize(x, item);
+        m_itemRows.resize(1);
+        m_itemRows[0] = items;
+
+        m_gaps = sf::Vector2f(gaps, 0);
     }
 
     updateOwnSize();
+    setItemsParent();
 }
+
 
 void Menu::ItemGrid::setGridSize(size_t x, size_t y, AbstractItem* item)
 {
     setGridSize(x, y, std::shared_ptr<AbstractItem>(item));
 }
 
-
-void Menu::ItemGrid::setItem(size_t x, size_t y, std::shared_ptr<AbstractItem> item)
+void Menu::ItemGrid::setGridSize(size_t x, size_t y, SharedItem item)
 {
-    m_itemLines[y][x] = item;
+    if (item)
+    item->setParent(this);
+
+    m_itemRows.resize(y);
+
+    for (auto& itemRow : m_itemRows)
+    {
+        itemRow.resize(x, item);
+    }
+
+    updateOwnSize();
+}
+
+
+void Menu::ItemGrid::setItem(size_t x, size_t y, AbstractItem* item)
+{
+    setItem(x, y, std::shared_ptr<AbstractItem>(item));
+}
+
+void Menu::ItemGrid::setItem(size_t x, size_t y, SharedItem item)
+{
+    m_itemRows[y][x] = item;
 
     if (item)
     item->setParent(this);
@@ -102,163 +84,82 @@ void Menu::ItemGrid::setItem(size_t x, size_t y, std::shared_ptr<AbstractItem> i
     updateOwnSize();
 }
 
-void Menu::ItemGrid::setItem(size_t x, size_t y, AbstractItem* item)
+
+size_t Menu::ItemGrid::getRowsCount() const
 {
-    setItem(x, y, std::shared_ptr<AbstractItem>(item));
+    return m_itemRows.size();
+}
+
+size_t Menu::ItemGrid::getColumnsCount() const
+{
+    return m_itemRows.empty() ? 0 : m_itemRows.front().size();
 }
 
 
-
-
-void Menu::ItemGrid::setInternPosition(Alignement align, sf::Vector2f gaps)
+void Menu::ItemGrid::expandToFill(sf::Vector2f newSize, bool allowNegativeSizes)
 {
+    Menu::AbstractItemGrid::expandToFill(m_gaps.x, newSize.x, false, allowNegativeSizes);
+    Menu::AbstractItemGrid::expandToFill(m_gaps.y, newSize.y, true, allowNegativeSizes);
+}
+
+void Menu::ItemGrid::setGaps(sf::Vector2f gaps)
+{
+    sf::Vector2f deltaSize;
+    deltaSize.x = (gaps.x - m_gaps.x) * (std::max<size_t>(getColumnsCount(), 1) - 1);
+    deltaSize.y = (gaps.y - m_gaps.y) * (std::max<size_t>(getRowsCount(), 1) - 1);
+
+    updateSizeValue(getSize() + deltaSize);
     m_gaps = gaps;
-    m_align = align;
-    updateCellSizes();
 }
 
-void Menu::ItemGrid::expandToFill(sf::Vector2f nSize, bool allowNegativeSizes)
+
+const Menu::AbstractItem& Menu::ItemGrid::getItem(size_t column, size_t row) const
 {
-    if (!allowNegativeSizes)
-    {
-        if (nSize.x < m_size.x - m_gaps.x * (columns() - 1))
-        nSize.x = m_size.x - m_gaps.x * (columns() - 1);
-
-        if (nSize.y < m_size.y - m_gaps.y * (lines() - 1))
-        nSize.y = m_size.y - m_gaps.y * (lines() - 1);
-    }
-
-    if (nSize.x < 0)
-    nSize.x = 0;
-
-    if (nSize.y < 0)
-    nSize.y = 0;
-
-    m_gaps.x += (nSize - m_size).x / (columns() - 1);
-    m_gaps.y += (nSize - m_size).y / (lines() - 1);
-
-    updateCellSizes();
+    return const_cast<ItemGrid*>(this)->getItem(column, row);
 }
 
-
-
-sf::Vector2f Menu::ItemGrid::getSize() const
+Menu::AbstractItem& Menu::ItemGrid::getItem(size_t column, size_t row)
 {
-    return m_size;
+    SharedItem item = (m_itemRows.empty() || m_itemRows[row].empty()) ? nullptr : m_itemRows[row][column];
+
+    if (item)
+    return *item;
+
+    else
+    return m_voidBox;
 }
 
-size_t Menu::ItemGrid::lines() const
+
+float Menu::ItemGrid::getColumnWidth(size_t column) const
 {
-    return m_itemLines.size();
+    return m_columnWidths[column];
 }
 
-size_t Menu::ItemGrid::columns() const
+float Menu::ItemGrid::getRowHeight(size_t row) const
 {
-    if (m_itemLines.size())
-    return m_itemLines[0].size();
-
-/// else
-    return 0;
+    return m_rowHeights[row];
 }
 
-
-
-void Menu::ItemGrid::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
+float Menu::ItemGrid::getColumnOffset(size_t column, bool addGaps) const
 {
-    for (size_t l = 0; l < lines(); l++)
-    {
-        for (size_t c = 0; c < columns(); c++)
-        {
-            sf::FloatRect rect(position.x + m_columnOffsets[c], position.y + m_lineOffsets[l], m_columnWidths[c], m_lineHeights[l]);
-
-            if (isHitboxDrawn)
-            {
-                sf::RectangleShape hitbox(sf::Vector2f(rect.width, rect.height));
-                hitbox.setPosition(rect.left, rect.top);
-                hitbox.setFillColor(sf::Color( hashToColor(position.x + 128), hashToColor(position.y + 128), hashToColor(rect.width + rect.height) ));
-
-                target.draw(hitbox);
-            }
-
-            m_itemLines[l][c]->drawInBox(target, rect, m_align, isHitboxDrawn);
-        }
-    }
+    return m_columnOffsets[column] + (addGaps ? column * m_gaps.x : 0);
 }
 
-
-void Menu::ItemGrid::updateOwnSize()
+float Menu::ItemGrid::getRowOffset(size_t row, bool addGaps) const
 {
-    // Finds the maximum height of each line
-    m_lineHeights.resize(lines());
-    m_lineOffsets.resize(lines());
-
-    for (size_t l = 0; l < lines(); l++)
-    {
-        float maxHeight = 0;
-
-        for (auto& item : m_itemLines[l])
-        {
-            if (item && item->getSize().y > maxHeight)
-            maxHeight = item->getSize().y;
-        }
-
-        m_lineHeights[l] = maxHeight;
-    }
-
-    // Finds the maximm width of each column
-    m_columnWidths.resize(columns());
-    m_columnOffsets.resize(columns());
-
-    for (size_t c = 0; c < columns(); c++)
-    {
-        float maxWidth = 0;
-
-        for (auto& itemLine : m_itemLines)
-        {
-            if (itemLine[c] && itemLine[c]->getSize().x > maxWidth)
-            maxWidth = itemLine[c]->getSize().x;
-        }
-
-        m_columnWidths[c] = maxWidth;
-    }
-
-
-    updateCellSizes();
+    return m_rowOffsets[row] + (addGaps ? row * m_gaps.y : 0);
 }
 
 
-void Menu::ItemGrid::updateCellSizes()
+void Menu::ItemGrid::updateLineSizes()
 {
-    if (!lines() || !columns())
-    {
-        m_size = sf::Vector2f(0,0);
-        return;
-    }
-
-/// else
-    m_lineOffsets[0] = 0;
-    m_columnOffsets[0] = 0;
-
-    for (size_t l = 1; l < lines(); l++)
-    {
-        m_lineOffsets[l] = m_lineOffsets[l - 1] + m_lineHeights[l - 1] + m_gaps.y;
-    }
-
-    for (size_t c = 1; c < columns(); c++)
-    {
-        m_columnOffsets[c] = m_columnOffsets[c - 1] + m_columnWidths[c - 1] + m_gaps.x;
-    }
-
-    m_size.y = m_lineOffsets[lines()-1] + m_lineHeights[lines()-1];
-    m_size.x = m_columnOffsets[columns()-1] + m_columnWidths[columns()-1];
-
-    updateParentSize();
+    m_rowHeights = getLineSizes(false);
+    m_columnWidths = getLineSizes(true);
 }
 
-
-
-
-
-
-
+void Menu::ItemGrid::updateLineOffsets()
+{
+    m_rowOffsets = getLineOffsets(false);
+    m_columnOffsets = getLineOffsets(true);
+}
 

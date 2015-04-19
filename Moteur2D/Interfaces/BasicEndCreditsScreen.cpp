@@ -1,5 +1,4 @@
 
-
 #include "BasicEndCreditsScreen.hpp"
 #include "Items/ItemBox.hpp"
 #include "Items/ItemLine.hpp"
@@ -39,30 +38,31 @@ void BasicEndCreditsScreen::setCreditRoleFont(Menu::FontStyle f)
 void BasicEndCreditsScreen::add_title(const std::string& title)
 {
     Menu::Text* text = new Menu::Text(title, m_titleFont);
-    add_item(std::unique_ptr<Menu::Text>(text));
+    add_item(uptr(text));
 }
 
 void BasicEndCreditsScreen::add_subtitle(const std::string& subtitle)
 {
     Menu::Text* text = new Menu::Text(subtitle, m_subtitleFont);
-    add_item(std::unique_ptr<Menu::Text>(text));
+    add_item(uptr(text));
 }
 
 void BasicEndCreditsScreen::add_credit(const std::string& name, const std::string& role, float gap)
 {
-    Menu::Text* text1 = new Menu::Text(name, m_creditNameFont);
-    Menu::Text* text2 = new Menu::Text(role, m_creditRoleFont);
+    auto text1 = uptr(new Menu::Text(name, m_creditNameFont));
+    auto text2 = uptr(new Menu::Text(role, m_creditRoleFont));
 
-    Menu::ItemColumn* both = new Menu::ItemColumn();
-    both->setInternPosition(Menu::Center, gap);
-    both->addItem(text1);
-    both->addItem(text2);
+    Menu::VerticalItemLine* both = new Menu::VerticalItemLine();
+    both->setInternAlignement(Menu::Center);
+    both->setGaps(gap);
+    both->addItem(move(text1));
+    both->addItem(move(text2));
 
     add_item(uptr(both));
 }
 
 void BasicEndCreditsScreen::add_sprite(const sf::Sprite& sprite)
 {
-    add_item(std::unique_ptr<Menu::Sprite>(new Menu::Sprite(sprite)));
+    add_item(uptr(new Menu::Sprite(sprite)));
 }
 

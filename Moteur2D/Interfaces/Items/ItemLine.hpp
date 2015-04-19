@@ -1,83 +1,58 @@
 
-
 #ifndef ITEM_LINE_HEADER
 #define ITEM_LINE_HEADER
 
-#include "ItemGrid.hpp"
+#include "AbstractItemLine.hpp"
 
 
 namespace Menu
 {
 
-    class ItemRow : public AbstractItem
+    class ItemLine : public AbstractItemLine
     {
         public :
 
-        ItemRow();
-        explicit ItemRow(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps = 0);
+        ItemLine();
+        explicit ItemLine(std::vector<SharedItem> items, float gaps = 0, bool vertical = true);
 
-        void setItemsCount(size_t n, AbstractItem* item = nullptr);
-        void setItemsCount(size_t n, std::shared_ptr<AbstractItem> item);
-        void setItems(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps = 0);
-        void setItem(size_t n, AbstractItem* item);
-        void setItem(size_t n, std::shared_ptr<AbstractItem> item);
-        void addItem(AbstractItem* item);
-        void addItem(std::shared_ptr<AbstractItem> item);
-
-        void setInternPosition(Alignement align, float gaps);
-        void expandToFill(float nSize, bool allowNegativeSizes = true);
-
-        void setParent(AbstractItem* parent);
-
-        sf::Vector2f getSize() const;
-        size_t getItemsCount() const;
-
-
-        protected :
-
-        virtual void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
+        void setVertical(bool vertical);
+        bool isVertical() const;
 
 
         private :
 
-        ItemGrid m_grid;
+        bool m_vertical = true;
     };
 
 
-    class ItemColumn : public AbstractItem
+    class VerticalItemLine : public AbstractItemLine
     {
         public :
 
-        ItemColumn();
-        explicit ItemColumn(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps = 0);
-
-        void setItemsCount(size_t n, AbstractItem* item = nullptr);
-        void setItemsCount(size_t n, std::shared_ptr<AbstractItem> item);
-        void setItems(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps = 0);
-        void setItem(size_t n, AbstractItem* item);
-        void setItem(size_t n, std::shared_ptr<AbstractItem> item);
-        void addItem(AbstractItem* item);
-        void addItem(std::shared_ptr<AbstractItem> item);
-
-        void setInternPosition(Alignement align, float gaps);
-        void expandToFill(float nSize, bool allowNegativeSizes = true);
-
-        void setParent(AbstractItem* parent);
-
-        sf::Vector2f getSize() const;
-        size_t getItemsCount() const;
+        VerticalItemLine();
+        explicit VerticalItemLine(std::vector<SharedItem> items, float gaps = 0);
 
 
         protected :
 
-        virtual void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
+        bool isVertical() const;
+    };
 
 
-        private :
+    class HorizontalItemLine : public AbstractItemLine
+    {
+        public :
 
-        ItemGrid m_grid;
+        HorizontalItemLine();
+        explicit HorizontalItemLine(std::vector<SharedItem> items, float gaps = 0);
+
+
+        protected :
+
+        bool isVertical() const;
     };
 
 }
+
 
 #endif // ITEM_LINE_HEADER

@@ -2,60 +2,82 @@
 #ifndef MENU_ITEM_GRID_HEADER
 #define MENU_ITEM_GRID_HEADER
 
-#include <vector>
 #include <memory>
 
-#include "AbstractItem.hpp"
+#include "AbstractItemGrid.hpp"
+#include "ItemBox.hpp"
 
 
 namespace Menu
 {
 
-    class ItemGrid : public AbstractItem
+    class ItemGrid : public AbstractItemGrid
     {
         public :
 
+        using SharedItem = std::shared_ptr<AbstractItem>;
+
         ItemGrid();
-        explicit ItemGrid(const std::vector<std::vector< std::shared_ptr<AbstractItem> >>& items, sf::Vector2f gaps = sf::Vector2f(0,0));
-        ItemGrid(const std::vector<std::shared_ptr<AbstractItem>>& items, bool is_a_row, float gaps = 0);
+        explicit ItemGrid(std::vector<std::vector<SharedItem>> items, sf::Vector2f gaps = sf::Vector2f(0,0));
 
-        void set(const std::vector<std::vector< std::shared_ptr<AbstractItem> >>& items, sf::Vector2f gaps = sf::Vector2f(0,0));
-        void setAsRow(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps = 0);
-        void setAsColumn(const std::vector<std::shared_ptr<AbstractItem>>& items, float gaps = 0);
-
-        void setInternPosition(Alignement align, sf::Vector2f gaps);
-        void expandToFill(sf::Vector2f nSize, bool allowNegativeSizes = true);
+        void set(std::vector<std::vector<SharedItem>> items, sf::Vector2f gaps = sf::Vector2f(0,0));
+        void setAsLine(const std::vector<SharedItem>& items, bool vertical, float gaps = 0);
 
         void setGridSize(size_t x, size_t y, AbstractItem* item = nullptr);
-        void setGridSize(size_t x, size_t y, std::shared_ptr<AbstractItem> item);
+        void setGridSize(size_t x, size_t y, SharedItem item);
         void setItem(size_t x, size_t y, AbstractItem* item);
-        void setItem(size_t x, size_t y, std::shared_ptr<AbstractItem> item);
+        void setItem(size_t x, size_t y, SharedItem item);
 
-        sf::Vector2f getSize() const;
+        size_t getRowsCount() const;
+        size_t getColumnsCount() const;
 
-        size_t lines() const;
-        size_t columns() const;
+        void expandToFill(sf::Vector2f newSize, bool allowNegativeSizes = true);
+        void setGaps(sf::Vector2f gaps);
 
 
         protected :
 
+        const AbstractItem& getItem(size_t column, size_t row) const;
+        AbstractItem& getItem(size_t column, size_t row);
+
+        float getColumnWidth(size_t column) const;
+        float getRowHeight(size_t row) const;
+
+        float getColumnOffset(size_t column, bool addGaps) const;
+        float getRowOffset(size_t row, bool addGaps) const;
+
+        void updateLineSizes();
+        void updateLineOffsets();
+
+        /* INHERITED METHODS :
+
+        void expandToFill(float& currentGaps, float newSize, bool vertical, bool allowNegativeSizes);
+
         void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
-        void updateCellSizes();
+        void drawItemIn(size_t column, size_t row, DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
+
+        float getLineSize(size_t line, bool verticalLine) const;
+        std::vector<float> getLineSizes(bool verticalLines) const;
+        std::vector<float> getLineOffsets(bool verticalOffsets) const;
+
         void updateOwnSize();
         void setItemsParent();
 
+        void updateSizeValue(sf::Vector2f newSize);
+        */
 
         private :
 
-        std::vector<std::vector< std::shared_ptr<AbstractItem> >> m_itemLines;     // it's an array of lines, each one being an array of items
-        sf::Vector2f m_gaps;
-        Alignement m_align;
+        std::vector<std::vector<SharedItem>> m_itemRows;     // it's an array of lines, each one being an array of items
+        sf::Vector2f m_gaps = sf::Vector2f();
 
-        std::vector<float> m_lineOffsets;
-        std::vector<float> m_columnOffsets;
-        sf::Vector2f m_size;
-        std::vector<float> m_lineHeights;
+        std::vector<float> m_rowHeights;
         std::vector<float> m_columnWidths;
+
+        std::vector<float> m_rowOffsets;
+        std::vector<float> m_columnOffsets;
+
+        ItemBox m_voidBox;
     };
 
 }

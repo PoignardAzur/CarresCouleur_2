@@ -36,7 +36,7 @@ namespace Menu
 
         private :
 
-        ItemRow m_row;
+        HorizontalItemLine m_row;
 
         int m_count;
         int m_maxDrawable;

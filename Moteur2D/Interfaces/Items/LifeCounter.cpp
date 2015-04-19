@@ -50,7 +50,8 @@ void Menu::LifeCounter::setSprite(const sf::Sprite& spr)
 void Menu::LifeCounter::setGaps(float gap)
 {
     m_gap = gap;
-    m_row.setInternPosition(MiddleBottomSide, gap);
+    m_row.setInternAlignement(MiddleBottomSide);
+    m_row.setGaps(gap);
 }
 
 
