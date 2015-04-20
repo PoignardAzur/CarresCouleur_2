@@ -2,10 +2,10 @@
 #ifndef MAIN_MENU_HEADER
 #define MAIN_MENU_HEADER
 
-#include "LevelBase.hpp"
-#include "../Moteur2D/Interfaces/Menus/MenuInterface.hpp"
-#include "../Moteur2D/Interfaces/Items/Buttons/SimplePushButton.hpp"
-#include "../Moteur2D/Interfaces/Items/Text.hpp"
+#include "../LevelBase.hpp"
+#include "../../Moteur2D/Interfaces/Menus/MenuInterface.hpp"
+#include "../../Moteur2D/Interfaces/Items/Buttons/SimplePushButton.hpp"
+#include "../../Moteur2D/Interfaces/Items/Text.hpp"
 
 
 class MainMenu : public BasicMenuInterface

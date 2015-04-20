@@ -2,7 +2,7 @@
 #ifndef TITLE_SCREEN_HEADER
 #define TITLE_SCREEN_HEADER
 
-#include "MainMenu.hpp"
+#include "Menus/MainMenu.hpp"
 #include "../Moteur2D/Interfaces/Screens/PressAnyKeyMenu.hpp"
 
 

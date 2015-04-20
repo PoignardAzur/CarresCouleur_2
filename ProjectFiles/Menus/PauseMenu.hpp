@@ -2,9 +2,9 @@
 #ifndef PAUSE_MENU_HEADER
 #define PAUSE_MENU_HEADER
 
-#include "../Moteur2D/Interfaces/Menus/MenuInterface.hpp"
-#include "../Moteur2D/Interfaces/Menus/SimpleButtonList.hpp"
-#include "../Moteur2D/Interfaces/Items/Text.hpp"
+#include "../../Moteur2D/Interfaces/Menus/MenuInterface.hpp"
+#include "../../Moteur2D/Interfaces/Menus/SimpleButtonList.hpp"
+#include "../../Moteur2D/Interfaces/Items/Text.hpp"
 
 
 class PauseMenu : public BasicMenuInterface

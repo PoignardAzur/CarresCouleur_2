@@ -1,6 +1,6 @@
 
 #include "BossClass.hpp"
-#include "MainMenu.hpp"
+#include "Menus/MainMenu.hpp"
 #include "Level_HUD.hpp"
 #include "TitleScreen.hpp"
 

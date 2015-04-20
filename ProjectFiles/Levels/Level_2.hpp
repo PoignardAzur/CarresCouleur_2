@@ -2,7 +2,7 @@
 #ifndef HEADER_LEVEL_2
 #define HEADER_LEVEL_2
 
-#include "LevelBase.hpp"
+#include "../LevelBase.hpp"
 
 
 class Level_2 : public LevelBase

@@ -6,7 +6,7 @@
 #include "../Moteur2D/Interfaces/Screens/Level.hpp"
 #include "../Moteur2D/Game/VartList.hpp"
 #include "CarreCouleur.hpp"
-#include "PauseMenu.hpp"
+#include "Menus/PauseMenu.hpp"
 
 
 extern const int WINDOW_HEIGHT;

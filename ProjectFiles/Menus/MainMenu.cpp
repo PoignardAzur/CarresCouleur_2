@@ -1,12 +1,12 @@
 
 #include "MainMenu.hpp"
-#include "../Moteur2D/Interfaces/Items/TextBox.hpp"
+#include "../../Moteur2D/Interfaces/Items/TextBox.hpp"
 
-#include "Level_1.hpp"
-#include "Level_2.hpp"
-#include "Level_3.hpp"
-#include "Level_4.hpp"
-#include "Level_HUD.hpp"
+#include "../Levels/Level_1.hpp"
+#include "../Levels/Level_2.hpp"
+#include "../Levels/Level_3.hpp"
+#include "../Levels/Level_4.hpp"
+#include "../Level_HUD.hpp"
 
 #include "DefaultMenuButton.hpp"
 

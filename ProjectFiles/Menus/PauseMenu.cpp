@@ -2,8 +2,8 @@
 #include "PauseMenu.hpp"
 #include "MainMenu.hpp"
 
-#include "Level_HUD.hpp"
-#include "Level_1.hpp"
+#include "../Level_HUD.hpp"
+#include "../Levels/Level_1.hpp"
 
 #include "DefaultMenuButton.hpp"
 

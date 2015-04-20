@@ -1,6 +1,6 @@
 
 #include "GameEndCredits.hpp"
-#include "MainMenu.hpp"
+#include "Menus/MainMenu.hpp"
 
 
 GameEndCredits::GameEndCredits()

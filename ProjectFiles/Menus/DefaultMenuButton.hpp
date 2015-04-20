@@ -2,7 +2,7 @@
 #ifndef DEFAULT_MENU_BUTTON_HEADER
 #define DEFAULT_MENU_BUTTON_HEADER
 
-#include "../Moteur2D/Interfaces/Items/Buttons/TextBoxPushButton.hpp"
+#include "../../Moteur2D/Interfaces/Items/Buttons/TextBoxPushButton.hpp"
 
 extern const sf::Vector2f BIG_BUTTON_SIZE;
 extern const sf::Vector2f SMALL_BUTTON_SIZE;
