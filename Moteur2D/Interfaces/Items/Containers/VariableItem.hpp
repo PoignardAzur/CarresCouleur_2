@@ -2,7 +2,7 @@
 #ifndef VARIABLE_MENU_ITEM_HEADER
 #define VARIABLE_MENU_ITEM_HEADER
 
-#include "AbstractItem.hpp"
+#include "../AbstractItem.hpp"
 #include <vector>
 #include <memory>
 

@@ -1,6 +1,6 @@
 
-#include "SimpleButton.hpp"
-#include "../Items/ItemBox.hpp"
+#include "SimplePushButton.hpp"
+#include "../Containers/ItemBox.hpp"
 
 
 Menu::SimplePushButton::SimplePushButton(uptrt<AbstractItem> unselected, uptrt<AbstractItem> selected, AbstractItem* parent)

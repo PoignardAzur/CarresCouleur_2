@@ -2,7 +2,7 @@
 #ifndef SIMPLE_MENU_PUSH_BUTTON_HEADER
 #define SIMPLE_MENU_PUSH_BUTTON_HEADER
 
-#include "Buttons/PushButton.hpp"
+#include "PushButton.hpp"
 
 
 namespace Menu

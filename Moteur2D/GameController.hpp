@@ -2,7 +2,7 @@
 #ifndef GAME_CONTROLLER_HEADER
 #define GAME_CONTROLLER_HEADER
 
-#include "Interfaces/Level.hpp"
+#include "Interfaces/Screens/Level.hpp"
 #include "Graphic/ObjectDrawer.hpp"
 #include <memory>
 #include "up.hpp"

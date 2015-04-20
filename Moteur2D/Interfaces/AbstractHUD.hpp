@@ -2,7 +2,7 @@
 #ifndef HUD_HEADER
 #define HUD_HEADER
 
-#include "Level.hpp"
+#include "Screens/Level.hpp"
 
 
 template <typename LevelType = Level>   /// TODO - Rebuild this class ?

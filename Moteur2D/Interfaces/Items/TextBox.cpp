@@ -1,7 +1,5 @@
 
 #include "TextBox.hpp"
-#include "../Items/ItemBox.hpp"
-#include "../Items/Text.hpp"
 
 
 Menu::TextBox::TextBox(sf::Vector2f boxSize, sf::Color c, const std::string& text, FontStyle f)

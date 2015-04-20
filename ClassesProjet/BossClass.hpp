@@ -3,7 +3,7 @@
 #define BOSS_CLASS_HEADER
 
 #include "../Moteur2D/GameController.hpp"
-#include "../Moteur2D/Interfaces/GameInterfaceAbstraction.hpp"
+#include "../Moteur2D/Interfaces/Screens/GameInterfaceAbstraction.hpp"
 #include "LevelBase.hpp"
 
 

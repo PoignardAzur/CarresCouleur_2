@@ -2,7 +2,7 @@
 #ifndef TEXT_BOX_PUSH_BUTTON_HEADER
 #define TEXT_BOX_PUSH_BUTTON_HEADER
 
-#include "../SimpleButton.hpp"
+#include "SimplePushButton.hpp"
 #include "../TextBox.hpp"
 
 

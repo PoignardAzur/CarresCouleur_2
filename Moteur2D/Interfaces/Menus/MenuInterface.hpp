@@ -3,7 +3,7 @@
 #define BASIC_MENU_INTERFACE_HEADER
 
 #include "MenuInterfaceAbstraction.hpp"
-#include "MenuAbstraction.hpp"
+#include "ButtonListAbstraction.hpp"
 
 #include <functional>
 

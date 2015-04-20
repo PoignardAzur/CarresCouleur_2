@@ -1,6 +1,6 @@
 
 #include "MainMenu.hpp"
-#include "../Moteur2D/Interfaces/Menus/TextBox.hpp"
+#include "../Moteur2D/Interfaces/Items/TextBox.hpp"
 
 #include "Level_1.hpp"
 #include "Level_2.hpp"

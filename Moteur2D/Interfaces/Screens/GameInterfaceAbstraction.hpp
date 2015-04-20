@@ -2,8 +2,8 @@
 #ifndef GAME_INTERFACE_ABSTRACTION_HEADER
 #define GAME_INTERFACE_ABSTRACTION_HEADER
 
-#include "../Entries/InputsArray.hpp"
-#include "../Graphic/DrawerAbstraction.hpp"
+#include "../../Entries/InputsArray.hpp"
+#include "../../Graphic/DrawerAbstraction.hpp"
 #include "up.hpp"
 
 

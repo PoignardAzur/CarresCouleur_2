@@ -3,7 +3,7 @@
 #define SIMPLE_CREDITS_SCREEN_HEADER
 
 #include "EndCreditsScreen.hpp"
-#include "Items/TextObjectAbstraction.hpp"
+#include "../Items/TextObjectAbstraction.hpp"
 
 
 // Basic implementation of EndCreditsScreen

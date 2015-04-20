@@ -3,7 +3,7 @@
 #define MENU_ITEM_BOX_HEADER
 
 #include "up.hpp"
-#include "AbstractItem.hpp"
+#include "../AbstractItem.hpp"
 
 
 namespace Menu

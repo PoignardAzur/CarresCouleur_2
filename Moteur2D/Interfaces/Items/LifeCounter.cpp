@@ -1,8 +1,5 @@
 
-
 #include "LifeCounter.hpp"
-
-
 
 
 Menu::LifeCounter::LifeCounter()
@@ -112,8 +109,4 @@ void Menu::LifeCounter::updateGrid()
 
     updateParentSize();
 }
-
-
-
-
 

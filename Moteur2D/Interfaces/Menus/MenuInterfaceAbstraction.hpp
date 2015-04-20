@@ -2,7 +2,7 @@
 #ifndef MENU_INTERFACE_ABSTRACTION_HEADER
 #define MENU_INTERFACE_ABSTRACTION_HEADER
 
-#include "../GameInterfaceAbstraction.hpp"
+#include "../Screens/GameInterfaceAbstraction.hpp"
 
 
 class MenuInterfaceAbstraction : public GameInterfaceAbstraction

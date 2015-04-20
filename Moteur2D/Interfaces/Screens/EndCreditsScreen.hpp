@@ -3,7 +3,7 @@
 #define ABSTRACT_CREDITS_SCREEN_HEADER
 
 #include "GameInterfaceAbstraction.hpp"
-#include "Items/AbstractItem.hpp"
+#include "../Items/AbstractItem.hpp"
 #include <list>
 #include <memory>
 

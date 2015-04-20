@@ -2,8 +2,8 @@
 #ifndef TEXT_BOX_HEADER
 #define TEXT_BOX_HEADER
 
-#include "../Items/TextObjectAbstraction.hpp"
-#include "../Items/ItemBox.hpp"
+#include "Containers/ItemBox.hpp"
+#include "Text.hpp"
 #include <string>
 
 

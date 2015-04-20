@@ -1,5 +1,4 @@
 
-
 #include "ItemStack.hpp"
 
 
@@ -77,7 +76,4 @@ void Menu::ItemStack::updateOwnSize()
 
     updateParentSize();
 }
-
-
-
 

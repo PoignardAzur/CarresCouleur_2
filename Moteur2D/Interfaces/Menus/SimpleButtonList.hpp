@@ -2,8 +2,8 @@
 #ifndef SIMPLE_BUTTON_LIST_HEADER
 #define SIMPLE_BUTTON_LIST_HEADER
 
-#include "MenuAbstraction.hpp"
-#include "../Items/ItemLine.hpp"
+#include "ButtonListAbstraction.hpp"
+#include "../Items/Containers/ItemLine.hpp"
 
 
 namespace Menu

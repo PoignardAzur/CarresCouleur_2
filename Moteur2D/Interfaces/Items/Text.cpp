@@ -1,5 +1,4 @@
 
-
 #include "Text.hpp"
 
 
@@ -42,5 +41,4 @@ sf::Vector2f Menu::Text::getSize() const
 {
     return sf::Vector2f(m_text.getGlobalBounds().width, m_text.getGlobalBounds().height);
 }
-
 

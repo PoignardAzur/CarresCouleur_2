@@ -3,7 +3,7 @@
 #define BASIC_ARCADE_LEVEL_HEADER
 
 #include "Level.hpp"
-#include "../Timer.hpp"
+#include "../../Timer.hpp"
 
 
 // Basic implementation of Level, with lives, a score and a Game Over event

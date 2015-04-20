@@ -1,9 +1,9 @@
 
 #include "BasicEndCreditsScreen.hpp"
-#include "Items/ItemBox.hpp"
-#include "Items/ItemLine.hpp"
-#include "Items/Text.hpp"
-#include "Items/Sprite.hpp"
+#include "../Items/Containers/ItemBox.hpp"
+#include "../Items/Containers/ItemLine.hpp"
+#include "../Items/Text.hpp"
+#include "../Items/Sprite.hpp"
 
 
 void BasicEndCreditsScreen::setAllFonts(const sf::Font* f, unsigned int charSizeMin, const sf::Color& titleColor, const sf::Color& subtitleColor, const sf::Color& creditNameColor, const sf::Color& creditRoleColor)

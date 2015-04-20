@@ -2,7 +2,7 @@
 #ifndef MENU_ITEM_STACK_HEADER
 #define MENU_ITEM_STACK_HEADER
 
-#include "AbstractItem.hpp"
+#include "../AbstractItem.hpp"
 #include "up.hpp"
 
 namespace Menu

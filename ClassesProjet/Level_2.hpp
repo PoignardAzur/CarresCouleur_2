@@ -1,5 +1,4 @@
 
-
 #ifndef HEADER_LEVEL_2
 #define HEADER_LEVEL_2
 
@@ -23,4 +22,4 @@ class Level_2 : public LevelBase
     float m_timeBeforeScoring = 0;
 };
 
-#endif // HEADER_LEVEL_1
+#endif // HEADER_LEVEL_2

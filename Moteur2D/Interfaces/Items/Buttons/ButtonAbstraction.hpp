@@ -2,7 +2,7 @@
 #ifndef MENU_BUTTON_ABSTRACTION_HEADER
 #define MENU_BUTTON_ABSTRACTION_HEADER
 
-#include "../../Items/AbstractItem.hpp"
+#include "../AbstractItem.hpp"
 
 
 namespace Menu

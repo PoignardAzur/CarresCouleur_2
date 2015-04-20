@@ -86,4 +86,3 @@ void Menu::Label::updateOwnSize()
     }
 }
 
-

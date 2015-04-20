@@ -4,7 +4,7 @@
 
 #include "../Moteur2D/Interfaces/AbstractHUD.hpp"
 #include "../Moteur2D/Interfaces/Items/Counter.hpp"
-#include "../Moteur2D/Interfaces/Items/ItemBox.hpp"
+#include "../Moteur2D/Interfaces/Items/Containers/ItemBox.hpp"
 #include <list>
 
 
