@@ -2,32 +2,53 @@
 #include "MenuAbstraction.hpp"
 
 
-Menu::MenuAbstraction::MenuAbstraction(bool isVertical, bool doesLoop)
+Menu::ButtonListAbstraction::ButtonListAbstraction(bool isMenuVertical, bool doesMenuLoop)
 {
-    m_isVertical = isVertical;
-    m_doesLoop = doesLoop;
+    m_isVertical = isMenuVertical;
+    m_doesLoop = doesMenuLoop;
 }
 
-void Menu::MenuAbstraction::select()
+void Menu::ButtonListAbstraction::select()
 {
     if (selectedButton())
     selectedButton()->select();
 }
 
-void Menu::MenuAbstraction::deselect()
+void Menu::ButtonListAbstraction::deselect()
 {
     if (selectedButton())
     selectedButton()->deselect();
 }
 
-void Menu::MenuAbstraction::press()
+void Menu::ButtonListAbstraction::press()
 {
     if (selectedButton())
     selectedButton()->press();
 }
 
 
-void Menu::MenuAbstraction::left(bool big)
+bool Menu::ButtonListAbstraction::doesLoop() const
+{
+    return m_doesLoop;
+}
+
+bool Menu::ButtonListAbstraction::isVertical() const
+{
+    return m_isVertical;
+}
+
+void Menu::ButtonListAbstraction::setLoop(bool doesMenuLoop)
+{
+    m_doesLoop = doesMenuLoop;
+}
+
+void Menu::ButtonListAbstraction::setVertical(bool isMenuVertical)
+{
+    m_isVertical = isMenuVertical;
+}
+
+
+void Menu::ButtonListAbstraction::left(bool big)
 {
     if (m_isVertical)
     {
@@ -39,7 +60,7 @@ void Menu::MenuAbstraction::left(bool big)
     decrement(big);
 }
 
-void Menu::MenuAbstraction::right(bool big)
+void Menu::ButtonListAbstraction::right(bool big)
 {
     if (m_isVertical)
     {
@@ -52,7 +73,7 @@ void Menu::MenuAbstraction::right(bool big)
     increment(big);
 }
 
-void Menu::MenuAbstraction::up(bool big)
+void Menu::ButtonListAbstraction::up(bool big)
 {
     if (!m_isVertical) // horizontal menu
     {
@@ -64,7 +85,7 @@ void Menu::MenuAbstraction::up(bool big)
     decrement(big);
 }
 
-void Menu::MenuAbstraction::down(bool big)
+void Menu::ButtonListAbstraction::down(bool big)
 {
     if (!m_isVertical) // horizontal menu
     {
@@ -77,40 +98,44 @@ void Menu::MenuAbstraction::down(bool big)
 }
 
 
-Menu::ButtonAbstraction* Menu::MenuAbstraction::selectedButton()
+Menu::ButtonAbstraction* Menu::ButtonListAbstraction::selectedButton()
 {
-    return m_buttonList[m_selectedButton];
+    if (m_selectedButton != -1)
+    return m_buttonPointerList[m_selectedButton];
+
+    else
+    return nullptr;
 }
 
-const Menu::ButtonAbstraction* Menu::MenuAbstraction::selectedButton() const
+const Menu::ButtonAbstraction* Menu::ButtonListAbstraction::selectedButton() const
 {
-    return const_cast<Menu::MenuAbstraction*>(this)->selectedButton();
+    return const_cast<Menu::ButtonListAbstraction*>(this)->selectedButton();
 }
 
-void Menu::MenuAbstraction::setSelectedButton(size_t selectedButtonSlot)
+void Menu::ButtonListAbstraction::setSelectedButton(size_t selectedButtonSlot)
 {
-    m_selectedButton = (m_buttonList.size() < selectedButtonSlot) ? m_buttonList.size() : selectedButtonSlot;
+    m_selectedButton = (m_buttonPointerList.size() < selectedButtonSlot) ? m_buttonPointerList.size() : selectedButtonSlot;
     updateSelected();
 }
 
-void Menu::MenuAbstraction::setButtonList(std::vector<ButtonAbstraction*> buttonList, size_t selectedButtonSlot)
+void Menu::ButtonListAbstraction::setButtonPointerList(std::deque<ButtonAbstraction*> buttonList, size_t selectedButtonSlot)
 {
-    m_buttonList = std::move(buttonList);
+    m_buttonPointerList = std::move(buttonList);
     setSelectedButton(selectedButtonSlot);
 }
 
-void Menu::MenuAbstraction::addButton(ButtonAbstraction* b)
+void Menu::ButtonListAbstraction::addButtonPointer(ButtonAbstraction* buttonPointer)
 {
     if (m_selectedButton == -1)
     m_selectedButton = 0;
 
-    m_buttonList.push_back(b);
+    m_buttonPointerList.push_back(buttonPointer);
     updateSelected();
 }
 
-void Menu::MenuAbstraction::updateSelected()
+void Menu::ButtonListAbstraction::updateSelected()
 {
-    for (auto button_ptr : m_buttonList)
+    for (auto button_ptr : m_buttonPointerList)
     {
         button_ptr->deselect();
     }
@@ -120,26 +145,26 @@ void Menu::MenuAbstraction::updateSelected()
 }
 
 
-void Menu::MenuAbstraction::increment(bool big)
+void Menu::ButtonListAbstraction::increment(bool big)
 {
     if (big)
-    m_selectedButton = m_buttonList.size() - 1; // if m_buttonList is empty, this is worth -1
+    m_selectedButton = m_buttonPointerList.size() - 1; // if m_buttonPointerList is empty, this is worth -1
 
     else
     {
-        if (static_cast<size_t>(m_selectedButton + 1) < m_buttonList.size())
+        if (static_cast<size_t>(m_selectedButton + 1) < m_buttonPointerList.size())
         m_selectedButton ++;
 
-        else if (m_doesLoop && !m_buttonList.empty())
+        else if (m_doesLoop && !m_buttonPointerList.empty())
         m_selectedButton = 0;
     }
 
     updateSelected();
 }
 
-void Menu::MenuAbstraction::decrement(bool big)
+void Menu::ButtonListAbstraction::decrement(bool big)
 {
-    if (big && !m_buttonList.empty())
+    if (big && !m_buttonPointerList.empty())
     m_selectedButton = 0;
 
     else
@@ -148,7 +173,7 @@ void Menu::MenuAbstraction::decrement(bool big)
         m_selectedButton --;
 
         else if (m_doesLoop)
-        m_selectedButton = m_buttonList.size() - 1; // if m_buttonList is empty, this is worth -1
+        m_selectedButton = m_buttonPointerList.size() - 1; // if m_buttonPointerList is empty, this is worth -1
     }
 
     updateSelected();

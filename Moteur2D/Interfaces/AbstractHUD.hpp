@@ -12,7 +12,7 @@ class AbstractHUD
 
     AbstractHUD(LevelType* level = nullptr);
     virtual void setLevel(LevelType* level);
-    virtual ~AbstractHUD() = default;
+    virtual ~AbstractHUD();
 
     virtual void drawIn(DrawerAbstraction& window, const LevelType& level, float dt) const = 0;
     virtual void update(float dt);
@@ -28,6 +28,12 @@ template <typename LevelType>
 AbstractHUD<LevelType>::AbstractHUD(LevelType* level)
 {
     setLevel(level);
+}
+
+template <typename LevelType>
+AbstractHUD<LevelType>::~AbstractHUD()
+{
+
 }
 
 template <typename LevelType>

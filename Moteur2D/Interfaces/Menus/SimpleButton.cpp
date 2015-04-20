@@ -1,79 +1,44 @@
 
-
 #include "SimpleButton.hpp"
 #include "../Items/ItemBox.hpp"
-#include "../Items/Text.hpp"
 
 
-Menu::SimpleButton::SimpleButton(uptrt<AbstractItem> unselected, uptrt<AbstractItem> selected)
+Menu::SimplePushButton::SimplePushButton(uptrt<AbstractItem> unselected, uptrt<AbstractItem> selected, AbstractItem* parent)
 {
     setSprites(move(unselected), move(selected));
+    setParent(parent);
 }
 
-void Menu::SimpleButton::setSprites(uptrt<AbstractItem> unselected, uptrt<AbstractItem> selected)
+void Menu::SimplePushButton::setSprites(uptrt<AbstractItem> unselected, uptrt<AbstractItem> selected)
 {
     m_unselected_sprite = move(unselected);
     m_selected_sprite = move(selected);
+
+    setParent(m_parent);
 }
 
 
-void Menu::SimpleButton::setFunction(std::function<void(void)> triggeredFunction)
+void Menu::SimplePushButton::setParent(AbstractItem* parent)
 {
-    m_triggeredFunction = triggeredFunction;
+    if (m_unselected_sprite)
+    m_unselected_sprite->setParent(parent);
+
+    if (m_selected_sprite)
+    m_selected_sprite->setParent(parent);
+
+    m_parent = parent;
 }
 
 
-void Menu::SimpleButton::select()
+const Menu::AbstractItem& Menu::SimplePushButton::currentSprite(bool selected) const
 {
-    m_selected = true;
-}
+    if (selected && m_selected_sprite)
+    return *m_selected_sprite;
 
-void Menu::SimpleButton::deselect()
-{
-    m_selected = false;
-    m_pressed = false;
-}
+    else if (m_unselected_sprite)
+    return *m_unselected_sprite;
 
-void Menu::SimpleButton::press()
-{
-    m_pressed = true;
-    trigger();
-}
-
-void Menu::SimpleButton::trigger()
-{
-    if (m_triggeredFunction)
-    m_triggeredFunction();
-}
-
-
-sf::Vector2f Menu::SimpleButton::getSize() const
-{
-    if (currentSprite())
-    return currentSprite()->getSize();
-
-/// else
-    return sf::Vector2f(0,0);
-}
-
-
-void Menu::SimpleButton::drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const
-{
-    if (currentSprite())
-    currentSprite()->drawIn(target, position, isHitboxDrawn);
-}
-
-const Menu::AbstractItem* Menu::SimpleButton::currentSprite() const
-{
-    return const_cast<SimpleButton*>(this)->currentSprite();
-}
-
-Menu::AbstractItem* Menu::SimpleButton::currentSprite()
-{
-    if (m_selected && m_selected_sprite)
-    return m_selected_sprite.get();
-
-    ///else
-    return m_unselected_sprite.get();
+    else
+    return ItemBox();
 }
 

@@ -26,7 +26,7 @@ namespace Menu
         public :
 
         TextObjectAbstraction();
-        virtual ~TextObjectAbstraction() = default;
+        virtual ~TextObjectAbstraction();
 
         void setFont(const FontStyle& f);
         void setFont(const sf::Font* f, unsigned int charSize = DEFAULT_FONT_SIZE);

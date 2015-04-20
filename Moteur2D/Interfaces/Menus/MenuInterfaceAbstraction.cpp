@@ -30,11 +30,12 @@ void MenuInterfaceAbstraction::update(float dt)
 
         if (m_submenu->isDone())
         {
-            m_nextLevel = m_submenu->next();
-            m_submenuLoaded = false;
+            if (m_submenu->loadNewScreen())
+            {
+                setNextScreenAndClose(m_submenu->next());
+            }
 
-            if (m_nextLevel)
-            endThisLater();
+            m_submenu.reset();
         }
     }
 
@@ -43,10 +44,16 @@ void MenuInterfaceAbstraction::update(float dt)
 }
 
 
+bool MenuInterfaceAbstraction::loadNewScreen() const
+{
+    return m_loadNewScreen;
+}
+
 uptrt<GameInterfaceAbstraction> MenuInterfaceAbstraction::next()
 {
-    return move(m_nextLevel);
+    return move(m_nextScreen);
 }
+
 
 void MenuInterfaceAbstraction::openSubmenu(uptrt<MenuInterfaceAbstraction> submenu)
 {
@@ -63,9 +70,17 @@ MenuInterfaceAbstraction* MenuInterfaceAbstraction::getSubmenu()
     return m_submenu.get();
 }
 
-void MenuInterfaceAbstraction::setNextLevel(uptrt<GameInterfaceAbstraction> nextLevel)
+void MenuInterfaceAbstraction::closeMenu()
 {
-    m_nextLevel = move(nextLevel);
+    endThisLater();
+    m_loadNewScreen = false;
 }
 
+void MenuInterfaceAbstraction::setNextScreenAndClose(uptrt<GameInterfaceAbstraction> nextScreen)
+{
+    endThisLater();
+
+    m_loadNewScreen = true;
+    m_nextScreen = move(nextScreen);
+}
 

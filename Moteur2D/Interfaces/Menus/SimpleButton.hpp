@@ -1,54 +1,38 @@
 
-#ifndef SIMPLE_MENU_BUTTON_HEADER
-#define SIMPLE_MENU_BUTTON_HEADER
+#ifndef SIMPLE_MENU_PUSH_BUTTON_HEADER
+#define SIMPLE_MENU_PUSH_BUTTON_HEADER
 
-#include "ButtonAbstraction.hpp"
-#include "../Items/AbstractItem.hpp"
-#include "up.hpp"
-#include <functional>
+#include "Buttons/PushButton.hpp"
 
 
 namespace Menu
 {
 
     // POINTER SAFETY : 'triggeredFunction' must be safe when 'press()' is called
-    class SimpleButton : public ButtonAbstraction, public AbstractItem
+    class SimplePushButton : public PushButton
     {
         public :
 
-        explicit SimpleButton(uptrt<AbstractItem> unselected = nullptr, uptrt<AbstractItem> selected = nullptr);
+        explicit SimplePushButton(uptrt<AbstractItem> unselected = nullptr, uptrt<AbstractItem> selected = nullptr, AbstractItem* parent = nullptr);
         void setSprites(uptrt<AbstractItem> unselected, uptrt<AbstractItem> selected = nullptr);
-        void setFunction(std::function<void(void)> triggeredFunction);  // the function called when the method press() is called
-        ~SimpleButton() noexcept {};
 
-        void select();
-        void deselect();
-        void press();
-
-        sf::Vector2f getSize() const;
+        void setParent(AbstractItem* parent);
 
 
         protected :
 
-        void drawImageIn(DrawerAbstraction& target, sf::Vector2f position, bool isHitboxDrawn) const;
-        const AbstractItem* currentSprite() const;   // can be worth nullptr
-        AbstractItem* currentSprite();
-
-        virtual void trigger();
+        const AbstractItem& currentSprite(bool selected) const;   // can be worth nullptr
 
 
         private :
 
-        bool m_pressed;
-        bool m_selected;
-
         uptrt<AbstractItem> m_unselected_sprite;
         uptrt<AbstractItem> m_selected_sprite;
 
-        std::function<void(void)> m_triggeredFunction;
+        AbstractItem* m_parent;
     };
 
 }
 
 
-#endif
+#endif // SIMPLE_MENU_PUSH_BUTTON_HEADER

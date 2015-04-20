@@ -2,12 +2,7 @@
 #include "MenuInterface.hpp"
 
 
-MenuInterface::MenuInterface(bool isVertical, bool doesLoop) : MenuAbstraction(isVertical, doesLoop)
-{
-
-}
-
-void MenuInterface::setInputs(InputsAbstraction* inputs)
+void BasicMenuInterface::setInputs(InputsAbstraction* inputs)
 {
     GameInterfaceAbstraction::setInputs(inputs);
 
@@ -20,7 +15,7 @@ void MenuInterface::setInputs(InputsAbstraction* inputs)
         // or when the Menu has already been flagged for deletion
         if (pressed && !getSubmenu() && !isDone())
         {
-            up(false);
+            buttonList().up(false);
         }
     };
 
@@ -28,7 +23,7 @@ void MenuInterface::setInputs(InputsAbstraction* inputs)
     {
         if (pressed && !getSubmenu() && !isDone())
         {
-            down(false);
+            buttonList().down(false);
         }
     };
 
@@ -36,7 +31,7 @@ void MenuInterface::setInputs(InputsAbstraction* inputs)
     {
         if (pressed && !getSubmenu() && !isDone())
         {
-            left(false);
+            buttonList().left(false);
         }
     };
 
@@ -44,7 +39,7 @@ void MenuInterface::setInputs(InputsAbstraction* inputs)
     {
         if (pressed && !getSubmenu() && !isDone())
         {
-            right(false);
+            buttonList().right(false);
         }
     };
 
@@ -52,7 +47,7 @@ void MenuInterface::setInputs(InputsAbstraction* inputs)
     {
         if (pressed && !getSubmenu() && !isDone())
         {
-            press();
+            buttonList().press();
         }
     };
 
@@ -60,7 +55,7 @@ void MenuInterface::setInputs(InputsAbstraction* inputs)
     {
         if (pressed && !getSubmenu() && !isDone())
         {
-            press();
+            buttonList().press();
         }
     };
 
@@ -76,9 +71,14 @@ void MenuInterface::setInputs(InputsAbstraction* inputs)
 }
 
 
-void MenuInterface::updateThis(float dt)
+void BasicMenuInterface::escape()
+{
+    closeMenu();
+}
+
+
+void BasicMenuInterface::updateThis(float dt)
 {
     (void) dt;
 }
-
 

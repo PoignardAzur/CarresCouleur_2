@@ -14,6 +14,12 @@ void Menu::AbstractItem::setParent(AbstractItem* parent)
     m_parent = parent;
 }
 
+Menu::AbstractItem::~AbstractItem()
+{
+
+}
+
+
 void Menu::AbstractItem::drawIn(DrawerAbstraction& target, sf::Vector2f position, bool drawHitbox) const
 {
     if (drawHitbox)

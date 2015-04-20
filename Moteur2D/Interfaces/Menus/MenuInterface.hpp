@@ -1,18 +1,17 @@
 
-#ifndef MENU_INTERFACE_HEADER
-#define MENU_INTERFACE_HEADER
+#ifndef BASIC_MENU_INTERFACE_HEADER
+#define BASIC_MENU_INTERFACE_HEADER
 
 #include "MenuInterfaceAbstraction.hpp"
 #include "MenuAbstraction.hpp"
 
+#include <functional>
 
-// Standard implementation of the abstractions in Menu::MenuAbstraction and MenuInterfaceAbstraction
-class MenuInterface : public Menu::MenuAbstraction, public MenuInterfaceAbstraction
+
+class BasicMenuInterface : public MenuInterfaceAbstraction
 {
     public :
 
-    MenuInterface(bool isVertical = true, bool doesLoop = false);
-    virtual ~MenuInterface() noexcept {}
     virtual void setInputs(InputsAbstraction* inputs);
 
     virtual bool isLayered() const = 0;
@@ -20,11 +19,38 @@ class MenuInterface : public Menu::MenuAbstraction, public MenuInterfaceAbstract
 
     protected :
 
-    virtual void escape() = 0;  // this method is called when the Esc button is pressed
+    template <typename Screen>
+    std::function<void(void)> getLoadingFunction();
+
+    template <typename Menu>
+    std::function<void(void)> getSubmenuFunction();
+
+    virtual const Menu::ButtonListAbstraction& buttonList() const = 0;
+    virtual Menu::ButtonListAbstraction& buttonList() = 0;
+    virtual void escape();  // this method is called when the Esc button is pressed
+
     virtual void drawThisIn(DrawerAbstraction& window, float dt) const = 0;
     virtual void updateThis(float dt);
-
 };
 
 
-#endif // MENU_INTERFACE_HEADER
+template <typename Screen>
+std::function<void(void)> BasicMenuInterface::getLoadingFunction()
+{
+    return [this]()
+    {
+        setNextScreenAndClose(uptr(new Screen));
+    };
+}
+
+template <typename Menu>
+std::function<void(void)> BasicMenuInterface::getSubmenuFunction()
+{
+    return [this]()
+    {
+        openSubmenu(uptr(new Menu));
+    };
+}
+
+
+#endif // BASIC_MENU_INTERFACE_HEADER

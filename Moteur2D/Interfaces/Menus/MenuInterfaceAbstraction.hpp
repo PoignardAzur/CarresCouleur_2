@@ -9,12 +9,16 @@ class MenuInterfaceAbstraction : public GameInterfaceAbstraction
 {
     public :
 
-    void drawIn(DrawerAbstraction& window, float dt) const final;   // those two methods take care of eventual submenus
-    void update(float dt) final;                                    // and then call updateThis / drawThisIn
+    // those two methods take care of eventual submenus and then call updateThis / drawThisIn
+    virtual void drawIn(DrawerAbstraction& window, float dt) const;
+    virtual void update(float dt);
+
+    bool loadNewScreen() const;
     uptrt<GameInterfaceAbstraction> next();
 
     virtual bool isLayered() const = 0;
     // if this returns true, the menu is drawn on top of the level / another menu, which must be drawn first
+
 
     protected :
 
@@ -25,15 +29,17 @@ class MenuInterfaceAbstraction : public GameInterfaceAbstraction
     virtual const MenuInterfaceAbstraction* getSubmenu() const;
     virtual MenuInterfaceAbstraction* getSubmenu();
 
-    virtual void setNextLevel(uptrt<GameInterfaceAbstraction> nextLevel);
-    // calling this method in a submenu before deleting it is equivalent to calling this method for the uppermost parent and deleting it
-    // the value of m_nextLevel can be overwritten by the next update, so endThisLater() should be called right after this method
+    void closeMenu();
+    void setNextScreenAndClose(uptrt<GameInterfaceAbstraction> nextScreen);
+
 
     private :
 
     uptrt<MenuInterfaceAbstraction> m_submenu;
     bool m_submenuLoaded = false;
-    uptrt<GameInterfaceAbstraction> m_nextLevel;
+
+    bool m_loadNewScreen = false;
+    uptrt<GameInterfaceAbstraction> m_nextScreen;
 };
 
 

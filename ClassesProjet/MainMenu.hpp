@@ -8,7 +8,7 @@
 #include "../Moteur2D/Interfaces/Items/Text.hpp"
 
 
-class MainMenu : public MenuInterface
+class MainMenu : public BasicMenuInterface
 {
     public :
 
@@ -20,7 +20,12 @@ class MainMenu : public MenuInterface
 
     protected :
 
-    //void addButton(AbstractButton* b);
+    template <typename Level>
+    std::function<void(void)> getLevelLoadingFunction(const sf::Font* f);
+
+    virtual const Menu::ButtonListAbstraction& buttonList() const;
+    virtual Menu::ButtonListAbstraction& buttonList();
+
     virtual void drawThisIn(DrawerAbstraction& window, float dt) const;
     void loadNext(uptrt<LevelBase> level, const sf::Font* f);
 
@@ -30,16 +35,8 @@ class MainMenu : public MenuInterface
     private :
 
     Menu::Text m_text;
-
-    Menu::SimpleButton m_level_1_button;
-    Menu::SimpleButton m_level_2_button;
-    Menu::SimpleButton m_level_3_button;
-    Menu::SimpleButton m_level_4_button;
-    Menu::SimpleButton m_quit_button;
+    Menu::SimpleButtonList m_buttons;
 };
-
-uptrt<Menu::AbstractItem> yellowBox(const char* str, Menu::FontStyle& fs, bool small = false);
-uptrt<Menu::AbstractItem> redBox(const char* str, Menu::FontStyle& fs, bool small = false);
 
 
 #endif // MAIN_MENU_HEADER

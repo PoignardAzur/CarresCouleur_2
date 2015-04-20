@@ -32,7 +32,7 @@ namespace Menu
 
         AbstractItem(AbstractItem* parent = nullptr);
         void setParent(AbstractItem* parent);
-        virtual ~AbstractItem() = default;
+        virtual ~AbstractItem();
 
         virtual void drawIn(DrawerAbstraction& target, sf::Vector2f position, bool drawHitbox = DRAW_ITEM_HITBOX) const;
         // draws the item with 'position' as the top-left corner of its "box"

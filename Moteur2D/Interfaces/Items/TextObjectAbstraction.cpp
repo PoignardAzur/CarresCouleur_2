@@ -24,6 +24,11 @@ Menu::TextObjectAbstraction::TextObjectAbstraction()
 
 }
 
+Menu::TextObjectAbstraction::~TextObjectAbstraction()
+{
+
+}
+
 void Menu::TextObjectAbstraction::setFont(const FontStyle& f)
 {
     m_fontStyle = f;

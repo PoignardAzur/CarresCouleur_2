@@ -118,10 +118,10 @@ void Menu::AbstractItemGrid::updateOwnSize()
     updateLineOffsets();
 
     size_t lastColumn = getColumnsCount() - 1;
-    size_t lastLine = getRowsCount() - 1;
+    size_t lastRow = getRowsCount() - 1;
 
-    m_size.x = getColumnOffset(lastColumn, true) + getColumnWidth(lastColumn);
-    m_size.y = getRowOffset(lastLine, true) + getRowHeight(lastLine);
+    m_size.x = getColumnsCount() ? (getColumnOffset(lastColumn, true) + getColumnWidth(lastColumn)) : 0;
+    m_size.y = getRowsCount() ? (getRowOffset(lastRow, true) + getRowHeight(lastRow)) : 0;
 
     updateParentSize();
 }
