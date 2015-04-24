@@ -1,5 +1,5 @@
 
-#include "PressAnyKeyMenu.hpp"
+#include "PressKeyToContinue.hpp"
 
 
 void PressKeyToContinue::setInputs(InputsAbstraction* inputs)

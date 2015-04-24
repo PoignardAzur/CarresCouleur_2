@@ -30,4 +30,3 @@ class SimpleSprite : public DrawableObject
 
 
 #endif // SIMPLE_SPRITE_HEADER
-

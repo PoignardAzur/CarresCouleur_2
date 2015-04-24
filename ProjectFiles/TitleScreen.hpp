@@ -3,7 +3,7 @@
 #define TITLE_SCREEN_HEADER
 
 #include "Menus/MainMenu.hpp"
-#include "../Moteur2D/Interfaces/Screens/PressAnyKeyMenu.hpp"
+#include "../Moteur2D/Interfaces/Screens/PressKeyToContinue.hpp"
 
 
 class TitleScreen : public PressKeyToContinue

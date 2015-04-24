@@ -1,8 +1,5 @@
 
-
-
 #include "InputsArray.hpp"
-
 
 
 Inputs::Inputs(sf::Window* window, bool escapeMeansClose)
@@ -108,7 +105,4 @@ std::map<sf::Keyboard::Key, bool>& Inputs::_getKeyboardButtons()
 {
     return t_boutonsClavier;
 }
-
-
-
 

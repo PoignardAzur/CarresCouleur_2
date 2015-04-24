@@ -3,7 +3,7 @@
 #define MAIN_MENU_HEADER
 
 #include "../LevelBase.hpp"
-#include "../../Moteur2D/Interfaces/Menus/MenuInterface.hpp"
+#include "../../Moteur2D/Interfaces/Menus/BasicMenuInterface.hpp"
 #include "../../Moteur2D/Interfaces/Items/Buttons/SimplePushButton.hpp"
 #include "../../Moteur2D/Interfaces/Items/Text.hpp"
 

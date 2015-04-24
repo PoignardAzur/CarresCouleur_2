@@ -1,8 +1,8 @@
 
-#ifndef PAK_MENU_HEADER
-#define PAK_MENU_HEADER
+#ifndef PRESS_KEY__MENU_HEADER
+#define PRESS_KEY__MENU_HEADER
 
-#include "GameInterfaceAbstraction.hpp"
+#include "ScreenAbstraction.hpp"
 #include <functional>
 #include <set>
 
@@ -25,4 +25,4 @@ class PressKeyToContinue : public ScreenAbstraction
 };
 
 
-#endif // PAK_MENU_HEADER
+#endif // PRESS_KEY__MENU_HEADER

@@ -1,5 +1,4 @@
 
-
 #ifndef SIMPLE_HITBOX_HEADER
 #define SIMPLE_HITBOX_HEADER
 
@@ -39,4 +38,3 @@ bool testCollision(const SimpleHitbox& o1, sf::Vector2f pos1, const SimpleHitbox
 
 
 #endif // SIMPLE_HITBOX_HEADER
-

@@ -2,7 +2,7 @@
 #ifndef ABSTRACT_CREDITS_SCREEN_HEADER
 #define ABSTRACT_CREDITS_SCREEN_HEADER
 
-#include "PressAnyKeyMenu.hpp"
+#include "PressKeyToContinue.hpp"
 #include "../Items/AbstractItem.hpp"
 #include <list>
 #include <memory>
