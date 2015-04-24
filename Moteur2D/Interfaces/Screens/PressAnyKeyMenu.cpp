@@ -2,34 +2,35 @@
 #include "PressAnyKeyMenu.hpp"
 
 
-void PressAnyKeyMenu::update(float dt)
+void PressKeyToContinue::setInputs(InputsAbstraction* inputs)
 {
-    if (GameInterfaceAbstraction::getInputs()->isAnyKeyPressed())
-    GameInterfaceAbstraction::endThisLater();
+    ScreenAbstraction::setInputs(inputs);
 
-    (void) dt;
-}
+    EventsMap::MouseEventsMap mouseEvents;
+    EventsMap::KeyboardEventsMap keyboardEvents;
 
-void PressAnyKeyMenu::setNext(uptrt<GameInterfaceAbstraction> nextInterface)
-{
-    GameInterfaceAbstraction* nextInterface_ = nextInterface.release();
+    auto keys = getKeysToContinue();
 
-    setNext
-    (
-        [=](void)
+    for (auto key : keys)
+    {
+        keyboardEvents[key] = [this](bool pressed)
         {
-            return uptr(nextInterface_);
-        }
-    );
+            if (pressed)
+            endThisLater();
+        };
+    }
+
+    setInputsEvents(std::move(mouseEvents), std::move(keyboardEvents));
 }
 
-void PressAnyKeyMenu::setNext(std::function<uptrt<GameInterfaceAbstraction>(void)> nextInterface)
+std::set<sf::Keyboard::Key> PressKeyToContinue::getKeysToContinue()
 {
-    m_nextInterface = nextInterface;
+    return std::set<sf::Keyboard::Key>();
 }
 
-uptrt<GameInterfaceAbstraction> PressAnyKeyMenu::next()
+
+void PressKeyToContinue::update(float dt)
 {
-    return m_nextInterface();
+    (void) dt;
 }
 

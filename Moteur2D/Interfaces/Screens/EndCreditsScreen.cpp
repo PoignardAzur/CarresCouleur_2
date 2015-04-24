@@ -31,6 +31,11 @@ sf::FloatRect EndCreditsScreen::getTargetBounds()
 
 void EndCreditsScreen::drawIn(DrawerAbstraction& window, float dt) const
 {
+    drawCreditsIn(window, dt);
+}
+
+void EndCreditsScreen::drawCreditsIn(DrawerAbstraction& window, float dt) const
+{
     for (const auto& risingItem : m_risingItemFile)
     {
         sf::FloatRect box(m_targetBounds.left, m_targetBounds.height - (risingItem.height + dt * m_speed), m_targetBounds.width, m_targetBounds.top);
@@ -40,16 +45,19 @@ void EndCreditsScreen::drawIn(DrawerAbstraction& window, float dt) const
 
 void EndCreditsScreen::update(float dt)
 {
+    // Rise items
     for (auto& risingItem : m_risingItemFile)
     {
         risingItem.height += dt * m_speed;
     }
 
+    // Delete items that are no longer visible
     while (!m_risingItemFile.empty() && m_risingItemFile.front().height - m_risingItemFile.front().item->getSize().y > m_targetBounds.height)
     {
         m_risingItemFile.pop_front();
     }
 
+    // Add items to the bottom of the screen
     if (m_risingItemFile.empty())
     {
         if (m_itemFile.empty())
@@ -62,11 +70,12 @@ void EndCreditsScreen::update(float dt)
     {
         pushItem(lastItemHeight() - (m_gap + m_risingItemFile.back().item->getSize().y));
     }
-}
 
-bool EndCreditsScreen::isDone() const
-{
-    return (m_itemFile.empty() && m_risingItemFile.empty()) || GameInterfaceAbstraction::isDone();
+    // Is this done ?
+    if (areCreditsDone() && endAfterLastCredits())
+    {
+        endThisLater();
+    }
 }
 
 void EndCreditsScreen::pushItem(float height)
@@ -88,5 +97,22 @@ float EndCreditsScreen::lastItemHeight()
 void EndCreditsScreen::add_item(std::unique_ptr<Menu::AbstractItem> item)
 {
     m_itemFile.push_back(move(item));
+}
+
+
+bool EndCreditsScreen::areCreditsDone() const
+{
+    return (m_itemFile.empty() && m_risingItemFile.empty());
+}
+
+bool EndCreditsScreen::endAfterLastCredits() const
+{
+    return true;
+}
+
+
+std::set<sf::Keyboard::Key> EndCreditsScreen::getKeysToContinue()
+{
+    return {sf::Keyboard::Return, sf::Keyboard::Escape};
 }
 

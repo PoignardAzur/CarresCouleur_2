@@ -5,7 +5,7 @@
 #include "../Screens/GameInterfaceAbstraction.hpp"
 
 
-class MenuInterfaceAbstraction : public GameInterfaceAbstraction
+class MenuInterfaceAbstraction : public ScreenAbstraction
 {
     public :
 
@@ -14,7 +14,7 @@ class MenuInterfaceAbstraction : public GameInterfaceAbstraction
     virtual void update(float dt);
 
     bool loadNewScreen() const;
-    uptrt<GameInterfaceAbstraction> next();
+    ScreenPointer getNextScreen() final;
 
     virtual bool isLayered() const = 0;
     // if this returns true, the menu is drawn on top of the level / another menu, which must be drawn first
@@ -30,7 +30,7 @@ class MenuInterfaceAbstraction : public GameInterfaceAbstraction
     virtual MenuInterfaceAbstraction* getSubmenu();
 
     void closeMenu();
-    void setNextScreenAndClose(uptrt<GameInterfaceAbstraction> nextScreen);
+    void setNextScreenAndClose(ScreenPointer nextScreen);
 
 
     private :
@@ -39,7 +39,7 @@ class MenuInterfaceAbstraction : public GameInterfaceAbstraction
     bool m_submenuLoaded = false;
 
     bool m_loadNewScreen = false;
-    uptrt<GameInterfaceAbstraction> m_nextScreen;
+    ScreenPointer m_nextScreen;
 };
 
 

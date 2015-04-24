@@ -2,70 +2,33 @@
 #include "MenuInterface.hpp"
 
 
+std::function<void(bool)> BasicMenuInterface::buttonPressedFunction(std::function<void(void)> f)
+{
+    return [this, f](bool pressed)
+    {
+        // This is not called for a button release, if a submenu is open,
+        // nor when the Menu has already been flagged for deletion
+        if (pressed && !getSubmenu() && !isDone())
+        {
+            f();
+        }
+    };
+}
+
 void BasicMenuInterface::setInputs(InputsAbstraction* inputs)
 {
-    GameInterfaceAbstraction::setInputs(inputs);
+    ScreenAbstraction::setInputs(inputs);
 
     EventsMap::MouseEventsMap mouseEvents;
     EventsMap::KeyboardEventsMap keyboardEvents;
 
-    keyboardEvents[sf::Keyboard::Up] = [this](bool pressed)
-    {
-        // None of those methods are called for a button release, if a submenu is open,
-        // or when the Menu has already been flagged for deletion
-        if (pressed && !getSubmenu() && !isDone())
-        {
-            buttonList().up(false);
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Down] = [this](bool pressed)
-    {
-        if (pressed && !getSubmenu() && !isDone())
-        {
-            buttonList().down(false);
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Left] = [this](bool pressed)
-    {
-        if (pressed && !getSubmenu() && !isDone())
-        {
-            buttonList().left(false);
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Right] = [this](bool pressed)
-    {
-        if (pressed && !getSubmenu() && !isDone())
-        {
-            buttonList().right(false);
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Space] = [this](bool pressed)
-    {
-        if (pressed && !getSubmenu() && !isDone())
-        {
-            buttonList().press();
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Return] = [this](bool pressed)
-    {
-        if (pressed && !getSubmenu() && !isDone())
-        {
-            buttonList().press();
-        }
-    };
-
-    keyboardEvents[sf::Keyboard::Escape] = [this](bool pressed)
-    {
-        if (pressed && !getSubmenu() && !isDone())
-        {
-            escape();
-        }
-    };
+    keyboardEvents[sf::Keyboard::Up] =      buttonPressedFunction( [this]() { buttonList().up(false); } );
+    keyboardEvents[sf::Keyboard::Down] =    buttonPressedFunction( [this]() { buttonList().down(false); } );
+    keyboardEvents[sf::Keyboard::Left] =    buttonPressedFunction( [this]() { buttonList().left(false); } );
+    keyboardEvents[sf::Keyboard::Right] =   buttonPressedFunction( [this]() { buttonList().right(false); } );
+    keyboardEvents[sf::Keyboard::Space] =   buttonPressedFunction( [this]() { buttonList().press(); } );
+    keyboardEvents[sf::Keyboard::Return] =  buttonPressedFunction( [this]() { buttonList().press(); } );
+    keyboardEvents[sf::Keyboard::Escape] =  buttonPressedFunction( [this]() { escape(); } );
 
     setInputsEvents(std::move(mouseEvents), std::move(keyboardEvents));
 }

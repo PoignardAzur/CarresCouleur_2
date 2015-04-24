@@ -4,25 +4,24 @@
 
 #include "GameInterfaceAbstraction.hpp"
 #include <functional>
+#include <set>
 
 
 // A simple menu to begin the game ; the menu is replaced by the next one when you press a key
-class PressAnyKeyMenu : public GameInterfaceAbstraction
+class PressKeyToContinue : public ScreenAbstraction
 {
     public :
 
-    virtual void drawIn(DrawerAbstraction& window, float dt) const = 0;
+    virtual void setInputs(InputsAbstraction* inputs);
+
     virtual void update(float dt);
-
-    // as soon as a key is pressed, this interface is killed and replaced by nextInterface
-    void setNext(uptrt<GameInterfaceAbstraction> nextInterface);
-    void setNext(std::function<uptrt<GameInterfaceAbstraction>(void)> nextInterface);
-    uptrt<GameInterfaceAbstraction> next();
+    virtual void drawIn(DrawerAbstraction& window, float dt) const = 0;
+    virtual ScreenPointer getNextScreen() = 0;
 
 
-    private :
+    protected :
 
-    std::function<uptrt<GameInterfaceAbstraction>(void)> m_nextInterface;
+    virtual std::set<sf::Keyboard::Key> getKeysToContinue();
 };
 
 

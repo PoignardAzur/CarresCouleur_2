@@ -19,8 +19,8 @@ class GameController
     GameController(uptrt<InputsAbstraction> userInputs, sf::RenderWindow* target);
     virtual ~GameController() {}
 
-    virtual void update(float dt);                               // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
-    virtual bool isDone() const = 0;                             // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
+    virtual void update(float dt);                              // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
+    virtual bool isDone() const = 0;                            // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
     virtual void display(float dt);
 
 
@@ -28,7 +28,7 @@ class GameController
 
     InputsAbstraction& windowInputs();
     DrawerAbstraction& renderingWindow();
-    virtual GameInterfaceAbstraction& interface() = 0;       // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
+    virtual ScreenAbstraction& interface() = 0;                 // THIS MUST BE DEVELOPPED IN THE CHILD CLASS
 
 
     private :

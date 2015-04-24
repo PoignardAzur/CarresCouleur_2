@@ -32,7 +32,7 @@ void MenuInterfaceAbstraction::update(float dt)
         {
             if (m_submenu->loadNewScreen())
             {
-                setNextScreenAndClose(m_submenu->next());
+                setNextScreenAndClose(m_submenu->getNextScreen());
             }
 
             m_submenu.reset();
@@ -49,7 +49,7 @@ bool MenuInterfaceAbstraction::loadNewScreen() const
     return m_loadNewScreen;
 }
 
-uptrt<GameInterfaceAbstraction> MenuInterfaceAbstraction::next()
+uptrt<ScreenAbstraction> MenuInterfaceAbstraction::getNextScreen()
 {
     return move(m_nextScreen);
 }
@@ -76,7 +76,7 @@ void MenuInterfaceAbstraction::closeMenu()
     m_loadNewScreen = false;
 }
 
-void MenuInterfaceAbstraction::setNextScreenAndClose(uptrt<GameInterfaceAbstraction> nextScreen)
+void MenuInterfaceAbstraction::setNextScreenAndClose(ScreenPointer nextScreen)
 {
     endThisLater();
 

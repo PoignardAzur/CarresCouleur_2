@@ -29,7 +29,7 @@ void Level::setSeed(std::seed_seq& seed)
 
 void Level::setInputs(InputsAbstraction* inputs)
 {
-    GameInterfaceAbstraction::setInputs(inputs);
+    ScreenAbstraction::setInputs(inputs);
 
     EventsMap::MouseEventsMap mouseEvents;
     EventsMap::KeyboardEventsMap keyboardEvents;
@@ -95,13 +95,14 @@ void Level::update(float dt)
 
         if (m_pauseMenu->isDone())
         {
-            m_nextInt.reset(m_pauseMenu->next().release());
+            if (m_pauseMenu->loadNewScreen())
+            {
+                m_nextScreen = m_pauseMenu->getNextScreen();
+                ScreenAbstraction::endThisLater();
+            }
+
             m_pauseMenu.reset();
-
             m_pauseMenuLoaded = false;
-
-            if (m_nextInt)
-            GameInterfaceAbstraction::endThisLater();
         }
     }
 
@@ -110,7 +111,7 @@ void Level::update(float dt)
 }
 
 
-void Level::pauseLevel(std::unique_ptr<MenuInterfaceAbstraction> pauseMenu)
+void Level::pauseLevel(uptrt<MenuInterfaceAbstraction> pauseMenu)
 {
     m_pauseMenu = std::move(pauseMenu);
 }
@@ -125,13 +126,13 @@ MenuInterfaceAbstraction* Level::getPauseMenu()
     return m_pauseMenu.get();
 }
 
-void Level::setNextInterface(std::unique_ptr<GameInterfaceAbstraction> nextInt)
+void Level::setNextInterface(uptrt<ScreenAbstraction> nextInt)
 {
-    m_nextInt = move(nextInt);
+    m_nextScreen = move(nextInt);
 }
 
-uptrt<GameInterfaceAbstraction> Level::next()
+uptrt<ScreenAbstraction> Level::getNextScreen()
 {
-    return move(m_nextInt);
+    return move(m_nextScreen);
 }
 

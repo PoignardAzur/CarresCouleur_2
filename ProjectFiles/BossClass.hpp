@@ -13,13 +13,13 @@ class BossClass : public GameController
 
     BossClass(uptrt<InputsAbstraction> userInputs, sf::RenderWindow* target);
 
-    GameInterfaceAbstraction& interface();
+    ScreenAbstraction& interface();
     void update(float dt);
     bool isDone() const;
 
     private :
 
-    uptrt<GameInterfaceAbstraction> m_interface;
+    uptrt<ScreenAbstraction> m_screen;
     sf::Font m_font;
     bool m_isDone = false;
 };

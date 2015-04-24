@@ -18,7 +18,7 @@ using int_dice= std::uniform_int_distribution<int>;
 using std_rng = std::default_random_engine;
 
 
-class Level : public GameInterfaceAbstraction
+class Level : public ScreenAbstraction
 {
     public :
 
@@ -53,8 +53,8 @@ class Level : public GameInterfaceAbstraction
     virtual const MenuInterfaceAbstraction* getPauseMenu() const;
     virtual MenuInterfaceAbstraction* getPauseMenu();
 
-    virtual void setNextInterface(uptrt<GameInterfaceAbstraction> nextInt);
-    virtual uptrt<GameInterfaceAbstraction> next();
+    virtual void setNextInterface(ScreenPointer nextInt);
+    ScreenPointer getNextScreen() final;
 
 
     private :
@@ -62,7 +62,7 @@ class Level : public GameInterfaceAbstraction
     std_rng m_randomGenerator;
     uptrt<MenuInterfaceAbstraction> m_pauseMenu;
     bool m_pauseMenuLoaded = false;
-    uptrt<GameInterfaceAbstraction> m_nextInt;
+    ScreenPointer m_nextScreen;
 };
 
 

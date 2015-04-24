@@ -31,6 +31,11 @@ class BasicMenuInterface : public MenuInterfaceAbstraction
 
     virtual void drawThisIn(DrawerAbstraction& window, float dt) const = 0;
     virtual void updateThis(float dt);
+
+
+    private :
+
+    std::function<void(bool)> buttonPressedFunction(std::function<void(void)> f);
 };
 
 

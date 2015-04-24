@@ -143,7 +143,7 @@ void LevelBase::setNext()
         credits->setAllCredits();
 
         endThisLater();
-        setNextInterface(std::unique_ptr<GameInterfaceAbstraction>(credits));
+        setNextInterface(std::unique_ptr<ScreenAbstraction>(credits));
     }
 
     else

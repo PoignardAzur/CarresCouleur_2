@@ -2,18 +2,18 @@
 #include "GameInterfaceAbstraction.hpp"
 
 
-GameInterfaceAbstraction::GameInterfaceAbstraction()
+ScreenAbstraction::ScreenAbstraction()
 {
 
 }
 
-GameInterfaceAbstraction::~GameInterfaceAbstraction()
+ScreenAbstraction::~ScreenAbstraction()
 {
     if (m_eventsMap)
     m_eventsMap->remove();
 }
 
-void GameInterfaceAbstraction::load()
+void ScreenAbstraction::load()
 {
     m_eventsMap = m_unloadedEventsMap.get();
 
@@ -21,7 +21,7 @@ void GameInterfaceAbstraction::load()
     m_inputs->addEventsMap(move(m_unloadedEventsMap));
 }
 
-bool GameInterfaceAbstraction::isDone() const
+bool ScreenAbstraction::isDone() const
 {
     if (getInputs())
     return m_deleteLater || getInputs()->closeWindow();
@@ -30,30 +30,30 @@ bool GameInterfaceAbstraction::isDone() const
     return m_deleteLater ;
 }
 
-void GameInterfaceAbstraction::endThisLater()
+void ScreenAbstraction::endThisLater()
 {
     m_deleteLater = true;
 }
 
 
-void GameInterfaceAbstraction::setInputs(InputsAbstraction* newInputs)
+void ScreenAbstraction::setInputs(InputsAbstraction* newInputs)
 {
     m_inputs = newInputs;
 }
 
-void GameInterfaceAbstraction::setInputsEvents(EventsMap::MouseEventsMap mouseEvents, EventsMap::KeyboardEventsMap keyboardEvents)
+void ScreenAbstraction::setInputsEvents(EventsMap::MouseEventsMap mouseEvents, EventsMap::KeyboardEventsMap keyboardEvents)
 {
     m_unloadedEventsMap.reset(new EventsMap( move(mouseEvents), move(keyboardEvents) ));
 }
 
-InputsAbstraction* GameInterfaceAbstraction::getInputs()
+InputsAbstraction* ScreenAbstraction::getInputs()
 {
     return m_inputs;
 }
 
-const InputsAbstraction* GameInterfaceAbstraction::getInputs() const
+const InputsAbstraction* ScreenAbstraction::getInputs() const
 {
-    return const_cast<GameInterfaceAbstraction*>(this)->getInputs();
+    return const_cast<ScreenAbstraction*>(this)->getInputs();
 }
 
 

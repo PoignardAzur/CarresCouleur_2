@@ -1,6 +1,5 @@
 
 #include "BossClass.hpp"
-#include "Menus/MainMenu.hpp"
 #include "Level_HUD.hpp"
 #include "TitleScreen.hpp"
 
@@ -12,27 +11,28 @@ BossClass::BossClass(uptrt<InputsAbstraction> userInputs, sf::RenderWindow* targ
     if (!m_font.loadFromFile(FONT_FILE_NAME))
     throw "Couldn't load font" FONT_FILE_NAME;
 
-    m_interface.reset(new TitleScreen(new MainMenu, &windowInputs(), &m_font));
+    m_screen.reset(new TitleScreen(&windowInputs(), &m_font));
+    m_screen->load();
 }
 
-GameInterfaceAbstraction& BossClass::interface()
+ScreenAbstraction& BossClass::interface()
 {
-    return *(m_interface.get());
+    return *m_screen;
 }
 
 void BossClass::update(float dt)
 {
     GameController::update(dt);
 
-    if (m_interface->isDone())
+    if (m_screen->isDone())
     {
-        m_interface = m_interface->next();
+        m_screen = m_screen->getNextScreen();
 
-        if (!m_interface)
+        if (!m_screen)
         m_isDone = true;
 
         else
-        m_interface->load();
+        m_screen->load();
     }
 }
 

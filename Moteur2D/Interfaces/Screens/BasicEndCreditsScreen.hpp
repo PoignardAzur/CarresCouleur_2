@@ -23,7 +23,7 @@ class BasicEndCreditsScreen : public EndCreditsScreen
     void add_credit(const std::string& name, const std::string& role, float gap);
     void add_sprite(const sf::Sprite& sprite);
 
-    virtual uptrt<GameInterfaceAbstraction> next() = 0;
+    virtual uptrt<ScreenAbstraction> getNextScreen() = 0;
 
 //  INHERITED METHODS
 //  sf::FloatRect getTargetBounds();

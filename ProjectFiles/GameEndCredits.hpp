@@ -10,18 +10,15 @@ class GameEndCredits : public BasicEndCreditsScreen
     public :
 
     GameEndCredits();
-    void setInputs(InputsAbstraction* inputs);
     void setFonts(const sf::Font* f);
     void setAllCredits();
 
-    void update(float dt);
-    virtual uptrt<GameInterfaceAbstraction> next();
+    virtual ScreenPointer getNextScreen();
 
 
     private :
 
     const sf::Font* m_font;
-    bool m_enterPressed = true;
 };
 
 

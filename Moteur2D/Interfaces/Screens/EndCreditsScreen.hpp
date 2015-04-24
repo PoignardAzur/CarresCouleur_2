@@ -2,7 +2,7 @@
 #ifndef ABSTRACT_CREDITS_SCREEN_HEADER
 #define ABSTRACT_CREDITS_SCREEN_HEADER
 
-#include "GameInterfaceAbstraction.hpp"
+#include "PressAnyKeyMenu.hpp"
 #include "../Items/AbstractItem.hpp"
 #include <list>
 #include <memory>
@@ -17,7 +17,7 @@ struct RisingItem
 };
 
 
-class EndCreditsScreen : public GameInterfaceAbstraction
+class EndCreditsScreen : public PressKeyToContinue
 {
     public :
 
@@ -31,13 +31,17 @@ class EndCreditsScreen : public GameInterfaceAbstraction
     virtual void add_credit(const std::string& name, const std::string& role, float gap) = 0;
 
     virtual void drawIn(DrawerAbstraction& window, float dt) const;
+    void drawCreditsIn(DrawerAbstraction& window, float dt) const;
     virtual void update(float dt);
-
-    virtual bool isDone() const;
-    virtual uptrt<GameInterfaceAbstraction> next() = 0;
+    virtual uptrt<ScreenAbstraction> getNextScreen() = 0;
 
 
     protected :
+
+    virtual std::set<sf::Keyboard::Key> getKeysToContinue();
+
+    virtual bool areCreditsDone() const;
+    virtual bool endAfterLastCredits() const;
 
     sf::FloatRect getTargetBounds();
     virtual void add_item(std::unique_ptr<Menu::AbstractItem> item);
