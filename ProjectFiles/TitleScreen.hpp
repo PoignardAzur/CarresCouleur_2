@@ -13,7 +13,7 @@ class TitleScreen : public PressKeyToContinue
     TitleScreen(InputsAbstraction* in, const sf::Font* font);
 
     void drawIn(DrawerAbstraction& window, float dt) const;
-    ScreenPointer getNextScreen();
+    ScreenPointer loadNextScreen();
 
 
     protected :

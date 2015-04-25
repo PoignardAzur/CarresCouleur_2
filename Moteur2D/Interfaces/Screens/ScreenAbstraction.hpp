@@ -24,23 +24,26 @@ class ScreenAbstraction
     virtual void setInputs(InputsAbstraction*);         // Must be overloaded to personalize Events handling
     virtual void setInputsEvents(EventsMap::MouseEventsMap mouseEvents, EventsMap::KeyboardEventsMap keyboardEvents);
 
+    virtual void update(float dt) = 0;                  // the number of ticks since the last update
+    virtual void drawIn(DrawerAbstraction& window, float dt) const = 0;
+
     using ScreenPointer = uptrt<ScreenAbstraction>;
 
-    virtual void update(float dt) = 0;                  // the number of ticks since the last update
-    virtual bool isDone() const;                        // if this returns true, the interface must be deleted and replaced by
-    virtual ScreenPointer getNextScreen() = 0;          // the next interface (if next() is null, then the game closes)
-
-    virtual void drawIn(DrawerAbstraction& window, float dt) const = 0;
+    bool isDone() const;                                // if this returns true, the interface must be deleted and replaced by
+    ScreenPointer getNextScreen();                      // the next interface (if next() is null, then the game closes)
 
 
     protected :
 
-    virtual void endThisLater();
+    void closeLater(ScreenPointer nextScreen);
+
     virtual InputsAbstraction* getInputs();
     virtual const InputsAbstraction* getInputs() const;
 
 
     private :
+
+    ScreenPointer m_nextScreen;
 
     bool m_deleteLater = false;
     InputsAbstraction* m_inputs = nullptr; // use-a

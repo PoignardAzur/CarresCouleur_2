@@ -142,8 +142,7 @@ void LevelBase::setNext()
         credits->setFonts(m_font);
         credits->setAllCredits();
 
-        endThisLater();
-        setNextInterface(std::unique_ptr<ScreenAbstraction>(credits));
+        closeLater(std::unique_ptr<ScreenAbstraction>(credits));
     }
 
     else
@@ -158,8 +157,7 @@ void LevelBase::setNext()
         p->increaseScore(score(), false);
         p->setInputs(getInputs());
 
-        endThisLater();
-        setNextInterface(move(p));
+        closeLater(move(p));
     }
 }
 
@@ -184,9 +182,6 @@ void LevelBase::updateThis(float dt)
     {
         placedCarre.get().recycle(placedCarre.getPos(), sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT));
     }
-
-    if (getInputs()->closeWindow())
-    endThisLater();
 }
 
 

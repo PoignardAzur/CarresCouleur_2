@@ -53,16 +53,13 @@ class Level : public ScreenAbstraction
     virtual const MenuInterfaceAbstraction* getPauseMenu() const;
     virtual MenuInterfaceAbstraction* getPauseMenu();
 
-    virtual void setNextInterface(ScreenPointer nextInt);
-    ScreenPointer getNextScreen() final;
-
 
     private :
 
     std_rng m_randomGenerator;
+
     uptrt<MenuInterfaceAbstraction> m_pauseMenu;
     bool m_pauseMenuLoaded = false;
-    ScreenPointer m_nextScreen;
 };
 
 

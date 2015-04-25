@@ -16,7 +16,7 @@ class PressKeyToContinue : public ScreenAbstraction
 
     virtual void update(float dt);
     virtual void drawIn(DrawerAbstraction& window, float dt) const = 0;
-    virtual ScreenPointer getNextScreen() = 0;
+    virtual ScreenPointer loadNextScreen() = 0;
 
 
     protected :

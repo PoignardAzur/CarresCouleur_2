@@ -103,7 +103,6 @@ void MainMenu::loadNext(uptrt<LevelBase> level, const sf::Font* f)
     level->setFont(f);
     level->setHUD(uptr(hud));
 
-    endThisLater();
     setNextScreenAndClose(move(level));
 }
 

@@ -13,7 +13,7 @@ class GameEndCredits : public BasicEndCreditsScreen
     void setFonts(const sf::Font* f);
     void setAllCredits();
 
-    virtual ScreenPointer getNextScreen();
+    ScreenPointer loadNextScreen();
 
 
     private :

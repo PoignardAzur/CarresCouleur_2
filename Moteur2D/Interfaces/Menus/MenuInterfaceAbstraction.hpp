@@ -14,7 +14,6 @@ class MenuInterfaceAbstraction : public ScreenAbstraction
     virtual void update(float dt);
 
     bool loadNewScreen() const;
-    ScreenPointer getNextScreen() final;
 
     virtual bool isLayered() const = 0;
     // if this returns true, the menu is drawn on top of the level / another menu, which must be drawn first
@@ -39,7 +38,6 @@ class MenuInterfaceAbstraction : public ScreenAbstraction
     bool m_submenuLoaded = false;
 
     bool m_loadNewScreen = false;
-    ScreenPointer m_nextScreen;
 };
 
 

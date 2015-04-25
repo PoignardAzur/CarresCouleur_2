@@ -42,7 +42,7 @@ void TitleScreen::drawIn(DrawerAbstraction& window, float dt) const
     m_pressEnter.drawInBox(window, sf::FloatRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT), Menu::BottomRightCorner);
 }
 
-uptrt<ScreenAbstraction> TitleScreen::getNextScreen()
+uptrt<ScreenAbstraction> TitleScreen::loadNextScreen()
 {
     uptrt<MainMenu> menu(new MainMenu);
     menu->set(getInputs(), m_font);

@@ -74,7 +74,7 @@ void EndCreditsScreen::update(float dt)
     // Is this done ?
     if (areCreditsDone() && endAfterLastCredits())
     {
-        endThisLater();
+        closeLater(loadNextScreen());
     }
 }
 

@@ -21,21 +21,6 @@ void ScreenAbstraction::load()
     m_inputs->addEventsMap(move(m_unloadedEventsMap));
 }
 
-bool ScreenAbstraction::isDone() const
-{
-    if (getInputs())
-    return m_deleteLater || getInputs()->closeWindow();
-
-    else
-    return m_deleteLater ;
-}
-
-void ScreenAbstraction::endThisLater()
-{
-    m_deleteLater = true;
-}
-
-
 void ScreenAbstraction::setInputs(InputsAbstraction* newInputs)
 {
     m_inputs = newInputs;
@@ -46,6 +31,25 @@ void ScreenAbstraction::setInputsEvents(EventsMap::MouseEventsMap mouseEvents, E
     m_unloadedEventsMap.reset(new EventsMap( move(mouseEvents), move(keyboardEvents) ));
 }
 
+
+bool ScreenAbstraction::isDone() const
+{
+    return m_deleteLater || (getInputs() && getInputs()->closeWindow());
+}
+
+uptrt<ScreenAbstraction> ScreenAbstraction::getNextScreen()
+{
+    return move(m_nextScreen);
+}
+
+
+void ScreenAbstraction::closeLater(ScreenPointer nextScreen)
+{
+    m_deleteLater = true;
+    m_nextScreen = move(nextScreen);
+}
+
+
 InputsAbstraction* ScreenAbstraction::getInputs()
 {
     return m_inputs;
@@ -55,5 +59,4 @@ const InputsAbstraction* ScreenAbstraction::getInputs() const
 {
     return const_cast<ScreenAbstraction*>(this)->getInputs();
 }
-
 

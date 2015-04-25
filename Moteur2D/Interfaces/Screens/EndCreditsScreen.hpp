@@ -33,7 +33,7 @@ class EndCreditsScreen : public PressKeyToContinue
     virtual void drawIn(DrawerAbstraction& window, float dt) const;
     void drawCreditsIn(DrawerAbstraction& window, float dt) const;
     virtual void update(float dt);
-    virtual uptrt<ScreenAbstraction> getNextScreen() = 0;
+    virtual uptrt<ScreenAbstraction> loadNextScreen() = 0;
 
 
     protected :

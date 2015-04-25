@@ -31,7 +31,7 @@ void GameEndCredits::setAllCredits()
     add_credit("Testeur principal", "Marc FAURE", 10);
 }
 
-uptrt<ScreenAbstraction> GameEndCredits::getNextScreen()
+uptrt<ScreenAbstraction> GameEndCredits::loadNextScreen()
 {
     MainMenu* menu = new MainMenu;
     menu->set(getInputs(), m_font);

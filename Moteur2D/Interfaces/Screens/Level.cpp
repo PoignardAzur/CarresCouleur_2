@@ -97,8 +97,7 @@ void Level::update(float dt)
         {
             if (m_pauseMenu->loadNewScreen())
             {
-                m_nextScreen = m_pauseMenu->getNextScreen();
-                ScreenAbstraction::endThisLater();
+                closeLater(m_pauseMenu->getNextScreen());
             }
 
             m_pauseMenu.reset();
@@ -124,15 +123,5 @@ const MenuInterfaceAbstraction* Level::getPauseMenu() const
 MenuInterfaceAbstraction* Level::getPauseMenu()
 {
     return m_pauseMenu.get();
-}
-
-void Level::setNextInterface(uptrt<ScreenAbstraction> nextInt)
-{
-    m_nextScreen = move(nextInt);
-}
-
-uptrt<ScreenAbstraction> Level::getNextScreen()
-{
-    return move(m_nextScreen);
 }
 

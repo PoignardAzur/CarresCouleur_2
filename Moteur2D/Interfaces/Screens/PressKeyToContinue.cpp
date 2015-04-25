@@ -16,7 +16,7 @@ void PressKeyToContinue::setInputs(InputsAbstraction* inputs)
         keyboardEvents[key] = [this](bool pressed)
         {
             if (pressed)
-            endThisLater();
+            closeLater(loadNextScreen());
         };
     }
 

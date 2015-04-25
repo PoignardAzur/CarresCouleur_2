@@ -49,11 +49,6 @@ bool MenuInterfaceAbstraction::loadNewScreen() const
     return m_loadNewScreen;
 }
 
-uptrt<ScreenAbstraction> MenuInterfaceAbstraction::getNextScreen()
-{
-    return move(m_nextScreen);
-}
-
 
 void MenuInterfaceAbstraction::openSubmenu(uptrt<MenuInterfaceAbstraction> submenu)
 {
@@ -72,15 +67,13 @@ MenuInterfaceAbstraction* MenuInterfaceAbstraction::getSubmenu()
 
 void MenuInterfaceAbstraction::closeMenu()
 {
-    endThisLater();
+    closeLater(nullptr);
     m_loadNewScreen = false;
 }
 
 void MenuInterfaceAbstraction::setNextScreenAndClose(ScreenPointer nextScreen)
 {
-    endThisLater();
-
+    closeLater(move(nextScreen));
     m_loadNewScreen = true;
-    m_nextScreen = move(nextScreen);
 }
 
