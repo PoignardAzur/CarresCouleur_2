@@ -30,6 +30,8 @@ class SimpleVart : public VartAbs, public SimpleHitbox
     virtual bool doDelete() const;
     virtual void drawIn(sf::Vector2f pos, DrawerAbstraction& target, sf::FloatRect limits, float dt) const;
 
+    virtual void recycle(sf::Vector2f pos, sf::FloatRect zone, bool deleteIfOut = true);
+
 
     protected :
 

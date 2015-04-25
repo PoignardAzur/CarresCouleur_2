@@ -78,3 +78,9 @@ void SimpleVart::drawIn(sf::Vector2f pos, DrawerAbstraction& target, sf::FloatRe
     m_sprite->drawIn(pos + getSpeed()*dt, target, limits, dt);
 }
 
+void SimpleVart::recycle(sf::Vector2f pos, sf::FloatRect zone, bool deleteIfOut)
+{
+    if (getHitbox(pos).intersects(zone) != deleteIfOut)
+    removeThis();
+}
+

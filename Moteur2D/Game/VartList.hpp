@@ -60,6 +60,16 @@ void updateAllPositions(VartList<V>& list, float dt)
 }
 
 
+template <typename V>
+void updateAllPositions(VartList<V>& list, sf::FloatRect zone, bool deleteIfOut = true)
+{
+    for (auto& placedVart : list)
+    {
+        placedVart.get().recycle(placedVart.getPos(), zone, deleteIfOut);
+    }
+}
+
+
 // This class is useful for letting a class add Varts to a list, but not modify the list
 // POINTER SAFETY : 'add()' must not be called after 'm_list' is deleted
 template <typename V = VartAbs>
